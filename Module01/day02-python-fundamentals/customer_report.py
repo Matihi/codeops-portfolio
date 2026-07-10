@@ -52,6 +52,6 @@ def tier_count(tier_type):
         return counter
     
     
-print(f"Number of customers in Premium tier: {tier_count(1)}")
+print(f"\nNumber of customers in Premium tier: {tier_count(1)}")
 print(f"Number of customers in Standard tier: {tier_count(2)}")
 print(f"Number of customers in Basic tier: {tier_count(3)}")
