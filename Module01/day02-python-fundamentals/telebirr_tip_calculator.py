@@ -1,7 +1,7 @@
 #Tip calculator
 
 
-print("Tip Calculator\n")
+print("\n*****Tip Calculator*****\n")
 
 total_bill = float(input("Enter the total amount: "))
 number_of_people = int(input("\nEnter the number of people: "))
@@ -24,13 +24,17 @@ def split_bill(total, people, tip_rate=0.10):
 people = []
 
 count = number_of_people
+start = 1
+
+print("Please enter the names of the people\n")
 
 while count > 0:
-    names = input("Enter their names: ")
+    names = input(f"{start} Enter the name : ")
     people.append(names)
     count -= 1
+    start += 1
 
 print()
 
 for person in people:
-    print(f"{person} needs to pay {split_bill(total_bill, number_of_people, tip_rate):.2f} birr")
+    print(f"{person} needs to pay {split_bill(total_bill, number_of_people, tip_rate):.2f} Birr")
