@@ -30,28 +30,20 @@ for name, balance in customers:
     print(f"\n{name}: {tier(balance)} ({balance}) ETB")
 
 
-def tier_count(tier_type):
-    counter = 0
-    if tier_type == 1:
-        for _, balance in customers:
-            if balance >= 1000:
-                counter += 1
-        return counter
+    
+customers_in_premium_tier = 0
+customers_in_standard_tier = 0
+customers_in_basic_tier = 0
 
-    if tier_type == 2:
-        for _, balance in customers:
-            if balance >= 500 and balance < 1000:
-                counter += 1
-        return counter
-    
+for _, balance in customers:
+    if balance >= 1000:
+        customers_in_premium_tier += 1
+    elif balance >= 500:
+        customers_in_standard_tier += 1
+    else:
+        customers_in_basic_tier += 1
 
-    if tier_type == 3:
-        for _, balance in customers:
-            if balance < 500:
-                counter += 1
-        return counter
     
-    
-print(f"\nNumber of customers in Premium tier: {tier_count(1)}")
-print(f"Number of customers in Standard tier: {tier_count(2)}")
-print(f"Number of customers in Basic tier: {tier_count(3)}")
+print(f"\nNumber of customers in Premium tier: {customers_in_premium_tier}")
+print(f"Number of customers in Standard tier: {customers_in_standard_tier}")
+print(f"Number of customers in Basic tier: {customers_in_basic_tier}")
