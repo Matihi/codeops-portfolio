@@ -1,0 +1,19 @@
+*****Customer Report*****
+
+No  Name    Total amount per person
+1  Dawit    670.0
+2  Mekonnen    649.5
+3  Lemlem    567.0
+4  Mekdes    534.0
+5  Bereket    500.0
+6  Samuel    479.3
+7  Kebede    450.5
+8  Abeje    345.4
+9  Selam    300.0
+10  Henok    278.1
+11  Abinet    230.2
+12  Abebe    220.0
+13  Almaz    200.0
+
+Number of customers : 13
+Total transaction: 5424.0
