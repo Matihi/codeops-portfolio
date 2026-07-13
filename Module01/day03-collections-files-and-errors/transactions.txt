@@ -1,0 +1,16 @@
+Abebe, 100
+Kebede, 450.5
+Almaz, 200
+Abeje, 345.4
+Lemlem, 567
+Selam,250
+Dawit, 670
+Abebe, 120
+Selam,50
+Abinet, 130
+Mekonnen, 649.5
+Mekdes, 534
+Samuel, 479.3
+Abinet, 100.2
+Bereket, 500
+Henok, 278.1
