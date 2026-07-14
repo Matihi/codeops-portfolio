@@ -1,0 +1,11 @@
+Paracetamol,15
+Ibuprofen,8
+ORS,10
+Antacid,30
+Amoxicillin,50
+Sanitizer,10
+Deodorant,15
+Toothbrush,55
+Toothpaste,50
+Diaper,40
+Vitamin C,6
