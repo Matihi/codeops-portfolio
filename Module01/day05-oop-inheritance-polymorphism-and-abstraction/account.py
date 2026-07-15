@@ -28,27 +28,4 @@ class Account:
 
 
 
-account1 = Account("Abebe", "123456", 2500)
-account1.statement()
-account1.deposite(150)
-account1.statement()
-account1.withdraw(700.5)
-account1.statement()
-print()
-print(account1.balance)
-# account1.balance = 2645
-print(account1.balance)
-account1.statement()
-account1.__balance = 1500
-account1.statement()
-# account1.deposite(-200)
-# account1.statement()
-# account1.withdraw(-55)
-# account1.statement()
-account1.withdraw(2351)
-print()
-account2 = Account("Kebede", "789012", 3455)
-account2.deposite(10)
-account1.statement()
-account2.statement()
         
