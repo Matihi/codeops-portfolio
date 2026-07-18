@@ -43,7 +43,7 @@ class Account:
         elif self.balance < amount:
             raise ValueError("Balance not sufficient")
         else:
-            self._change_balance(amount)
+            self._change_balance(-amount)
             #self.__balance -= amount # if it were this, we wouldn't be able to access a private property directly
             #self.balance -= amount # if it were this, it would have thrown this: AttributeError: property 'balance' of 'CurrentAccount' object has no setter. We could create a setter if it were not a read-only property
 
