@@ -155,11 +155,6 @@ class AccountRegistry:
 
 
 
-
-
-
-
-
 abebe = AccountFactory.create("Savings", "Abebe", "12345", 2530)
 kebede = AccountFactory.create("Current", "Kebede", "67890", 3400)
 
@@ -168,45 +163,35 @@ account_registry.add(abebe)
 account_registry.add(kebede)
 accounts = account_registry.list_all()
 
-# for account in accounts:
-#     account.statement()
 
 returned_account = account_registry.find("12345") if account_registry.find("12345") != None else ValueError("Account does not exist")
 returned_account.statement()
 returned_account.subscribe(SMSAlertService())
-print(account_registry.transactions)
 
 returned_account.deposite(250)
 account_registry.push_transaction("12345", "Deposit", 250)
-print(account_registry.transactions)
 returned_account.statement()
 
 returned_account.deposite(100)
 account_registry.push_transaction("12345", "Deposit", 100)
-print(account_registry.transactions)
 returned_account.statement()
 
 returned_account.deposite(1400)
 account_registry.push_transaction("12345","Deposit", 1400)
-print(account_registry.transactions)
 returned_account.statement()
 
 returned_account.withdraw(350)
 account_registry.push_transaction("12345","Withdraw", 350)
-print(account_registry.transactions)
 returned_account.statement()
 
 returned_account.withdraw(500)
 account_registry.push_transaction("12345","Withdraw", 500)
-print(account_registry.transactions)
 returned_account.statement()
 
 account_registry.undo_last("12345")
-print(account_registry.transactions)
 returned_account.statement()
 
 account_registry.undo_last("12345")
-print(account_registry.transactions)
 returned_account.statement()
 
 
@@ -215,86 +200,41 @@ returned_account.statement()
 returned_account2 = account_registry.find("67890") if account_registry.find("67890") != None else ValueError("Account does not exist")
 returned_account2.statement()
 returned_account2.subscribe(SMSAlertService())
-print(account_registry.transactions)
 
 returned_account2.deposite(250)
 account_registry.push_transaction("67890", "Deposit", 250)
-print(account_registry.transactions)
 returned_account2.statement()
 
 returned_account2.deposite(100)
 account_registry.push_transaction("67890", "Deposit", 100)
-print(account_registry.transactions)
 returned_account2.statement()
 
 returned_account2.deposite(1400)
 account_registry.push_transaction("67890","Deposit", 1400)
-print(account_registry.transactions)
 returned_account2.statement()
 
 returned_account2.withdraw(350)
 account_registry.push_transaction("67890","Withdraw", 350)
-print(account_registry.transactions)
 returned_account2.statement()
 
 returned_account2.withdraw(500)
 account_registry.push_transaction("67890","Withdraw", 500)
-print(account_registry.transactions)
 returned_account2.statement()
 
 account_registry.undo_last("67890")
-print(account_registry.transactions)
 returned_account2.statement()
 
 account_registry.undo_last("67890")
-print(account_registry.transactions)
 returned_account2.statement()
 
 returned_account2.withdraw(6100)
 account_registry.push_transaction("67890","Withdraw", 6100)
-print(account_registry.transactions)
 returned_account2.statement()
 
 account_registry.undo_last("67890")
-print(account_registry.transactions)
 returned_account2.statement()
 
 
 
-
-
-abebe.subscribe(SMSAlertService())
-# abebe.statement()
-# abebe.deposite(100)
-# abebe.statement()
-# abebe.withdraw(500)
-# abebe.statement()
-
-kebede.subscribe(SMSAlertService())
-# kebede.statement()
-# kebede.deposite(170)
-# kebede.statement()
-# kebede.withdraw(890)
-# kebede.statement()
-
-# almaz = AccountFactory.create("Savings", "Almaz", "10293", 3560, 0.1)
-# lemlem = AccountFactory.create("Current", "Lemlem", "68275", 4240, 0, 1500)
-
-
-# almaz.subscribe(SMSAlertService())
-# almaz.statement()
-# almaz.deposite(100)
-# almaz.statement()
-# almaz.withdraw(500)
-# almaz.statement()
-
-# lemlem.subscribe(SMSAlertService())
-# lemlem.statement()
-# lemlem.deposite(100)
-# lemlem.statement()
-# lemlem.withdraw(500)
-# lemlem.statement()
-# lemlem.withdraw(5338)
-# lemlem.statement()
 
 
