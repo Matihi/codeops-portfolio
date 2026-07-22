@@ -11,9 +11,9 @@ class BankConfig:
             cls._instance.overdraft_limit = 1000
         return cls._instance
 
-# bg1 = BankConfig()
-# bg2 = BankConfig()
-# print(bg1 is bg2)
+bg1 = BankConfig()
+bg2 = BankConfig()
+print(bg1 is bg2)
 
 
 
