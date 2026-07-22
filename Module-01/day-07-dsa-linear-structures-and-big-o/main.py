@@ -125,10 +125,17 @@ class AccountRegistry:
         return accounts
 
     def push_transaction(self, account_number, transaction_type, amount):
-        if self.transactions.get(account_number) == None:
-            self.transactions[account_number] = []
-        transaction_tuple = (transaction_type, amount)
-        self.transactions[account_number].append(transaction_tuple)
+        account = self.find(account_number)
+        if account != None:
+            if amount > 0:
+                if self.transactions.get(account_number) == None:
+                    self.transactions[account_number] = []
+                transaction_tuple = (transaction_type, amount)
+                self.transactions[account_number].append(transaction_tuple)
+            else:
+                print("Amount must be positive")
+        else:
+            print(f"Account with account number {account_number} does not exist")
 
     
     def undo_last(self, account_number):
