@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <form action="/someplace" method="post">
+      <h1>Ethio Telecom Registration Form</h1>
+      <!--we use method="post" because the data that we send is sensitive and is used to update personal information-->
+      <fieldset>
+        <legend>Personal Information</legend>
+
+        <div>
+          <label for="full_name">Full Name:</label>
+          <!--we use text since name is a text with no particular requirements like the rest of the types-->
+          <input id="full_name" name="full_name" type="text" required />
+        </div>
+
+        <div>
+          <label for="email">Email:</label>
+          <!--we use email type since the input is email and since it has built in simple validation-->
+          <input id="email" name="email" type="email" required />
+        </div>
+
+        <div>
+          <label for="phone_number">Phone Number:</label>
+          <!--we use tel type since the input is a phone number-->
+          <input
+            id="phone_number"
+            name="phone_number"
+            type="tel"
+            pattern="\+251[0-9]{9}"
+            title="Please enter a valid phone number starting with +251 followed by 9 digits"
+            placeholder="+251911223344"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="branch">Choose your branch:</label>
+          <!--we use select tag because we want the user to only select one from the options-->
+          <select id="branch" name="branch">
+            <option value="bole">Bole</option>
+            <option value="kazanchis">Kazanchis</option>
+            <option value="piassa">Piassa</option>
+          </select>
+        </div>
+        <!--we use button since we require one-->
+        <button type="submit">Submit</button>
+      </fieldset>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessibility Fix</title>
+  </head>
+  <body>
+    <div role="button">Submit</div>
+    <!--This fix allows screen readers to announce this tag is a button.
+    For keyboard users, it has native support for keyboard navigation using tab-->
+    <button type="submit">Submit</button>
+    <br />
+
+    <input type="text" id="name" name="name" />
+    <br />
+    <!--This fix allows screen readers to announce the label text when the user clicks on the associated input field.
+    For keyboard users, it allows easier navigation using tabs and gives an idea of what the input field is for-->
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" />
+    <br />
+
+    <img src="./images/bete_giyorgis_lalibela.jpg" />
+    <br />
+    <!--This fix helps screen readers announce a meaningful description of the image
+    instead of reading the file name of the image, or let them skip it if an empty alt tag was used -->
+    <img
+      src="./images/bete_giyorgis_lalibela.jpg"
+      alt="Rock-hewn church of Bete Giyorgis in Lalibela"
+    />
+  </body>
+</html>
