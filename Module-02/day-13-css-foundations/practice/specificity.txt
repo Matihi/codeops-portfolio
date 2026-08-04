@@ -1,0 +1,16 @@
+The color set using the id would win
+
+specificity score is given for three buckets. ids, then classes/attributes/pseudo-classes, then types/pseudo-elements in this order
+where id > classes/attributes/pseudo-classes > types/pseudo-elements, and each selector in each bucket contributes 1 to that bucket
+specificity is compared column by column form left to right
+
+specificity score for rules on that paragraph:
+                id bucket, class bucket, type bucket
+for element:    0           0               1
+for class:      0           1               0
+for id:         1           0               0
+
+1,0,0 > 0,1,0 since 1 > 0
+0,1,0 > 0,0,1 since 1 > 0 in the second column
+
+1,0,0 > 0,1,0 > 0,0,1

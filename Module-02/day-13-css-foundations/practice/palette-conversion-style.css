@@ -1,0 +1,58 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+div {
+  height: 100px;
+  width: 100px;
+  margin: 10px;
+}
+
+.one {
+  background-color: #ffa034;
+}
+
+.two {
+  background-color: #aabbcc;
+}
+
+.three {
+  background-color: #1245dd;
+}
+
+.rgb-one {
+  background-color: rgb(255, 160, 52);
+}
+
+.rgb-two {
+  background-color: rgb(170, 187, 204);
+}
+
+.rgb-three {
+  background-color: rgb(18, 69, 221);
+}
+
+.hsl-one {
+  background-color: hsl(32, 100%, 60%);
+}
+
+.hsl-two {
+  background-color: hsl(210, 25%, 73%);
+}
+
+.hsl-three {
+  background-color: hsl(225, 85%, 47%);
+}
+
+.hsl-one:hover {
+  background-color: hsl(32, 100%, 70%);
+}
+
+.hsl-two:hover {
+  background-color: hsl(210, 25%, 80%);
+}
+
+.hsl-three:hover {
+  background-color: hsl(225, 85%, 60%);
+}

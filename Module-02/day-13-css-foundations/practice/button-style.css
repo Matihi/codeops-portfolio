@@ -1,0 +1,13 @@
+:root {
+  --background-color: rgb(0, 36, 103);
+  --color: orange;
+  --spacing: 20px 40px;
+  --font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  background-color: var(--background-color);
+  color: var(--color);
+  padding: var(--spacing);
+  font-family: var(--font-family);
+}
