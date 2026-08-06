@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
+      @theme {
+        --color-brand-primary: hsl(202, 97%, 25%);
+        --color-brand-secondary: #ffa500;
+      }
+
       .card {
         @apply flex flex-col;
       }
@@ -38,7 +43,7 @@
   <body>
     <div class="page flex flex-col">
       <header
-        class="header bg-[#74b8f0] flex justify-evenly items-center h-25 sticky top-0 z-1000"
+        class="header bg-brand-primary flex justify-evenly items-center h-25 sticky top-0 z-1000"
       >
         <div
           class="logo-section border-2 flex shrink-0 justify-center items-center overflow-hidden w-20 h-20 rounded-full"
@@ -50,26 +55,26 @@
           />
         </div>
         <nav
-          class="navigation grow flex justify-center items-center gap-[clamp(0.75rem,3vw,8rem)] h-full"
+          class="navigation grow flex justify-end items-center gap-[clamp(0.75rem,3vw,10rem)] h-full"
         >
           <a
             href="#"
-            class="link h-full flex justify-center items-center bg-[#ffb938] hover:bg-blue-600"
+            class="link h-[50%] flex justify-center items-center bg-brand-secondary hover:bg-[#61001a]"
             >Home</a
           >
           <a
             href="#about-section"
-            class="link h-full flex justify-center items-center bg-[#ffb938] hover:bg-blue-600"
+            class="link h-[50%] flex justify-center items-center bg-brand-secondary hover:bg-[#61001a]"
             >About</a
           >
           <a
             href="#menu"
-            class="h-full flex justify-center items-center bg-[#ffb938] hover:bg-blue-600"
+            class="link h-[50%] flex justify-center items-center bg-brand-secondary hover:bg-[#61001a]"
             >Menu</a
           >
           <a
             href="#reservation"
-            class="link h-full flex justify-center items-center bg-[#ffb938] hover:bg-blue-600"
+            class="link h-[50%] flex justify-center items-center bg-brand-secondary hover:bg-[#61001a]"
             >Reservation</a
           >
         </nav>
@@ -80,13 +85,13 @@
           class="hero w-full h-[60vh] overflow-hidden relative items-center justify-center"
         >
           <h1
-            class="heading bg-[hsl(202,97%,25%)] text-white text-center text-[clamp(2rem, 6vw, 5rem)] leading-tight py-2"
+            class="heading bg-brand-primary text-white text-center text-[clamp(2rem, 6vw, 5rem)] leading-tight py-2"
           >
             Welcome To Habesha Eatery
           </h1>
           <img
             src="./images/beyaynet.png"
-            alt="Hero image of beyaynet, an Ethiopian food"
+            alt="Ethiopian platter consisting of injera topped with various types of stews and vegetables"
             class="hero-image w-full h-full object-cover"
           />
           <a
@@ -131,19 +136,101 @@
             >
               <div class="card-header h-[60%] flex justify-center items-center">
                 <img
-                  src="./images/kitfo.jpg"
-                  alt="Image of a food item"
+                  src="./images/sambusa.jpg"
+                  alt="A crispy pastry called sambusa"
                   class="card-image w-full max-h-full object-cover"
                 />
               </div>
               <div class="card-body">
-                <h3 class="food-name text-center">Kitfo</h3>
+                <h3 class="food-name text-center">Sambusa</h3>
                 <p class="description text-center">
-                  Finely minced premium beef, lightly cooked or raw, seasoned
-                  with niter kibbeh and mitmita, traditionally served with ayib
-                  and gomen.
+                  Crispy pastry pockets filled with seasoned lentils or minced
+                  beef, onions, and green chilies, fried to a golden, flaky
+                  perfection.
                 </p>
-                <p class="price text-center">300 ETB</p>
+                <p class="price text-center">60 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/enkulal-firfir.jpg"
+                  alt="Scrambled eggs"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Enkulal Firfir</h3>
+                <p class="description text-center">
+                  Scrambled eggs cooked with onions, tomatoes, green peppers,
+                  and Ethiopian spices
+                </p>
+                <p class="price text-center">80 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/timatim-fitfit.jpg"
+                  alt="Diced tomatoes with injera soaked in oil and lemon juice sauce"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Timatim Fitfit</h3>
+                <p class="description text-center">
+                  Fresh tomatoes, onions, green chilies, and shredded injera
+                  lightly dressed with olive oil, lemon juice, and traditional
+                  seasonings.
+                </p>
+                <p class="price text-center">75 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/doro-wot.jpg"
+                  alt="Spicy chicken stew"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Doro Wot</h3>
+                <p class="description text-center">
+                  Ethiopia's signature spicy chicken stew made with slow-cooked
+                  chicken, onions, berbere spice blend, niter kibbeh (spiced
+                  clarified butter), garlic, ginger, and a boiled egg.
+                </p>
+                <p class="price text-center">350 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/siga-tibs.jpg"
+                  alt="Cooked tender beef cubes"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Siga Tibs</h3>
+                <p class="description text-center">
+                  Tender beef cubes sautéed with onions, tomatoes, green
+                  peppers, garlic, and herbs in fragrant niter kibbeh.
+                </p>
+                <p class="price text-center">320 ETB</p>
               </div>
             </article>
 
@@ -153,7 +240,7 @@
               <div class="card-header">
                 <img
                   src="./images/kitfo.jpg"
-                  alt="Image of a food item"
+                  alt="Raw finely minced beef drowsed in butter"
                   class="card-image"
                 />
               </div>
@@ -164,7 +251,7 @@
                   with niter kibbeh and mitmita, traditionally served with ayib
                   and gomen.
                 </p>
-                <p class="price text-center">300 ETB</p>
+                <p class="price text-center">380 ETB</p>
               </div>
             </article>
 
@@ -173,17 +260,17 @@
             >
               <div class="card-header">
                 <img
-                  src="./images/kitfo.jpg"
-                  alt="Image of a food item"
+                  src="./images/siga-wot.jpg"
+                  alt="Meat stew"
                   class="card-image"
                 />
               </div>
               <div class="card-body bg-[#f88484]">
-                <h3 class="food-name text-center">Kitfo</h3>
+                <h3 class="food-name text-center">Siga wot</h3>
                 <p class="description text-center">
-                  Finely minced premium beef, lightly cooked or raw, seasoned
-                  with niter kibbeh and mitmita, traditionally served with ayib
-                  and gomen.
+                  Rich, slow-simmered beef stew cooked with onions, berbere,
+                  garlic, ginger, and niter kibbeh for a deeply spiced,
+                  flavorful dish.
                 </p>
                 <p class="price text-center">300 ETB</p>
               </div>
@@ -194,19 +281,18 @@
             >
               <div class="card-header">
                 <img
-                  src="./images/kitfo.jpg"
-                  alt="Image of a food item"
+                  src="./images/derek-tibs.jpg"
+                  alt="Crispy dry-fried meat with awaze and chili sauce"
                   class="card-image"
                 />
               </div>
               <div class="card-body bg-[#f88484]">
-                <h3 class="food-name text-center">Kitfo</h3>
+                <h3 class="food-name text-center">Derek Tibs</h3>
                 <p class="description text-center">
-                  Finely minced premium beef, lightly cooked or raw, seasoned
-                  with niter kibbeh and mitmita, traditionally served with ayib
-                  and gomen.
+                  Crispy, dry-fried beef seasoned with rosemary, and green
+                  chilies for a smoky, savory finish.
                 </p>
-                <p class="price text-center">300 ETB</p>
+                <p class="price text-center">350 ETB</p>
               </div>
             </article>
 
@@ -215,19 +301,19 @@
             >
               <div class="card-header">
                 <img
-                  src="./images/kitfo.jpg"
-                  alt="Image of a food item"
+                  src="./images/shiro-wot.jpg"
+                  alt="chickpea flour stew"
                   class="card-image"
                 />
               </div>
               <div class="card-body bg-[#f88484]">
-                <h3 class="food-name text-center">Kitfo</h3>
+                <h3 class="food-name text-center">Shiro Wot</h3>
                 <p class="description text-center">
-                  Finely minced premium beef, lightly cooked or raw, seasoned
-                  with niter kibbeh and mitmita, traditionally served with ayib
-                  and gomen.
+                  A smooth, comforting stew made from finely ground chickpea
+                  flour simmered with berbere, onions, garlic, and Ethiopian
+                  spices.
                 </p>
-                <p class="price text-center">300 ETB</p>
+                <p class="price text-center">180 ETB</p>
               </div>
             </article>
 
@@ -236,19 +322,18 @@
             >
               <div class="card-header">
                 <img
-                  src="./images/kitfo.jpg"
-                  alt="Image of a food item"
+                  src="./images/misir-wot.jpg"
+                  alt="Lentil Stew"
                   class="card-image"
                 />
               </div>
               <div class="card-body bg-[#f88484]">
-                <h3 class="food-name text-center">Kitfo</h3>
+                <h3 class="food-name text-center">Misir Wot</h3>
                 <p class="description text-center">
-                  Finely minced premium beef, lightly cooked or raw, seasoned
-                  with niter kibbeh and mitmita, traditionally served with ayib
-                  and gomen.
+                  Red lentils slow-cooked in a rich berbere sauce with onions
+                  and traditional Ethiopian seasonings.
                 </p>
-                <p class="price text-center">300 ETB</p>
+                <p class="price text-center">190 ETB</p>
               </div>
             </article>
 
@@ -257,19 +342,18 @@
             >
               <div class="card-header">
                 <img
-                  src="./images/kitfo.jpg"
-                  alt="Image of a food item"
+                  src="./images/alicha-kik.jpg"
+                  alt="Mild split pea stew"
                   class="card-image"
                 />
               </div>
               <div class="card-body bg-[#f88484]">
-                <h3 class="food-name text-center">Kitfo</h3>
+                <h3 class="food-name text-center">Alicha Kik</h3>
                 <p class="description text-center">
-                  Finely minced premium beef, lightly cooked or raw, seasoned
-                  with niter kibbeh and mitmita, traditionally served with ayib
-                  and gomen.
+                  Mild split pea stew gently simmered with turmeric, onions,
+                  garlic and fragrant Ethiopian spices
                 </p>
-                <p class="price text-center">300 ETB</p>
+                <p class="price text-center">175 ETB</p>
               </div>
             </article>
 
@@ -278,19 +362,20 @@
             >
               <div class="card-header">
                 <img
-                  src="./images/kitfo.jpg"
-                  alt="Image of a food item"
+                  src="./images/beyaynet-card.jpg"
+                  alt="Ethiopian platter consisting of injera topped with various types of stews and vegetables"
                   class="card-image"
                 />
               </div>
               <div class="card-body bg-[#f88484]">
-                <h3 class="food-name text-center">Kitfo</h3>
+                <h3 class="food-name text-center">Beyaynetu</h3>
                 <p class="description text-center">
-                  Finely minced premium beef, lightly cooked or raw, seasoned
-                  with niter kibbeh and mitmita, traditionally served with ayib
-                  and gomen.
+                  A colorful vegetarian sampler featuring injera served with an
+                  assortment of traditional dishes, including shiro, misir wot,
+                  alicha kik, gomen, cabbage, and other seasonal vegetable
+                  specialties.
                 </p>
-                <p class="price text-center">300 ETB</p>
+                <p class="price text-center">250 ETB</p>
               </div>
             </article>
           </div>
@@ -298,7 +383,7 @@
 
         <section
           id="reservation"
-          class="reservation py-5 scroll-mt-25 bg-[#FFA500]"
+          class="reservation py-5 scroll-mt-25 bg-brand-secondary"
         >
           <h3 class="reservation-heading text-center">Reserve a Table</h3>
           <form
@@ -375,28 +460,26 @@
         </section>
       </main>
 
-      <footer
-        class="page-footer flex bg-[hsl(202,97%,25%)] text-[#D0D5CE] h-50"
-      >
+      <footer class="page-footer flex bg-brand-primary text-[#D0D5CE] h-50">
         <section class="location-category flex-1">
-          <h4 class="text-white my-2">Location</h4>
-          <p>Namibia Street, Bole</p>
-          <p>Addis Ababa, Ethiopia</p>
+          <h4 class="text-white my-2 text-sm md:text-base">Location</h4>
+          <p class="text-sm md:text-base">Namibia Street, Bole</p>
+          <p class="text-sm md:text-base">Addis Ababa, Ethiopia</p>
         </section>
         <section class="contact-category flex-1">
           <h4 class="text-white my-2">Contact</h4>
           <ul>
-            <li>+251911453829</li>
-            <li>+251922343478</li>
-            <li>habesheat@support.com</li>
+            <li class="text-sm md:text-base">+251911453829</li>
+            <li class="text-sm md:text-base">+251922343478</li>
+            <li class="text-sm md:text-base">habesheat@support.com</li>
           </ul>
         </section>
         <section class="hours-category flex-1">
           <h4 class="text-white my-2">Operating Hours</h4>
           <ul>
-            <li>Mon 05:15 PM - 08:00 PM</li>
-            <li>Tue-Fri 10:00 AM - 08:00 PM</li>
-            <li>Weekends 09:00 AM - 09:00 PM</li>
+            <li class="text-sm md:text-base">Mon 05:15 PM - 08:00 PM</li>
+            <li class="text-sm md:text-base">Tue-Fri 10:00 AM - 08:00 PM</li>
+            <li class="text-sm md:text-base">Weekends 09:00 AM - 09:00 PM</li>
           </ul>
         </section>
       </footer>
