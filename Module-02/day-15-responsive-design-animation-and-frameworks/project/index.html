@@ -13,7 +13,7 @@
   <body>
     <div class="page flex flex-col">
       <header
-        class="header flex border-2 justify-evenly items-center h-20 sticky top-0 z-1000"
+        class="header bg-[#74b8f0] flex border-2 justify-evenly items-center h-20 sticky top-0 z-1000"
       >
         <div
           class="logo-section border-2 flex shrink-0 justify-center items-center overflow-hidden w-20 h-20 rounded-full"
@@ -29,22 +29,22 @@
         >
           <a
             href="#"
-            class="link h-full border-2 flex justify-center items-center px-[clamp(0.5rem,3vw,3rem)] hover:bg-blue-600"
+            class="link h-full border-2 flex justify-center items-center hover:bg-blue-600"
             >Home</a
           >
           <a
             href=""
-            class="link h-full border-2 flex justify-center items-center px-[clamp(0.5rem,3vw,3rem)] hover:bg-blue-600"
+            class="link h-full border-2 flex justify-center items-center hover:bg-blue-600"
             >About</a
           >
           <a
             href=""
-            class="h-full border-2 flex justify-center items-center px-[clamp(0.5rem,3vw,3rem)] hover:bg-blue-600"
+            class="h-full border-2 flex justify-center items-center hover:bg-blue-600"
             >Menu</a
           >
           <a
             href=""
-            class="link h-full border-2 flex justify-center items-center px-[clamp(0.5rem,3vw,3rem)] hover:bg-blue-600"
+            class="link h-full border-2 flex justify-center items-center hover:bg-blue-600"
             >Reservation</a
           >
         </nav>
@@ -71,17 +71,213 @@
           </button>
         </div>
 
-        <section class="about-section"></section>
-        <section class="menu"></section>
-        <form class="reservation-form" method="post">
-          <fieldset>
-            <legend>Reservation Form</legend>
+        <section class="about-section">
+          <h2 class="text-center">About US</h2>
+          <p class="company-description">
+            At Habesha Eatery, we celebrate the rich flavors, traditions, and
+            hospitality of Ethiopian cuisine. Our restaurant brings together
+            authentic recipes, fresh ingredients, and traditional cooking
+            techniques to create a dining experience that reflects the heart of
+            Ethiopia. Every dish is carefully prepared to showcase the unique
+            spices, aromas, and flavors that make Ethiopian food truly
+            special.<br />
+            From shared platters of injera and flavorful stews to a variety of
+            vegetarian and meat specialties, our menu is inspired by generations
+            of culinary heritage. We believe that Ethiopian dining is more than
+            just food, it is a way of bringing people together, encouraging
+            connection, conversation, and unforgettable moments around the
+            table. <br />At Habesha Eatery, our mission is to provide a
+            welcoming place where guests can enjoy authentic Ethiopian flavors
+            with exceptional service and a warm atmosphere. Whether you are
+            discovering Ethiopian cuisine for the first time or returning for
+            your favorite dishes, we invite you to experience the culture,
+            tradition, and taste of Ethiopia with us.
+          </p>
+        </section>
+
+        <section class="menu">
+          <h2>Menu</h2>
+          <div
+            class="menu-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/kitfo.jpg"
+                  alt="Image of a food item"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="food-name text-center">Kitfo</h3>
+                <p class="description text-center">
+                  Finely minced premium beef, lightly cooked or raw, seasoned
+                  with niter kibbeh and mitmita, traditionally served with ayib
+                  and gomen.
+                </p>
+                <p class="price text-center">300 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/kitfo.jpg"
+                  alt="Image of a food item"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="food-name text-center">Kitfo</h3>
+                <p class="description text-center">
+                  Finely minced premium beef, lightly cooked or raw, seasoned
+                  with niter kibbeh and mitmita, traditionally served with ayib
+                  and gomen.
+                </p>
+                <p class="price text-center">300 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/kitfo.jpg"
+                  alt="Image of a food item"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="food-name text-center">Kitfo</h3>
+                <p class="description text-center">
+                  Finely minced premium beef, lightly cooked or raw, seasoned
+                  with niter kibbeh and mitmita, traditionally served with ayib
+                  and gomen.
+                </p>
+                <p class="price text-center">300 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/kitfo.jpg"
+                  alt="Image of a food item"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="food-name text-center">Kitfo</h3>
+                <p class="description text-center">
+                  Finely minced premium beef, lightly cooked or raw, seasoned
+                  with niter kibbeh and mitmita, traditionally served with ayib
+                  and gomen.
+                </p>
+                <p class="price text-center">300 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/kitfo.jpg"
+                  alt="Image of a food item"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="food-name text-center">Kitfo</h3>
+                <p class="description text-center">
+                  Finely minced premium beef, lightly cooked or raw, seasoned
+                  with niter kibbeh and mitmita, traditionally served with ayib
+                  and gomen.
+                </p>
+                <p class="price text-center">300 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/kitfo.jpg"
+                  alt="Image of a food item"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="food-name text-center">Kitfo</h3>
+                <p class="description text-center">
+                  Finely minced premium beef, lightly cooked or raw, seasoned
+                  with niter kibbeh and mitmita, traditionally served with ayib
+                  and gomen.
+                </p>
+                <p class="price text-center">300 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/kitfo.jpg"
+                  alt="Image of a food item"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="food-name text-center">Kitfo</h3>
+                <p class="description text-center">
+                  Finely minced premium beef, lightly cooked or raw, seasoned
+                  with niter kibbeh and mitmita, traditionally served with ayib
+                  and gomen.
+                </p>
+                <p class="price text-center">300 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/kitfo.jpg"
+                  alt="Image of a food item"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="food-name text-center">Kitfo</h3>
+                <p class="description text-center">
+                  Finely minced premium beef, lightly cooked or raw, seasoned
+                  with niter kibbeh and mitmita, traditionally served with ayib
+                  and gomen.
+                </p>
+                <p class="price text-center">300 ETB</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="reservation">
+          <h3 class="reservation-heading">Reserve a Table</h3>
+          <form class="reservation-form" method="post">
             <div>
               <label for="full_name">Full Name:</label>
               <input type="text" id="full_name" name="full_name" required />
             </div>
 
-            <br />
             <div>
               <label for="phone_number">Phone Number:</label>
               <input
@@ -95,7 +291,6 @@
               />
             </div>
 
-            <br />
             <div>
               <label for="guests">Number of Guests:</label>
               <input
@@ -108,7 +303,6 @@
               />
             </div>
 
-            <br />
             <div>
               <label for="reservation_date">Reservation Date:</label>
               <input
@@ -120,8 +314,8 @@
             </div>
 
             <button type="submit">Submit</button>
-          </fieldset>
-        </form>
+          </form>
+        </section>
       </main>
 
       <footer class="page-footer"></footer>
