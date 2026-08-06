@@ -80,20 +80,21 @@
           class="hero w-full h-[60vh] overflow-hidden relative items-center justify-center"
         >
           <h1
-            class="heading bg-blue-600 text-center text-[clamp(2rem, 6vw, 5rem)] leading-tight py-2"
+            class="heading bg-[hsl(202,97%,25%)] text-white text-center text-[clamp(2rem, 6vw, 5rem)] leading-tight py-2"
           >
-            Welcome To Habesh Eatery
+            Welcome To Habesha Eatery
           </h1>
           <img
             src="./images/beyaynet.png"
             alt="Hero image of beyaynet, an Ethiopian food"
             class="hero-image w-full h-full object-cover"
           />
-          <button
+          <a
+            href="#menu"
             class="go-to-menu border-2 bg-orange-400 absolute bottom-10 left-1/2 transform-[translateX(-50%)] hover:bg-yellow-300"
           >
             Check Menu
-          </button>
+          </a>
         </div>
 
         <section id="about-section" class="about-section py-5 scroll-mt-25">
@@ -374,7 +375,31 @@
         </section>
       </main>
 
-      <footer class="page-footer"></footer>
+      <footer
+        class="page-footer flex bg-[hsl(202,97%,25%)] text-[#D0D5CE] h-50"
+      >
+        <section class="location-category flex-1">
+          <h4 class="text-white my-2">Location</h4>
+          <p>Namibia Street, Bole</p>
+          <p>Addis Ababa, Ethiopia</p>
+        </section>
+        <section class="contact-category flex-1">
+          <h4 class="text-white my-2">Contact</h4>
+          <ul>
+            <li>+251911453829</li>
+            <li>+251922343478</li>
+            <li>habesheat@support.com</li>
+          </ul>
+        </section>
+        <section class="hours-category flex-1">
+          <h4 class="text-white my-2">Operating Hours</h4>
+          <ul>
+            <li>Mon 05:15 PM - 08:00 PM</li>
+            <li>Tue-Fri 10:00 AM - 08:00 PM</li>
+            <li>Weekends 09:00 AM - 09:00 PM</li>
+          </ul>
+        </section>
+      </footer>
     </div>
   </body>
 </html>
