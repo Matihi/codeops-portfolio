@@ -11,8 +11,10 @@
     />
   </head>
   <body>
-    <div class="page flex flex-col bg-gray-500">
-      <header class="header flex border-2 justify-evenly items-center h-20">
+    <div class="page flex flex-col">
+      <header
+        class="header flex border-2 justify-evenly items-center h-20 sticky top-0 z-1000"
+      >
         <div
           class="logo-section border-2 flex shrink-0 justify-center items-center overflow-hidden w-20 h-20 rounded-full"
         >
@@ -48,14 +50,25 @@
         </nav>
       </header>
 
-      <main class="main-content">
-        <div class="hero">
+      <main class="main-content flex flex-col border-4 border-violet-700">
+        <div
+          class="hero w-full h-[60vh] overflow-hidden border-2 border-green-700 relative items-center justify-center"
+        >
+          <h1
+            class="heading border-2 bg-blue-600 text-center text-[clamp(2rem, 6vw, 5rem)] leading-tight"
+          >
+            Welcome To Habesh Eatery
+          </h1>
           <img
             src="./images/beyaynet.png"
             alt="Hero image of beyaynet, an Ethiopian food"
-            class="hero-image"
+            class="hero-image w-full h-full object-cover border-2 border-red-800"
           />
-          <button class="go-to-menu">Order Now</button>
+          <button
+            class="go-to-menu border-2 bg-orange-400 absolute bottom-10 left-1/2 transform-[translateX(-50%)] hover:bg-yellow-300"
+          >
+            Order Now
+          </button>
         </div>
 
         <section class="about-section"></section>
