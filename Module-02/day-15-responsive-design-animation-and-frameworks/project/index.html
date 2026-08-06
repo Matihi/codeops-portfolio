@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Habesha Eatery</title>
+    <meta
+      name="description"
+      content="Experience authentic and delicious Ethiopian cuisine"
+    />
+  </head>
+  <body>
+    <div class="page flex flex-col bg-gray-500">
+      <header class="header flex border-2 justify-evenly items-center h-20">
+        <div
+          class="logo-section border-2 flex shrink-0 justify-center items-center overflow-hidden w-20 h-20 rounded-full"
+        >
+          <img
+            src="./images/habesha-eatery-logo.png"
+            alt="Habesha Eatery Logo"
+            class="logo-image max-w-full max-h-full object-cover"
+          />
+        </div>
+        <nav
+          class="navigation border-2 grow flex justify-center items-center gap-[clamp(0.75rem,3vw,8rem)] h-full"
+        >
+          <a
+            href="#"
+            class="link h-full border-2 flex justify-center items-center px-[clamp(0.5rem,3vw,3rem)] hover:bg-blue-600"
+            >Home</a
+          >
+          <a
+            href=""
+            class="link h-full border-2 flex justify-center items-center px-[clamp(0.5rem,3vw,3rem)] hover:bg-blue-600"
+            >About</a
+          >
+          <a
+            href=""
+            class="h-full border-2 flex justify-center items-center px-[clamp(0.5rem,3vw,3rem)] hover:bg-blue-600"
+            >Menu</a
+          >
+          <a
+            href=""
+            class="link h-full border-2 flex justify-center items-center px-[clamp(0.5rem,3vw,3rem)] hover:bg-blue-600"
+            >Reservation</a
+          >
+        </nav>
+      </header>
+
+      <main class="main-content">
+        <div class="hero">
+          <img
+            src="./images/beyaynet.png"
+            alt="Hero image of beyaynet, an Ethiopian food"
+            class="hero-image"
+          />
+          <button class="go-to-menu">Order Now</button>
+        </div>
+
+        <section class="about-section"></section>
+        <section class="menu"></section>
+        <form class="reservation-form" method="post">
+          <fieldset>
+            <legend>Reservation Form</legend>
+            <div>
+              <label for="full_name">Full Name:</label>
+              <input type="text" id="full_name" name="full_name" required />
+            </div>
+
+            <br />
+            <div>
+              <label for="phone_number">Phone Number:</label>
+              <input
+                type="tel"
+                id="phone_number"
+                name="phone_number"
+                pattern="09[0-9]{8}"
+                title="Please enter a valid phone number starting with 09 followed by 8 digits"
+                placeholder="0911223344"
+                required
+              />
+            </div>
+
+            <br />
+            <div>
+              <label for="guests">Number of Guests:</label>
+              <input
+                type="number"
+                id="guests"
+                name="guests"
+                min="1"
+                max="20"
+                required
+              />
+            </div>
+
+            <br />
+            <div>
+              <label for="reservation_date">Reservation Date:</label>
+              <input
+                type="date"
+                id="reservation_date"
+                name="reservation_date"
+                required
+              />
+            </div>
+
+            <button type="submit">Submit</button>
+          </fieldset>
+        </form>
+      </main>
+
+      <footer class="page-footer"></footer>
+    </div>
+  </body>
+</html>
