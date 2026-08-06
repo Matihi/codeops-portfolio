@@ -1,9 +1,34 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      .card {
+        @apply flex flex-col;
+      }
+
+      .card-header {
+        @apply h-[60%] flex justify-center items-center;
+      }
+
+      .card-body {
+        @apply bg-[#f78484] h-[40%];
+      }
+
+      .card-image {
+        @apply w-full h-full object-cover;
+      }
+
+      input {
+        @apply bg-gray-100 text-gray-900 placeholder-gray-400 border border-gray-300 rounded-lg p-2 focus:bg-white focus:text-blue-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition;
+      }
+
+      .label-input-wrapper {
+        @apply py-2 flex  bg-gray-500 my-1;
+      }
+    </style>
     <title>Habesha Eatery</title>
     <meta
       name="description"
@@ -13,7 +38,7 @@
   <body>
     <div class="page flex flex-col">
       <header
-        class="header bg-[#74b8f0] flex border-2 justify-evenly items-center h-20 sticky top-0 z-1000"
+        class="header bg-[#74b8f0] flex justify-evenly items-center h-25 sticky top-0 z-1000"
       >
         <div
           class="logo-section border-2 flex shrink-0 justify-center items-center overflow-hidden w-20 h-20 rounded-full"
@@ -25,53 +50,53 @@
           />
         </div>
         <nav
-          class="navigation border-2 grow flex justify-center items-center gap-[clamp(0.75rem,3vw,8rem)] h-full"
+          class="navigation grow flex justify-center items-center gap-[clamp(0.75rem,3vw,8rem)] h-full"
         >
           <a
             href="#"
-            class="link h-full border-2 flex justify-center items-center hover:bg-blue-600"
+            class="link h-full flex justify-center items-center bg-[#ffb938] hover:bg-blue-600"
             >Home</a
           >
           <a
-            href=""
-            class="link h-full border-2 flex justify-center items-center hover:bg-blue-600"
+            href="#about-section"
+            class="link h-full flex justify-center items-center bg-[#ffb938] hover:bg-blue-600"
             >About</a
           >
           <a
-            href=""
-            class="h-full border-2 flex justify-center items-center hover:bg-blue-600"
+            href="#menu"
+            class="h-full flex justify-center items-center bg-[#ffb938] hover:bg-blue-600"
             >Menu</a
           >
           <a
-            href=""
-            class="link h-full border-2 flex justify-center items-center hover:bg-blue-600"
+            href="#reservation"
+            class="link h-full flex justify-center items-center bg-[#ffb938] hover:bg-blue-600"
             >Reservation</a
           >
         </nav>
       </header>
 
-      <main class="main-content flex flex-col border-4 border-violet-700">
+      <main class="main-content flex flex-col">
         <div
-          class="hero w-full h-[60vh] overflow-hidden border-2 border-green-700 relative items-center justify-center"
+          class="hero w-full h-[60vh] overflow-hidden relative items-center justify-center"
         >
           <h1
-            class="heading border-2 bg-blue-600 text-center text-[clamp(2rem, 6vw, 5rem)] leading-tight"
+            class="heading bg-blue-600 text-center text-[clamp(2rem, 6vw, 5rem)] leading-tight py-2"
           >
             Welcome To Habesh Eatery
           </h1>
           <img
             src="./images/beyaynet.png"
             alt="Hero image of beyaynet, an Ethiopian food"
-            class="hero-image w-full h-full object-cover border-2 border-red-800"
+            class="hero-image w-full h-full object-cover"
           />
           <button
             class="go-to-menu border-2 bg-orange-400 absolute bottom-10 left-1/2 transform-[translateX(-50%)] hover:bg-yellow-300"
           >
-            Order Now
+            Check Menu
           </button>
         </div>
 
-        <section class="about-section">
+        <section id="about-section" class="about-section py-5 scroll-mt-25">
           <h2 class="text-center">About US</h2>
           <p class="company-description">
             At Habesha Eatery, we celebrate the rich flavors, traditions, and
@@ -95,19 +120,19 @@
           </p>
         </section>
 
-        <section class="menu">
-          <h2>Menu</h2>
+        <section id="menu" class="menu py-5 scroll-mt-25">
+          <h2 class="text-center">Menu</h2>
           <div
             class="menu-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             <article
               class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
             >
-              <div class="card-header">
+              <div class="card-header h-[60%] flex justify-center items-center">
                 <img
                   src="./images/kitfo.jpg"
                   alt="Image of a food item"
-                  class="card-image"
+                  class="card-image w-full max-h-full object-cover"
                 />
               </div>
               <div class="card-body">
@@ -131,7 +156,7 @@
                   class="card-image"
                 />
               </div>
-              <div class="card-body">
+              <div class="card-body bg-[#f88484]">
                 <h3 class="food-name text-center">Kitfo</h3>
                 <p class="description text-center">
                   Finely minced premium beef, lightly cooked or raw, seasoned
@@ -152,7 +177,7 @@
                   class="card-image"
                 />
               </div>
-              <div class="card-body">
+              <div class="card-body bg-[#f88484]">
                 <h3 class="food-name text-center">Kitfo</h3>
                 <p class="description text-center">
                   Finely minced premium beef, lightly cooked or raw, seasoned
@@ -173,7 +198,7 @@
                   class="card-image"
                 />
               </div>
-              <div class="card-body">
+              <div class="card-body bg-[#f88484]">
                 <h3 class="food-name text-center">Kitfo</h3>
                 <p class="description text-center">
                   Finely minced premium beef, lightly cooked or raw, seasoned
@@ -194,7 +219,7 @@
                   class="card-image"
                 />
               </div>
-              <div class="card-body">
+              <div class="card-body bg-[#f88484]">
                 <h3 class="food-name text-center">Kitfo</h3>
                 <p class="description text-center">
                   Finely minced premium beef, lightly cooked or raw, seasoned
@@ -215,7 +240,7 @@
                   class="card-image"
                 />
               </div>
-              <div class="card-body">
+              <div class="card-body bg-[#f88484]">
                 <h3 class="food-name text-center">Kitfo</h3>
                 <p class="description text-center">
                   Finely minced premium beef, lightly cooked or raw, seasoned
@@ -236,7 +261,7 @@
                   class="card-image"
                 />
               </div>
-              <div class="card-body">
+              <div class="card-body bg-[#f88484]">
                 <h3 class="food-name text-center">Kitfo</h3>
                 <p class="description text-center">
                   Finely minced premium beef, lightly cooked or raw, seasoned
@@ -257,7 +282,7 @@
                   class="card-image"
                 />
               </div>
-              <div class="card-body">
+              <div class="card-body bg-[#f88484]">
                 <h3 class="food-name text-center">Kitfo</h3>
                 <p class="description text-center">
                   Finely minced premium beef, lightly cooked or raw, seasoned
@@ -270,32 +295,54 @@
           </div>
         </section>
 
-        <section class="reservation">
-          <h3 class="reservation-heading">Reserve a Table</h3>
-          <form class="reservation-form" method="post">
-            <div>
-              <label for="full_name">Full Name:</label>
-              <input type="text" id="full_name" name="full_name" required />
+        <section
+          id="reservation"
+          class="reservation py-5 scroll-mt-25 bg-[#FFA500]"
+        >
+          <h3 class="reservation-heading text-center">Reserve a Table</h3>
+          <form
+            class="reservation-form flex flex-col"
+            action="./index.html"
+            method="post"
+          >
+            <div class="label-input-wrapper">
+              <label class="flex-1 text-center" for="full_name"
+                >Full Name:</label
+              >
+              <input
+                type="text"
+                id="full_name"
+                class="flex-1"
+                name="full_name"
+                placeholder="John Doe"
+                required
+              />
             </div>
 
-            <div>
-              <label for="phone_number">Phone Number:</label>
+            <div class="label-input-wrapper">
+              <label class="flex-1 text-center" for="phone_number"
+                >Phone Number:</label
+              >
               <input
                 type="tel"
                 id="phone_number"
+                class="flex-1"
                 name="phone_number"
-                pattern="09[0-9]{8}"
-                title="Please enter a valid phone number starting with 09 followed by 8 digits"
+                pattern="0[79][0-9]{8}"
+                title="Please enter a valid phone number starting with 09 or 07 followed by 8 digits"
                 placeholder="0911223344"
                 required
               />
             </div>
 
-            <div>
-              <label for="guests">Number of Guests:</label>
+            <div class="label-input-wrapper">
+              <label class="flex-1 text-center" for="guests"
+                >Number of Guests:</label
+              >
               <input
                 type="number"
                 id="guests"
+                class="flex-1"
                 name="guests"
                 min="1"
                 max="20"
@@ -303,17 +350,26 @@
               />
             </div>
 
-            <div>
-              <label for="reservation_date">Reservation Date:</label>
+            <div class="label-input-wrapper">
+              <label class="flex-1 text-center" for="reservation_date"
+                >Reservation Date:</label
+              >
               <input
                 type="date"
                 id="reservation_date"
+                class="flex-1"
                 name="reservation_date"
                 required
               />
             </div>
-
-            <button type="submit">Submit</button>
+            <div class="button-wrapper flex flex-1 justify-center">
+              <button
+                class="reserve-button bg-[#4b82d3] hover:bg-[green] py-2 px-2 rounded"
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </section>
       </main>
