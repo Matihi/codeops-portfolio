@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-brand-primary: hsl(202, 97%, 25%);
+        --color-brand-secondary: #ffa500;
+      }
+
+      .card {
+        @apply flex flex-col;
+      }
+
+      .card-header {
+        @apply h-[60%] flex justify-center items-center;
+      }
+
+      .card-body {
+        @apply bg-[#f78484] h-[40%];
+      }
+
+      .card-image {
+        @apply w-full h-full object-cover;
+      }
+
+      input {
+        @apply bg-gray-100 text-gray-900 placeholder-gray-400 border border-gray-300 rounded-lg p-2 focus:bg-white focus:text-blue-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition;
+      }
+
+      .label-input-wrapper {
+        @apply py-2 flex  bg-gray-500 my-1;
+      }
+    </style>
+    <title>Habesha Eatery</title>
+    <meta
+      name="description"
+      content="Experience authentic and delicious Ethiopian cuisine"
+    />
+  </head>
+  <body>
+    <div class="page flex flex-col">
+      <header
+        class="header bg-brand-primary flex justify-evenly items-center h-25 sticky top-0 z-1000"
+      >
+        <div
+          class="logo-section border-2 flex shrink-0 justify-center items-center overflow-hidden w-20 h-20 rounded-full"
+        >
+          <img
+            src="./images/habesha-eatery-logo.png"
+            alt="Habesha Eatery Logo"
+            class="logo-image max-w-full max-h-full object-cover"
+          />
+        </div>
+        <nav
+          class="navigation grow flex justify-end items-center gap-[clamp(0.75rem,3vw,10rem)] h-full"
+        >
+          <a
+            href="#"
+            class="link h-[50%] flex justify-center items-center bg-brand-secondary hover:bg-[#61001a]"
+            >Home</a
+          >
+          <a
+            href="#about-section"
+            class="link h-[50%] flex justify-center items-center bg-brand-secondary hover:bg-[#61001a]"
+            >About</a
+          >
+          <a
+            href="#menu"
+            class="link h-[50%] flex justify-center items-center bg-brand-secondary hover:bg-[#61001a]"
+            >Menu</a
+          >
+          <a
+            href="#reservation"
+            class="link h-[50%] flex justify-center items-center bg-brand-secondary hover:bg-[#61001a]"
+            >Reservation</a
+          >
+        </nav>
+      </header>
+
+      <main class="main-content flex flex-col">
+        <div
+          class="hero w-full h-[60vh] overflow-hidden relative items-center justify-center"
+        >
+          <h1
+            class="heading bg-brand-primary text-white text-center text-[clamp(2rem, 6vw, 5rem)] leading-tight py-2"
+          >
+            Welcome To Habesha Eatery
+          </h1>
+          <img
+            src="./images/beyaynet.png"
+            alt="Ethiopian platter consisting of injera topped with various types of stews and vegetables"
+            class="hero-image w-full h-full object-cover"
+          />
+          <a
+            href="#menu"
+            class="go-to-menu border-2 bg-orange-400 absolute bottom-10 left-1/2 transform-[translateX(-50%)] hover:bg-yellow-300"
+          >
+            Check Menu
+          </a>
+        </div>
+
+        <section id="about-section" class="about-section py-5 scroll-mt-25">
+          <h2 class="text-center">About US</h2>
+          <p class="company-description">
+            At Habesha Eatery, we celebrate the rich flavors, traditions, and
+            hospitality of Ethiopian cuisine. Our restaurant brings together
+            authentic recipes, fresh ingredients, and traditional cooking
+            techniques to create a dining experience that reflects the heart of
+            Ethiopia. Every dish is carefully prepared to showcase the unique
+            spices, aromas, and flavors that make Ethiopian food truly
+            special.<br />
+            From shared platters of injera and flavorful stews to a variety of
+            vegetarian and meat specialties, our menu is inspired by generations
+            of culinary heritage. We believe that Ethiopian dining is more than
+            just food, it is a way of bringing people together, encouraging
+            connection, conversation, and unforgettable moments around the
+            table. <br />At Habesha Eatery, our mission is to provide a
+            welcoming place where guests can enjoy authentic Ethiopian flavors
+            with exceptional service and a warm atmosphere. Whether you are
+            discovering Ethiopian cuisine for the first time or returning for
+            your favorite dishes, we invite you to experience the culture,
+            tradition, and taste of Ethiopia with us.
+          </p>
+        </section>
+
+        <section id="menu" class="menu py-5 scroll-mt-25">
+          <h2 class="text-center">Menu</h2>
+          <div
+            class="menu-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header h-[60%] flex justify-center items-center">
+                <img
+                  src="./images/sambusa.jpg"
+                  alt="A crispy pastry called sambusa"
+                  class="card-image w-full max-h-full object-cover"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="food-name text-center">Sambusa</h3>
+                <p class="description text-center">
+                  Crispy pastry pockets filled with seasoned lentils or minced
+                  beef, onions, and green chilies, fried to a golden, flaky
+                  perfection.
+                </p>
+                <p class="price text-center">60 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/enkulal-firfir.jpg"
+                  alt="Scrambled eggs"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Enkulal Firfir</h3>
+                <p class="description text-center">
+                  Scrambled eggs cooked with onions, tomatoes, green peppers,
+                  and Ethiopian spices
+                </p>
+                <p class="price text-center">80 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/timatim-fitfit.jpg"
+                  alt="Diced tomatoes with injera soaked in oil and lemon juice sauce"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Timatim Fitfit</h3>
+                <p class="description text-center">
+                  Fresh tomatoes, onions, green chilies, and shredded injera
+                  lightly dressed with olive oil, lemon juice, and traditional
+                  seasonings.
+                </p>
+                <p class="price text-center">75 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/doro-wot.jpg"
+                  alt="Spicy chicken stew"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Doro Wot</h3>
+                <p class="description text-center">
+                  Ethiopia's signature spicy chicken stew made with slow-cooked
+                  chicken, onions, berbere spice blend, niter kibbeh (spiced
+                  clarified butter), garlic, ginger, and a boiled egg.
+                </p>
+                <p class="price text-center">350 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/siga-tibs.jpg"
+                  alt="Cooked tender beef cubes"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Siga Tibs</h3>
+                <p class="description text-center">
+                  Tender beef cubes sautéed with onions, tomatoes, green
+                  peppers, garlic, and herbs in fragrant niter kibbeh.
+                </p>
+                <p class="price text-center">320 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/kitfo.jpg"
+                  alt="Raw finely minced beef drowsed in butter"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Kitfo</h3>
+                <p class="description text-center">
+                  Finely minced premium beef, lightly cooked or raw, seasoned
+                  with niter kibbeh and mitmita, traditionally served with ayib
+                  and gomen.
+                </p>
+                <p class="price text-center">380 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/siga-wot.jpg"
+                  alt="Meat stew"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Siga wot</h3>
+                <p class="description text-center">
+                  Rich, slow-simmered beef stew cooked with onions, berbere,
+                  garlic, ginger, and niter kibbeh for a deeply spiced,
+                  flavorful dish.
+                </p>
+                <p class="price text-center">300 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/derek-tibs.jpg"
+                  alt="Crispy dry-fried meat with awaze and chili sauce"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Derek Tibs</h3>
+                <p class="description text-center">
+                  Crispy, dry-fried beef seasoned with rosemary, and green
+                  chilies for a smoky, savory finish.
+                </p>
+                <p class="price text-center">350 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/shiro-wot.jpg"
+                  alt="chickpea flour stew"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Shiro Wot</h3>
+                <p class="description text-center">
+                  A smooth, comforting stew made from finely ground chickpea
+                  flour simmered with berbere, onions, garlic, and Ethiopian
+                  spices.
+                </p>
+                <p class="price text-center">180 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/misir-wot.jpg"
+                  alt="Lentil Stew"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Misir Wot</h3>
+                <p class="description text-center">
+                  Red lentils slow-cooked in a rich berbere sauce with onions
+                  and traditional Ethiopian seasonings.
+                </p>
+                <p class="price text-center">190 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/alicha-kik.jpg"
+                  alt="Mild split pea stew"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Alicha Kik</h3>
+                <p class="description text-center">
+                  Mild split pea stew gently simmered with turmeric, onions,
+                  garlic and fragrant Ethiopian spices
+                </p>
+                <p class="price text-center">175 ETB</p>
+              </div>
+            </article>
+
+            <article
+              class="card border border-slate-200 shadow hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="card-header">
+                <img
+                  src="./images/beyaynet-card.jpg"
+                  alt="Ethiopian platter consisting of injera topped with various types of stews and vegetables"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-body bg-[#f88484]">
+                <h3 class="food-name text-center">Beyaynetu</h3>
+                <p class="description text-center">
+                  A colorful vegetarian sampler featuring injera served with an
+                  assortment of traditional dishes, including shiro, misir wot,
+                  alicha kik, gomen, cabbage, and other seasonal vegetable
+                  specialties.
+                </p>
+                <p class="price text-center">250 ETB</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section
+          id="reservation"
+          class="reservation py-5 scroll-mt-25 bg-brand-secondary"
+        >
+          <h3 class="reservation-heading text-center">Reserve a Table</h3>
+          <form
+            class="reservation-form flex flex-col"
+            action="./index.html"
+            method="post"
+          >
+            <div class="label-input-wrapper">
+              <label class="flex-1 text-center" for="full_name"
+                >Full Name:</label
+              >
+              <input
+                type="text"
+                id="full_name"
+                class="flex-1"
+                name="full_name"
+                placeholder="John Doe"
+                required
+              />
+            </div>
+
+            <div class="label-input-wrapper">
+              <label class="flex-1 text-center" for="phone_number"
+                >Phone Number:</label
+              >
+              <input
+                type="tel"
+                id="phone_number"
+                class="flex-1"
+                name="phone_number"
+                pattern="0[79][0-9]{8}"
+                title="Please enter a valid phone number starting with 09 or 07 followed by 8 digits"
+                placeholder="0911223344"
+                required
+              />
+            </div>
+
+            <div class="label-input-wrapper">
+              <label class="flex-1 text-center" for="guests"
+                >Number of Guests:</label
+              >
+              <input
+                type="number"
+                id="guests"
+                class="flex-1"
+                name="guests"
+                min="1"
+                max="20"
+                required
+              />
+            </div>
+
+            <div class="label-input-wrapper">
+              <label class="flex-1 text-center" for="reservation_date"
+                >Reservation Date:</label
+              >
+              <input
+                type="date"
+                id="reservation_date"
+                class="flex-1"
+                name="reservation_date"
+                required
+              />
+            </div>
+            <div class="button-wrapper flex flex-1 justify-center">
+              <button
+                class="reserve-button bg-[#4b82d3] hover:bg-[green] py-2 px-2 rounded"
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+
+      <footer class="page-footer flex bg-brand-primary text-[#D0D5CE] h-50">
+        <section class="location-category flex-1">
+          <h4 class="text-white my-2 text-sm md:text-base">Location</h4>
+          <p class="text-sm md:text-base">Namibia Street, Bole</p>
+          <p class="text-sm md:text-base">Addis Ababa, Ethiopia</p>
+        </section>
+        <section class="contact-category flex-1">
+          <h4 class="text-white my-2">Contact</h4>
+          <ul>
+            <li class="text-sm md:text-base">+251911453829</li>
+            <li class="text-sm md:text-base">+251922343478</li>
+            <li class="text-sm md:text-base">habesheat@support.com</li>
+          </ul>
+        </section>
+        <section class="hours-category flex-1">
+          <h4 class="text-white my-2">Operating Hours</h4>
+          <ul>
+            <li class="text-sm md:text-base">Mon 05:15 PM - 08:00 PM</li>
+            <li class="text-sm md:text-base">Tue-Fri 10:00 AM - 08:00 PM</li>
+            <li class="text-sm md:text-base">Weekends 09:00 AM - 09:00 PM</li>
+          </ul>
+        </section>
+      </footer>
+    </div>
+  </body>
+</html>
