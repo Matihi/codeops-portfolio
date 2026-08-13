@@ -1,0 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.main-part {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  color: rgb(101, 101, 254);
+}
+
+div {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.div1 {
+  background-color: rgb(255, 80, 80);
+}
+
+.div2 {
+  background-color: rgb(57, 57, 254);
+}
+
+.div3 {
+  background-color: rgb(255, 255, 85);
+}
+
+.div4 {
+  background-color: rgb(55, 255, 55);
+}
+
+ul {
+  width: 100px;
+  height: 100%;
+  background-color: violet;
+}
+
+.div5 {
+  height: auto;
+  background-color: rgb(44, 227, 255);
+}
