@@ -33,7 +33,6 @@ const load = async () => {
     menuGrid.textContent = "";
     menu.classList.add("menu");
     menuGrid.classList.add("menu-grid");
-    console.log(dishesList);
     dishesList.forEach((dish) => {
       const card = document.createElement("div");
       card.classList.add("card");
@@ -61,7 +60,6 @@ const load = async () => {
 
     menu.append(menuGrid);
   } catch (error) {
-    console.error(error);
     showError();
   }
 };
