@@ -1,0 +1,89 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(57, 139, 174);
+}
+
+div {
+  padding-block: 10px;
+}
+
+.message {
+  color: rgb(172, 1, 1);
+}
+
+#main-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 70%;
+  border-radius: 20px;
+  background-color: hsl(239, 95%, 85%);
+}
+
+.input-container {
+  width: 100%;
+}
+
+input {
+  padding-block: 10px;
+  padding-inline: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.submit {
+  width: 80px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: hsl(82, 100%, 32%);
+  margin-inline: auto;
+  color: rgb(44, 32, 32);
+}
+
+.submit:hover {
+  background-color: hsl(34, 84%, 75%);
+  color: rgb(17, 97, 88);
+}
+
+.signed-up {
+  width: 70%;
+  background-color: hsl(117, 84%, 71%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.signup-container {
+  width: 100%;
+}
+
+.user {
+  width: 100%;
+  margin-inline: auto;
+  padding-block: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.user:hover {
+  background-color: rgb(211, 255, 116);
+}
+
+span {
+  font-size: small;
+}

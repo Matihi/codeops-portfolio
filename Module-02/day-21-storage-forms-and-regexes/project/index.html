@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Sign Up Form</title>
+  </head>
+  <body>
+    <main id="main-page">
+      <h1>Signup Form</h1>
+      <form method="post" id="form">
+        <div id="name-div" class="input-container">
+          <label for="name">Name:</label>
+          <input type="text" id="name" required placeholder="John Doe" />
+          <span id="name-message" class="message"></span>
+        </div>
+        <div id="email-div" class="input-container">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            required
+            placeholder="name@example.com"
+          />
+          <span id="email-message" class="message"></span>
+        </div>
+        <div id="phone-div" class="input-container">
+          <label for="phone-number">Phone:</label>
+          <input
+            type="tel"
+            id="phone-number"
+            required
+            placeholder="0911223344"
+          />
+          <span id="phone-message" class="message"></span>
+        </div>
+        <div id="password-div" class="input-container">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            required
+            placeholder="Enter your password"
+          />
+          <span id="password-message" class="message"></span>
+        </div>
+        <button type="submit" class="submit">Submit</button>
+      </form>
+      <section id="signed-up" class="signed-up">
+        <h2>People Who Signed Up</h2>
+        <p id="sign-up-message"></p>
+      </section>
+    </main>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
