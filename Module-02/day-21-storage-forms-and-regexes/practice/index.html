@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Signup Page</title>
+  </head>
+  <body>
+    <main id="main-page">
+      <form method="post" id="form">
+        <div id="name-div">
+          <label for="name">Name:</label>
+          <input type="text" id="name" required placeholder="John Doe" />
+          <span id="name-message"></span>
+        </div>
+        <div id="email-div">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            required
+            placeholder="name@example.com"
+          />
+          <span id="email-message"></span>
+        </div>
+        <div id="phone-div">
+          <label for="phone-number">Phone:</label>
+          <input
+            type="tel"
+            id="phone-number"
+            required
+            placeholder="0911223344"
+          />
+          <span id="phone-message"></span>
+        </div>
+        <div id="password-div">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            required
+            placeholder="Enter your password"
+          />
+          <span id="password-message"></span>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      <p id="number-of-people">0 People have signed up</p>
+    </main>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
