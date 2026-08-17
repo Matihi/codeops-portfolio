@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --body-color: rgb(207, 220, 207);
+  --form-color: rgb(109, 109, 248);
+  --watchlist-section-color: rgb(245, 188, 138);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 20px;
+  background-color: var(--body-color);
+  text-align: center;
+  color: rgb(5, 49, 55);
+}
+
+h1 {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.conver-form {
+  width: 70%;
+  height: 300px;
+  border-radius: 20px 20px 0 0;
+  background-color: var(--form-color);
+}
+
+.wrap-in,
+.result-wrap {
+  width: 100%;
+}
+
+.wrap-in {
+  justify-content: space-between;
+  height: 100px;
+  margin-top: 3rem;
+  align-items: center;
+  padding: 20px;
+}
+
+.wrap-in > * {
+  padding: 10px;
+  background-color: rgb(134, 134, 250);
+}
+
+.amount {
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(195, 195, 246);
+}
+
+p,
+.currency,
+.convert,
+.amount-label {
+  border-radius: 10px;
+}
+
+.convert:hover {
+  background-color: rgb(112, 229, 165);
+}
+
+.currency:hover {
+  background-color: rgb(241, 202, 129);
+}
+
+.result-wrap {
+  margin-top: 2rem;
+  padding: 10px;
+  height: 50px;
+  background-color: rgb(134, 134, 250);
+}
+
+.watchlist-section {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 20px 20px;
+  background-color: var(--watchlist-section-color);
+  height: 400px;
+}
+
+.watchlist-section > * {
+  margin-inline: auto;
+  width: 70%;
+}
+
+h2 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.watchlist {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px 10px 10px 10px;
+  background-color: rgb(215, 214, 214);
+}
+
+li {
+  padding-left: 2rem;
+  padding-block: 0.5rem;
+  margin-block: 0.5rem;
+  background-color: rgb(86, 162, 172);
+  border-radius: 10px;
+}
+
+.remove {
+  background-color: rgb(246, 101, 82);
+  width: 50px;
+  border-radius: 5px;
+}

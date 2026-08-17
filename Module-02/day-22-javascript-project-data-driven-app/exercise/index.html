@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <meta
+      name="description"
+      content="Birr Watch is a currency converter page"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Birr Watch</title>
+  </head>
+  <body class="flex flex-col items-center">
+    <h1 class="text-3xl font-bold">Birr Watch</h1>
+    <p id="status" class="status">Loading rates...</p>
+    <form id="convert-form" class="conver-form flex flex-col">
+      <div class="wrap-in flex">
+        <label for="amount" class="amount-label">Amount:</label>
+        <input
+          type="number"
+          id="amount"
+          class="amount"
+          name="amount"
+          step="0.01"
+        />
+        <select
+          name="from-currency"
+          id="from-currency"
+          class="currency"
+        ></select>
+        <p class="to-etb">to ETB</p>
+        <button id="add-to-watchlist" class="convert">Convert</button>
+      </div>
+
+      <div class="result-wrap" class="result-wrap">
+        <p id="result" class="result"></p>
+      </div>
+    </form>
+    <section id="watchlist-section" class="watchlist-section">
+      <h2>Watch List</h2>
+      <ul
+        id="watchlist"
+        class="watchlist h-60 overflow-y-auto bg-gray-100 p-2"
+      ></ul>
+    </section>
+    <script src="./app.js"></script>
+  </body>
+</html>
