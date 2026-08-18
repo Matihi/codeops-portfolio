@@ -1,0 +1,165 @@
+:root {
+  --body-color: white;
+  --button-color: rgb(250, 103, 103);
+  --header-color: rgb(253, 168, 108);
+  --main-color: rgb(236, 208, 202);
+  --footer-color: rgb(241, 167, 118);
+  --logo-and-heading-color: rgb(213, 237, 238);
+  --heading-and-search-box-color: violet;
+  --heading-wrapper-color: rgb(178, 63, 63);
+  --search-container-color: orange;
+  --heading-color: hsl(25, 97%, 40%);
+  --menu-color: rgb(251, 89, 232);
+  --cart-color: rgb(249, 213, 207);
+  --menu-grid-color: rgb(111, 220, 34);
+  --food-card-color: rgb(246, 228, 228);
+  --10px: 0.625rem;
+  --add-to-order-color: hsl(0, 60%, 41%);
+  --logo-wrapper-color: rgb(100, 26, 104);
+  --add-to-order-hover-color: hsl(0, 78%, 49%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  min-height: 100dvh;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: "header" "main" "footer";
+  background-color: var(--body-color);
+}
+
+header {
+  background-color: var(--header-color);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: var(--10px);
+}
+
+.logo-wrapper {
+  background-color: var(--logo-wrapper-color);
+  display: flex;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-size: 1rem;
+}
+
+.logo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heading-wrapper {
+  /* background-color: var(--heading-wrapper-color); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading {
+  text-align: center;
+  color: var(--heading-color);
+  font-size: 3rem;
+}
+
+.search-container {
+  /* background-color: var(--search-container-color); */
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.search {
+  width: min(70%, 40rem);
+  padding: 1rem 1rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1rem;
+}
+
+main {
+  /* background-color: var(--main-color); */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.625rem;
+  margin-top: 2rem;
+}
+
+/* .menu {
+  background-color: var(--menu-color);
+  height: 100%;
+} */
+
+.menu h2 {
+  text-align: center;
+}
+
+.menu-grid {
+  /* background-color: var(--menu-grid-color); */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  /* height: auto; */
+  padding: 1rem;
+  gap: var(--10px);
+}
+
+.food-card {
+  background-color: var(--food-card-color);
+  display: flex;
+  flex-direction: column;
+  padding: var(--10px);
+  border: 1px solid rgb(223, 222, 238);
+  border-radius: var(--10px);
+}
+
+.food-card p {
+  padding: 0.5rem;
+}
+
+button,
+.add-to-order {
+  color: white;
+  background-color: var(--add-to-order-color);
+  border: none;
+  padding: 0.5rem 0;
+  border-radius: 0.3125rem;
+}
+
+button:hover,
+.add-to-order:hover {
+  background-color: var(--add-to-order-hover-color);
+}
+
+.cart {
+  background-color: var(--cart-color);
+  align-self: start;
+  padding-inline: 1rem;
+  border-radius: var(--10px);
+}
+
+.cart p {
+  padding-block: 0.5rem;
+}
+
+footer {
+  background-color: var(--footer-color);
+}
+
+@media (min-width: 48rem) {
+  main {
+    grid-template-columns: 2fr 1fr;
+  }
+}
