@@ -35,128 +35,57 @@
     <main>
       <section id="menu" class="menu" aria-label="Menu">
         <h2>Our Menu</h2>
-        <div class="menu-grid">
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-          <article class="food-card">
-            <p>Doro wot</p>
-            <p>Main</p>
-            <p>spicy</p>
-            <p>240 ETB</p>
-            <button>Add to Order</button>
-          </article>
-        </div>
+        <div class="menu-grid"></div>
       </section>
       <aside id="cart" class="cart" aria-label="Your order">
         <h2>Your Order</h2>
-        <p>Tibs(x1) 280 ETB</p>
-        <p>Tibs(x1) 280 ETB</p>
-        <p>Tibs(x1) 280 ETB</p>
-        <p>Tibs(x1) 280 ETB</p>
-        <p>Tibs(x1) 280 ETB</p>
-        <p>Tibs(x1) 280 ETB</p>
-        <p>Tibs(x1) 280 ETB</p>
-        <p>Tibs(x1) 280 ETB</p>
+        <ul class="cart-ul"></ul>
+        <p class="cart-total"></p>
       </aside>
+
+      <form id="checkout" class="checkout" novalidate>
+        <h3>Checkout Form</h3>
+        <label for="name">
+          <span>Name</span>
+
+          <input
+            type="text"
+            id="name"
+            class="name"
+            autocomplete="given-name"
+            required
+          />
+        </label>
+
+        <label for="phone-number">
+          <span>Phone (TeleBirr)</span>
+
+          <input
+            type="tel"
+            id="phone-number"
+            class="phone-number"
+            placeholder="09xxxxxxxx"
+            required
+          />
+        </label>
+
+        <label for="area">
+          <span>Delivery Area</span>
+          <select name="area" id="area" class="area">
+            <option value="select">Select</option>
+            <option value="bole">Bole</option>
+            <option value="kazanchis">Kazanchis</option>
+            <option value="megenagna">Megenagna</option>
+            <option value="piassa">Piassa</option>
+          </select>
+        </label>
+        <p id="form-error" class="form-error" aria-live="polite"></p>
+        <button type="submit" class="checkout-button">Place order</button>
+      </form>
     </main>
     <footer class="footer">
       <p>Bole, Addis Ababa · TeleBirr</p>
     </footer>
+    <script src="./app.js"></script>
   </body>
 </html>
