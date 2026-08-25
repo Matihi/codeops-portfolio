@@ -1,0 +1,19 @@
+:root {
+  --header-color: rgb(253, 168, 108);
+  --heading-color: hsl(25, 97%, 40%);
+  --food-card-color: rgb(241, 189, 155);
+  --10px: 0.625rem;
+  --5px: 0.3125rem;
+  --primary-font: Arial, Helvetica, sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--primary-font);
+  min-height: 100dvh;
+}

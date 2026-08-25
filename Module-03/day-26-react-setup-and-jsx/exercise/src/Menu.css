@@ -1,0 +1,15 @@
+main {
+  margin-top: 2rem;
+}
+
+h2 {
+  text-align: center;
+  color: var(--heading-color);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  padding: 1rem;
+  gap: var(--10px);
+}
