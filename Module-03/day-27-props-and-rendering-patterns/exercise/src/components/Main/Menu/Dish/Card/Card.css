@@ -1,0 +1,8 @@
+.card {
+  background-color: var(--food-card-color);
+  display: flex;
+  height: 20rem;
+  flex-direction: column;
+  padding: var(--10px);
+  border-radius: var(--10px);
+}

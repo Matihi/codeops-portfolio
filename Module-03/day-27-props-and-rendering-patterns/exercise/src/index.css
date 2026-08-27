@@ -1,0 +1,21 @@
+:root {
+  --header-color: hsl(25, 97%, 71%);
+  --footer-color: hsl(24, 81%, 70%);
+  --heading-color: hsl(25, 97%, 40%);
+  --food-card-color: hsl(32, 68%, 67%);
+  --10px: 0.625rem;
+  --5px: 0.3125rem;
+  --primary-font: Arial, Helvetica, sans-serif;
+  --text-container-color: hsl(24, 75%, 52%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--primary-font);
+  min-height: 100dvh;
+}
