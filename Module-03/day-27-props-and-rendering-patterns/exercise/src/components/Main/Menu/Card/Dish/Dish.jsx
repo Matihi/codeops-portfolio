@@ -1,4 +1,3 @@
-import Card from "./Card/Card";
 import PropTypes from "prop-types";
 import { FaPepperHot } from "react-icons/fa";
 
@@ -17,7 +16,7 @@ const Dish = (props) => {
   } = props;
 
   return (
-    <Card>
+    <>
       <div className="image-container">
         <img src={image} alt={name} className="card-image" />
       </div>
@@ -31,7 +30,7 @@ const Dish = (props) => {
           {price} {currency}
         </strong>
       </div>
-    </Card>
+    </>
   );
 };
 
