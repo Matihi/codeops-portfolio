@@ -22,8 +22,6 @@ const Dish = (props) => {
       });
   };
 
-  console.log(count);
-
   PropTypes.checkPropTypes(Dish.propTypes, props, "prop", "Dish");
 
   const {

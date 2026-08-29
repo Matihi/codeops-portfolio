@@ -2,11 +2,16 @@
   --header-color: hsl(25, 97%, 71%);
   --footer-color: hsl(24, 81%, 70%);
   --heading-color: hsl(25, 97%, 40%);
+  --category-bar-color: hsl(25, 97%, 67%);
   --food-card-color: hsl(32, 68%, 67%);
   --10px: 0.625rem;
   --5px: 0.3125rem;
   --primary-font: Arial, Helvetica, sans-serif;
   --text-container-color: hsl(24, 75%, 52%);
+}
+
+html {
+  overflow-y: scroll;
 }
 
 * {

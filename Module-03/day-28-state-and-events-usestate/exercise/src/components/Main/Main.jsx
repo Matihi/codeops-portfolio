@@ -5,8 +5,7 @@ import "./Main.css";
 function Main() {
   return (
     <main>
-      <h2>Our Menu</h2>
-      <Menu dishes={dishes} category="Breakfast" />
+      <Menu dishes={dishes} />
     </main>
   );
 }

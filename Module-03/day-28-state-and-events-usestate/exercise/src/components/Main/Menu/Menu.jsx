@@ -1,29 +1,23 @@
-import Dish from "./Card/Dish/Dish";
-import Card from "./Card/Card";
+import CategoryBar from "./CategoryBar/CategoryBar";
+import DishList from "./DishList/DishList";
+import { useState } from "react";
 
 import "./Menu.css";
 
-function Menu({ dishes, category }) {
-  const filteredDishes = dishes.filter((dish) => dish.category === category);
-  if (filteredDishes.length === 0)
-    return <p>Sorry, {category} dishes are not available</p>;
+function Menu({ dishes }) {
+  const [category, setCategory] = useState("All");
 
-  const currency = "USD";
+  const filteredDishes =
+    category === "All"
+      ? dishes
+      : dishes.filter((dish) => dish.category === category);
 
-  const dishElements = filteredDishes.map((dish) => (
-    <Card key={dish.id}>
-      <Dish
-        name={dish.name}
-        category={dish.category}
-        price={dish.price}
-        spicy={dish.spicy}
-        image={dish.image}
-        // currency={currency} //If uncommented "USD" is shown;
-      />
-    </Card>
-  ));
-
-  return <div className="menu">{dishElements}</div>;
+  return (
+    <div className="menu">
+      <CategoryBar selected={category} onSelect={setCategory} />
+      <DishList dishes={filteredDishes} />
+    </div>
+  );
 }
 
 export default Menu;
