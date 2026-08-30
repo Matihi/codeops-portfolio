@@ -28,7 +28,7 @@ const DishList = ({ dishes }) => {
   return (
     <section className="dish-list">
       <h2>Our Menu</h2>
-      <div className="dish-list-grid">{dishElements}</div>;
+      <div className="dish-list-grid">{dishElements}</div>
     </section>
   );
 };
