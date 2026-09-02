@@ -5,26 +5,12 @@ import { useState } from "react";
 import "./Dish.css";
 
 const Dish = (props) => {
-  const [count, setCount] = useState(0);
-
-  const handleCount = (e) => {
-    const maxOrderLimit = 15;
-    const minOrderLimit = 1;
-    if (e.target.classList.contains("add-to-cart"))
-      setCount((previous) => {
-        if (previous < maxOrderLimit) return previous + 1;
-        return maxOrderLimit;
-      });
-    if (e.target.classList.contains("remove"))
-      setCount((previous) => {
-        if (previous < minOrderLimit) return 0;
-        return previous - 1;
-      });
-  };
-
   PropTypes.checkPropTypes(Dish.propTypes, props, "prop", "Dish");
 
   const {
+    id,
+    changeQuantity,
+    onChangeQuantity,
     image,
     name,
     category,
@@ -32,6 +18,40 @@ const Dish = (props) => {
     spicy = false,
     currency = "ETB",
   } = props;
+
+  const currentDish = changeQuantity.find((dish) => dish.id === id);
+  const count = currentDish ? currentDish.quantity : 0;
+
+  const handleIncrement = () => {
+    const maxOrderLimit = 15;
+
+    const updatedQuantityDishes = changeQuantity.map((dish) =>
+      dish.id === id
+        ? {
+            ...dish,
+            quantity:
+              dish.quantity < maxOrderLimit ? dish.quantity + 1 : maxOrderLimit,
+          }
+        : dish,
+    );
+
+    return onChangeQuantity(updatedQuantityDishes);
+  };
+
+  const handleDecrement = () => {
+    const minOrderLimit = 1;
+
+    const updatedQuantityDishes = changeQuantity.map((dish) =>
+      dish.id === id
+        ? {
+            ...dish,
+            quantity: dish.quantity >= minOrderLimit ? dish.quantity - 1 : 0,
+          }
+        : dish,
+    );
+
+    return onChangeQuantity(updatedQuantityDishes);
+  };
 
   return (
     <>
@@ -48,12 +68,11 @@ const Dish = (props) => {
           {price} {currency}
         </strong>
         <div className="count-container">
-          <button className="remove" onClick={handleCount}>
+          <button className="remove" onClick={handleDecrement}>
             {"\u2212"}
           </button>
-
           {count > 0 ? <p className="count">{count}</p> : <p></p>}
-          <button className="add-to-cart" onClick={handleCount}>
+          <button className="add-to-cart" onClick={handleIncrement}>
             {"\u002B"}
           </button>
         </div>
@@ -63,6 +82,9 @@ const Dish = (props) => {
 };
 
 Dish.propTypes = {
+  id: PropTypes.number.isRequired,
+  changeQuantity: PropTypes.array.isRequired,
+  onChangeQuantity: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

@@ -7,14 +7,13 @@ import "./Menu.css";
 function Menu({ dishes }) {
   const [category, setCategory] = useState("All");
 
-  const filteredDishes =
-    category === "All"
-      ? dishes
-      : dishes.filter((dish) => dish.category === category);
+  const filteredDishes = dishes.filter((dish) =>
+    category === "All" ? true : dish.category === category,
+  );
 
   return (
     <div className="menu">
-      <CategoryBar selected={category} onSelect={setCategory} />
+      <CategoryBar key={category} selected={category} onSelect={setCategory} />
       <DishList dishes={filteredDishes} />
     </div>
   );
