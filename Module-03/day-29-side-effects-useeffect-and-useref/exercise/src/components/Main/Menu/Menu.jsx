@@ -10,22 +10,22 @@ function Menu() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const load = async () => {
+    const ctrl = new AbortController();
+    setLoading(true);
+    setError(null);
+    const load = async (signal) => {
       try {
-        const res = await fetch("/data/dishes.json");
+        const res = await fetch("/data/dishes.json", { signal: signal });
         if (!res.ok)
           throw new Error("HTTP:" + res.status + "Could not load the menu");
-        console.log(res);
 
         const rawText = await res.text();
-
         let data;
         try {
           data = JSON.parse(rawText);
         } catch (error) {
           throw new Error("Received an invalid response format");
         }
-
         if (!Array.isArray(data)) {
           throw new Error(
             "Server responded successfully, but data format was not an array",
@@ -33,8 +33,8 @@ function Menu() {
         }
 
         setDishes(data);
-        console.log(data);
       } catch (error) {
+        if (error.name === "AbortError") return;
         console.log(error.message);
         setError(error.message);
         setDishes([]);
@@ -42,8 +42,9 @@ function Menu() {
         setLoading(false);
       }
     };
-    load();
-  }, []);
+    load(ctrl.signal);
+    return () => ctrl.abort();
+  }, [category]);
 
   if (loading) return <p>Loading the menu...</p>;
   if (error) return <p>{error}</p>;
