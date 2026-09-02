@@ -1,12 +1,53 @@
 import CategoryBar from "./CategoryBar/CategoryBar";
 import DishList from "./DishList/DishList";
-import dishes from "../../../data/menu.json";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import "./Menu.css";
 
 function Menu() {
   const [category, setCategory] = useState("All");
+  const [dishes, setDishes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetch("/data/dishes.json");
+        if (!res.ok)
+          throw new Error("HTTP:" + res.status + "Could not load the menu");
+        console.log(res);
+
+        const rawText = await res.text();
+
+        let data;
+        try {
+          data = JSON.parse(rawText);
+        } catch (error) {
+          throw new Error("Received an invalid response format");
+        }
+
+        if (!Array.isArray(data)) {
+          throw new Error(
+            "Server responded successfully, but data format was not an array",
+          );
+        }
+
+        setDishes(data);
+        console.log(data);
+      } catch (error) {
+        console.log(error.message);
+        setError(error.message);
+        setDishes([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, []);
+
+  if (loading) return <p>Loading the menu...</p>;
+  if (error) return <p>{error}</p>;
+  if (dishes.length === 0) return <p>No dishes yet</p>;
 
   const filteredDishes = dishes.filter((dish) =>
     category === "All" ? true : dish.category === category,
