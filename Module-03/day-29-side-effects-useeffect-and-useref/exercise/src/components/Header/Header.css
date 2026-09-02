@@ -1,9 +1,10 @@
 header {
   background-color: var(--header-color);
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
   padding: var(--10px);
+  row-gap: 1rem;
 }
 
 .heading {
