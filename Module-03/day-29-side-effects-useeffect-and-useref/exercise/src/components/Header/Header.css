@@ -1,0 +1,13 @@
+header {
+  background-color: var(--header-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--10px);
+}
+
+.heading {
+  text-align: center;
+  color: var(--heading-color);
+  font-size: 3rem;
+}
