@@ -1,0 +1,14 @@
+header {
+  background-color: var(--header-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--10px);
+  row-gap: 1rem;
+}
+
+.heading {
+  text-align: center;
+  color: var(--heading-color);
+  font-size: 3rem;
+}
