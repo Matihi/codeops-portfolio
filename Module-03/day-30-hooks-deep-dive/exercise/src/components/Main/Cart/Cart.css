@@ -1,0 +1,9 @@
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.change-quantity {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
