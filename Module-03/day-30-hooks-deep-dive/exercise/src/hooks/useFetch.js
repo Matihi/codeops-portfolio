@@ -12,16 +12,18 @@ function useFetch(url, category) {
     const load = async (signal) => {
       try {
         const res = await fetch(url, { signal: signal });
-        if (!res.ok)
-          throw new Error("HTTP:" + res.status + "Could not load the menu");
 
-        const rawText = await res.text();
-        let data;
-        try {
-          data = JSON.parse(rawText);
-        } catch (error) {
-          throw new Error("Received an invalid response format");
+        if (!res.ok) {
+          throw new Error(`HTTP:${res.status}. Could not load the menu.`);
         }
+
+        const contentType = res.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          throw new TypeError("We didn't get JSON back from the server!");
+        }
+
+        const data = await res.json();
+
         if (!Array.isArray(data)) {
           throw new Error(
             "Server responded successfully, but data format was not an array",
