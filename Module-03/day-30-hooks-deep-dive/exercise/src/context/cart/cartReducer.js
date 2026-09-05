@@ -32,14 +32,18 @@ export default function cartReducer(cart, action) {
     case "quantity_decremented": {
       const minOrderLimit = 1;
 
-      const updatedQuantityDishes = cart.cartItems.map((dish) =>
-        dish.id === action.id
-          ? {
-              ...dish,
-              quantity: dish.quantity >= minOrderLimit ? dish.quantity - 1 : 0,
-            }
-          : dish,
-      );
+      const updatedQuantityDishes = cart.cartItems
+        .filter(
+          (dish) => dish.id !== action.id || dish.quantity > minOrderLimit,
+        )
+        .map((dish) =>
+          dish.id === action.id
+            ? {
+                ...dish,
+                quantity: dish.quantity - 1,
+              }
+            : dish,
+        );
 
       return { ...cart, cartItems: updatedQuantityDishes };
     }
