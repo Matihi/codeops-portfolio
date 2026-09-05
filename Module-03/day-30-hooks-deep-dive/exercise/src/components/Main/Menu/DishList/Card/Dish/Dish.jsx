@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { FaPepperHot } from "react-icons/fa";
+import { FaPepperHot, FaTrashAlt } from "react-icons/fa";
 import { useContext } from "react";
 import { CartContext } from "../../../../../../context/cart/CartProvider";
 
@@ -69,7 +69,7 @@ const Dish = (props) => {
                   })
                 }
               >
-                X
+                <FaTrashAlt />
               </button>
               <button
                 className="decrement"
