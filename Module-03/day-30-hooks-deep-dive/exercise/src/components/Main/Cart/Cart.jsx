@@ -63,7 +63,7 @@ const Cart = () => {
   });
 
   return (
-    <aside>
+    <aside className="cart-comp">
       <h2>Your Order</h2>
       <button
         className="clear-cart"

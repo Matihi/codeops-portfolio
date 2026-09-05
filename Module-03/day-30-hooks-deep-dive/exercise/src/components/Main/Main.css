@@ -1,5 +1,12 @@
 main {
   margin-top: 0rem;
-  /* display: grid;
-  grid-template-columns: 3fr 1fr; */
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 50rem) {
+  main {
+    grid-template-columns: 1fr;
+  }
 }
