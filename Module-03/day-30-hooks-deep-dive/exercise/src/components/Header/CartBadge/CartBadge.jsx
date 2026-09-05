@@ -10,12 +10,12 @@ const CartBadge = () => {
   const threshold = 100;
   return (
     <div className="cartbadge">
-      <FaCartShopping />
+      <FaCartShopping className="cart-icon" />
       <>
         {totalItems > threshold ? (
-          <span>{String(threshold)}+</span>
+          <span className="badge-count">{String(threshold)}+</span>
         ) : (
-          <span>{String(totalItems)}</span>
+          <span className="badge-count">{String(totalItems)}</span>
         )}
       </>
     </div>
