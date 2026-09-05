@@ -30,7 +30,7 @@
 
 .count-container {
   display: grid;
-  grid-template-columns: 1fr 30% 1fr;
+  grid-template-columns: 10% 1fr 30% 1fr;
   height: 2rem;
   width: 10rem;
   align-self: center;
@@ -52,16 +52,20 @@
   align-items: center;
 }
 
-.remove {
+.decrement {
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
   border: none;
   border-right: 1px solid black;
 }
 
-.add-to-cart {
+.increment {
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
   border: none;
   border-left: 1px solid black;
+}
+
+.add-to-cart {
+  justify-self: center;
 }

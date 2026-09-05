@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { FaPepperHot } from "react-icons/fa";
-import { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../../../../../../context/cart/CartProvider";
 
 import "./Dish.css";
 
@@ -9,8 +10,6 @@ const Dish = (props) => {
 
   const {
     id,
-    changeQuantity,
-    onChangeQuantity,
     image,
     name,
     category,
@@ -19,38 +18,26 @@ const Dish = (props) => {
     currency = "ETB",
   } = props;
 
-  const currentDish = changeQuantity.find((dish) => dish.id === id);
-  const count = currentDish ? currentDish.quantity : 0;
+  const cartContextValue = useContext(CartContext);
+  console.log(cartContextValue);
 
-  const handleIncrement = () => {
-    const maxOrderLimit = 15;
+  const dishForCart = { id: id, name: name, price: price, quantity: 0 };
+  console.log(dishForCart);
 
-    const updatedQuantityDishes = changeQuantity.map((dish) =>
-      dish.id === id
-        ? {
-            ...dish,
-            quantity:
-              dish.quantity < maxOrderLimit ? dish.quantity + 1 : maxOrderLimit,
-          }
-        : dish,
-    );
+  const cartDish = cartContextValue.cart.cartItems.find(
+    (dish) => dish.id === id,
+  );
 
-    return onChangeQuantity(updatedQuantityDishes);
-  };
+  console.log("cartDish");
+  console.log(cartDish);
 
-  const handleDecrement = () => {
-    const minOrderLimit = 1;
+  const count = cartDish?.quantity ?? 0;
 
-    const updatedQuantityDishes = changeQuantity.map((dish) =>
-      dish.id === id
-        ? {
-            ...dish,
-            quantity: dish.quantity >= minOrderLimit ? dish.quantity - 1 : 0,
-          }
-        : dish,
-    );
-
-    return onChangeQuantity(updatedQuantityDishes);
+  const handleAddingToCart = () => {
+    cartContextValue.dispatch({
+      type: "dish_added",
+      dish: dishForCart,
+    });
   };
 
   return (
@@ -67,15 +54,49 @@ const Dish = (props) => {
         <strong>
           {price} {currency}
         </strong>
-        <div className="count-container">
-          <button className="remove" onClick={handleDecrement}>
-            {"\u2212"}
-          </button>
-          {count > 0 ? <p className="count">{count}</p> : <p></p>}
-          <button className="add-to-cart" onClick={handleIncrement}>
-            {"\u002B"}
-          </button>
-        </div>
+        <>
+          {cartDish === undefined ? (
+            <button className="add-to-cart" onClick={handleAddingToCart}>
+              Add to Cart
+            </button>
+          ) : (
+            <div className="count-container">
+              <button
+                onClick={() =>
+                  cartContextValue.dispatch({
+                    type: "dish_removed",
+                    id: id,
+                  })
+                }
+              >
+                X
+              </button>
+              <button
+                className="decrement"
+                onClick={() =>
+                  cartContextValue.dispatch({
+                    type: "quantity_decremented",
+                    id: id,
+                  })
+                }
+              >
+                {"\u2212"}
+              </button>
+              {count > 0 ? <p className="count">{count}</p> : <p></p>}
+              <button
+                className="increment"
+                onClick={() =>
+                  cartContextValue.dispatch({
+                    type: "quantity_incremented",
+                    id: id,
+                  })
+                }
+              >
+                {"\u002B"}
+              </button>
+            </div>
+          )}
+        </>
       </div>
     </>
   );
@@ -83,8 +104,6 @@ const Dish = (props) => {
 
 Dish.propTypes = {
   id: PropTypes.number.isRequired,
-  changeQuantity: PropTypes.array.isRequired,
-  onChangeQuantity: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
