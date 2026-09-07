@@ -1,16 +1,28 @@
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import Footer from "./components/Footer/Footer";
+import Layout from "./components/Layout/Layout";
+import Cart from "./pages/Cart/Cart";
+import Checkout from "./pages/Checkout/Checkout";
+import DishDetail from "./pages/DishDetail/DishDetail";
+import Home from "./pages/Home/Home";
+import Menu from "./pages/Menu/Menu";
+import NotFound from "./pages/NotFound/NotFound";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./App.css";
 
 function App() {
   return (
-    <div className="structure">
-      <Header />
-      <Main />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="menu" element={<Menu />} />
+          <Route path="menu/:id" element={<DishDetail />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
