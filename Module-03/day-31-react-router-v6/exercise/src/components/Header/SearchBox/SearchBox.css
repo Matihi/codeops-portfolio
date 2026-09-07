@@ -1,0 +1,13 @@
+.search-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.search {
+  width: min(70%, 33rem);
+  padding: 1rem 1rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1rem;
+}
