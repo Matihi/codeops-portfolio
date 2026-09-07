@@ -18,7 +18,7 @@ const CategoryBar = ({ selected, onSelect }) => {
           ? "selected-category-button"
           : "category-button"
       }
-      onClick={() => onSelect(category.category)}
+      onClick={() => onSelect({ category: category.category })}
     >
       {category.category}
     </button>
