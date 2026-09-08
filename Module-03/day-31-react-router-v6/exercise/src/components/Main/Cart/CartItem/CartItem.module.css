@@ -1,0 +1,10 @@
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background-color: rgb(246, 158, 158);
+}
+
+.change-quantity {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
