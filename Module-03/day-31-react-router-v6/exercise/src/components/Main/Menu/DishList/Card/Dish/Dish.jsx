@@ -40,6 +40,27 @@ const Dish = (props) => {
     });
   };
 
+  const handleIncrement = () => {
+    cartContextValue.dispatch({
+      type: "quantity_incremented",
+      id: id,
+    });
+  };
+
+  const handleDecrement = () => {
+    cartContextValue.dispatch({
+      type: "quantity_decremented",
+      id: id,
+    });
+  };
+
+  const handleRemove = () => {
+    cartContextValue.dispatch({
+      type: "dish_removed",
+      id: id,
+    });
+  };
+
   return (
     <>
       <div className="image-container">
@@ -61,37 +82,14 @@ const Dish = (props) => {
             </button>
           ) : (
             <div className="count-container">
-              <button
-                onClick={() =>
-                  cartContextValue.dispatch({
-                    type: "dish_removed",
-                    id: id,
-                  })
-                }
-              >
+              <button onClick={handleRemove}>
                 <FaTrashAlt />
               </button>
-              <button
-                className="decrement"
-                onClick={() =>
-                  cartContextValue.dispatch({
-                    type: "quantity_decremented",
-                    id: id,
-                  })
-                }
-              >
+              <button className="decrement" onClick={handleDecrement}>
                 {"\u2212"}
               </button>
               {count > 0 ? <p className="count">{count}</p> : <p></p>}
-              <button
-                className="increment"
-                onClick={() =>
-                  cartContextValue.dispatch({
-                    type: "quantity_incremented",
-                    id: id,
-                  })
-                }
-              >
+              <button className="increment" onClick={handleIncrement}>
                 {"\u002B"}
               </button>
             </div>
