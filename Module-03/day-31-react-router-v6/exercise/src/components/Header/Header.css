@@ -7,6 +7,11 @@
   row-gap: 1rem;
 }
 
+.badge-link {
+  text-decoration: none;
+  color: black;
+}
+
 .heading {
   text-align: center;
   color: var(--heading-color);
