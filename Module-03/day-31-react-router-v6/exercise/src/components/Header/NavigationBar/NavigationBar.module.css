@@ -1,0 +1,13 @@
+.navigationBar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.navLink {
+  color: rgb(40, 70, 5);
+  text-decoration: none;
+}
+
+.on {
+  color: rgb(74, 9, 9);
+}
