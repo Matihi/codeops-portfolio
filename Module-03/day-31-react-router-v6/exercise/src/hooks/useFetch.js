@@ -14,7 +14,7 @@ function useFetch(url, category) {
         const res = await fetch(url, { signal: signal });
 
         if (!res.ok) {
-          throw new Error(`HTTP:${res.status}. Could not load the menu.`);
+          throw new Error(`HTTP:${res.status}. Could not load the dishes.`);
         }
 
         const contentType = res.headers.get("content-type");
