@@ -18,6 +18,7 @@ const DishList = ({ dishes, headingText, emptyMessage }) => {
         spicy={dish.spicy}
         image={dish.image}
         // currency={currency} //If uncommented "USD" is shown;
+        slug={dish.slug}
       />
     </Card>
   ));

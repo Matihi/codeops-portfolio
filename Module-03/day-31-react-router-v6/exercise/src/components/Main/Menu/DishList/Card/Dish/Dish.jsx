@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { FaPepperHot, FaTrashAlt } from "react-icons/fa";
 import { useContext } from "react";
 import { CartContext } from "../../../../../../context/cart/CartProvider";
+import { Link } from "react-router-dom";
 
 import "./Dish.css";
 
@@ -14,6 +15,7 @@ const Dish = (props) => {
     name,
     category,
     price,
+    slug,
     spicy = false,
     currency = "ETB",
   } = props;
@@ -63,9 +65,9 @@ const Dish = (props) => {
 
   return (
     <>
-      <div className="image-container">
+      <Link className="image-container" to={`/menu/${slug}`}>
         <img src={image} alt={name} className="card-image" />
-      </div>
+      </Link>
       <div className="text-container">
         <h3>
           {name} {spicy === true && <FaPepperHot />}
@@ -105,6 +107,7 @@ Dish.propTypes = {
   name: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  slug: PropTypes.string.isRequired,
   spicy: PropTypes.bool,
   image: PropTypes.string.isRequired,
   currency: PropTypes.string,
