@@ -2,161 +2,201 @@
   {
     "id": 1,
     "name": "Doro Wot",
+    "slug": "doro-wot",
     "category": "Main",
     "price": 240,
     "spicy": true,
+    "special": true,
     "image": "/images/doro-wot.jpg"
   },
   {
     "id": 2,
     "name": "Shiro",
+    "slug": "shiro",
     "category": "Vegetarian",
     "price": 120,
     "spicy": false,
+    "special": true,
     "image": "/images/shiro-wot.jpg"
   },
   {
     "id": 3,
     "name": "Kitfo",
+    "slug": "kitfo",
     "category": "Main",
     "price": 320,
     "spicy": true,
+    "special": true,
     "image": "/images/kitfo.jpg"
   },
   {
     "id": 4,
     "name": "Tibs",
+    "slug": "tibs",
     "category": "Main",
     "price": 280,
     "spicy": true,
+    "special": false,
     "image": "/images/tibs.jpg"
   },
   {
     "id": 5,
     "name": "Injera Firfir",
+    "slug": "injera-firfir",
     "category": "Breakfast",
     "price": 100,
     "spicy": true,
+    "special": false,
     "image": "/images/injera-firfir.jpg"
   },
   {
     "id": 6,
     "name": "Beyaynetu",
+    "slug": "beyaynetu",
     "category": "Vegetarian",
     "price": 150,
     "spicy": false,
+    "special": true,
     "image": "/images/beyaynetu.jpg"
   },
   {
     "id": 7,
     "name": "Misir Wot",
+    "slug": "misir-wot",
     "category": "Vegetarian",
     "price": 110,
     "spicy": true,
+    "special": false,
     "image": "/images/misir-wot.jpg"
   },
   {
     "id": 8,
     "name": "Gomen",
+    "slug": "gomen",
     "category": "Vegetarian",
     "price": 90,
     "spicy": false,
+    "special": false,
     "image": "/images/gomen.jpg"
   },
   {
     "id": 9,
     "name": "Atkilt Wot",
+    "slug": "atkilt-wot",
     "category": "Vegetarian",
     "price": 100,
     "spicy": false,
+    "special": false,
     "image": "/images/atikilt-wot.jpg"
   },
   {
     "id": 10,
     "name": "Derek Tibs",
+    "slug": "derek-tibs",
     "category": "Main",
     "price": 310,
     "spicy": true,
+    "special": false,
     "image": "/images/derek-tibs.jpg"
   },
   {
     "id": 11,
     "name": "Key Wot",
+    "slug": "key-wot",
     "category": "Main",
     "price": 220,
     "spicy": true,
+    "special": false,
     "image": "/images/key-wot.jpg"
   },
   {
     "id": 12,
     "name": "Alicha Wot",
+    "slug": "alicha-wot",
     "category": "Main",
     "price": 210,
     "spicy": false,
+    "special": false,
     "image": "/images/alicha-wot.jpg"
   },
   {
     "id": 13,
     "name": "Bozena Shiro",
+    "slug": "bozena-shiro",
     "category": "Main",
     "price": 180,
     "spicy": true,
+    "special": false,
     "image": "/images/bozena-shiro.jpg"
   },
   {
     "id": 14,
     "name": "Ayibe",
+    "slug": "ayibe",
     "category": "Side",
     "price": 70,
     "spicy": false,
+    "special": false,
     "image": "/images/ayib.jpg"
   },
   {
     "id": 15,
     "name": "Kocho",
+    "slug": "kocho",
     "category": "Side",
     "price": 60,
     "spicy": false,
+    "special": false,
     "image": "/images/qocho.jpg"
   },
   {
     "id": 16,
     "name": "Enkulal Firfir",
+    "slug": "enkulal-firfir",
     "category": "Breakfast",
     "price": 110,
     "spicy": true,
+    "special": false,
     "image": "/images/enkulal-firfir.jpg"
   },
   {
     "id": 17,
     "name": "Fuul",
+    "slug": "fuul",
     "category": "Breakfast",
     "price": 90,
     "spicy": true,
+    "special": false,
     "image": "/images/fuul.jpg"
   },
   {
     "id": 18,
     "name": "Genfo",
+    "slug": "genfo",
     "category": "Breakfast",
     "price": 130,
     "spicy": true,
+    "special": false,
     "image": "/images/genfo.jpg"
   },
   {
     "id": 19,
     "name": "Chechebsa",
+    "slug": "chechebsa",
     "category": "Breakfast",
     "price": 120,
     "spicy": true,
+    "special": true,
     "image": "/images/chechebsa.jpg"
   },
   {
     "id": 20,
     "name": "Kik Alicha",
+    "slug": "kik-alicha",
     "category": "Vegetarian",
     "price": 100,
     "spicy": false,
+    "special": false,
     "image": "/images/alicha-kik.jpg"
   }
 ]
