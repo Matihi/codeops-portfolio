@@ -10,11 +10,11 @@
   font-size: 1.1rem;
 }
 
-.dish-list h2 {
+.dish-list > h3 {
   text-align: center;
   color: var(--heading-color);
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .dish-list-grid {

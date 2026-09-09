@@ -24,7 +24,7 @@ const DishList = ({ dishes, headingText, emptyMessage }) => {
 
   return (
     <section className="dish-list">
-      <h2>{headingText}</h2>
+      <h3>{headingText}</h3>
       <div className="dish-list-grid">{dishElements}</div>
     </section>
   );
