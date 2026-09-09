@@ -13,6 +13,9 @@ function Menu() {
   if (loading) return <p>Loading the menu...</p>;
   if (error) return <p>{error}</p>;
 
+  const headingText = "Our Menu";
+  const emptyMessage = "Sorry, dishes in this category are not available";
+
   return (
     <div className={styles.menu}>
       <CategoryBar
@@ -20,7 +23,11 @@ function Menu() {
         selected={category}
         onSelect={setSearchParams}
       />
-      <DishList dishes={dishes} />
+      <DishList
+        dishes={dishes}
+        headingText={headingText}
+        emptyMessage={emptyMessage}
+      />
     </div>
   );
 }

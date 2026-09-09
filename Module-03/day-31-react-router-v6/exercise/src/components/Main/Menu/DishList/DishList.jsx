@@ -2,13 +2,9 @@ import Dish from "./Card/Dish/Dish";
 import Card from "./Card/Card";
 import "./DishList.css";
 
-const DishList = ({ dishes }) => {
+const DishList = ({ dishes, headingText, emptyMessage }) => {
   if (dishes.length === 0)
-    return (
-      <p className="empty-message">
-        Sorry, dishes in this category are not available
-      </p>
-    );
+    return <p className="empty-message">{emptyMessage}</p>;
 
   const currency = "USD";
 
@@ -28,7 +24,7 @@ const DishList = ({ dishes }) => {
 
   return (
     <section className="dish-list">
-      <h2>Our Menu</h2>
+      <h2>{headingText}</h2>
       <div className="dish-list-grid">{dishElements}</div>
     </section>
   );
