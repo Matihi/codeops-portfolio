@@ -7,6 +7,7 @@
     "price": 240,
     "spicy": true,
     "special": true,
+    "description": "Doro Wot is one of Ethiopia’s most celebrated traditional dishes, featuring tender chicken slowly simmered in a rich and deeply spiced berbere sauce. The stew is prepared with finely chopped onions, garlic, ginger, and seasoned clarified butter, allowing the flavors to develop gradually during cooking. It is traditionally served over soft, slightly sour injera and is especially popular during holidays, celebrations, and family gatherings.",
     "image": "/images/doro-wot.jpg"
   },
   {
@@ -17,6 +18,7 @@
     "price": 120,
     "spicy": false,
     "special": true,
+    "description": "Shiro is a smooth and comforting Ethiopian stew made primarily from finely ground chickpeas or other legumes. It is slowly cooked with onions, garlic, tomatoes, and a blend of Ethiopian spices to create a thick and flavorful sauce. Depending on the preparation, shiro can range from mild and creamy to rich and spicy. It is traditionally served with injera and is a popular vegetarian dish enjoyed in homes and restaurants throughout Ethiopia.",
     "image": "/images/shiro-wot.jpg"
   },
   {
@@ -27,6 +29,7 @@
     "price": 320,
     "spicy": true,
     "special": true,
+    "description": "Kitfo is a well-known Ethiopian delicacy made from finely minced beef seasoned with mitmita, a distinctive Ethiopian chili spice, and niter kibbeh, a spiced clarified butter. The meat is traditionally prepared with minimal cooking to preserve its tenderness and rich flavor, although it can also be served more thoroughly cooked. Kitfo is commonly accompanied by ayibe, a mild fresh cheese, and cooked greens, with injera used to bring all the flavors together.",
     "image": "/images/kitfo.jpg"
   },
   {
@@ -37,6 +40,7 @@
     "price": 280,
     "spicy": true,
     "special": false,
+    "description": "Tibs consists of tender pieces of meat sautéed or grilled with onions, peppers, garlic, and traditional Ethiopian spices. The meat is cooked over high heat to develop a rich, slightly roasted flavor while remaining tender and juicy. Different variations can be prepared with beef, lamb, or goat, and the level of spiciness can vary depending on the seasoning. Tibs is commonly served hot with injera and is a popular choice for sharing.",
     "image": "/images/tibs.jpg"
   },
   {
@@ -47,6 +51,7 @@
     "price": 100,
     "spicy": true,
     "special": false,
+    "description": "Injera Firfir is a traditional Ethiopian dish made by tearing soft pieces of injera and mixing them with a flavorful berbere-based sauce. The injera absorbs the sauce while remaining soft and slightly tangy, creating a rich combination of textures and flavors. It is commonly prepared with niter kibbeh, onions, and spices, and can be made with different levels of heat. Firfir is especially popular as a hearty Ethiopian breakfast.",
     "image": "/images/injera-firfir.jpg"
   },
   {
@@ -57,6 +62,7 @@
     "price": 150,
     "spicy": false,
     "special": true,
+    "description": "Beyaynetu, meaning a variety or combination of different foods, is a colorful Ethiopian platter that brings several vegetarian dishes together on a single serving of injera. It may include lentils, shiro, cooked greens, vegetables, cabbage, potatoes, and other seasonal preparations. Each portion offers a different combination of flavors, from mild and earthy to spicy and aromatic. Beyaynetu is an excellent choice for experiencing several Ethiopian vegetarian dishes in one meal.",
     "image": "/images/beyaynetu.jpg"
   },
   {
@@ -67,6 +73,7 @@
     "price": 110,
     "spicy": true,
     "special": false,
+    "description": "Misir Wot is a rich Ethiopian red lentil stew known for its deep color and warming spice. Red lentils are slowly cooked with onions, garlic, berbere, and other traditional spices until they become soft and develop a thick, flavorful consistency. The combination of earthy lentils and aromatic spices makes this dish both satisfying and comforting. It is traditionally served with injera and is a staple of Ethiopian vegetarian cuisine.",
     "image": "/images/misir-wot.jpg"
   },
   {
@@ -77,6 +84,7 @@
     "price": 90,
     "spicy": false,
     "special": false,
+    "description": "Gomen is a traditional Ethiopian preparation of collard greens slowly cooked with onions, garlic, ginger, and seasoned clarified butter. The greens become tender as they cook, taking on a savory and aromatic flavor while retaining their natural character. Unlike many Ethiopian dishes, gomen is generally mild and is often served as part of a larger vegetarian platter. It pairs especially well with spicy stews and injera.",
     "image": "/images/gomen.jpg"
   },
   {
@@ -87,6 +95,7 @@
     "price": 100,
     "spicy": false,
     "special": false,
+    "description": "Atkilt Wot is a mild Ethiopian vegetable stew traditionally prepared with cabbage, carrots, potatoes, onions, and aromatic spices. The vegetables are cooked slowly so they become tender while absorbing the flavors of the seasoning. Its gentle flavor and soft texture make it a refreshing contrast to Ethiopia’s hotter stews. Atkilt Wot is commonly served with injera as part of a vegetarian meal.",
     "image": "/images/atikilt-wot.jpg"
   },
   {
@@ -97,6 +106,7 @@
     "price": 310,
     "spicy": true,
     "special": false,
+    "description": "Derek Tibs is a flavorful Ethiopian meat dish featuring pieces of meat cooked at high heat until they develop a distinctive roasted and slightly crisp exterior. The meat is seasoned with traditional spices and commonly combined with onions, peppers, garlic, and herbs. Its bold seasoning and firm texture make it particularly appealing to those who enjoy strongly flavored meat dishes. Derek Tibs is traditionally served hot with injera and accompanying sides.",
     "image": "/images/derek-tibs.jpg"
   },
   {
@@ -107,6 +117,7 @@
     "price": 220,
     "spicy": true,
     "special": false,
+    "description": "Key Wot is a classic Ethiopian red stew prepared with tender pieces of meat cooked in a rich berbere-based sauce. The sauce begins with slowly cooked onions and is enhanced with garlic, ginger, niter kibbeh, and a carefully balanced blend of Ethiopian spices. Its deep red color and bold heat make it one of the defining dishes of Ethiopian cuisine. Key Wot is traditionally eaten with injera, which is used to scoop up the flavorful stew.",
     "image": "/images/key-wot.jpg"
   },
   {
@@ -117,6 +128,7 @@
     "price": 210,
     "spicy": false,
     "special": false,
+    "description": "Alicha Wot is a mild Ethiopian stew that offers a gentler alternative to the fiery berbere-based wots. Tender pieces of meat are slowly cooked with onions, garlic, ginger, turmeric, and aromatic spices, producing a golden-colored sauce with a warm and savory flavor. The dish focuses more on delicate seasoning than intense heat, making it suitable for those who prefer milder Ethiopian food. It is traditionally served with injera.",
     "image": "/images/alicha-wot.jpg"
   },
   {
@@ -127,6 +139,7 @@
     "price": 180,
     "spicy": true,
     "special": false,
+    "description": "Bozena Shiro combines the smooth, creamy texture of shiro stew with pieces of tender meat for a richer and more substantial Ethiopian meal. The shiro sauce is prepared from finely ground legumes and cooked with onions, garlic, berbere, and traditional spices. The meat adds depth and a savory richness that complements the earthy flavor of the shiro. It is served with injera, allowing the bread to soak up the thick and flavorful sauce.",
     "image": "/images/bozena-shiro.jpg"
   },
   {
@@ -137,6 +150,7 @@
     "price": 70,
     "spicy": false,
     "special": false,
+    "description": "Ayibe is a mild, crumbly Ethiopian fresh cheese traditionally made from curds separated from whey. It has a soft texture and a gentle flavor, making it an ideal accompaniment to Ethiopia’s heavily spiced dishes. Ayibe is often served alongside spicy stews such as kitfo and can help balance the heat of berbere and other chili-based seasonings. It is also commonly included as part of larger Ethiopian combination platters.",
     "image": "/images/ayib.jpg"
   },
   {
@@ -147,6 +161,7 @@
     "price": 60,
     "spicy": false,
     "special": false,
+    "description": "Kocho is a traditional Ethiopian fermented flatbread made from the pulp of the enset plant, which is an important food crop in southern Ethiopia. The dough is fermented before being cooked, giving kocho its distinctive dense texture and mildly tangy flavor. It can be served alongside stews and other dishes or prepared as part of traditional meals. Its unique taste and texture make it quite different from the more widely known injera.",
     "image": "/images/qocho.jpg"
   },
   {
@@ -157,6 +172,7 @@
     "price": 110,
     "spicy": true,
     "special": false,
+    "description": "Enkulal Firfir is a hearty Ethiopian breakfast that combines scrambled eggs with pieces of injera and a flavorful spiced sauce. The eggs are cooked with onions, peppers, garlic, and Ethiopian spices before being combined with torn injera, allowing the bread to absorb the savory flavors. The result is a filling dish with a soft texture and a satisfying balance of spice and richness. It is commonly enjoyed as a warm and substantial breakfast.",
     "image": "/images/enkulal-firfir.jpg"
   },
   {
@@ -167,6 +183,7 @@
     "price": 90,
     "spicy": true,
     "special": false,
+    "description": "Fuul is a popular Ethiopian breakfast made from slowly cooked fava beans seasoned with spices and flavorful toppings. The beans are usually mashed or left partially whole and combined with ingredients such as onions, tomatoes, peppers, olive oil, and spices. Its creamy texture and savory flavor make it a filling way to start the day. Fuul is commonly served warm with bread and additional toppings on the side.",
     "image": "/images/fuul.jpg"
   },
   {
@@ -177,6 +194,7 @@
     "price": 130,
     "spicy": true,
     "special": false,
+    "description": "Genfo is a traditional Ethiopian porridge made by cooking roasted grain flour with water until it develops a thick and smooth consistency. It is traditionally shaped into a mound with a depression in the center, which is filled with spiced clarified butter and berbere. The mild flavor of the porridge contrasts with the rich butter and spicy seasoning, creating a distinctive combination. Genfo is especially associated with traditional Ethiopian breakfasts and is often enjoyed while warm.",
     "image": "/images/genfo.jpg"
   },
   {
@@ -187,6 +205,7 @@
     "price": 120,
     "spicy": true,
     "special": true,
+    "description": "Chechebsa is a traditional Ethiopian breakfast made from pieces of torn flatbread mixed with spiced clarified butter and berbere. The bread absorbs the rich butter and seasoning, creating a warm, soft, and flavorful dish with a balance of richness and spice. It is often served with honey or other accompaniments that provide a touch of sweetness against the savory seasoning. Chechebsa is a popular and filling breakfast choice, particularly in Ethiopian households.",
     "image": "/images/chechebsa.jpg"
   },
   {
@@ -197,6 +216,7 @@
     "price": 100,
     "spicy": false,
     "special": false,
+    "description": "Kik Alicha is a mild Ethiopian stew made from yellow split peas cooked with onions, garlic, turmeric, and other aromatic spices. The peas are simmered until soft, creating a thick and creamy consistency with a warm golden color. Unlike berbere-heavy stews, Kik Alicha has little to no heat, allowing the earthy flavor of the split peas and the delicate spices to stand out. It is traditionally served with injera and is a common part of Ethiopian vegetarian meals.",
     "image": "/images/alicha-kik.jpg"
   }
 ]
