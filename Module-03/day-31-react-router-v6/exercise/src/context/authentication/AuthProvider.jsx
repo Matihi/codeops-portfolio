@@ -8,9 +8,10 @@ const AuthProvider = ({ children }) => {
   const storedUsersKey = "addisEatsCustomers";
 
   useEffect(() => {
-    const loggedUser = sessionStorage.getItem(userKey);
-    if (loggedUser) {
-      setUser(loggedUser);
+    const loggedUserString = sessionStorage.getItem(userKey);
+    if (loggedUserString) {
+      const loggedUserObject = JSON.parse(loggedUserString);
+      setUser(loggedUserObject);
     }
     setLoading(false);
   }, []);
@@ -31,7 +32,8 @@ const AuthProvider = ({ children }) => {
       return "Invalid credentials ";
     }
     setUser(registeredUser);
-    sessionStorage.setItem(userKey, registeredUser);
+    const userString = JSON.stringify(registeredUser);
+    sessionStorage.setItem(userKey, userString);
     return "";
   };
 
