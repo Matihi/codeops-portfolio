@@ -14,6 +14,16 @@
   align-self: flex-end;
 }
 
+.register-link {
+  text-decoration: none;
+  color: black;
+  padding: 0.2rem 0.4rem;
+  background-color: rgb(161, 121, 78);
+  width: fit-content;
+  border-radius: 0.6rem;
+  align-self: flex-end;
+}
+
 .heading {
   text-align: center;
   color: var(--heading-color);
