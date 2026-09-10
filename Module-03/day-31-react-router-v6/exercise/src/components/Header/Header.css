@@ -10,6 +10,8 @@
 .badge-link {
   text-decoration: none;
   color: black;
+  width: fit-content;
+  align-self: flex-end;
 }
 
 .heading {
