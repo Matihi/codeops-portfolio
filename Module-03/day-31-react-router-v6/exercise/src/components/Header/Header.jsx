@@ -5,7 +5,11 @@ import { useAuth } from "../../context/authentication/AuthProvider";
 import "./Header.css";
 
 function Header() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <header className="header">
@@ -16,10 +20,12 @@ function Header() {
         <Link to="/register" className="register-link">
           Register
         </Link>
-        {!user && (
+        {!user ? (
           <Link to="/login" className="login-link">
             Login
           </Link>
+        ) : (
+          <button onClick={handleLogout}>Logout</button>
         )}
       </div>
 
