@@ -1,5 +1,6 @@
 import { useAuth } from "../../context/authentication/AuthProvider";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import styles from "./Login.module.css";
 
@@ -112,6 +113,12 @@ const Login = () => {
 
           <button type="submit">Log in</button>
         </form>
+        <div>
+          <p>Don't have an account?</p>
+          <p>
+            <Link to="/register">Click here</Link>&nbsp;to register.
+          </p>
+        </div>
       </div>
     </section>
   );
