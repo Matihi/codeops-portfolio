@@ -1,6 +1,6 @@
 import { useAuth } from "../../context/authentication/AuthProvider";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import styles from "./Login.module.css";
 
@@ -10,6 +10,9 @@ const Login = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [errorMessage, setErrorMessage] = useState("");
   const { loading, login } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname ?? "/menu";
 
   if (loading) {
     return <p>Loading...</p>;
@@ -66,8 +69,8 @@ const Login = () => {
         return;
       }
       console.log("Login successfull");
-
       setFormData(initialFormData);
+      navigate(from, { replace: true });
     }
   };
 
