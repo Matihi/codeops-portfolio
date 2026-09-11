@@ -5,6 +5,7 @@ import DishDetail from "./pages/DishDetail/DishDetail";
 import Home from "./pages/Home/Home";
 import Menu from "./pages/Menu/Menu";
 import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
 import NotFound from "./pages/NotFound/NotFound";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
