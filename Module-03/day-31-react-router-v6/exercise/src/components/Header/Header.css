@@ -20,9 +20,18 @@
   justify-content: end;
 }
 
+.logout-button {
+  border: none;
+}
+
 .register-link,
 .login-link {
   text-decoration: none;
+}
+
+.register-link,
+.login-link,
+.logout-button {
   color: black;
   padding: 0.2rem 0.4rem;
   background-color: rgb(161, 121, 78);
