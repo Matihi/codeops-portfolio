@@ -26,7 +26,7 @@ function Header() {
           Register
         </Link>
         {!user ? (
-          <Link to="/login" className="login-link">
+          <Link to="/login" state={{ from: location }} className="login-link">
             Login
           </Link>
         ) : (
