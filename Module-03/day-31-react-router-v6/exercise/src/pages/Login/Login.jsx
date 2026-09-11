@@ -71,43 +71,48 @@ const Login = () => {
   };
 
   return (
-    <section>
-      <h1>Log in to Addis Eats</h1>
-      <form
-        method="post"
-        className={styles.form}
-        noValidate
-        onSubmit={handleSubmit}
-      >
-        <p className={styles.errorMessage}>{errorMessage}</p>
-        <div className={styles.phoneWrapper}>
-          <label htmlFor={styles.phone}>TeleBirr phone number:</label>
-          <input
-            type="tel"
-            name="phone"
-            id={styles.phone}
-            value={formData.phone}
-            placeholder="Phone number"
-            onBlur={handleBlur}
-            onChange={handleChange}
-          />
-        </div>
+    <section className={styles.loginSection}>
+      <div className={styles.loginCard}>
+        <h1 className={styles.loginHeading}>Log in to Addis Eats</h1>
+        <form
+          method="post"
+          className={styles.form}
+          noValidate
+          onSubmit={handleSubmit}
+        >
+          {errorMessage && (
+            <p className={styles.errorMessage}>{errorMessage}</p>
+          )}
 
-        <div className={styles.passwordWrapper}>
-          <label htmlFor={styles.password}>Password:</label>
-          <input
-            type="password"
-            name="password"
-            id={styles.password}
-            value={formData.password}
-            placeholder="Password"
-            onBlur={handleBlur}
-            onChange={handleChange}
-          />
-        </div>
+          <div className={styles.phoneWrapper}>
+            <label htmlFor={styles.phone}>TeleBirr phone number:</label>
+            <input
+              type="tel"
+              name="phone"
+              id={styles.phone}
+              value={formData.phone}
+              placeholder="Phone number"
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />
+          </div>
 
-        <button type="submit">Log in</button>
-      </form>
+          <div className={styles.passwordWrapper}>
+            <label htmlFor={styles.password}>Password:</label>
+            <input
+              type="password"
+              name="password"
+              id={styles.password}
+              value={formData.password}
+              placeholder="Password"
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />
+          </div>
+
+          <button type="submit">Log in</button>
+        </form>
+      </div>
     </section>
   );
 };
