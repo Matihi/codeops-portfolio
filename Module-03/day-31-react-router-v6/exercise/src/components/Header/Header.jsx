@@ -1,11 +1,12 @@
 import CartBadge from "./CartBadge/CartBadge";
 import NavigationBar from "./NavigationBar/NavigationBar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/authentication/AuthProvider";
 import "./Header.css";
 
 function Header() {
   const { user, logout } = useAuth();
+  const location = useLocation();
 
   const handleLogout = () => {
     logout();
@@ -17,7 +18,11 @@ function Header() {
         <CartBadge />
       </Link>
       <div className="reg-and-auth-wrapper">
-        <Link to="/register" className="register-link">
+        <Link
+          to="/register"
+          state={{ from: location }}
+          className="register-link"
+        >
           Register
         </Link>
         {!user ? (
