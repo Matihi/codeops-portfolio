@@ -1,11 +1,15 @@
-import styles from "./Register.module.css";
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import styles from "./Register.module.css";
 
 const initialFormData = { name: "", phone: "", password: "" };
 
 const Register = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [errorMessage, setErrorMessage] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname ?? "/";
 
   const validateField = (name, value) => {
     const phonePattern = /^(?:\+251|0)9\d{8}$/;
@@ -110,6 +114,7 @@ const Register = () => {
       console.log("Submit successfull");
       console.log(formData);
       setFormData(initialFormData);
+      navigate(from, { replace: true });
     }
   };
 
