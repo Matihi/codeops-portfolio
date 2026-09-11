@@ -14,14 +14,20 @@
   align-self: flex-end;
 }
 
-.register-link {
+.reg-and-auth-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: end;
+}
+
+.register-link,
+.login-link {
   text-decoration: none;
   color: black;
   padding: 0.2rem 0.4rem;
   background-color: rgb(161, 121, 78);
   width: fit-content;
   border-radius: 0.6rem;
-  align-self: flex-end;
 }
 
 .heading {
