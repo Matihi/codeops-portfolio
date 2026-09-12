@@ -12,7 +12,7 @@ const Login = () => {
   const { loading, login } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const originalPath = location.state?.from?.pathname ?? "/menu";
+  const originalPath = location.state?.from?.pathname ?? "/";
   const originalLocation = location.state?.from;
 
   if (loading) {
