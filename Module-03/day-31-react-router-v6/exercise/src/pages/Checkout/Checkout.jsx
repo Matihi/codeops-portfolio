@@ -81,7 +81,7 @@ const Checkout = () => {
   const handlePay = () => {
     if (checkoutCount > 0) {
       let error = validateForm(formData);
-      if (error !== undefined) {
+      if (error !== "") {
         setErrorMessage(error);
       } else {
         const randomString = (length) =>
