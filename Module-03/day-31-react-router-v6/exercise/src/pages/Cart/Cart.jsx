@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/cart/CartProvider";
 import CartItem from "../../components/Main/Cart/CartItem/CartItem";
 import styles from "./Cart.module.css";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cartContextValue = useContext(CartContext);
@@ -30,6 +31,8 @@ const Cart = () => {
       <p>Distinct Dishes: {String(cartContextValue.cart.cartItems.length)}</p>
       <p>Total Dishes: {String(cartContextValue.totalItems)}</p>
       <p>Total Price: {cartContextValue.totalPrice?.toLocaleString()} ETB</p>
+
+      <Link to="/checkout">Checkout</Link>
     </aside>
   );
 };
