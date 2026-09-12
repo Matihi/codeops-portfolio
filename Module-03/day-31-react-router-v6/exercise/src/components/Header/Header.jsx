@@ -18,17 +18,19 @@ function Header() {
         <CartBadge />
       </Link>
       <div className="reg-and-auth-wrapper">
-        <Link
-          to="/register"
-          state={{ from: location }}
-          className="register-link"
-        >
-          Register
-        </Link>
         {!user ? (
-          <Link to="/login" state={{ from: location }} className="login-link">
-            Login
-          </Link>
+          <>
+            <Link
+              to="/register"
+              state={{ from: location }}
+              className="register-link"
+            >
+              Register
+            </Link>
+            <Link to="/login" state={{ from: location }} className="login-link">
+              Login
+            </Link>
+          </>
         ) : (
           <button onClick={handleLogout} className="logout-button">
             Logout
