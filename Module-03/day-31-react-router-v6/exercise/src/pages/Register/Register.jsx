@@ -9,9 +9,9 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname ?? "/";
-  const authPath = location.state?.source;
-  const sourceLocation = location.state?.from;
+  const originalPath = location.state?.from?.pathname ?? "/";
+  const authSource = location.state?.source;
+  const originalLocation = location.state?.from;
 
   const validateField = (name, value) => {
     const phonePattern = /^(?:\+251|0)9\d{8}$/;
@@ -116,13 +116,13 @@ const Register = () => {
       console.log("Submit successfull");
       console.log(formData);
       setFormData(initialFormData);
-      if (authPath === "/login") {
-        navigate(authPath, {
+      if (authSource === "/login") {
+        navigate(authSource, {
           replace: true,
-          state: { from: sourceLocation },
+          state: { from: originalLocation },
         });
       } else {
-        navigate(from, { replace: true });
+        navigate(originalPath, { replace: true });
       }
     }
   };

@@ -12,8 +12,8 @@ const Login = () => {
   const { loading, login } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname ?? "/menu";
-  const sourceLocation = location.state?.from;
+  const originalPath = location.state?.from?.pathname ?? "/menu";
+  const originalLocation = location.state?.from;
 
   if (loading) {
     return <p>Loading...</p>;
@@ -71,7 +71,7 @@ const Login = () => {
       }
       console.log("Login successfull");
       setFormData(initialFormData);
-      navigate(from, { replace: true });
+      navigate(originalPath, { replace: true });
     }
   };
 
@@ -122,7 +122,7 @@ const Login = () => {
           <p>
             <Link
               to="/register"
-              state={{ from: sourceLocation, source: "/login" }}
+              state={{ from: originalLocation, source: "/login" }}
             >
               Click here
             </Link>
