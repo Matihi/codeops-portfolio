@@ -8,6 +8,7 @@ import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import NotFound from "./pages/NotFound/NotFound";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import RequireAuth from "./guards/authentication/RequireAuth";
 
 import "./App.css";
 
@@ -20,7 +21,14 @@ function App() {
           <Route path="menu" element={<Menu />} />
           <Route path="menu/:slug" element={<DishDetail />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="checkout" element={<Checkout />} />
+          <Route
+            path="checkout"
+            element={
+              <RequireAuth>
+                <Checkout />
+              </RequireAuth>
+            }
+          />
           <Route path="register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
         </Route>
