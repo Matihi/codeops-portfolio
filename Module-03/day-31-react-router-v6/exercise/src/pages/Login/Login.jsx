@@ -13,6 +13,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname ?? "/menu";
+  const sourceLocation = location.state?.from;
 
   if (loading) {
     return <p>Loading...</p>;
@@ -119,7 +120,13 @@ const Login = () => {
         <div>
           <p>Don't have an account?</p>
           <p>
-            <Link to="/register">Click here</Link>&nbsp;to register.
+            <Link
+              to="/register"
+              state={{ from: sourceLocation, source: "/login" }}
+            >
+              Click here
+            </Link>
+            &nbsp;to register.
           </p>
         </div>
       </div>

@@ -10,6 +10,8 @@ const Register = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname ?? "/";
+  const authPath = location.state?.source;
+  const sourceLocation = location.state?.from;
 
   const validateField = (name, value) => {
     const phonePattern = /^(?:\+251|0)9\d{8}$/;
@@ -114,7 +116,14 @@ const Register = () => {
       console.log("Submit successfull");
       console.log(formData);
       setFormData(initialFormData);
-      navigate(from, { replace: true });
+      if (authPath === "/login") {
+        navigate(authPath, {
+          replace: true,
+          state: { from: sourceLocation },
+        });
+      } else {
+        navigate(from, { replace: true });
+      }
     }
   };
 
