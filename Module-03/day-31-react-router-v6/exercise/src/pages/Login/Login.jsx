@@ -122,7 +122,7 @@ const Login = () => {
           <p>
             <Link
               to="/register"
-              state={{ from: originalLocation, source: "/login" }}
+              state={{ from: originalLocation, source: "login" }}
             >
               Click here
             </Link>

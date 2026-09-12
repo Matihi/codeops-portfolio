@@ -116,8 +116,8 @@ const Register = () => {
       console.log("Submit successfull");
       console.log(formData);
       setFormData(initialFormData);
-      if (authSource === "/login") {
-        navigate(authSource, {
+      if (authSource === "login") {
+        navigate("/login", {
           replace: true,
           state: { from: originalLocation },
         });
