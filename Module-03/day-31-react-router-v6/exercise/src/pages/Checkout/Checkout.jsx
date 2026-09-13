@@ -65,6 +65,7 @@ const Checkout = () => {
       const updatedData = { ...previous, [name]: value };
       if (name === "orderMode" && value === "pickup") {
         updatedData.area = "select";
+        setErrorMessage("");
       }
       return updatedData;
     });
@@ -124,7 +125,7 @@ const Checkout = () => {
   return (
     <div className={styles.checkout}>
       <h1>Checkout</h1>
-      <>
+      <div className={styles.contentWrapper}>
         <div className={styles.customerInfo}>
           <h2>Enter your Information</h2>
           <form method="post" className={styles.checkoutForm}>
@@ -180,7 +181,7 @@ const Checkout = () => {
 
             {formData.orderMode === "delivery" && (
               <div className={styles.selectWrapper}>
-                <label htmlFor={styles.area}>Delivery area</label>
+                <label htmlFor={styles.area}>Delivery area:</label>
                 <select
                   name="area"
                   id={styles.area}
@@ -203,7 +204,14 @@ const Checkout = () => {
         </div>
         <div className={styles.checkoutCart}>
           <h2>Review your cart</h2>
-          {checkoutCartElements}
+          {checkoutCount > 0 ? (
+            <div className={styles.checkoutItemsWrapper}>
+              {checkoutCartElements}
+            </div>
+          ) : (
+            <p className={styles.emptyCartMessage}>Your cart is empty.</p>
+          )}
+
           <p>{`Subtotal: ETB ${subTotalString}`}</p>
           <p>{`Delivery Fee: ETB ${deliveryFeeString}`}</p>
           {checkoutCount > 0 ? (
@@ -211,10 +219,14 @@ const Checkout = () => {
           ) : (
             <p>Total: ETB 0</p>
           )}
-          {isPayed && <p>Payment successfull</p>}
-          <button onClick={handlePay}>Pay Now</button>
+          <button className={styles.payButton} onClick={handlePay}>
+            Pay Now
+          </button>
+          {isPayed && (
+            <p className={styles.paymentMessage}>Payment successful</p>
+          )}
         </div>
-      </>
+      </div>
     </div>
   );
 };
