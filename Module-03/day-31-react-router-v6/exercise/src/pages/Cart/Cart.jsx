@@ -40,7 +40,9 @@ const Cart = () => {
           <p>
             Total Price: {cartContextValue.totalPrice?.toLocaleString()} ETB
           </p>
-          <Link to="/checkout">Checkout</Link>
+          <Link className={styles.checkoutLink} to="/checkout">
+            Checkout
+          </Link>
         </>
       )}
     </aside>
