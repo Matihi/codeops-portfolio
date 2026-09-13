@@ -77,7 +77,7 @@ const Dish = (props) => {
         <strong>
           {price} {currency}
         </strong>
-        <>
+        <div className="button-group">
           {cartDish === undefined ? (
             <button className="add-to-cart" onClick={handleAddingToCart}>
               Add to Cart
@@ -96,7 +96,7 @@ const Dish = (props) => {
               </button>
             </div>
           )}
-        </>
+        </div>
       </div>
     </>
   );
