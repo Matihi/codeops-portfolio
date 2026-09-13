@@ -1,10 +1,35 @@
 .cart-item {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1.5fr;
   background-color: rgb(246, 158, 158);
+  width: fit-content;
+  border-radius: 1rem;
+  padding-left: 1rem;
+}
+
+.cart-item p {
+  display: flex;
+  align-items: center;
+}
+
+.dishQuantity {
+  justify-content: center;
+  width: 3rem;
 }
 
 .change-quantity {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.change-quantity button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: rgb(172, 43, 43);
+  border-radius: 1rem;
+}
+
+.decCountInc {
+  display: flex;
 }
