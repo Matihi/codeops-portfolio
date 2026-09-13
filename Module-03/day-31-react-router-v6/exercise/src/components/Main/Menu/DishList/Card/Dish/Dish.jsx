@@ -84,16 +84,18 @@ const Dish = (props) => {
             </button>
           ) : (
             <div className="count-container">
-              <button onClick={handleRemove}>
+              <button className="remove" onClick={handleRemove}>
                 <FaTrashAlt />
               </button>
-              <button className="decrement" onClick={handleDecrement}>
-                {"\u2212"}
-              </button>
-              {count > 0 ? <p className="count">{count}</p> : <p></p>}
-              <button className="increment" onClick={handleIncrement}>
-                {"\u002B"}
-              </button>
+              <div className="decCountInc">
+                <button className="decrement" onClick={handleDecrement}>
+                  {"\u2212"}
+                </button>
+                {count > 0 ? <p className="count">{count}</p> : <p></p>}
+                <button className="increment" onClick={handleIncrement}>
+                  {"\u002B"}
+                </button>
+              </div>
             </div>
           )}
         </div>
