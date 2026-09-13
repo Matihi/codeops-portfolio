@@ -91,3 +91,7 @@
 .emptyCartMessage {
   padding-block: 1rem;
 }
+
+.errorMessage {
+  color: red;
+}
