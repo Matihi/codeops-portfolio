@@ -4,10 +4,11 @@
 }
 
 .navLink {
-  color: rgb(40, 70, 5);
+  color: rgb(0, 0, 0);
   text-decoration: none;
 }
 
 .on {
-  color: rgb(74, 9, 9);
+  color: rgb(5, 104, 153);
+  text-decoration: underline;
 }
