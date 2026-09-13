@@ -128,9 +128,14 @@ const Register = () => {
   };
 
   return (
-    <section>
+    <section className={styles.formWrapper}>
       <h1>Register for Addis Eats</h1>
-      <form method="post" noValidate onSubmit={handleSubmit}>
+      <form
+        className={styles.form}
+        method="post"
+        noValidate
+        onSubmit={handleSubmit}
+      >
         <div className={styles.nameWrapper}>
           <label htmlFor={styles.name}>Name:</label>
           <input
@@ -168,8 +173,7 @@ const Register = () => {
             onChange={handleChange}
           />
         </div>
-
-        <p className={styles.errorMessage}>{errorMessage}</p>
+        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
 
         <button type="submit">Submit</button>
       </form>
