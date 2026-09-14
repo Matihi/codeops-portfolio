@@ -7,7 +7,7 @@ import styles from "./Menu.module.css";
 function Menu() {
   const [searchParams, setSearchParams] = useSearchParams();
   const category = searchParams.get("category") ?? "All";
-  const url = "/data/dishes.json";
+  const url = "https://addis-eats-backend.onrender.com/menu/";
   const { filteredDishes: dishes, loading, error } = useFetch(url, category);
 
   if (loading) return <p>Loading the menu...</p>;

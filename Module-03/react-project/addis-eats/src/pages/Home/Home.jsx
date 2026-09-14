@@ -5,7 +5,7 @@ import styles from "./Home.module.css";
 
 const Home = () => {
   const category = "All";
-  const url = "/data/dishes.json";
+  const url = "https://addis-eats-backend.onrender.com/menu/";
   const { filteredDishes: dishes, loading, error } = useFetch(url, category);
 
   if (loading) return <p>Loading special dishes...</p>;

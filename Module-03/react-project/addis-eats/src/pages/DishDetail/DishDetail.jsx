@@ -9,7 +9,7 @@ import styles from "./DishDetail.module.css";
 const DishDetail = () => {
   const { slug } = useParams();
   const category = "All";
-  const url = "/data/dishes.json";
+  const url = "https://addis-eats-backend.onrender.com/menu/";
   const { filteredDishes: dishes, loading, error } = useFetch(url, category);
   const cartContextValue = useContext(CartContext);
   console.log(cartContextValue);
