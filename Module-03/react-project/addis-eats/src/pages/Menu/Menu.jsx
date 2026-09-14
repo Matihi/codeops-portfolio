@@ -1,5 +1,5 @@
-import CategoryBar from "../../components/Main/Menu/CategoryBar/CategoryBar";
-import DishList from "../../components/Main/Menu/DishList/DishList";
+import CategoryBar from "../../components/CategoryBar/CategoryBar";
+import DishList from "../../components/DishList/DishList";
 import useFetch from "../../hooks/useFetch";
 import { useSearchParams } from "react-router-dom";
 import styles from "./Menu.module.css";

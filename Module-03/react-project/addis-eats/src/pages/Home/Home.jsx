@@ -1,4 +1,4 @@
-import DishList from "../../components/Main/Menu/DishList/DishList";
+import DishList from "../../components/DishList/DishList";
 import useFetch from "../../hooks/useFetch";
 
 import styles from "./Home.module.css";
