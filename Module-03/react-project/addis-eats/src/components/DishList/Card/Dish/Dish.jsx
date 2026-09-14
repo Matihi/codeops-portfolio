@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { FaPepperHot, FaTrashAlt } from "react-icons/fa";
 import { useContext } from "react";
-import { CartContext } from "../../../../../../context/cart/CartProvider";
+import { CartContext } from "../../../../context/cart/CartProvider";
 import { Link } from "react-router-dom";
 
 import "./Dish.css";
