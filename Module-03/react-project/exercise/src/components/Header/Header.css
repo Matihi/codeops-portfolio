@@ -1,0 +1,46 @@
+.header {
+  background-color: var(--header-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--10px);
+  row-gap: 1rem;
+}
+
+.badge-link {
+  text-decoration: none;
+  color: black;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.reg-and-auth-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: end;
+}
+
+.logout-button {
+  border: none;
+}
+
+.register-link,
+.login-link {
+  text-decoration: none;
+}
+
+.register-link,
+.login-link,
+.logout-button {
+  color: black;
+  padding: 0.2rem 0.4rem;
+  background-color: rgb(161, 121, 78);
+  width: fit-content;
+  border-radius: 0.6rem;
+}
+
+.heading {
+  text-align: center;
+  color: var(--heading-color);
+  font-size: 3rem;
+}

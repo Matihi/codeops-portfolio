@@ -1,0 +1,8 @@
+.footer {
+  background-color: var(--footer-color);
+  padding: 1rem;
+}
+
+.footer h3 {
+  padding-block: 0.3rem;
+}

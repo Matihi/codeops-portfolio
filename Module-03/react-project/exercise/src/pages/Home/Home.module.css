@@ -1,0 +1,11 @@
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+.homeHeading {
+  text-align: center;
+  color: hsl(25, 97%, 40%);
+  font-size: 2rem;
+  margin-top: 2rem;
+}
