@@ -23,14 +23,15 @@ function useFetch(url, category) {
         }
 
         const data = await res.json();
+        const dataArray = data.data;
 
-        if (!Array.isArray(data.data)) {
+        if (!Array.isArray(dataArray)) {
           throw new Error(
             "Server responded successfully, but data format was not an array",
           );
         }
 
-        setDishes(data.data);
+        setDishes(dataArray);
       } catch (error) {
         if (error.name === "AbortError") return;
         console.log(error.message);
