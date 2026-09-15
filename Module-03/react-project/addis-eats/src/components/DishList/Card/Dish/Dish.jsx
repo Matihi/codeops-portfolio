@@ -13,6 +13,7 @@ const Dish = (props) => {
     id,
     image,
     name,
+    nameAm,
     category,
     price,
     slug,
@@ -70,7 +71,8 @@ const Dish = (props) => {
       </Link>
       <div className="text-container">
         <h3>
-          {name} {spicy === true && <FaPepperHot />}
+          {`${name} (${nameAm})`}
+          {spicy === true && <FaPepperHot />}
         </h3>
         <strong>{category}</strong>
 
@@ -107,6 +109,7 @@ const Dish = (props) => {
 Dish.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
+  nameAm: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   slug: PropTypes.string.isRequired,

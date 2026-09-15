@@ -12,7 +12,8 @@ const DishList = ({ dishes, headingText, emptyMessage }) => {
     <Card key={dish.id}>
       <Dish
         id={dish.id}
-        name={dish.name}
+        name={dish.nameEn}
+        nameAm={dish.nameAm}
         category={dish.category}
         price={dish.price}
         spicy={dish.spicy}
