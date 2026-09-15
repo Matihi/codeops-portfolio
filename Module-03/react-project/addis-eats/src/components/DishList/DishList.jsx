@@ -6,7 +6,7 @@ const DishList = ({ dishes, headingText, emptyMessage }) => {
   if (dishes.length === 0)
     return <p className="empty-message">{emptyMessage}</p>;
 
-  const currency = "USD";
+  const currency = "ETB";
 
   const dishElements = dishes.map((dish) => (
     <Card key={dish.id}>
@@ -18,7 +18,7 @@ const DishList = ({ dishes, headingText, emptyMessage }) => {
         price={dish.price}
         spicy={dish.spicy}
         image={dish.image}
-        // currency={currency} //If uncommented "USD" is shown;
+        currency={currency}
         slug={dish.slug}
       />
     </Card>
