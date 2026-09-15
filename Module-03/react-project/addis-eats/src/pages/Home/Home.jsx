@@ -5,13 +5,11 @@ import styles from "./Home.module.css";
 
 const Home = () => {
   const category = "All";
-  const url = "https://addis-eats-backend.onrender.com/menu/";
+  const url = "https://addis-eats-backend.onrender.com/menu/specials";
   const { filteredDishes: dishes, loading, error } = useFetch(url, category);
 
   if (loading) return <p>Loading special dishes...</p>;
   if (error) return <p>{error}</p>;
-
-  const specialDishes = dishes.filter((dish) => dish.special === true);
 
   const headingText = "Special Dishes";
   const emptyMessage = "Sorry, special dishes are not available";
@@ -22,7 +20,7 @@ const Home = () => {
         Experience authentic and delicious Ethiopian cuisine
       </h2>
       <DishList
-        dishes={specialDishes}
+        dishes={dishes}
         headingText={headingText}
         emptyMessage={emptyMessage}
       />
