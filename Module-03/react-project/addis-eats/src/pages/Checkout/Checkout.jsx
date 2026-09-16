@@ -212,13 +212,21 @@ const Checkout = () => {
             <p className={styles.emptyCartMessage}>Your cart is empty.</p>
           )}
 
-          <p>{`Subtotal: ETB ${subTotalString}`}</p>
-          <p>{`Delivery Fee: ETB ${deliveryFeeString}`}</p>
-          {checkoutCount > 0 ? (
-            <p>{`Total: ETB ${totalString}`}</p>
-          ) : (
-            <p>Total: ETB 0</p>
-          )}
+          <ul>
+            <li>
+              <p>Subtotal</p>
+              <p>{`ETB ${subTotalString}`}</p>
+            </li>
+            <li>
+              <p>Delivery Fee</p>
+              <p>{`ETB ${deliveryFeeString}`}</p>
+            </li>
+            <li>
+              <p>Grand Total</p>
+              {checkoutCount > 0 ? <p>{`ETB ${totalString}`}</p> : <p>0</p>}
+            </li>
+          </ul>
+
           <button className={styles.payButton} onClick={handlePay}>
             Pay Now
           </button>

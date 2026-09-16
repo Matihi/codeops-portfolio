@@ -1,5 +1,7 @@
 .checkout {
-  padding: 1rem;
+  padding: 1rem 2rem;
+  background-color: #fff8f6;
+  font-family: "Playfair Display", serif;
 }
 
 .checkout h1 {
@@ -36,9 +38,9 @@
 .pickupWrapper {
   display: flex;
   gap: 0.3rem;
-  background-color: lightblue;
+  background-color: #fceae4;
   padding: 0.5rem 1rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 .nameWrapper,
@@ -59,25 +61,48 @@
   border: 1px solid;
 }
 
+.checkoutCart ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.checkoutCart ul li {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
 .checkoutItemsWrapper {
-  background-color: rgb(221, 218, 218);
+  background-color: #fceae4;
   padding: 0.4rem;
   margin-block: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.3rem;
 }
 
 .checkoutCartItem {
+  background-color: #f1d8d0;
+  padding: 0.5rem;
   display: grid;
   grid-template-columns: 1fr 2.5fr 2.5fr;
   margin-block: 0.5rem;
+  border-radius: 0.3rem;
 }
 
 .payButton {
-  background-color: rgb(51, 66, 153);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: #9b2c16;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.5rem;
   margin-block: 0.5rem;
+  font-size: 1.2rem;
 }
 
 .paymentMessage {
@@ -94,4 +119,12 @@
 
 .errorMessage {
   color: red;
+}
+
+@media (max-width: 52.1875rem) {
+  .contentWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
