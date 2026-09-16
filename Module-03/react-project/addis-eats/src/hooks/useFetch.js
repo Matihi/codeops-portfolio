@@ -37,7 +37,6 @@ function useFetch(url, category) {
         if (error.name === "AbortError") return;
         console.log(error.message);
         setError(error.message);
-        setDishes([]);
         setLoading(false);
       }
     };
