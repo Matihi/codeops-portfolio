@@ -26,9 +26,6 @@
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-.footer-content div p {
-}
-
 @media (max-width: 42.4375rem) {
   .footer-content div h3 {
     font-size: 0.9rem;
