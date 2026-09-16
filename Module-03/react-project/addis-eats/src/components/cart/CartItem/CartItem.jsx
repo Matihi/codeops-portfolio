@@ -62,14 +62,14 @@ const CartItem = ({ dish, increment, decrement, remove }) => {
         <div className={styles.textwrapper}>
           <div className={styles.nameWrapper}>
             <h3>{dish.name}</h3>
-            <span>{`(${dish.nameAm})`}</span>
+            <p>{`${dish.nameAm}`}</p>
           </div>
           <p className={styles.description}>{dish.description}</p>
         </div>
       </div>
 
       <div className={styles.priceAndButtonWrapper}>
-        <p>{`ETB ${dish.price}`}</p>
+        <p className={styles.price}>{`ETB ${dish.price}`}</p>
         <div className={styles.decCountInc}>
           <button className={styles.decrement} onClick={handleDecrement}>
             {"\u2212"}

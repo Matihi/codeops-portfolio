@@ -35,7 +35,7 @@ const Cart = () => {
             >
               Clear Cart
             </button>
-            <>{cartElements}</>
+            <div className={styles.cartItemsWrapper}>{cartElements}</div>
           </div>
 
           <section className={styles.cartLedger}>
@@ -52,7 +52,13 @@ const Cart = () => {
               <li>
                 <p>Total Price</p>
 
-                <p>{cartContextValue.totalPrice?.toLocaleString()} ETB</p>
+                <p>
+                  {`ETB `}
+                  {cartContextValue.totalPrice?.toLocaleString([], {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                </p>
               </li>
             </ul>
 

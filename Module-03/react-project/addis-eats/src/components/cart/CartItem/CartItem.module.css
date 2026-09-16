@@ -51,6 +51,7 @@
 }
 
 .imageWrapper {
+  flex-shrink: 0;
   height: 7rem;
   width: 7rem;
   display: flex;
@@ -72,17 +73,23 @@
   flex-direction: column;
 }
 
-.textwrapper p {
+.textwrapper > p {
   font-size: 0.8125rem;
 }
 
 .nameWrapper {
   display: flex;
+  flex-direction: column;
   font-family: "Playfair Display", serif;
 }
 
 .nameWrapper h3 {
   font-size: 1.3rem;
+}
+
+.nameWrapper > p {
+  display: block;
+  font-size: 0.9rem;
 }
 
 .description {
@@ -106,6 +113,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.price {
+  color: rgb(205, 33, 33);
+  font-weight: 600;
 }
 
 .priceAndButtonWrapper button {
@@ -134,4 +146,33 @@
 .remove {
   background-color: #faddd3;
   border-radius: 0.3rem;
+}
+
+@media (max-width: 60rem) {
+  .nameWrapper h3 {
+    font-size: 1rem;
+  }
+  .nameWrapper p {
+    font-size: 0.8rem;
+  }
+
+  .textwrapper > p {
+    font-size: 0.74rem;
+  }
+}
+
+@media (max-width: 31.25rem) {
+  .cartItem {
+    grid-template-columns: 1fr;
+    height: 12rem;
+  }
+
+  .imageWrapper {
+    flex-shrink: 0;
+    width: 30%;
+  }
+
+  .priceAndButtonWrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
