@@ -14,19 +14,23 @@ const DishList = ({ dishes, headingText, emptyMessage }) => {
         id={dish.id}
         name={dish.nameEn}
         nameAm={dish.nameAm}
-        category={dish.category}
-        price={dish.price}
-        spicy={dish.spicy}
-        image={dish.image}
+        price={dish.priceETB}
+        image="/images/doro-wot.jpg"
         currency={currency}
         slug={dish.slug}
+        spiceLevel={dish.spiceLevel
+          .replace(/^choice:\s*/i, "")
+          .replace(/\s*\(\d(?:-\d)?\/3\)\s*$/, "")
+          .trim()}
+        isFasting={dish.isFasting}
+        isSpecial={dish.isSpecial}
+        description={dish.description}
       />
     </Card>
   ));
 
   return (
     <section className="dish-list">
-      <h3>{headingText}</h3>
       <div className="dish-list-grid">{dishElements}</div>
     </section>
   );

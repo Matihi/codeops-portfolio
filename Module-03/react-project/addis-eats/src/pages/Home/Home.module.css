@@ -1,11 +1,58 @@
 .home {
   display: flex;
   flex-direction: column;
+  width: 100dvw;
+  padding-inline: 2.5rem;
+  background-color: #fff8f6;
+  padding-top: 2rem;
 }
 
 .homeHeading {
-  text-align: center;
-  color: hsl(25, 97%, 40%);
-  font-size: 2rem;
-  margin-top: 2rem;
+  background-color: #fbe8e0;
+  width: 60%;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.homeHeading h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 3.5rem;
+  text-wrap: balance;
+}
+
+.homeHeading h1 span {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: italic;
+  color: #7a1401;
+}
+
+.homeHeading p {
+  font-size: 1.0625rem;
+  color: #58413d;
+}
+
+@media (max-width: 61.625rem) {
+  .homeHeading {
+    width: 80%;
+  }
+}
+
+@media (max-width: 53.625rem) {
+  .homeHeading h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 48.75rem) {
+  .home {
+    padding-inline: 1rem;
+  }
+  .homeHeading {
+    width: 100%;
+  }
+
+  .homeHeading h1 {
+    font-size: 2rem;
+  }
 }

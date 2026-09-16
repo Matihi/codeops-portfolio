@@ -5,7 +5,15 @@
 }
 
 .search {
-  width: min(70%, 33rem);
+  width: min(80%, 33rem);
   padding: 1rem 1rem;
   font-size: 1rem;
+  background-color: rgb(253, 230, 230);
+  color: rgb(72, 11, 11);
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.search::placeholder {
+  color: rgb(172, 86, 86);
 }

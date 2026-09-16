@@ -24,11 +24,15 @@ const DishDetail = () => {
 
   const dishForCart = {
     id: shownDish.id,
-    name: shownDish.name,
-    price: shownDish.price,
+    name: shownDish.nameEn,
+    nameAm: shownDish.nameAm,
+    price: shownDish.priceETB,
+    description: shownDish.description,
+    image: "/images/doro-wot.jpg",
     quantity: 0,
   };
   console.log(dishForCart);
+  console.log("DishDetail image:", shownDish.image);
 
   const cartDish = cartContextValue.cart.cartItems.find(
     (dish) => dish.id === shownDish.id,
@@ -74,8 +78,8 @@ const DishDetail = () => {
         <div className={styles.imageAndButton}>
           <div className={styles.imageWrapper}>
             <img
-              src={shownDish.image}
-              alt={shownDish.name}
+              src={"/images/doro-wot.jpg"}
+              alt={shownDish.nameEn}
               className={styles.image}
               width={300}
               height={300}
@@ -118,8 +122,9 @@ const DishDetail = () => {
         <div className={styles.otherWrapper}>
           <div className={styles.priceCategoryAndSpicy}>
             <p>{shownDish.category}</p>
-            {shownDish.spicy ? <p>Spicy</p> : <></>}
-            <p className={styles.price}>{`${currency} ${shownDish.price}`}</p>
+            <p
+              className={styles.price}
+            >{`${currency} ${shownDish.priceETB}`}</p>
           </div>
 
           <p className={styles.description}>{shownDish.description}</p>

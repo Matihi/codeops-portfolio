@@ -14,17 +14,27 @@ const Dish = (props) => {
     image,
     name,
     nameAm,
-    category,
     price,
     slug,
-    spicy = false,
+    spiceLevel,
+    isFasting,
+    isSpecial,
+    description,
     currency = "ETB",
   } = props;
 
   const cartContextValue = useContext(CartContext);
   console.log(cartContextValue);
 
-  const dishForCart = { id: id, name: name, price: price, quantity: 0 };
+  const dishForCart = {
+    id: id,
+    name: name,
+    nameAm: nameAm,
+    price: price,
+    description: description,
+    image: image,
+    quantity: 0,
+  };
   console.log(dishForCart);
 
   const cartDish = cartContextValue.cart.cartItems.find(
@@ -33,6 +43,7 @@ const Dish = (props) => {
 
   console.log("cartDish");
   console.log(cartDish);
+  console.log("Dish Image", image);
 
   const count = cartDish?.quantity ?? 0;
 
@@ -66,23 +77,26 @@ const Dish = (props) => {
 
   return (
     <>
-      <Link className="image-container" to={`/menu/${slug}`}>
-        <img src={image} alt={name} className="card-image" />
-      </Link>
-      <div className="text-container">
-        <h3>
-          {`${name} (${nameAm})`}
-          {spicy === true && <FaPepperHot />}
-        </h3>
-        <strong>{category}</strong>
+      <div className="image-and-text-wrapper">
+        <Link className="image-container" to={`/menu/${slug}`}>
+          <img src={image} alt={name} className="card-image" />
+        </Link>
+        <div className="text-container">
+          <h3>{`${name}`}</h3>
+          <h4>{nameAm}</h4>
+          <p className="description">{description}</p>
+        </div>
+      </div>
 
-        <strong>
-          {price} {currency}
-        </strong>
+      <div className="price-and-button-group">
+        <div className="card-price">
+          {currency}
+          <p>{price}</p>
+        </div>
         <div className="button-group">
           {cartDish === undefined ? (
             <button className="add-to-cart" onClick={handleAddingToCart}>
-              Add to Cart
+              {"\u002B Add"}
             </button>
           ) : (
             <div className="count-container">
@@ -110,7 +124,6 @@ Dish.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   nameAm: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   slug: PropTypes.string.isRequired,
   spicy: PropTypes.bool,

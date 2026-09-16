@@ -4,10 +4,12 @@
   --heading-color: hsl(25, 97%, 40%);
   --category-bar-color: hsl(25, 97%, 67%);
   --food-card-color: hsl(32, 68%, 67%);
+  --food-card-color: #fceae4;
   --10px: 0.625rem;
   --5px: 0.3125rem;
   --primary-font: Arial, Helvetica, sans-serif;
   --text-container-color: hsl(24, 75%, 52%);
+  --text-container-color: white;
 }
 
 html {

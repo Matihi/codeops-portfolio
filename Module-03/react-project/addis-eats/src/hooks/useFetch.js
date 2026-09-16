@@ -46,7 +46,11 @@ function useFetch(url, category) {
   }, [category]);
 
   const filteredDishes = dishes.filter((dish) =>
-    category === "All" ? true : dish.category === category,
+    category === "All" ||
+    category === "All Dishes" ||
+    category === "All Specials"
+      ? true
+      : dish.category === category,
   );
 
   return { filteredDishes, loading, error };

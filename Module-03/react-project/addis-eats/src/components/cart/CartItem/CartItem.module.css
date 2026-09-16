@@ -1,4 +1,4 @@
-.cart-item {
+/* .cart-item {
   display: grid;
   grid-template-columns: 1fr 1fr 1.5fr;
   background-color: rgb(246, 158, 158);
@@ -32,4 +32,106 @@
 
 .decCountInc {
   display: flex;
+} */
+
+.cartItem {
+  background-color: white;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding: 1rem;
+  height: 9rem;
+  gap: 0.2rem;
+  border-radius: 0.5rem;
+}
+
+.imageAndTextWrapper {
+  display: flex;
+  height: 100%;
+  gap: 0.3rem;
+}
+
+.imageWrapper {
+  height: 7rem;
+  width: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.cartImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.textwrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.textwrapper p {
+  font-size: 0.8125rem;
+}
+
+.nameWrapper {
+  display: flex;
+  font-family: "Playfair Display", serif;
+}
+
+.nameWrapper h3 {
+  font-size: 1.3rem;
+}
+
+.description {
+  font-size: 0.8125rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.priceAndButtonWrapper {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0.2rem;
+}
+
+.priceAndButtonWrapper p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.priceAndButtonWrapper button {
+  border: none;
+}
+
+.decCountInc {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #faddd3;
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.3rem;
+}
+
+.decCountInc button {
+  background-color: white;
+  border-radius: 0.3rem;
+  padding-block: 0.3rem;
+  padding-inline: 0.6rem;
+}
+
+.decCountInc p {
+  padding-inline: 0.5rem;
+}
+
+.remove {
+  background-color: #faddd3;
+  border-radius: 0.3rem;
 }

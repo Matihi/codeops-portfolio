@@ -13,6 +13,15 @@ function Menu() {
   const { filteredDishes: dishes, loading, error } = useFetch(url, category);
   const [query, setQuery] = useState("");
 
+  const categories = [
+    { id: 0, category: "All Dishes" },
+    { id: 1, category: "Traditional Stews & Wat" },
+    { id: 2, category: "Tibs & Grills" },
+    { id: 3, category: "Raw & Cured Delicacies / Kitfo" },
+    { id: 4, category: "Fasting & Vegan / Tsom" },
+    { id: 5, category: "Beverages & Tej" },
+  ];
+
   if (loading) return <p>Loading the menu...</p>;
   if (error) return <p>{error}</p>;
 
@@ -28,12 +37,22 @@ function Menu() {
 
   return (
     <div className={styles.menu}>
+      <div className={styles.heading}>
+        <h1>Our Complete Culinary Heritage</h1>
+        <p>
+          Every dish is prepared daily from scratch using sun-dried spices,
+          stone-ground legume flours, and clarified herbal butter sourced
+          directly from highland farm cooperatives.
+        </p>
+      </div>
+
+      <SearchBox query={query} setQuery={setQuery} />
       <CategoryBar
         key={category}
         selected={category}
         onSelect={setSearchParams}
+        categories={categories}
       />
-      <SearchBox query={query} setQuery={setQuery} />
       <DishList
         dishes={shown}
         headingText={headingText}

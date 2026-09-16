@@ -21,7 +21,7 @@ const SearchBox = ({ query, setQuery }) => {
         value={query}
         id="search"
         className="search"
-        placeholder="Search dishes"
+        placeholder="Search dishes by name (e.g. Kitfo, Shiro, Tibs, Doro Wat)..."
         onChange={handleSearch}
       />
     </search>

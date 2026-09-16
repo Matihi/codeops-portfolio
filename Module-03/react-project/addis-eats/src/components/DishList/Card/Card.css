@@ -1,8 +1,15 @@
 .card {
   background-color: var(--food-card-color);
   display: flex;
-  height: 21rem;
+  height: 24.34rem;
   flex-direction: column;
-  padding: var(--10px);
+  justify-content: flex-start;
+  /* padding: var(--10px); */
   border-radius: var(--10px);
+}
+
+@media (max-width: 31.25rem) {
+  .card {
+    height: 12rem;
+  }
 }

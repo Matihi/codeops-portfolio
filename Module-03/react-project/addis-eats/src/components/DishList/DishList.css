@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .empty-message {
@@ -19,8 +20,28 @@
 
 .dish-list-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-  padding: 1rem;
-  gap: var(--10px);
+  grid-template-columns: repeat(4, minmax(12rem, 1fr));
+  /* padding: 1rem; */
+  gap: 1rem;
   row-gap: 2rem;
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 64rem) {
+  .dish-list-grid {
+    grid-template-columns: repeat(3, minmax(12rem, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .dish-list-grid {
+    grid-template-columns: repeat(2, minmax(12rem, 1fr));
+  }
+}
+
+@media (max-width: 31.25rem) {
+  .dish-list-grid {
+    grid-template-columns: 1fr;
+    margin-inline: auto;
+  }
 }

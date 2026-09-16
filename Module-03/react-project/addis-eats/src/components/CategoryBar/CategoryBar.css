@@ -5,7 +5,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: 2rem;
-  background-color: var(--category-bar-color);
+  /* background-color: var(--category-bar-color); */
   padding-block: 1rem;
   padding-inline: 1rem;
   overflow-x: auto;
@@ -17,16 +17,18 @@
   flex: 0 0 auto;
   border: none;
   padding: 0.5rem 1.5rem;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   font-size: 1rem;
   cursor: pointer;
 }
 
 .category-button {
-  background-color: rgb(165, 90, 9);
+  background-color: #fceae4;
+  color: #58413d;
 }
 
 .selected-category-button,
 .category-bar button:hover {
-  background-color: hsl(50, 84%, 25%);
+  background-color: #7a1401;
+  color: white;
 }

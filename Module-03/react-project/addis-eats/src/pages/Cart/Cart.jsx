@@ -25,25 +25,42 @@ const Cart = () => {
       {cartCount === 0 ? (
         <p>Your cart is empty</p>
       ) : (
-        <>
-          <button
-            className={styles["clear-cart"]}
-            onClick={() => cartContextValue.dispatch({ type: "cart_cleared" })}
-          >
-            Clear Cart
-          </button>
-          <>{cartElements}</>
-          <p>
-            Distinct Dishes: {String(cartContextValue.cart.cartItems.length)}
-          </p>
-          <p>Total Dishes: {String(cartContextValue.totalItems)}</p>
-          <p>
-            Total Price: {cartContextValue.totalPrice?.toLocaleString()} ETB
-          </p>
-          <Link className={styles.checkoutLink} to="/checkout">
-            Checkout
-          </Link>
-        </>
+        <div className={styles.cartItemsAndLedger}>
+          <div className={styles.clearAndCartItems}>
+            <button
+              className={styles["clear-cart"]}
+              onClick={() =>
+                cartContextValue.dispatch({ type: "cart_cleared" })
+              }
+            >
+              Clear Cart
+            </button>
+            <>{cartElements}</>
+          </div>
+
+          <section className={styles.cartLedger}>
+            <h3>Basket Ledger</h3>
+            <ul>
+              <li>
+                <p>Distinct Dishes</p>
+                <p>{String(cartContextValue.cart.cartItems.length)}</p>
+              </li>
+              <li>
+                <p>Total Dishes</p>
+                <p>{String(cartContextValue.totalItems)}</p>
+              </li>
+              <li>
+                <p>Total Price</p>
+
+                <p>{cartContextValue.totalPrice?.toLocaleString()} ETB</p>
+              </li>
+            </ul>
+
+            <Link className={styles.checkoutLink} to="/checkout">
+              Checkout
+            </Link>
+          </section>
+        </div>
       )}
     </aside>
   );

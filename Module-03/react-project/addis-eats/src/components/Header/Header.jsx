@@ -14,9 +14,8 @@ function Header() {
 
   return (
     <header className="header">
-      <Link to="/cart" className="badge-link">
-        <CartBadge />
-      </Link>
+      <NavigationBar />
+
       <div className="reg-and-auth-wrapper">
         {!user ? (
           <>
@@ -32,14 +31,14 @@ function Header() {
             </Link>
           </>
         ) : (
-          <button onClick={handleLogout} className="logout-button">
-            Logout
-          </button>
+          <>
+            <p className="greetings">{`Selam, ${user.name}`}</p>
+            <button onClick={handleLogout} className="logout-button">
+              Logout
+            </button>
+          </>
         )}
       </div>
-
-      <h1 className="heading">Addis Eats</h1>
-      <NavigationBar />
     </header>
   );
 }

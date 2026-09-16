@@ -1,6 +1,5 @@
 .cart-comp {
   background-color: rgb(249, 213, 207);
-  height: fit-content;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -12,6 +11,15 @@
   font-size: 2rem;
 }
 
+.cartItemsAndLedger {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+}
+
+.clearAndCartItems {
+}
+
 .clear-cart {
   align-self: flex-start;
   padding: 0.5rem 1rem;
@@ -21,10 +29,33 @@
   color: inherit;
 }
 
+.cartLedger {
+  background-color: red;
+  padding: 1rem;
+}
+
+.cartLedger h3 {
+  font-size: 1.375rem;
+  font-family: "Playfair Display", serif;
+}
+
+.cartLedger ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cartLedger ul li {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
 .checkoutLink {
+  display: block;
   text-decoration: none;
   background-color: rgb(96, 74, 203);
   width: fit-content;
+  margin-top: 3rem;
   padding: 0.7rem 2rem;
   color: white;
   border-radius: 0.5rem;
