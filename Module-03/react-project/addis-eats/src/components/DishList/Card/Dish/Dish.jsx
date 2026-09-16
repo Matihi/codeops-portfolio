@@ -24,7 +24,6 @@ const Dish = (props) => {
   } = props;
 
   const cartContextValue = useContext(CartContext);
-  console.log(cartContextValue);
 
   const dishForCart = {
     id: id,
@@ -35,15 +34,10 @@ const Dish = (props) => {
     image: image,
     quantity: 0,
   };
-  console.log(dishForCart);
 
   const cartDish = cartContextValue.cart.cartItems.find(
     (dish) => dish.id === id,
   );
-
-  console.log("cartDish");
-  console.log(cartDish);
-  console.log("Dish Image", image);
 
   const count = cartDish?.quantity ?? 0;
 
