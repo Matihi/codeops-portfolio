@@ -45,7 +45,6 @@ function Menu() {
 
       <SearchBox query={query} setQuery={setQuery} />
       <CategoryBar
-        key={category}
         selected={category}
         onSelect={setSearchParams}
         categories={categories}

@@ -36,7 +36,6 @@ const Home = () => {
         </p>
       </div>
       <CategoryBar
-        key={category}
         selected={category}
         onSelect={setSearchParams}
         categories={categories}
