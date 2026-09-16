@@ -20,10 +20,7 @@ const Home = () => {
     { id: 5, category: "Beverages & Tej" },
   ];
 
-  if (loading) return <p>Loading special dishes...</p>;
-  if (error) return <p>{error}</p>;
-
-  const headingText = "Special Dishes";
+  const loadingMessage = "Loading special dishes...";
   const emptyMessage = "Sorry, special dishes are not available";
 
   return (
@@ -46,7 +43,9 @@ const Home = () => {
       />
       <DishList
         dishes={dishes}
-        headingText={headingText}
+        loading={loading}
+        loadingMessage={loadingMessage}
+        error={error}
         emptyMessage={emptyMessage}
       />
     </div>

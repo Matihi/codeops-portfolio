@@ -22,9 +22,6 @@ function Menu() {
     { id: 5, category: "Beverages & Tej" },
   ];
 
-  if (loading) return <p>Loading the menu...</p>;
-  if (error) return <p>{error}</p>;
-
   const searchQuery = query.trim().toLowerCase();
   const shown = dishes.filter(
     (dish) =>
@@ -32,7 +29,7 @@ function Menu() {
       dish?.nameAm?.toLowerCase().includes(searchQuery),
   );
 
-  const headingText = "Our Menu";
+  const loadingMessage = "Loading the menu...";
   const emptyMessage = "Sorry, dishes in this category are not available";
 
   return (
@@ -55,7 +52,9 @@ function Menu() {
       />
       <DishList
         dishes={shown}
-        headingText={headingText}
+        loading={loading}
+        loadingMessage={loadingMessage}
+        error={error}
         emptyMessage={emptyMessage}
       />
     </div>

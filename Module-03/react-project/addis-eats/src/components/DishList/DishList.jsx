@@ -2,7 +2,9 @@ import Dish from "./Card/Dish/Dish";
 import Card from "./Card/Card";
 import "./DishList.css";
 
-const DishList = ({ dishes, headingText, emptyMessage }) => {
+const DishList = ({ dishes, loading, loadingMessage, error, emptyMessage }) => {
+  if (loading) return <p>{loadingMessage}</p>;
+  if (error) return <p>{error}</p>;
   if (dishes.length === 0)
     return <p className="empty-message">{emptyMessage}</p>;
 
