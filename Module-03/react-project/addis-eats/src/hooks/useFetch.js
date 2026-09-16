@@ -32,12 +32,12 @@ function useFetch(url, category) {
         }
 
         setDishes(dataArray);
+        setLoading(false);
       } catch (error) {
         if (error.name === "AbortError") return;
         console.log(error.message);
         setError(error.message);
         setDishes([]);
-      } finally {
         setLoading(false);
       }
     };
