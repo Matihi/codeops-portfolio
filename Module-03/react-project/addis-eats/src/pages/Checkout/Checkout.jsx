@@ -15,7 +15,6 @@ const Checkout = () => {
   const { user } = useAuth();
   const [formData, setFormData] = useState(initialFormData);
   const [errorMessage, setErrorMessage] = useState("");
-  const [isReadOnly, setIsReadOnly] = useState(false);
   const [isPayed, setIsPayed] = useState(false);
 
   const deliveryFee = formData.orderMode === "delivery" ? 70.5 : 0;
@@ -32,8 +31,6 @@ const Checkout = () => {
       name: user?.name ?? "",
       phone: user?.phone ?? "",
     }));
-
-    setIsReadOnly(true);
   }, [user]);
 
   console.log("formData");
@@ -162,7 +159,6 @@ const Checkout = () => {
                 value={formData.name}
                 placeholder="Your Name"
                 onChange={handleChange}
-                readOnly={isReadOnly}
               />
             </div>
 
@@ -175,7 +171,6 @@ const Checkout = () => {
                 value={formData.phone}
                 placeholder="0911223344"
                 onChange={handleChange}
-                readOnly={isReadOnly}
               />
             </div>
 
