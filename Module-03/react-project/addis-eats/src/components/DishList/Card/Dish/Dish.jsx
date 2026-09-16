@@ -121,7 +121,7 @@ const Dish = (props) => {
 };
 
 Dish.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   nameAm: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
