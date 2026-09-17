@@ -31,7 +31,7 @@ const NavigationBar = () => {
       <NavLink
         to="/cart"
         className={({ isActive }) =>
-          `${styles.navLink} ${isActive ? styles.on : ""}`.trim()
+          `${styles.navLink} ${styles.cartLink} ${isActive ? styles.on : ""}`.trim()
         }
       >
         <div className={styles.cartContainer}>
