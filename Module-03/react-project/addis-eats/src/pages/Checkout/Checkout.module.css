@@ -9,6 +9,7 @@
   justify-content: center;
   font-size: 2rem;
   padding-block: 1rem;
+  color: #7a1401;
 }
 
 .contentWrapper {
@@ -41,6 +42,7 @@
   background-color: #fceae4;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
+  accent-color: #591c06;
 }
 
 .nameWrapper,
@@ -48,6 +50,7 @@
 .selectWrapper {
   display: flex;
   flex-direction: column;
+  width: 80%;
 }
 
 .checkoutForm input,
@@ -55,6 +58,7 @@
   padding: 0.5rem;
   border-radius: 0.5rem;
   border-color: black;
+  background-color: #fceae4;
 }
 
 .checkoutForm input {
