@@ -19,16 +19,24 @@ function Header() {
       <div className="reg-and-auth-wrapper">
         {!user ? (
           <>
-            <Link
-              to="/register"
-              state={{ from: location }}
-              className="register-link"
-            >
-              Register
-            </Link>
-            <Link to="/login" state={{ from: location }} className="login-link">
-              Login
-            </Link>
+            {location.pathname !== "/register" && (
+              <Link
+                to="/register"
+                state={{ from: location }}
+                className="register-link"
+              >
+                Register
+              </Link>
+            )}
+            {location.pathname !== "/login" && (
+              <Link
+                to="/login"
+                state={{ from: location }}
+                className="login-link"
+              >
+                Login
+              </Link>
+            )}
           </>
         ) : (
           <>
