@@ -90,7 +90,9 @@ const Login = () => {
           )}
 
           <div className={styles.phoneWrapper}>
-            <label htmlFor={styles.phone}>TeleBirr phone number:</label>
+            <label
+              htmlFor={styles.phone}
+            >{`TeleBirr phone number(ስልክ ቁጥር)`}</label>
             <input
               type="tel"
               name="phone"
@@ -103,7 +105,7 @@ const Login = () => {
           </div>
 
           <div className={styles.passwordWrapper}>
-            <label htmlFor={styles.password}>Password:</label>
+            <label htmlFor={styles.password}>{`Password(የይለፍ ቃል)`}</label>
             <input
               type="password"
               name="password"
@@ -117,12 +119,13 @@ const Login = () => {
 
           <button type="submit">Log in</button>
         </form>
-        <div>
+        <div className={styles.ctawrapper}>
           <p>Don't have an account?</p>
           <p>
             <Link
               to="/register"
               state={{ from: originalLocation, source: "login" }}
+              className={styles.ctaLink}
             >
               Click here
             </Link>
