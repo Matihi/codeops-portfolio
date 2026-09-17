@@ -128,55 +128,61 @@ const Register = () => {
   };
 
   return (
-    <section className={styles.formWrapper}>
-      <h1>Register for Addis Eats</h1>
-      <form
-        className={styles.form}
-        method="post"
-        noValidate
-        onSubmit={handleSubmit}
-      >
-        <div className={styles.nameWrapper}>
-          <label htmlFor={styles.name}>Name:</label>
-          <input
-            type="text"
-            name="name"
-            id={styles.name}
-            value={formData.name}
-            placeholder="Your Name"
-            onBlur={handleBlur}
-            onChange={handleChange}
-          />
-        </div>
+    <section className={styles.registerContainer}>
+      <div className={styles.formWrapper}>
+        <h1>Create Your Mesob House Account</h1>
+        <form
+          className={styles.form}
+          method="post"
+          noValidate
+          onSubmit={handleSubmit}
+        >
+          <div className={styles.nameWrapper}>
+            <label htmlFor={styles.name}>{`Name(ስም)`}</label>
+            <input
+              type="text"
+              name="name"
+              id={styles.name}
+              value={formData.name}
+              placeholder="Your Name"
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div className={styles.phoneWrapper}>
-          <label htmlFor={styles.phone}>TeleBirr Phone Number:</label>
-          <input
-            type="tel"
-            name="phone"
-            id={styles.phone}
-            value={formData.phone}
-            placeholder="0911223344"
-            onBlur={handleBlur}
-            onChange={handleChange}
-          />
-        </div>
+          <div className={styles.phoneWrapper}>
+            <label
+              htmlFor={styles.phone}
+            >{`TeleBirr Phone Number(ስልክ ቁጥር)`}</label>
+            <input
+              type="tel"
+              name="phone"
+              id={styles.phone}
+              value={formData.phone}
+              placeholder="0911223344"
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div className={styles.passwordWrapper}>
-          <label htmlFor={styles.password}>Password:</label>
-          <input
-            type="password"
-            name="password"
-            id={styles.password}
-            value={formData.password}
-            onBlur={handleBlur}
-            onChange={handleChange}
-          />
-        </div>
-        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+          <div className={styles.passwordWrapper}>
+            <label htmlFor={styles.password}>{`Password(የይለፍ ቃል)`}</label>
+            <input
+              type="password"
+              name="password"
+              id={styles.password}
+              value={formData.password}
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />
+          </div>
+          {errorMessage && (
+            <p className={styles.errorMessage}>{errorMessage}</p>
+          )}
 
-        <button type="submit">Submit</button>
-      </form>
+          <button type="submit">Create Account</button>
+        </form>
+      </div>
     </section>
   );
 };
