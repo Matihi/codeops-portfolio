@@ -1,15 +1,137 @@
-.wrapper {
+.notFoundWrapper {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  padding: 1rem;
+  background-color: #fff8f6;
+  gap: 1rem;
+}
+
+.notFoundWrapper p {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.textAndImageWrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 }
 
-.notFoundStatus {
-  font-size: 8rem;
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
 }
 
-.message {
+.textWrapper h1,
+.textWrapper p {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textWrapper .notFoundStatus {
+  font-family:
+    "Baskerville", "Baskerville Old Face", "Hoefler Text", Garamond, serif;
+  font-size: 9rem;
+  color: #fdbe50;
+}
+
+.notFoundText,
+.notFoundTextAm {
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 2rem;
+  color: #7a1401;
+}
+
+.textWrapper .brandVoice {
+  display: block;
+  padding: 1rem;
+  background-color: #f6eae7;
+  border-radius: 0.5rem;
+}
+
+.brandVoice {
+  width: 80%;
+}
+
+.brandVoice span {
+  color: #7a1401;
+  font-weight: 500;
+}
+
+.linkWrapper {
+  padding-block: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.navLink {
+  text-decoration: none;
+  display: flex;
+  padding: 0.4rem;
+  background-color: #f6eae7;
+  border-radius: 0.5rem;
+  color: black;
+  gap: 0.2rem;
+  font-size: 1rem;
+}
+
+.navLink:active {
+  background-color: #7a1401;
+  color: white;
+}
+
+.dishesWrapper p {
+  font-family: "Playfair Display", serif;
+}
+
+@media (hover: hover) {
+  .navLink:hover {
+    background-color: #7a1401;
+    color: white;
+  }
+}
+
+@media (max-width: 61.625rem) {
+  .textWrapper .notFoundStatus {
+    font-size: 7.5rem;
+  }
+
+  .notFoundText,
+  .notFoundTextAm {
+    font-size: 1.5rem;
+  }
+
+  .message,
+  .brandVoice,
+  .brandVoice span {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 53.625rem) {
+  .textWrapper .notFoundStatus {
+    font-size: 7rem;
+  }
+
+  .notFoundText,
+  .notFoundTextAm {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 31.25rem) {
+  .brandVoice {
+    width: 100%;
+  }
+
+  .linkWrapper {
+    flex-direction: column;
+  }
 }
