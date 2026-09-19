@@ -7,8 +7,21 @@ export default function cartReducer(cart, action) {
           ...cart,
           cartItems: [...cart.cartItems, { ...action.dish, quantity: 1 }],
         };
+      } else {
+        if (Object.hasOwn(action.dish, "spiceLevelCart")) {
+          const updatedSpiceLevelDishes = cart.cartItems.map((dish) =>
+            dish.id === action.dish.id &&
+            action.dish.category !== "Beverages & Tej"
+              ? {
+                  ...dish,
+                  spiceLevelCart: action.dish.spiceLevelCart,
+                }
+              : dish,
+          );
+          return { ...cart, cartItems: updatedSpiceLevelDishes };
+        }
+        return cart;
       }
-      break;
     }
 
     case "quantity_incremented": {

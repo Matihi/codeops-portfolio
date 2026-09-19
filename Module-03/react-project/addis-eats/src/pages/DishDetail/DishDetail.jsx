@@ -1,12 +1,17 @@
 import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/cart/CartProvider";
 import { FaTrashAlt } from "react-icons/fa";
 
 import styles from "./DishDetail.module.css";
 
+const initialFormData = {
+  spiceLevelCart: "traditional",
+};
+
 const DishDetail = () => {
+  const [formData, setFormData] = useState(initialFormData);
   const { slug } = useParams();
   const category = "All";
   const url = "https://addis-eats-backend.onrender.com/menu/";
@@ -22,6 +27,19 @@ const DishDetail = () => {
   const shownDish = dishes.find((dish) => dish.slug === slug);
   if (!shownDish) return <p>Dish not found</p>;
 
+  const ingredientElements = shownDish.ingredients.map((ingredient) => (
+    <li key={ingredient}>{ingredient}</li>
+  ));
+
+  const handleChange = (e) => {
+    setFormData((previous) => {
+      const { name, value } = e.target;
+      return { ...previous, [name]: value };
+    });
+  };
+
+  console.log(formData);
+
   const dishForCart = {
     id: shownDish.id,
     name: shownDish.nameEn,
@@ -30,9 +48,9 @@ const DishDetail = () => {
     description: shownDish.description,
     image: "/images/doro-wot.jpg",
     quantity: 0,
+    spiceLevelCart: formData.spiceLevelCart,
   };
   console.log(dishForCart);
-  console.log("DishDetail image:", shownDish.image);
 
   const cartDish = cartContextValue.cart.cartItems.find(
     (dish) => dish.id === shownDish.id,
@@ -51,10 +69,17 @@ const DishDetail = () => {
   };
 
   const handleIncrement = () => {
-    cartContextValue.dispatch({
-      type: "quantity_incremented",
-      id: shownDish.id,
-    });
+    if (!cartDish) {
+      cartContextValue.dispatch({
+        type: "dish_added",
+        dish: dishForCart,
+      });
+    } else {
+      cartContextValue.dispatch({
+        type: "quantity_incremented",
+        id: shownDish.id,
+      });
+    }
   };
 
   const handleDecrement = () => {
@@ -73,61 +98,107 @@ const DishDetail = () => {
 
   return (
     <section className={styles.dishDetail}>
-      <h1 className={styles.dishName}>{shownDish.name}</h1>
-      <div className={styles.restWrapper}>
-        <div className={styles.imageAndButton}>
-          <div className={styles.imageWrapper}>
-            <img
-              src={"/images/doro-wot.jpg"}
-              alt={shownDish.nameEn}
-              className={styles.image}
-              width={300}
-              height={300}
-            />
+      <div className={styles.imageAndIngredients}>
+        <div className={styles.imageWrapper}>
+          <img
+            src="/images/doro-wot.jpg"
+            alt={shownDish.nameEn}
+            width={300}
+            height={300}
+            className={styles.image}
+          />
+        </div>
+        <div className={styles.ingredientsWrapper}>
+          <p>Ingredients</p>
+          <ul className={styles.ingredients}>{ingredientElements}</ul>
+        </div>
+      </div>
+      <div className={styles.contentWrapper}>
+        <div className={styles.namePriceAndDescription}>
+          <div className={styles.nameAndPrice}>
+            <div className={styles.name}>
+              <h1>{shownDish.nameEn}</h1>
+              <p>{shownDish.nameAm}</p>
+            </div>
+            <p className={styles.price}>
+              {`${currency}  `}
+              <span>{shownDish.priceETB}</span>
+            </p>
           </div>
-          <div className={styles.buttonWrapper}>
-            {cartDish === undefined ? (
-              <button className={styles.addToCart} onClick={handleAddingToCart}>
-                Add to Cart
-              </button>
-            ) : (
-              <div className={styles.countContainer}>
-                <button className={styles.remove} onClick={handleRemove}>
-                  <FaTrashAlt />
-                </button>
-                <div className={styles.decCountInc}>
-                  <button
-                    className={styles.decrement}
-                    onClick={handleDecrement}
-                  >
-                    {"\u2212"}
-                  </button>
-                  {count > 0 ? (
-                    <p className={styles.count}>{count}</p>
-                  ) : (
-                    <p className={styles.count}></p>
-                  )}
-                  <button
-                    className={styles.increment}
-                    onClick={handleIncrement}
-                  >
-                    {"\u002B"}
-                  </button>
-                </div>
-              </div>
-            )}
+
+          <div className={styles.descriptionAndServing}>
+            <p className={styles.description}>{shownDish.description}</p>
+            <p className={styles.servings}>{shownDish.servings}</p>
           </div>
         </div>
+        {shownDish.category !== "Beverages & Tej" && (
+          <form className={styles.choicesForm}>
+            <p>Heat and Spice Level</p>
+            <div className={styles.spiceChoicesContainer}>
+              <div className={styles.mildContainer}>
+                <input
+                  type="radio"
+                  name="spiceLevelCart"
+                  id="mild"
+                  value="mild"
+                  checked={formData.spiceLevelCart === "mild"}
+                  className={styles.mild}
+                  onChange={handleChange}
+                />
+                <label htmlFor="mild">{`Mild (1/3)`}</label>
+              </div>
+              <div className={styles.traditionalContainer}>
+                <input
+                  type="radio"
+                  name="spiceLevelCart"
+                  id="traditional"
+                  value="traditional"
+                  className={styles.traditional}
+                  checked={formData.spiceLevelCart === "traditional"}
+                  onChange={handleChange}
+                />
+                <label htmlFor="traditional">{`Traditional (2/3)`}</label>
+              </div>
+              <div className={styles.fieryAwazeContainer}>
+                <input
+                  type="radio"
+                  name="spiceLevelCart"
+                  id="fieryAwaze"
+                  value="fiery-awaze"
+                  className={styles.fieryAwaze}
+                  checked={formData.spiceLevelCart === "fiery-awaze"}
+                  onChange={handleChange}
+                />
+                <label htmlFor="fieryAwaze">{`Fiery Awaze (3/3)`}</label>
+              </div>
+            </div>
+          </form>
+        )}
 
-        <div className={styles.otherWrapper}>
-          <div className={styles.priceCategoryAndSpicy}>
-            <p>{shownDish.category}</p>
-            <p
-              className={styles.price}
-            >{`${currency} ${shownDish.priceETB}`}</p>
+        <div className={styles.buttonWrapper}>
+          <div className={styles.countContainer}>
+            <button className={styles.remove} onClick={handleRemove}>
+              <FaTrashAlt />
+            </button>
+            <div className={styles.decCountInc}>
+              <button className={styles.decrement} onClick={handleDecrement}>
+                {"\u2212"}
+              </button>
+
+              <p className={styles.count}>{count}</p>
+
+              <button className={styles.increment} onClick={handleIncrement}>
+                {"\u002B"}
+              </button>
+            </div>
           </div>
-
-          <p className={styles.description}>{shownDish.description}</p>
+          <button className={styles.addToCart} onClick={handleAddingToCart}>
+            {shownDish.category !== "Beverages & Tej"
+              ? !cartDish
+                ? `Add to Cart`
+                : `Update Spice Level`
+              : `Add to Cart`}
+          </button>
         </div>
       </div>
     </section>
