@@ -100,7 +100,10 @@ const Checkout = () => {
   const checkoutCartElements = cartContextValue.cart.cartItems.map((item) => (
     <div key={item.id} className={styles.checkoutCartItem}>
       <p>{`${String(item.quantity)}x`}</p>
-      <p>{item.name}</p>
+      <p>
+        {item.name}
+        {item.spiceLevelCart && <span>{`(${item.spiceLevelCart})`}</span>}
+      </p>
       <p>{`ETB ${item.price.toLocaleString([], {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
