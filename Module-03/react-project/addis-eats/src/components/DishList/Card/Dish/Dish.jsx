@@ -72,9 +72,15 @@ const Dish = (props) => {
   return (
     <>
       <div className="image-and-text-wrapper">
-        <Link className="image-container" to={`/menu/${slug}`}>
-          <img src={image} alt={name} className="card-image" />
-        </Link>
+        <div className="image-container">
+          <Link className="image-container-link" to={`/menu/${slug}`}>
+            <img src={image} alt={name} className="card-image" />
+          </Link>
+          <p className="spiceLevel">{spiceLevel}</p>
+          {isSpecial && <p className="special">Chef's Special</p>}
+          {isFasting && <p className="vegan">Vegan/ጾም</p>}
+        </div>
+
         <div className="text-container">
           <h3>{`${name}`}</h3>
           <h4>{nameAm}</h4>

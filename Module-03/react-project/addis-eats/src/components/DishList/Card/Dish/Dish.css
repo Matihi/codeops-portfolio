@@ -16,6 +16,17 @@
   overflow: hidden;
   border-top-left-radius: var(--10px);
   border-top-right-radius: var(--10px);
+  position: relative;
+}
+
+.image-container-link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: var(--10px);
+  border-top-right-radius: var(--10px);
 }
 
 .card-image {
@@ -26,15 +37,43 @@
   border-top-right-radius: var(--10px);
 }
 
+.spiceLevel,
+.special,
+.vegan {
+  position: absolute;
+  color: white;
+  font-size: 0.6875rem;
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.3rem;
+}
+
+.special {
+  top: 2%;
+  right: 2%;
+
+  background-color: #7e5700;
+}
+
+.vegan {
+  top: 2%;
+  left: 2%;
+  background-color: #184530;
+}
+
+.spiceLevel {
+  top: 85%;
+  right: 2%;
+  background-color: #9b2c16;
+}
+
 .text-container {
   flex-shrink: 0;
   height: 45%;
   background-color: var(--text-container-color);
   display: flex;
   flex-direction: column;
-  /* margin-top: var(--5px); */
+
   padding: var(--10px);
-  /* border-radius: var(--10px); */
 }
 
 .text-container h3 {
@@ -85,12 +124,11 @@
 
 .button-group {
   width: 60%;
-  /* border: 1px solid black; */
+
   display: flex;
 }
 
 .add-to-cart {
-  /* width: fit-content; */
   height: 2rem;
   border: none;
   border-radius: 0.6rem;
@@ -115,7 +153,6 @@
   grid-template-columns: 1fr 1fr 1fr;
   font-size: inherit;
   padding: 0.1rem;
-  /* border: 1px solid black; */
   background-color: rgb(246, 204, 204);
   width: fit-content;
   border-radius: 0.3rem;
@@ -173,6 +210,15 @@
     font-size: 0.7rem;
   }
 
+  .special,
+  .vegan {
+    font-size: 0.52rem;
+  }
+
+  .spiceLevel {
+    font-size: 0.48rem;
+  }
+
   .text-container {
     height: 100%;
 
@@ -199,5 +245,42 @@
     justify-content: space-around;
     padding-inline: 0.4rem;
     padding-block: 0.2rem;
+  }
+}
+
+@media (max-width: 25rem) {
+  .card-image {
+    font-size: 0.6rem;
+  }
+
+  .spiceLevel,
+  .special,
+  .vegan {
+    padding: 0.17rem 0.27rem;
+    border-radius: 0.27rem;
+  }
+
+  .special,
+  .vegan {
+    font-size: 0.5rem;
+  }
+
+  .spiceLevel {
+    font-size: 0.39rem;
+  }
+
+  .text-container {
+    height: 100%;
+
+    width: 63%;
+    border-radius: var(--10px);
+  }
+
+  .text-container h3 {
+    font-size: 0.7rem;
+  }
+
+  .description {
+    font-size: 0.7rem;
   }
 }
