@@ -17,7 +17,7 @@ const DishList = ({ dishes, loading, loadingMessage, error, emptyMessage }) => {
         name={dish.nameEn}
         nameAm={dish.nameAm}
         price={dish.priceETB}
-        image="/images/doro-wot.jpg"
+        image={`/images/${dish.slug}.png`}
         currency={currency}
         slug={dish.slug}
         spiceLevel={dish.spiceLevel

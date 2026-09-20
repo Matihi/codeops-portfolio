@@ -46,7 +46,7 @@ const DishDetail = () => {
     nameAm: shownDish.nameAm,
     price: shownDish.priceETB,
     description: shownDish.description,
-    image: "/images/doro-wot.jpg",
+    image: `/images/${shownDish.slug}.png`,
     quantity: 0,
     spiceLevelCart: formData.spiceLevelCart,
   };
@@ -101,7 +101,7 @@ const DishDetail = () => {
       <div className={styles.imageAndIngredients}>
         <div className={styles.imageWrapper}>
           <img
-            src="/images/doro-wot.jpg"
+            src={`/images/${shownDish.slug}.png`}
             alt={shownDish.nameEn}
             width={300}
             height={300}
