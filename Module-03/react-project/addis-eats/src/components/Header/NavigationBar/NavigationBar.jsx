@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { MdOutlineRestaurantMenu, MdOutlineShoppingBag } from "react-icons/md";
+import { MdOutlineRestaurantMenu, MdShoppingBag } from "react-icons/md";
 import { CartContext } from "../../../context/cart/CartProvider";
 import { useContext } from "react";
 import styles from "./NavigationBar.module.css";
@@ -35,7 +35,7 @@ const NavigationBar = () => {
         }
       >
         <div className={styles.cartContainer}>
-          <MdOutlineShoppingBag className={styles.shoppingBag} />
+          <MdShoppingBag className={styles.shoppingBag} />
           <>
             {totalItems > threshold ? (
               <span className={styles.badgeCount}>{String(threshold)}+</span>
