@@ -67,6 +67,11 @@
   text-overflow: ellipsis;
 }
 
+.spiceLevelCart {
+  padding-top: 0.2rem;
+  color: rgb(189, 56, 27);
+}
+
 .priceAndButtonWrapper {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;

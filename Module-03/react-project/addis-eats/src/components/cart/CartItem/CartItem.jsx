@@ -39,6 +39,9 @@ const CartItem = ({ dish, increment, decrement, remove }) => {
             <p>{`${dish.nameAm}`}</p>
           </div>
           <p className={styles.description}>{dish.description}</p>
+          {dish.spiceLevelCart && (
+            <p className={styles.spiceLevelCart}>{dish.spiceLevelCart}</p>
+          )}
         </div>
       </div>
 
