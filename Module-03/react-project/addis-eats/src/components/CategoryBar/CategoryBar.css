@@ -5,7 +5,6 @@
   justify-content: flex-start;
   align-items: center;
   gap: 2rem;
-  /* background-color: var(--category-bar-color); */
   padding-block: 1rem;
   padding-inline: 1rem;
   overflow-x: auto;
@@ -27,8 +26,14 @@
   color: #58413d;
 }
 
-.selected-category-button,
-.category-bar button:hover {
+.selected-category-button {
   background-color: #7a1401;
   color: white;
+}
+
+@media (hover: hover) {
+  .category-bar button:hover {
+    background-color: #7a1401;
+    color: white;
+  }
 }
