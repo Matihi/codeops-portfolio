@@ -6,7 +6,7 @@ import styles from "./NavigationBar.module.css";
 
 const NavigationBar = () => {
   const cartContextValue = useContext(CartContext);
-  const totalItems = cartContextValue.totalItems;
+  const totalItems = cartContextValue.cart.cartItems.length;
   const threshold = 60;
   return (
     <div className={styles.navigationBar}>
