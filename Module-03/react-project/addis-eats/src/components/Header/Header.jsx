@@ -1,4 +1,3 @@
-import CartBadge from "./CartBadge/CartBadge";
 import NavigationBar from "./NavigationBar/NavigationBar";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/authentication/AuthProvider";
