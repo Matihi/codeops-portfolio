@@ -1,12 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { MdOutlineRestaurantMenu, MdShoppingBag } from "react-icons/md";
-import { CartContext } from "../../../context/cart/CartProvider";
-import { useContext } from "react";
+import useCartStore from "../../../stores/cartStore";
 import styles from "./NavigationBar.module.css";
 
 const NavigationBar = () => {
-  const cartContextValue = useContext(CartContext);
-  const totalItems = cartContextValue.cart.cartItems.length;
+  const totalItems = useCartStore((s) => s.cartItems.length);
   const threshold = 60;
   return (
     <div className={styles.navigationBar}>

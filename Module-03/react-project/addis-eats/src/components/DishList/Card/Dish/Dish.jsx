@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
 import { FaPepperHot, FaTrashAlt } from "react-icons/fa";
-import { useContext } from "react";
-import { CartContext } from "../../../../context/cart/CartProvider";
 import { Link } from "react-router-dom";
+import useCartStore from "../../../../stores/cartStore";
 
 import "./Dish.css";
 
@@ -23,8 +22,6 @@ const Dish = (props) => {
     currency = "ETB",
   } = props;
 
-  const cartContextValue = useContext(CartContext);
-
   const dishForCart = {
     id: id,
     name: name,
@@ -35,39 +32,24 @@ const Dish = (props) => {
     quantity: 0,
   };
 
-  const cartDish = cartContextValue.cart.cartItems.find(
-    (dish) => dish.id === id,
+  const cartDish = useCartStore((s) =>
+    s.cartItems.find((dish) => dish.id === id),
   );
 
   const count = cartDish?.quantity ?? 0;
 
-  const handleAddingToCart = () => {
-    cartContextValue.dispatch({
-      type: "dish_added",
-      dish: dishForCart,
-    });
-  };
+  const addDIsh = useCartStore((s) => s.addDish);
+  const incrementQuantity = useCartStore((s) => s.incrementQuantity);
+  const decrementQuantity = useCartStore((s) => s.decrementQuantity);
+  const removeDish = useCartStore((s) => s.removeDish);
 
-  const handleIncrement = () => {
-    cartContextValue.dispatch({
-      type: "quantity_incremented",
-      id: id,
-    });
-  };
+  const handleAddingToCart = () => addDIsh(dishForCart);
 
-  const handleDecrement = () => {
-    cartContextValue.dispatch({
-      type: "quantity_decremented",
-      id: id,
-    });
-  };
+  const handleIncrement = () => incrementQuantity(id);
 
-  const handleRemove = () => {
-    cartContextValue.dispatch({
-      type: "dish_removed",
-      id: id,
-    });
-  };
+  const handleDecrement = () => decrementQuantity(id);
+
+  const handleRemove = () => removeDish(id);
 
   return (
     <>

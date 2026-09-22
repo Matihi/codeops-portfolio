@@ -1,23 +1,39 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/cart/CartProvider";
 import CartItem from "../../components/cart/CartItem/CartItem";
 import styles from "./Cart.module.css";
 import { Link } from "react-router-dom";
+import useCartStore from "../../stores/cartStore";
 
 const Cart = () => {
-  const cartContextValue = useContext(CartContext);
+  const incrementQuantity = useCartStore((s) => s.incrementQuantity);
+  const decrementQuantity = useCartStore((s) => s.decrementQuantity);
+  const removeDish = useCartStore((s) => s.removeDish);
+  const clearCart = useCartStore((s) => s.clearCart);
 
-  const cartElements = cartContextValue.cart.cartItems.map((dish) => (
+  const cartItems = useCartStore((s) => s.cartItems);
+  const totalItems = cartItems.reduce(
+    (accumulator, current) => accumulator + current.quantity,
+    0,
+  );
+
+  const cartElements = cartItems.map((dish) => (
     <CartItem
       key={dish.id}
       dish={dish}
-      increment={cartContextValue.dispatch}
-      decrement={cartContextValue.dispatch}
-      remove={cartContextValue.dispatch}
+      increment={incrementQuantity}
+      decrement={decrementQuantity}
+      remove={removeDish}
     />
   ));
 
-  const cartCount = cartContextValue.cart.cartItems.length;
+  const cartCount = cartItems.length;
+  const totalPrice = cartItems.reduce(
+    (accumulator, current) => accumulator + current.price * current.quantity,
+    0,
+  );
+  const totalPriceString = totalPrice?.toLocaleString([], {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
   return (
     <aside className={styles["cart-comp"]}>
@@ -29,9 +45,7 @@ const Cart = () => {
           <div className={styles.clearAndCartItems}>
             <button
               className={styles["clear-cart"]}
-              onClick={() =>
-                cartContextValue.dispatch({ type: "cart_cleared" })
-              }
+              onClick={() => clearCart()}
             >
               Clear Cart
             </button>
@@ -43,21 +57,18 @@ const Cart = () => {
             <ul>
               <li>
                 <p>Distinct Dishes</p>
-                <p>{String(cartContextValue.cart.cartItems.length)}</p>
+                <p>{String(cartCount)}</p>
               </li>
               <li>
                 <p>Total Dishes</p>
-                <p>{String(cartContextValue.totalItems)}</p>
+                <p>{String(totalItems)}</p>
               </li>
               <li>
                 <p>Total Price</p>
 
                 <p>
                   {`ETB `}
-                  {cartContextValue.totalPrice?.toLocaleString([], {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  })}
+                  {totalPriceString}
                 </p>
               </li>
             </ul>

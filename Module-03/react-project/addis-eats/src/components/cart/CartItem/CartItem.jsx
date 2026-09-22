@@ -3,23 +3,11 @@ import { FaTrashAlt } from "react-icons/fa";
 import styles from "./CartItem.module.css";
 
 const CartItem = ({ dish, increment, decrement, remove }) => {
-  const handleIncrement = () =>
-    increment({
-      type: "quantity_incremented",
-      id: dish.id,
-    });
+  const handleIncrement = () => increment(dish.id);
 
-  const handleDecrement = () =>
-    decrement({
-      type: "quantity_decremented",
-      id: dish.id,
-    });
+  const handleDecrement = () => decrement(dish.id);
 
-  const handleRemove = () =>
-    remove({
-      type: "dish_removed",
-      id: dish.id,
-    });
+  const handleRemove = () => remove(dish.id);
 
   return (
     <div className={styles.cartItem}>
