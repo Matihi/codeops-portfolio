@@ -17,12 +17,15 @@ const Checkout = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [errorMessage, setErrorMessage] = useState("");
   const [isPayed, setIsPayed] = useState(false);
+  const phonePattern = /^(?:\+251|0)9\d{8}$/;
 
   const deliveryFee = formData.orderMode === "delivery" ? 70.5 : 0;
   const deliveryFeeString = deliveryFee.toLocaleString([], {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
+
+  const isPickup = formData.orderMode === "pickup";
 
   const checkoutCount = cartItems.length;
 
@@ -37,10 +40,34 @@ const Checkout = () => {
   console.log("formData");
   console.log(formData);
 
-  const validateField = (name, value) => {
+  const validateControl = (name, value) => {
     switch (name) {
+      case "orderMode": {
+        if (value === "delivery" || value === "pickup") {
+          return "";
+        }
+
+        return "Please choose delivery mode";
+      }
+      case "name": {
+        if (value.trim().length < 1) {
+          return "Name field is required";
+        }
+        return "";
+      }
+      case "phone": {
+        if (value.trim().length < 1) {
+          return "Phone field is required";
+        } else if (!phonePattern.test(value.trim())) {
+          return "Phone number should be a valid TeleBirr phone number";
+        }
+        return "";
+      }
       case "area": {
-        if (value === "select") {
+        if (isPickup) {
+          return "";
+        }
+        if (value === "select" || value === "") {
           return "Please enter delivery area";
         }
         return "";
@@ -49,11 +76,13 @@ const Checkout = () => {
   };
 
   const validateForm = () => {
-    if (formData.orderMode === "delivery" && formData.area === "select") {
-      return "Please enter delivery area";
-    }
+    const errors = Object.entries(formData).map(([name, value]) =>
+      validateControl(name, value),
+    );
+    console.log(errors);
 
-    return "";
+    const error = errors.find((error) => error !== "");
+    return error === undefined ? "" : error;
   };
 
   const handleChange = (e) => {
@@ -71,10 +100,8 @@ const Checkout = () => {
 
   const handleBlur = (e) => {
     const { name, value } = e.target;
-    if (!(name === "orderMode" && value === "pickup")) {
-      const error = validateField(name, value.trim());
-      setErrorMessage(error);
-    }
+    const error = validateControl(name, value.trim());
+    setErrorMessage(error);
   };
 
   const handlePay = () => {
@@ -143,6 +170,7 @@ const Checkout = () => {
                   value="delivery"
                   checked={formData.orderMode === "delivery"}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                 />
               </div>
               <div className={styles.pickupWrapper}>
@@ -154,6 +182,7 @@ const Checkout = () => {
                   value="pickup"
                   checked={formData.orderMode === "pickup"}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                 />
               </div>
             </div>
@@ -166,6 +195,7 @@ const Checkout = () => {
                 value={formData.name}
                 placeholder="Your Name"
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
             </div>
 
@@ -178,6 +208,7 @@ const Checkout = () => {
                 value={formData.phone}
                 placeholder="0911223344"
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
             </div>
 
