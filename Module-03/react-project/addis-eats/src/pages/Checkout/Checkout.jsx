@@ -236,8 +236,9 @@ const Checkout = () => {
           </ul>
 
           <button
-            className={styles.payButton}
+            className={checkoutCount <= 0 ? styles.payed : styles.payButton}
             onClick={handleSubmit(handlePay)}
+            disabled={checkoutCount <= 0}
           >
             Pay Now
           </button>
