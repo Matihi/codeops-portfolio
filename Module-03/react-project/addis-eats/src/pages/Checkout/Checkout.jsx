@@ -1,129 +1,110 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/authentication/AuthProvider";
 import useCartStore from "../../stores/cartStore";
+import { useForm, useWatch } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import styles from "./Checkout.module.css";
 
-const initialFormData = {
-  orderMode: "delivery",
-  name: "",
-  phone: "",
-  area: "select",
-};
+const phonePattern = /^(?:\+251|0)9\d{8}$/;
+
+const checkoutFormSchema = z
+  .object({
+    orderMode: z.enum(["delivery", "pickup"], {
+      error: "Please choose delivery mode",
+    }),
+    name: z.string().trim().min(1, { message: "Name is required" }),
+    phone: z
+      .string()
+      .trim()
+      .min(1, "Phone field is required")
+      .regex(phonePattern, {
+        message: "Phone number should be a valid TeleBirr phone number",
+      }),
+    area: z.string().trim(),
+  })
+  .refine(
+    (data) => {
+      if (data.orderMode === "pickup") {
+        return true;
+      }
+      if (data.area === "select" || data.area === "") {
+        return false;
+      }
+      return true;
+    },
+    { message: "Please choose delivery area", path: ["area"] },
+  );
 
 const Checkout = () => {
   const cartItems = useCartStore((s) => s.cartItems);
   const clearCart = useCartStore((s) => s.clearCart);
   const { user } = useAuth();
-  const [formData, setFormData] = useState(initialFormData);
-  const [errorMessage, setErrorMessage] = useState("");
   const [isPayed, setIsPayed] = useState(false);
-  const phonePattern = /^(?:\+251|0)9\d{8}$/;
 
-  const deliveryFee = formData.orderMode === "delivery" ? 70.5 : 0;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, touchedFields },
+    reset,
+    control,
+    setValue,
+    trigger,
+    clearErrors,
+  } = useForm({
+    resolver: zodResolver(checkoutFormSchema),
+    mode: "onTouched",
+    defaultValues: {
+      orderMode: "delivery",
+      name: "",
+      phone: "",
+      area: "select",
+    },
+  });
+
+  const selectedOrderMode = useWatch({
+    control,
+    name: "orderMode",
+  });
+
+  const deliveryFee = selectedOrderMode === "delivery" ? 70.5 : 0;
   const deliveryFeeString = deliveryFee.toLocaleString([], {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
 
-  const isPickup = formData.orderMode === "pickup";
-
   const checkoutCount = cartItems.length;
 
   useEffect(() => {
-    setFormData((previous) => ({
-      ...previous,
-      name: user?.name ?? "",
-      phone: user?.phone ?? "",
-    }));
-  }, [user]);
+    setValue("name", user?.name ?? "");
+    setValue("phone", user?.phone ?? "");
+  }, [user, setValue]);
 
-  console.log("formData");
-  console.log(formData);
-
-  const validateControl = (name, value) => {
-    switch (name) {
-      case "orderMode": {
-        if (value === "delivery" || value === "pickup") {
-          return "";
-        }
-
-        return "Please choose delivery mode";
-      }
-      case "name": {
-        if (value.trim().length < 1) {
-          return "Name field is required";
-        }
-        return "";
-      }
-      case "phone": {
-        if (value.trim().length < 1) {
-          return "Phone field is required";
-        } else if (!phonePattern.test(value.trim())) {
-          return "Phone number should be a valid TeleBirr phone number";
-        }
-        return "";
-      }
-      case "area": {
-        if (isPickup) {
-          return "";
-        }
-        if (value === "select" || value === "") {
-          return "Please enter delivery area";
-        }
-        return "";
-      }
+  useEffect(() => {
+    if (selectedOrderMode === "pickup") {
+      clearErrors("area");
+    } else if (touchedFields.area) {
+      trigger("area");
     }
-  };
+  }, [selectedOrderMode, clearErrors, trigger, touchedFields.area]);
 
-  const validateForm = () => {
-    const errors = Object.entries(formData).map(([name, value]) =>
-      validateControl(name, value),
-    );
-    console.log(errors);
-
-    const error = errors.find((error) => error !== "");
-    return error === undefined ? "" : error;
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setFormData((previous) => {
-      const updatedData = { ...previous, [name]: value };
-      if (name === "orderMode" && value === "pickup") {
-        updatedData.area = "select";
-        setErrorMessage("");
-      }
-      return updatedData;
-    });
-  };
-
-  const handleBlur = (e) => {
-    const { name, value } = e.target;
-    const error = validateControl(name, value.trim());
-    setErrorMessage(error);
-  };
-
-  const handlePay = () => {
+  const handlePay = (data) => {
     if (checkoutCount > 0) {
-      let error = validateForm(formData);
-      if (error !== "") {
-        setErrorMessage(error);
-      } else {
-        const randomString = (length) =>
-          Math.random()
-            .toString(36)
-            .substring(2, 2 + length);
-        const paymentID = randomString(12);
-        const deliveryDetail = { ...formData, paymentID };
-        console.log(deliveryDetail);
+      const randomString = (length) =>
+        Math.random()
+          .toString(36)
+          .substring(2, 2 + length);
+      const paymentID = randomString(12);
+      const deliveryDetail = { ...data, paymentID };
+      console.log(deliveryDetail);
 
-        setFormData(initialFormData);
-        clearCart();
-        setIsPayed(true);
-      }
+      reset();
+      clearCart();
+      setIsPayed(true);
     }
   };
+
+  console.log(errors);
 
   const checkoutCartElements = cartItems.map((item) => (
     <div key={item.id} className={styles.checkoutCartItem}>
@@ -162,66 +143,59 @@ const Checkout = () => {
           <form method="post" className={styles.checkoutForm}>
             <div className={styles.orderModeWrapper}>
               <div className={styles.deliveryWrapper}>
-                <label htmlFor={styles.deliveryRadio}>Delivery</label>
+                <label htmlFor="delivery-radio">Delivery</label>
                 <input
                   type="radio"
-                  name="orderMode"
-                  id={styles.deliveryRadio}
+                  id="delivery-radio"
                   value="delivery"
-                  checked={formData.orderMode === "delivery"}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  {...register("orderMode")}
                 />
               </div>
               <div className={styles.pickupWrapper}>
-                <label htmlFor={styles.pickupRadio}>Pick up</label>
+                <label htmlFor="pickup-radio">Pick up</label>
                 <input
                   type="radio"
-                  name="orderMode"
-                  id={styles.pickupRadio}
+                  id="pickup-radio"
                   value="pickup"
-                  checked={formData.orderMode === "pickup"}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  {...register("orderMode")}
                 />
               </div>
+              {errors.orderMode && (
+                <p className={styles.errorMessage}>
+                  {errors.orderMode.message}
+                </p>
+              )}
             </div>
             <div className={styles.nameWrapper}>
-              <label htmlFor={styles.name}>Name:</label>
+              <label htmlFor="name">Name:</label>
               <input
                 type="text"
-                name="name"
-                id={styles.name}
-                value={formData.name}
+                id="name"
+                {...register("name")}
                 placeholder="Your Name"
-                onChange={handleChange}
-                onBlur={handleBlur}
               />
+              {errors.name && (
+                <p className={styles.errorMessage}>{errors.name.message}</p>
+              )}
             </div>
 
             <div className={styles.phoneWrapper}>
-              <label htmlFor={styles.phone}>TeleBirr Phone Number:</label>
+              <label htmlFor="phone">TeleBirr Phone Number:</label>
               <input
                 type="tel"
-                name="phone"
-                id={styles.phone}
-                value={formData.phone}
+                id="phone"
+                {...register("phone")}
                 placeholder="0911223344"
-                onChange={handleChange}
-                onBlur={handleBlur}
               />
+              {errors.phone && (
+                <p className={styles.errorMessage}>{errors.phone.message}</p>
+              )}
             </div>
 
-            {formData.orderMode === "delivery" && (
+            {selectedOrderMode === "delivery" && (
               <div className={styles.selectWrapper}>
-                <label htmlFor={styles.area}>Delivery area:</label>
-                <select
-                  name="area"
-                  id={styles.area}
-                  value={formData.area}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                >
+                <label htmlFor="area">Delivery area:</label>
+                <select id="area" {...register("area")}>
                   <option value="select">Select</option>
                   <option value="bole">Bole</option>
                   <option value="megenagna">Megenagna</option>
@@ -229,10 +203,11 @@ const Checkout = () => {
                   <option value="kazanchis">Kazanchis</option>
                   <option value="legehar">Legehar</option>
                 </select>
+                {errors.area && (
+                  <p className={styles.errorMessage}>{errors.area.message}</p>
+                )}
               </div>
             )}
-
-            <p className={styles.errorMessage}>{errorMessage}</p>
           </form>
         </div>
         <div className={styles.checkoutCart}>
@@ -260,7 +235,10 @@ const Checkout = () => {
             </li>
           </ul>
 
-          <button className={styles.payButton} onClick={handlePay}>
+          <button
+            className={styles.payButton}
+            onClick={handleSubmit(handlePay)}
+          >
             Pay Now
           </button>
           {isPayed && (
