@@ -33,10 +33,10 @@
 }
 
 .errorMessage {
-  background-color: #e44736;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0.3rem;
   width: fit-content;
+  color: red;
+  font-size: 0.9rem;
 }
 
 .form > div {

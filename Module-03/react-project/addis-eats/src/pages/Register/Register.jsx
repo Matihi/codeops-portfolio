@@ -114,7 +114,7 @@ const Register = () => {
   return (
     <section className={styles.registerContainer}>
       <div className={styles.formWrapper}>
-        <h1>Create Your Mesob House Account</h1>
+        <h1>Create Your Addis Eats Account</h1>
         <form
           className={styles.form}
           method="post"
