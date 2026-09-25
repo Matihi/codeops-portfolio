@@ -11,7 +11,7 @@ const phonePattern = /^(?:\+251|0)9\d{8}$/;
 const checkoutFormSchema = z
   .object({
     orderMode: z.enum(["delivery", "pickup"], {
-      error: "Please choose delivery mode",
+      errorMap: () => ({ message: "Please choose delivery mode" }),
     }),
     name: z.string().trim().min(1, { message: "Name is required" }),
     phone: z
