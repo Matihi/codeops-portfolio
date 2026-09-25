@@ -1,13 +1,18 @@
 import { useAuth } from "../../context/authentication/AuthProvider";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
 import styles from "./Login.module.css";
 
-const initialFormData = { phone: "", password: "" };
+const loginFormSchema = z.object({
+  phone: z.string().trim().min(1, { message: "Phone is required" }),
+  password: z.string().trim().min(1, { message: "Password is required" }),
+});
 
 const Login = () => {
-  const [formData, setFormData] = useState(initialFormData);
   const [errorMessage, setErrorMessage] = useState("");
   const { loading, login } = useAuth();
   const location = useLocation();
@@ -15,64 +20,33 @@ const Login = () => {
   const originalPath = location.state?.from?.pathname ?? "/";
   const originalLocation = location.state?.from;
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: zodResolver(loginFormSchema),
+    mode: "onTouched",
+    defaultValues: {
+      phone: "",
+      password: "",
+    },
+  });
+
   if (loading) {
     return <p>Loading...</p>;
   }
 
-  const validateField = (name, value) => {
-    switch (name) {
-      case "phone": {
-        if (value.length === 0) {
-          return "Phone field must not be empty";
-        }
-        return "";
-      }
-
-      case "password": {
-        if (value.length === 0) {
-          return "Password field must not be empty";
-        }
-        return "";
-      }
-    }
-  };
-
-  const validateForm = (data) => {
-    const dataEntries = Object.entries(data);
-    const errors = dataEntries.map((entry) => {
-      return validateField(entry[0], entry[1]);
-    });
-
-    const error = errors.find((error) => error !== "");
-    return error;
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value.trim() });
-  };
-
-  const handleBlur = (e) => {
-    const { name, value } = e.target;
-    const error = validateField(name, value.trim());
-    setErrorMessage(error);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let error = validateForm(formData);
-    if (error !== undefined) {
+  const handleLogin = (data) => {
+    const error = login(data);
+    if (error !== "") {
       setErrorMessage(error);
-    } else {
-      error = login(formData);
-      if (error !== "") {
-        setErrorMessage(error);
-        return;
-      }
-      console.log("Login successfull");
-      setFormData(initialFormData);
-      navigate(originalPath, { replace: true });
+      return;
     }
+    console.log("Login successfull");
+    reset();
+    navigate(originalPath, { replace: true });
   };
 
   return (
@@ -83,38 +57,36 @@ const Login = () => {
           method="post"
           className={styles.form}
           noValidate
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(handleLogin)}
         >
           {errorMessage && (
             <p className={styles.errorMessage}>{errorMessage}</p>
           )}
 
           <div className={styles.phoneWrapper}>
-            <label
-              htmlFor={styles.phone}
-            >{`TeleBirr phone number(ስልክ ቁጥር)`}</label>
+            <label htmlFor="phone">{`TeleBirr phone number(ስልክ ቁጥር)`}</label>
             <input
               type="tel"
-              name="phone"
-              id={styles.phone}
-              value={formData.phone}
+              id="phone"
+              {...register("phone")}
               placeholder="Phone number"
-              onBlur={handleBlur}
-              onChange={handleChange}
             />
+            {errors.phone && (
+              <p className={styles.errorMessage}>{errors.phone.message}</p>
+            )}
           </div>
 
           <div className={styles.passwordWrapper}>
-            <label htmlFor={styles.password}>{`Password(የይለፍ ቃል)`}</label>
+            <label htmlFor="password">{`Password(የይለፍ ቃል)`}</label>
             <input
               type="password"
-              name="password"
-              id={styles.password}
-              value={formData.password}
+              id="password"
+              {...register("password")}
               placeholder="Password"
-              onBlur={handleBlur}
-              onChange={handleChange}
             />
+            {errors.password && (
+              <p className={styles.errorMessage}>{errors.password.message}</p>
+            )}
           </div>
 
           <button type="submit">Log in</button>
