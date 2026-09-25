@@ -1,27 +1,39 @@
-import { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import useCartStore from "../../../stores/cartStore";
+import { useForm, useWatch } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import styles from "./DishDetailContent.module.css";
 
-const initialFormData = {
-  spiceLevelCart: "traditional",
-};
+const dishDetailContentFormSchema = z.object({
+  spiceLevelCart: z.enum(["mild", "traditional", "fiery-awaze"], {
+    errorMap: () => ({ message: "Please choose spice level" }),
+  }),
+});
 
 const DishDetailContent = ({ shownDish }) => {
-  const [formData, setFormData] = useState(initialFormData);
+  const {
+    register,
+    control,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(dishDetailContentFormSchema),
+    mode: "onChange",
+    defaultValues: {
+      spiceLevelCart: "traditional",
+    },
+  });
+
+  const selectedSpiceLevel = useWatch({
+    control,
+    name: "spiceLevelCart",
+  });
 
   const currency = "ETB";
 
   const ingredientElements = shownDish.ingredients.map((ingredient) => (
     <li key={ingredient}>{ingredient}</li>
   ));
-
-  const handleChange = (e) => {
-    setFormData((previous) => {
-      const { name, value } = e.target;
-      return { ...previous, [name]: value };
-    });
-  };
 
   const dishForCart = {
     id: shownDish.id,
@@ -31,7 +43,7 @@ const DishDetailContent = ({ shownDish }) => {
     description: shownDish.description,
     image: `/images/${shownDish.slug}.png`,
     quantity: 0,
-    spiceLevelCart: formData.spiceLevelCart,
+    spiceLevelCart: selectedSpiceLevel,
   };
 
   const cartDish = useCartStore((s) =>
@@ -100,39 +112,38 @@ const DishDetailContent = ({ shownDish }) => {
               <div className={styles.mildContainer}>
                 <input
                   type="radio"
-                  name="spiceLevelCart"
                   id="mild"
                   value="mild"
-                  checked={formData.spiceLevelCart === "mild"}
+                  {...register("spiceLevelCart")}
                   className={styles.mild}
-                  onChange={handleChange}
                 />
                 <label htmlFor="mild">{`Mild (1/3)`}</label>
               </div>
               <div className={styles.traditionalContainer}>
                 <input
                   type="radio"
-                  name="spiceLevelCart"
                   id="traditional"
                   value="traditional"
+                  {...register("spiceLevelCart")}
                   className={styles.traditional}
-                  checked={formData.spiceLevelCart === "traditional"}
-                  onChange={handleChange}
                 />
                 <label htmlFor="traditional">{`Traditional (2/3)`}</label>
               </div>
               <div className={styles.fieryAwazeContainer}>
                 <input
                   type="radio"
-                  name="spiceLevelCart"
                   id="fieryAwaze"
                   value="fiery-awaze"
+                  {...register("spiceLevelCart")}
                   className={styles.fieryAwaze}
-                  checked={formData.spiceLevelCart === "fiery-awaze"}
-                  onChange={handleChange}
                 />
                 <label htmlFor="fieryAwaze">{`Fiery Awaze (3/3)`}</label>
               </div>
+              {errors.spiceLevelCart && (
+                <p className={styles.errorMessage}>
+                  {errors.spiceLevelCart.message}
+                </p>
+              )}
             </div>
           </form>
         )}

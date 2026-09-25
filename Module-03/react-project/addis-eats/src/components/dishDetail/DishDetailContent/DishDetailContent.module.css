@@ -138,6 +138,12 @@
   accent-color: #591c06;
 }
 
+.errorMessage {
+  width: fit-content;
+  color: red;
+  font-size: 0.9rem;
+}
+
 .buttonWrapper {
   display: flex;
   flex-direction: row;
@@ -231,6 +237,10 @@
     font-size: 0.9rem;
   }
 
+  .choicesForm .errorMessage {
+    font-size: 0.8rem;
+  }
+
   .buttonWrapper p,
   .buttonWrapper button {
     font-size: 0.9rem;
@@ -271,6 +281,10 @@
   .choicesForm input,
   .choicesForm label {
     font-size: 0.8rem;
+  }
+
+  .choicesForm .errorMessage {
+    font-size: 0.7rem;
   }
 
   .buttonWrapper p,
