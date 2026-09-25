@@ -70,6 +70,7 @@ const Login = () => {
               id="phone"
               {...register("phone")}
               placeholder="Phone number"
+              className={errors.phone && styles.invalid}
             />
             {errors.phone && (
               <p className={styles.errorMessage}>{errors.phone.message}</p>
@@ -83,6 +84,7 @@ const Login = () => {
               id="password"
               {...register("password")}
               placeholder="Password"
+              className={errors.password && styles.invalid}
             />
             {errors.password && (
               <p className={styles.errorMessage}>{errors.password.message}</p>

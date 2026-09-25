@@ -42,10 +42,10 @@
 }
 
 .errorMessage {
-  background-color: #e44736;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0.3rem;
   width: fit-content;
+  color: red;
+  font-size: 0.9rem;
 }
 
 .form > div {
@@ -62,6 +62,14 @@
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 0.5rem;
+}
+
+.form > div > .invalid {
+  border: 1px solid red;
+}
+
+.invalid:focus {
+  outline: 1px solid red;
 }
 
 .form > button {
