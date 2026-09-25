@@ -1,0 +1,13 @@
+.errorFallBack {
+  padding: 1rem 1rem;
+  background-color: #fff8f6;
+}
+
+.errorFallBack button {
+  margin-top: 0.5rem;
+  padding: 0.3rem;
+  border: none;
+  background-color: #7a1401;
+  color: white;
+  border-radius: 0.2rem;
+}
