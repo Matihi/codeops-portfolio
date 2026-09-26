@@ -1,0 +1,92 @@
+.image-container {
+  width: 100%;
+  height: 60%;
+  border-radius: var(--10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-container {
+  background-color: var(--text-container-color);
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--5px);
+  padding: var(--10px);
+  border-radius: var(--10px);
+}
+
+.text-container h3,
+.text-container strong {
+  padding-block: 0.375rem;
+}
+
+.button-group {
+  width: 100%;
+}
+
+.add-to-cart {
+  width: 100%;
+  height: 2rem;
+  justify-self: center;
+  border: none;
+  border-radius: 0.6rem;
+  background-color: rgb(190, 8, 8);
+  color: wheat;
+}
+
+.count-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 0.3rem;
+  height: 2rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.decCountInc {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1.3fr;
+  font-size: inherit;
+}
+
+.count-container p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: inherit;
+}
+
+.count-container button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(190, 8, 8);
+  font-size: inherit;
+  border: 1px solid black;
+}
+
+.decrement {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.increment {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.remove {
+  border-radius: 1rem;
+}
+
+.count {
+  border-block: 1px solid black;
+}
