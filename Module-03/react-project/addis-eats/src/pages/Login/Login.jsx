@@ -1,9 +1,9 @@
-import { useAuth } from "../../context/authentication/AuthProvider";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import useAuthStore from "../../stores/authStore";
 
 import styles from "./Login.module.css";
 
@@ -14,7 +14,8 @@ const loginFormSchema = z.object({
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
-  const { loading, login } = useAuth();
+  const hasHydrated = useAuthStore((s) => s.hasHydrated);
+  const login = useAuthStore((s) => s.login);
   const location = useLocation();
   const navigate = useNavigate();
   const originalPath = location.state?.from?.pathname ?? "/";
@@ -34,7 +35,7 @@ const Login = () => {
     },
   });
 
-  if (loading) {
+  if (!hasHydrated) {
     return <p>Loading...</p>;
   }
 

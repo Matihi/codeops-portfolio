@@ -1,10 +1,11 @@
 import NavigationBar from "./NavigationBar/NavigationBar";
 import { Link, useLocation } from "react-router-dom";
-import { useAuth } from "../../context/authentication/AuthProvider";
+import useAuthStore from "../../stores/authStore";
 import "./Header.css";
 
 function Header() {
-  const { user, logout } = useAuth();
+  const user = useAuthStore((s) => s.user);
+  const logout = useAuthStore((s) => s.logout);
   const location = useLocation();
 
   const handleLogout = () => {

@@ -1,13 +1,13 @@
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { Outlet } from "react-router-dom";
-import { useAuth } from "../../context/authentication/AuthProvider";
+import useAuthStore from "../../stores/authStore";
 import styles from "./Layout.module.css";
 
 const Layout = () => {
-  const { loading } = useAuth();
+  const hasHydrated = useAuthStore((s) => s.hasHydrated);
 
-  if (loading) {
+  if (!hasHydrated) {
     return <p>Loading...</p>;
   }
 

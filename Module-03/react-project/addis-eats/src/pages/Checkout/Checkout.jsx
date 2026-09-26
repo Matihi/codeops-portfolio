@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../context/authentication/AuthProvider";
+import useAuthStore from "../../stores/authStore";
 import useCartStore from "../../stores/cartStore";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -39,7 +39,7 @@ const checkoutFormSchema = z
 const Checkout = () => {
   const cartItems = useCartStore((s) => s.cartItems);
   const clearCart = useCartStore((s) => s.clearCart);
-  const { user } = useAuth();
+  const user = useAuthStore((s) => s.user);
   const [isPayed, setIsPayed] = useState(false);
 
   const {

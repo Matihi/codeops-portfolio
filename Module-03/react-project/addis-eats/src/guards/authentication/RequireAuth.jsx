@@ -1,10 +1,12 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../../context/authentication/AuthProvider";
+import useAuthStore from "../../stores/authStore";
 
 const RequireAuth = ({ children }) => {
-  const { user, loading } = useAuth();
+  const user = useAuthStore((s) => s.user);
+  const hasHydrated = useAuthStore((s) => s.hasHydrated);
+
   const location = useLocation();
-  if (loading) {
+  if (!hasHydrated) {
     return <p>Loading...</p>;
   }
   if (!user) {
