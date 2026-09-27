@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { CartContext } from "../../../context/cart/CartProvider";
 import { FaTrashAlt } from "react-icons/fa";
+import useCart from "../../../context/cart/useCart";
 
 import "./Cart.css";
 
 const Cart = () => {
-  const cartContextValue = useContext(CartContext);
+  const cartContextValue = useCart;
   const cartItems = cartContextValue.cart.cartItems;
   console.log("cart cartItems");
   console.log(cartItems);

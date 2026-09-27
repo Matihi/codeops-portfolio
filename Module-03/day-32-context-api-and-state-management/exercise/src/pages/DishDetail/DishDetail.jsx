@@ -1,8 +1,7 @@
 import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
-import { useContext } from "react";
-import { CartContext } from "../../context/cart/CartProvider";
 import { FaTrashAlt } from "react-icons/fa";
+import useCart from "../../context/cart/useCart";
 
 import styles from "./DishDetail.module.css";
 
@@ -11,7 +10,7 @@ const DishDetail = () => {
   const category = "All";
   const url = "/data/dishes.json";
   const { filteredDishes: dishes, loading, error } = useFetch(url, category);
-  const cartContextValue = useContext(CartContext);
+  const cartContextValue = useCart();
   console.log(cartContextValue);
 
   const currency = "ETB";

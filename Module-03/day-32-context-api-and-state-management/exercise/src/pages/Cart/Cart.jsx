@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/cart/CartProvider";
 import CartItem from "../../components/Main/Cart/CartItem/CartItem";
 import styles from "./Cart.module.css";
 import { Link } from "react-router-dom";
+import useCart from "../../context/cart/useCart";
 
 const Cart = () => {
-  const cartContextValue = useContext(CartContext);
+  const cartContextValue = useCart();
 
   const cartElements = cartContextValue.cart.cartItems.map((dish) => (
     <CartItem

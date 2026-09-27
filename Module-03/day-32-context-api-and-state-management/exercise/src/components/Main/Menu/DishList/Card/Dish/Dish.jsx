@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
 import { FaPepperHot, FaTrashAlt } from "react-icons/fa";
-import { useContext } from "react";
-import { CartContext } from "../../../../../../context/cart/CartProvider";
 import { Link } from "react-router-dom";
+import useCart from "../../../../../../context/cart/useCart";
 
 import "./Dish.css";
 
@@ -20,7 +19,7 @@ const Dish = (props) => {
     currency = "ETB",
   } = props;
 
-  const cartContextValue = useContext(CartContext);
+  const cartContextValue = useCart();
   console.log(cartContextValue);
 
   const dishForCart = { id: id, name: name, price: price, quantity: 0 };

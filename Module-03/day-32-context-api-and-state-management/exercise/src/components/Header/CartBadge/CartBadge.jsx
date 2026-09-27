@@ -1,11 +1,10 @@
 import { FaCartShopping } from "react-icons/fa6";
-import { CartContext } from "../../../context/cart/CartProvider";
-import { useContext } from "react";
+import useCart from "../../../context/cart/useCart";
 
 import "./CartBadge.css";
 
 const CartBadge = () => {
-  const cartContextValue = useContext(CartContext);
+  const cartContextValue = useCart();
   const totalItems = cartContextValue.totalItems;
   const threshold = 100;
   return (

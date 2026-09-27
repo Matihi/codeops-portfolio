@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../../context/cart/CartProvider";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../context/authentication/AuthProvider";
+import useCart from "../../context/cart/useCart";
 import styles from "./Checkout.module.css";
 
 const initialFormData = {
@@ -11,7 +11,7 @@ const initialFormData = {
 };
 
 const Checkout = () => {
-  const cartContextValue = useContext(CartContext);
+  const cartContextValue = useCart();
   const { user } = useAuth();
   const [formData, setFormData] = useState(initialFormData);
   const [errorMessage, setErrorMessage] = useState("");
