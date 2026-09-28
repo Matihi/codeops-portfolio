@@ -1,15 +1,31 @@
 import { FaTrashAlt } from "react-icons/fa";
-import useCart from "../../../context/cart/useCart";
+import useCartStore from "../../../stores/cartStore";
 
 import "./Cart.css";
 
 const Cart = () => {
-  const cartContextValue = useCart;
-  const cartItems = cartContextValue.cart.cartItems;
+  const cartItems = useCartStore((s) => s.cartItems);
   console.log("cart cartItems");
   console.log(cartItems);
+  const decrementQuantity = useCartStore((s) => s.decrementQuantity);
+  const incrementQuantity = useCartStore((s) => s.incrementQuantity);
+  const removeDish = useCartStore((s) => s.removeDish);
+  const clearCart = useCartStore((s) => s.clearCart);
+  const totalItems = useCartStore((s) =>
+    s.cartItems.reduce(
+      (accumulator, current) => accumulator + current.quantity,
+      0,
+    ),
+  );
 
-  const cartElements = cartContextValue.cart.cartItems.map((dish) => {
+  const totalPrice = useCartStore((s) =>
+    s.cartItems.reduce(
+      (accumulator, current) => accumulator + current.price * current.quantity,
+      0,
+    ),
+  );
+
+  const cartElements = cartItems.map((dish) => {
     return (
       <div key={dish.id} className="cart-item">
         <div>
@@ -21,12 +37,7 @@ const Cart = () => {
         <div className="change-quantity">
           <button
             className="decrement-cart-item"
-            onClick={() =>
-              cartContextValue.dispatch({
-                type: "quantity_decremented",
-                id: dish.id,
-              })
-            }
+            onClick={() => decrementQuantity(dish.id)}
           >
             {"\u2212"}
           </button>
@@ -36,24 +47,14 @@ const Cart = () => {
 
           <button
             className="increment-cart-item"
-            onClick={() =>
-              cartContextValue.dispatch({
-                type: "quantity_incremented",
-                id: dish.id,
-              })
-            }
+            onClick={() => incrementQuantity(dish.id)}
           >
             {"\u002B"}
           </button>
         </div>
         <button
           className="remove-cart-item"
-          onClick={() =>
-            cartContextValue.dispatch({
-              type: "dish_removed",
-              id: dish.id,
-            })
-          }
+          onClick={() => removeDish(dish.id)}
         >
           <FaTrashAlt />
         </button>
@@ -64,17 +65,14 @@ const Cart = () => {
   return (
     <aside className="cart-comp">
       <h2>Your Order</h2>
-      <button
-        className="clear-cart"
-        onClick={() => cartContextValue.dispatch({ type: "cart_cleared" })}
-      >
+      <button className="clear-cart" onClick={() => clearCart()}>
         Clear Cart
       </button>
 
       <>{cartElements}</>
-      <p>Distinct Dishes: {String(cartContextValue.cart.cartItems.length)}</p>
-      <p>Total Dishes: {String(cartContextValue.totalItems)}</p>
-      <p>Total Price: {cartContextValue.totalPrice?.toLocaleString()} ETB</p>
+      <p>Distinct Dishes: {String(cartItems.length)}</p>
+      <p>Total Dishes: {String(totalItems)}</p>
+      <p>Total Price: {totalPrice?.toLocaleString()} ETB</p>
     </aside>
   );
 };

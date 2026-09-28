@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/authentication/AuthProvider";
-import useCart from "../../context/cart/useCart";
+import useCartStore from "../../stores/cartStore";
 import styles from "./Checkout.module.css";
 
 const initialFormData = {
@@ -11,12 +11,13 @@ const initialFormData = {
 };
 
 const Checkout = () => {
-  const cartContextValue = useCart();
   const { user } = useAuth();
   const [formData, setFormData] = useState(initialFormData);
   const [errorMessage, setErrorMessage] = useState("");
   const [isReadOnly, setIsReadOnly] = useState(false);
   const [isPayed, setIsPayed] = useState(false);
+  const cartItems = useCartStore((s) => s.cartItems);
+  const clearCart = useCartStore((s) => s.clearCart);
 
   const deliveryFee = formData.orderMode === "delivery" ? 70.5 : 0;
   const deliveryFeeString = deliveryFee.toLocaleString([], {
@@ -24,7 +25,7 @@ const Checkout = () => {
     maximumFractionDigits: 2,
   });
 
-  const checkoutCount = cartContextValue.cart.cartItems.length;
+  const checkoutCount = cartItems.length;
 
   useEffect(() => {
     setFormData((previous) => ({
@@ -94,13 +95,13 @@ const Checkout = () => {
         console.log(deliveryDetail);
 
         setFormData(initialFormData);
-        cartContextValue.dispatch({ type: "cart_cleared" });
+        clearCart();
         setIsPayed(true);
       }
     }
   };
 
-  const checkoutCartElements = cartContextValue.cart.cartItems.map((item) => (
+  const checkoutCartElements = cartItems.map((item) => (
     <div key={item.id} className={styles.checkoutCartItem}>
       <p>{`${String(item.quantity)}x`}</p>
       <p>{item.name}</p>
@@ -111,7 +112,12 @@ const Checkout = () => {
     </div>
   ));
 
-  const subTotal = cartContextValue.totalPrice;
+  const subTotal = useCartStore((s) =>
+    s.cartItems.reduce(
+      (accumulator, current) => accumulator + current.price * current.quantity,
+      0,
+    ),
+  );
   const subTotalString = subTotal.toLocaleString([], {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,

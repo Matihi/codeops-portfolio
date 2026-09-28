@@ -1,11 +1,15 @@
 import { FaCartShopping } from "react-icons/fa6";
-import useCart from "../../../context/cart/useCart";
+import useCartStore from "../../../stores/cartStore";
 
 import "./CartBadge.css";
 
 const CartBadge = () => {
-  const cartContextValue = useCart();
-  const totalItems = cartContextValue.totalItems;
+  const totalItems = useCartStore((s) =>
+    s.cartItems.reduce(
+      (accumulator, current) => accumulator + current.quantity,
+      0,
+    ),
+  );
   const threshold = 100;
   return (
     <div className="cartbadge">

@@ -1,0 +1,158 @@
+.dishDetail {
+  display: grid;
+  grid-template-rows: 1fr 11fr;
+  padding-top: 1rem;
+  background-color: rgb(249, 213, 207);
+}
+
+.dishName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: hsl(25, 97%, 40%);
+  margin-bottom: 2rem;
+}
+
+.restWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 0rem 1rem 1rem 1rem;
+}
+
+.imageAndButton {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  align-items: center;
+  margin-bottom: 5rem;
+  height: 100%;
+}
+
+.imageWrapper {
+  width: 100%;
+  flex: 0 1 40%;
+  border-radius: var(--10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.buttonWrapper {
+  display: flex;
+  margin-top: 1rem;
+  width: 80%;
+}
+
+.addToCart {
+  width: 100%;
+  height: 100%;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background-color: hsl(0, 88%, 35%);
+  background-color: hsl(0, 60%, 41%);
+  color: rgb(235, 227, 182);
+}
+
+.addToCart:hover {
+  background-color: hsl(0, 73%, 41%);
+}
+
+.countContainer {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 0.5rem;
+}
+
+.decCountInc {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1.3fr;
+}
+
+.remove,
+.decrement,
+.count,
+.increment {
+  padding-block: 0.7rem;
+  font-size: 1rem;
+}
+
+.remove,
+.decrement,
+.increment {
+  background-color: rgb(190, 80, 80);
+  border: 1px solid black;
+}
+
+.remove {
+  border-radius: 2rem;
+}
+
+.decrement {
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+
+.increment {
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+.count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-block: 1px solid black;
+}
+
+.otherWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.priceCategoryAndSpicy {
+  display: flex;
+  gap: 1rem;
+}
+
+.priceCategoryAndSpicy > p {
+  display: flex;
+  background-color: rgb(230, 99, 99);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.description {
+  text-align: center;
+  padding-top: 1rem;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 31.25rem) {
+  .restWrapper {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 90%;
+    margin-inline: auto;
+  }
+
+  .imageAndButton {
+    margin-bottom: 0rem;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    flex: 0 1 100%;
+  }
+}
