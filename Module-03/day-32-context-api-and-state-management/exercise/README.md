@@ -1,15 +1,7 @@
-## Addis Eats
+#### Reason for why cart is in a store.
 
-Addis Eats is a simple Ethiopian restaurant webpage built with React.
+- cart changes frequently, had it been through a context provider, many unnecessary re-renders would occur.
 
-It uses PropTypes, conditional rendering, children props and array methods.
+#### Reason for why auth session stays in context.
 
-## How to Run
-
-1. Clone the repository and navigate to the "exercise" directory or download that directory.
-
-2. Open a terminal in the exercise directory and type `npm install` to install dependencies.
-
-3. Start the local development server by typing `npm run dev`.
-
-4. Open the local URL shown in the terminal in your browser.
+- auth session changes rarely, so the cost of re-renders is small.
