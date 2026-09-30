@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/authentication/AuthProvider";
 import useCartStore from "../../stores/cartStore";
+import validate from "../../utils/checkoutValidation";
 import styles from "./Checkout.module.css";
 
 const initialFormData = {
@@ -35,11 +36,15 @@ const Checkout = () => {
       phone: user?.phone ?? "",
     }));
 
-    setIsReadOnly(true);
+    setIsReadOnly(false);
   }, [user]);
 
   console.log("formData");
   console.log(formData);
+
+  const errors = validate(formData);
+  console.log("errors from validate");
+  console.log(errors);
 
   const validateField = (name, value) => {
     switch (name) {
