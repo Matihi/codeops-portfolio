@@ -8,6 +8,7 @@ const initialFormData = {
   name: "",
   phone: "",
   area: "select",
+  notes: "",
 };
 
 const Checkout = () => {
@@ -204,6 +205,19 @@ const Checkout = () => {
                 </select>
               </div>
             )}
+
+            <div className={styles.notesWrapper}>
+              <label htmlFor="notes">{`Special instructions(optional)`}:</label>
+              <textarea
+                name="notes"
+                id="notes"
+                rows="4"
+                cols="30"
+                value={formData.notes}
+                placeholder="e.g., extra napkins"
+                onChange={handleChange}
+              ></textarea>
+            </div>
 
             <p className={styles.errorMessage}>{errorMessage}</p>
           </form>
