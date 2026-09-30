@@ -15,6 +15,7 @@ const initialFormData = {
 const Checkout = () => {
   const { user } = useAuth();
   const [formData, setFormData] = useState(initialFormData);
+  const [touched, setTouched] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [isPayed, setIsPayed] = useState(false);
   const cartItems = useCartStore((s) => s.cartItems);
@@ -81,7 +82,11 @@ const Checkout = () => {
       const error = validateField(name, value.trim());
       setErrorMessage(error);
     }
+    setTouched((previous) => ({ ...previous, [name]: true }));
   };
+
+  console.log("touched fields");
+  console.log(touched);
 
   const handlePay = () => {
     if (checkoutCount > 0) {
@@ -148,6 +153,7 @@ const Checkout = () => {
                   value="delivery"
                   checked={formData.orderMode === "delivery"}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                 />
               </div>
               <div className={styles.pickupWrapper}>
@@ -159,6 +165,7 @@ const Checkout = () => {
                   value="pickup"
                   checked={formData.orderMode === "pickup"}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                 />
               </div>
             </div>
@@ -171,6 +178,7 @@ const Checkout = () => {
                 value={formData.name}
                 placeholder="Your Name"
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
             </div>
 
@@ -183,6 +191,7 @@ const Checkout = () => {
                 value={formData.phone}
                 placeholder="0911223344"
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
             </div>
 
@@ -216,6 +225,7 @@ const Checkout = () => {
                 value={formData.notes}
                 placeholder="e.g., extra napkins"
                 onChange={handleChange}
+                onBlur={handleBlur}
               ></textarea>
             </div>
 
