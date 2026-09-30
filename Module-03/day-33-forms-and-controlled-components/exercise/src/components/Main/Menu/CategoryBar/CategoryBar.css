@@ -1,0 +1,26 @@
+.category-bar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: start;
+  gap: 2rem;
+  background-color: var(--category-bar-color);
+  padding-block: 1rem;
+}
+
+.category-bar button {
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+}
+
+.category-button {
+  background-color: rgb(165, 90, 9);
+}
+
+.selected-category-button,
+.category-bar button:hover {
+  background-color: hsl(50, 84%, 25%);
+}
