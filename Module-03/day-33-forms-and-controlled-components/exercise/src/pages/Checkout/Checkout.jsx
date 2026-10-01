@@ -44,6 +44,8 @@ const Checkout = () => {
   console.log("errors from validate");
   console.log(errors);
 
+  const show = (field) => touched[field] && errors[field];
+
   const validateField = (name, value) => {
     switch (name) {
       case "area": {
@@ -168,6 +170,9 @@ const Checkout = () => {
                   onBlur={handleBlur}
                 />
               </div>
+              {show("orderMode") && (
+                <p className={styles.errorMessage}>{errors.orderMode}</p>
+              )}
             </div>
             <div className={styles.nameWrapper}>
               <label htmlFor={styles.name}>Name:</label>
@@ -180,6 +185,9 @@ const Checkout = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+              {show("name") && (
+                <p className={styles.errorMessage}>{errors.name}</p>
+              )}
             </div>
 
             <div className={styles.phoneWrapper}>
@@ -193,6 +201,9 @@ const Checkout = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+              {show("phone") && (
+                <p className={styles.errorMessage}>{errors.phone}</p>
+              )}
             </div>
 
             {formData.orderMode === "delivery" && (
@@ -212,6 +223,9 @@ const Checkout = () => {
                   <option value="kazanchis">Kazanchis</option>
                   <option value="legehar">Legehar</option>
                 </select>
+                {show("area") && (
+                  <p className={styles.errorMessage}>{errors.area}</p>
+                )}
               </div>
             )}
 
@@ -227,6 +241,9 @@ const Checkout = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               ></textarea>
+              {show("notes") && (
+                <p className={styles.errorMessage}>{errors.notes}</p>
+              )}
             </div>
 
             <p className={styles.errorMessage}>{errorMessage}</p>
