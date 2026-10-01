@@ -16,7 +16,6 @@ const Checkout = () => {
   const { user } = useAuth();
   const [formData, setFormData] = useState(initialFormData);
   const [touched, setTouched] = useState({});
-  const [errorMessage, setErrorMessage] = useState("");
   const [isPayed, setIsPayed] = useState(false);
   const cartItems = useCartStore((s) => s.cartItems);
   const clearCart = useCartStore((s) => s.clearCart);
@@ -261,8 +260,6 @@ const Checkout = () => {
                 </p>
               )}
             </div>
-
-            <p className={styles.errorMessage}>{errorMessage}</p>
           </form>
         </div>
         <div className={styles.checkoutCart}>
