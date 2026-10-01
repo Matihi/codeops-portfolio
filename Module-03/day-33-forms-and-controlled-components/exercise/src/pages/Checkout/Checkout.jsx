@@ -147,11 +147,11 @@ const Checkout = () => {
           <form method="post" className={styles.checkoutForm}>
             <div className={styles.orderModeWrapper}>
               <div className={styles.deliveryWrapper}>
-                <label htmlFor={styles.deliveryRadio}>Delivery</label>
+                <label htmlFor="deliveryRadio">Delivery</label>
                 <input
                   type="radio"
                   name="orderMode"
-                  id={styles.deliveryRadio}
+                  id="deliveryRadio"
                   value="delivery"
                   checked={formData.orderMode === "delivery"}
                   onChange={handleChange}
@@ -159,11 +159,11 @@ const Checkout = () => {
                 />
               </div>
               <div className={styles.pickupWrapper}>
-                <label htmlFor={styles.pickupRadio}>Pick up</label>
+                <label htmlFor="pickupRadio">Pick up</label>
                 <input
                   type="radio"
                   name="orderMode"
-                  id={styles.pickupRadio}
+                  id="pickupRadio"
                   value="pickup"
                   checked={formData.orderMode === "pickup"}
                   onChange={handleChange}
@@ -175,11 +175,11 @@ const Checkout = () => {
               )}
             </div>
             <div className={styles.nameWrapper}>
-              <label htmlFor={styles.name}>Name:</label>
+              <label htmlFor="name">Name:</label>
               <input
                 type="text"
                 name="name"
-                id={styles.name}
+                id="name"
                 value={formData.name}
                 placeholder="Your Name"
                 onChange={handleChange}
@@ -191,11 +191,11 @@ const Checkout = () => {
             </div>
 
             <div className={styles.phoneWrapper}>
-              <label htmlFor={styles.phone}>TeleBirr Phone Number:</label>
+              <label htmlFor="phone">TeleBirr Phone Number:</label>
               <input
                 type="tel"
                 name="phone"
-                id={styles.phone}
+                id="phone"
                 value={formData.phone}
                 placeholder="0911223344"
                 onChange={handleChange}
@@ -208,10 +208,10 @@ const Checkout = () => {
 
             {formData.orderMode === "delivery" && (
               <div className={styles.selectWrapper}>
-                <label htmlFor={styles.area}>Delivery area:</label>
+                <label htmlFor="area">Delivery area:</label>
                 <select
                   name="area"
-                  id={styles.area}
+                  id="area"
                   value={formData.area}
                   onChange={handleChange}
                   onBlur={handleBlur}
