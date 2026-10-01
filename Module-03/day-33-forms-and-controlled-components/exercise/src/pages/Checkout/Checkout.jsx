@@ -58,7 +58,8 @@ const Checkout = () => {
   console.log("touched fields");
   console.log(touched);
 
-  const handlePay = () => {
+  const handlePay = (e) => {
+    e.preventDefault();
     if (checkoutCount > 0) {
       Object.entries(formData).forEach(([name]) =>
         setTouched((previous) => ({ ...previous, [name]: true })),
@@ -117,7 +118,13 @@ const Checkout = () => {
       <div className={styles.contentWrapper}>
         <div className={styles.customerInfo}>
           <h2>Enter your Information</h2>
-          <form method="post" className={styles.checkoutForm}>
+          <form
+            method="post"
+            id="checkout-form"
+            className={styles.checkoutForm}
+            onSubmit={handlePay}
+            noValidate
+          >
             <div className={styles.orderModeWrapper}>
               <div className={styles.deliveryWrapper}>
                 <label htmlFor="deliveryRadio">Delivery</label>
@@ -279,7 +286,11 @@ const Checkout = () => {
           ) : (
             <p>Total: ETB 0</p>
           )}
-          <button className={styles.payButton} onClick={handlePay}>
+          <button
+            type="submit"
+            form="checkout-form"
+            className={styles.payButton}
+          >
             Pay Now
           </button>
           {isPayed && (
