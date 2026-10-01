@@ -46,25 +46,6 @@ const Checkout = () => {
 
   const show = (field) => touched[field] && errors[field];
 
-  const validateField = (name, value) => {
-    switch (name) {
-      case "area": {
-        if (value === "select") {
-          return "Please enter delivery area";
-        }
-        return "";
-      }
-    }
-  };
-
-  const validateForm = () => {
-    if (formData.orderMode === "delivery" && formData.area === "select") {
-      return "Please enter delivery area";
-    }
-
-    return "";
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((previous) => ({ ...previous, [name]: value }));
