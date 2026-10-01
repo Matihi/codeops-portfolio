@@ -67,23 +67,11 @@ const Checkout = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFormData((previous) => {
-      const updatedData = { ...previous, [name]: value };
-      if (name === "orderMode" && value === "pickup") {
-        updatedData.area = "select";
-        setErrorMessage("");
-      }
-      return updatedData;
-    });
+    setFormData((previous) => ({ ...previous, [name]: value }));
   };
 
   const handleBlur = (e) => {
-    const { name, value } = e.target;
-    if (!(name === "orderMode" && value === "pickup")) {
-      const error = validateField(name, value.trim());
-      setErrorMessage(error);
-    }
+    const { name } = e.target;
     setTouched((previous) => ({ ...previous, [name]: true }));
   };
 
@@ -92,9 +80,12 @@ const Checkout = () => {
 
   const handlePay = () => {
     if (checkoutCount > 0) {
-      let error = validateForm(formData);
-      if (error !== "") {
-        setErrorMessage(error);
+      Object.entries(formData).forEach(([name]) =>
+        setTouched((previous) => ({ ...previous, [name]: true })),
+      );
+
+      if (Object.keys(errors).length > 0) {
+        return;
       } else {
         const randomString = (length) =>
           Math.random()
@@ -102,8 +93,10 @@ const Checkout = () => {
             .substring(2, 2 + length);
         const paymentID = randomString(12);
         const deliveryDetail = { ...formData, paymentID };
+        console.log("deliveryDetail");
         console.log(deliveryDetail);
 
+        setTouched({});
         setFormData(initialFormData);
         clearCart();
         setIsPayed(true);
