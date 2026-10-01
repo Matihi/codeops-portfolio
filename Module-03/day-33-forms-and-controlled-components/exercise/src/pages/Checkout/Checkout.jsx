@@ -156,6 +156,10 @@ const Checkout = () => {
                   checked={formData.orderMode === "delivery"}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  aria-invalid={show("orderMode")}
+                  aria-describedby={
+                    show("orderMode") ? "orderMode-error" : undefined
+                  }
                 />
               </div>
               <div className={styles.pickupWrapper}>
@@ -168,10 +172,20 @@ const Checkout = () => {
                   checked={formData.orderMode === "pickup"}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  aria-invalid={show("orderMode")}
+                  aria-describedby={
+                    show("orderMode") ? "orderMode-error" : undefined
+                  }
                 />
               </div>
               {show("orderMode") && (
-                <p className={styles.errorMessage}>{errors.orderMode}</p>
+                <p
+                  id="orderMode-error"
+                  role="alert"
+                  className={styles.errorMessage}
+                >
+                  {errors.orderMode}
+                </p>
               )}
             </div>
             <div className={styles.nameWrapper}>
@@ -184,9 +198,13 @@ const Checkout = () => {
                 placeholder="Your Name"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                aria-invalid={show("name")}
+                aria-describedby={show("name") ? "name-error" : undefined}
               />
               {show("name") && (
-                <p className={styles.errorMessage}>{errors.name}</p>
+                <p id="name-error" role="alert" className={styles.errorMessage}>
+                  {errors.name}
+                </p>
               )}
             </div>
 
@@ -200,9 +218,17 @@ const Checkout = () => {
                 placeholder="0911223344"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                aria-invalid={show("phone")}
+                aria-describedby={show("phone") ? "phone-error" : undefined}
               />
               {show("phone") && (
-                <p className={styles.errorMessage}>{errors.phone}</p>
+                <p
+                  id="phone-error"
+                  role="alert"
+                  className={styles.errorMessage}
+                >
+                  {errors.phone}
+                </p>
               )}
             </div>
 
@@ -215,6 +241,8 @@ const Checkout = () => {
                   value={formData.area}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  aria-invalid={show("area")}
+                  aria-describedby={show("area") ? "area-error" : undefined}
                 >
                   <option value="select">Select</option>
                   <option value="bole">Bole</option>
@@ -224,7 +252,13 @@ const Checkout = () => {
                   <option value="legehar">Legehar</option>
                 </select>
                 {show("area") && (
-                  <p className={styles.errorMessage}>{errors.area}</p>
+                  <p
+                    id="area-error"
+                    role="alert"
+                    className={styles.errorMessage}
+                  >
+                    {errors.area}
+                  </p>
                 )}
               </div>
             )}
@@ -240,9 +274,17 @@ const Checkout = () => {
                 placeholder="e.g., extra napkins"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                aria-invalid={show("notes")}
+                aria-describedby={show("notes") ? "notes-error" : undefined}
               ></textarea>
               {show("notes") && (
-                <p className={styles.errorMessage}>{errors.notes}</p>
+                <p
+                  id="notes-error"
+                  role="alert"
+                  className={styles.errorMessage}
+                >
+                  {errors.notes}
+                </p>
               )}
             </div>
 
