@@ -17,6 +17,7 @@ const Checkout = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [touched, setTouched] = useState({});
   const [isPayed, setIsPayed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const cartItems = useCartStore((s) => s.cartItems);
   const clearCart = useCartStore((s) => s.clearCart);
 
@@ -45,6 +46,13 @@ const Checkout = () => {
 
   const show = (field) => touched[field] && errors[field];
 
+  const errorKey = Object.keys(formData).find(
+    (key) => !!touched[key] && !!errors[key] === true,
+  );
+
+  console.log("errorField");
+  console.log(errorKey);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((previous) => ({ ...previous, [name]: value }));
@@ -60,7 +68,12 @@ const Checkout = () => {
 
   const handlePay = (e) => {
     e.preventDefault();
+    console.log("hi");
+
     if (checkoutCount > 0) {
+      if (isSubmitting) {
+        return;
+      }
       Object.entries(formData).forEach(([name]) =>
         setTouched((previous) => ({ ...previous, [name]: true })),
       );
@@ -68,6 +81,7 @@ const Checkout = () => {
       if (Object.keys(errors).length > 0) {
         return;
       } else {
+        setIsSubmitting(true);
         const randomString = (length) =>
           Math.random()
             .toString(36)
@@ -78,9 +92,13 @@ const Checkout = () => {
         console.log(deliveryDetail);
 
         setTouched({});
-        setFormData(initialFormData);
-        clearCart();
-        setIsPayed(true);
+
+        setTimeout(() => {
+          setIsSubmitting(false);
+          clearCart();
+          setIsPayed(true);
+          setFormData(initialFormData);
+        }, 3000);
       }
     }
   };
@@ -288,10 +306,21 @@ const Checkout = () => {
           )}
           <button
             type="submit"
+            disabled={
+              isSubmitting || errorKey !== undefined || checkoutCount <= 0
+            }
             form="checkout-form"
-            className={styles.payButton}
+            className={
+              isSubmitting || errorKey !== undefined || checkoutCount <= 0
+                ? styles.disabled
+                : styles.payButton
+            }
           >
-            Pay Now
+            {isSubmitting
+              ? "Sending your order..."
+              : checkoutCount > 0
+                ? `Pay – ${totalString}`
+                : "Pay Now"}
           </button>
           {isPayed && (
             <p className={styles.paymentMessage}>Payment successful</p>
