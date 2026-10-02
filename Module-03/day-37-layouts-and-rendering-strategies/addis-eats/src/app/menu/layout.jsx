@@ -1,5 +1,11 @@
+import SideBar from "./SideBar";
 const layout = ({ children }) => {
-  return <div>{children}</div>;
+  return (
+    <div className="grid grid-cols-[1fr_3fr]">
+      <SideBar />
+      <div>{children}</div>
+    </div>
+  );
 };
 
 export default layout;
