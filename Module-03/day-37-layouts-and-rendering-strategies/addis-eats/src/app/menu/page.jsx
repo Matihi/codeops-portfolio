@@ -1,3 +1,4 @@
+export const revalidate = 3600;
 import getDishes from "@/services/dishes";
 import Link from "next/link";
 const Menu = async () => {
