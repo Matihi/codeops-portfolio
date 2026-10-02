@@ -1,12 +1,15 @@
 import { notFound } from "next/navigation";
-import React from "react";
-
+import getDishes from "@/services/dishes";
 const DishDetail = async ({ params }) => {
   const { slug } = await params;
+  const url = "https://addis-eats-backend.onrender.com/menu/";
+  const dishes = await getDishes(url);
 
-  if (!(slug === "doro-wot" || slug === "shiro")) {
+  const dish = dishes.find((dish) => dish.slug === slug);
+  if (!dish) {
     notFound();
   }
+
   return <div>DishDetail {slug}</div>;
 };
 
