@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Dish = ({ id, slug, nameEn, nameAm }) => {
+const Dish = ({ id, slug, nameEn, nameAm, price }) => {
   return (
     <div className="border-2 border-black p-1">
       <Link
@@ -9,6 +9,7 @@ const Dish = ({ id, slug, nameEn, nameAm }) => {
       >
         <p>{nameEn}</p>
         <p>{nameAm}</p>
+        <p>ETB {price}</p>
       </Link>
     </div>
   );

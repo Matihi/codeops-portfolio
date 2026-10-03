@@ -10,6 +10,7 @@ const DishList = ({ dishes }) => {
           slug={dish.slug}
           nameEn={dish.nameEn}
           nameAm={dish.nameAm}
+          price={dish.priceETB}
         />
       ))}
     </div>
