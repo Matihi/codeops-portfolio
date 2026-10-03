@@ -1,8 +1,6 @@
 import Link from "next/link";
-import getDishes from "@/services/dishes";
 
-const DishList = async ({ url }) => {
-  const dishes = await getDishes(url);
+const DishList = ({ dishes }) => {
   return (
     <div className="grid grid-cols-4 gap-2.5">
       {dishes.map((dish) => (
