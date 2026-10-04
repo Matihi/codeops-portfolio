@@ -1,28 +1,23 @@
-### Route Strategies
+#### Component Boundaries
 
-- / — static — response does not depend on the request.
-- /\_not-found — static — response does not depend on the request.
-- /cart — CSR — page is rendered and updated in the browser.
-- /checkout — dynamic (SSR) — makes `cookies()` read.
-- /login — static — response does not depend on the request.
-- /menu — static with revalidation (ISR) — menu data is regenerated at most once per hour.
-- /menu/[slug] — static via params (SSG) — pages are generated for the known menu slugs at build time.
-- /register — static — response does not depend on the request.
-
-Route (app) Revalidate Expire
-┌ ○ /
-├ ○ /\_not-found
-├ ○ /cart
-├ ƒ /checkout
-├ ○ /login
-├ ○ /menu 1h 1y
-├ /menu/[slug]
-│ ├ ● /menu/doro-wat
-│ ├ ● /menu/siga-wat
-│ ├ ● /menu/beg-alicha-wat
-│ └ ● [+17 more paths]
-└ ○ /register
-
-○ (Static) prerendered as static content
-● (SSG) prerendered as static HTML (uses generateStaticParams)
-ƒ (Dynamic) server-rendered on demand
+- RootLayout, runs on server, static
+- Home, runs on server, no client-side interactivity yet.
+- Header, runs on server, no interactivity of its own.
+- CartBadge, runs on client, holds state.
+- Footer, runs on server, no interactivity of its own.
+- Providers, runs on client, state provider wrapper.
+- CartProvider, runs on client, state provider.
+- Cart, runs on client, would hold state.
+- BackToHome, runs on client, has event handling code.
+- Checkout, runs on server, is async.
+- Login, runs on server, no client-side interactivity yet.
+- Register, runs on server, no client-side interactivity yet.
+- Menu, runs on server, async function.
+- SideBar, runs on server, not interactive.
+- FilterShell, runs on client, client wrapper shell.
+- DishList, runs on server, not interactive.
+- Dish, runs on server, not interactive.
+- Counter, runs on client, holds state.
+- CategoryBar, runs on client, interactive.
+- CardButtons, runs on client, interactive.
+- DishDetail, runs on server, async function.
