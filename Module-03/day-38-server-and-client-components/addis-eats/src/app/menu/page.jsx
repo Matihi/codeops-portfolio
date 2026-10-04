@@ -5,9 +5,17 @@ import CategoryBar from "./CategoryBar";
 import FilterShell from "./FilterShell";
 import { Suspense } from "react";
 
-const Menu = async () => {
+const Menu = async ({ searchParams }) => {
   const url = "https://addis-eats-backend.onrender.com/menu/";
   const dishes = await getDishes(url);
+  const { category } = await searchParams;
+
+  const shown =
+    !category || category === "All Dishes"
+      ? dishes
+      : dishes.filter((dish) => dish.category === category);
+
+  console.log(category);
 
   const categories = [
     { id: 0, category: "All Dishes" },
@@ -24,7 +32,7 @@ const Menu = async () => {
       <FilterShell>
         <CategoryBar categories={categories} />
         <Suspense fallback={<p>Loading Dishes...</p>}>
-          <DishList dishes={dishes} />
+          <DishList dishes={shown} />
         </Suspense>
       </FilterShell>
     </section>
