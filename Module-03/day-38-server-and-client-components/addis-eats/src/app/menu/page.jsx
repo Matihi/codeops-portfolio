@@ -20,8 +20,8 @@ const Menu = async () => {
   return (
     <section>
       <h1>Menu</h1>
+      <CategoryBar categories={categories} />
       <Suspense fallback={<p>Loading Dishes...</p>}>
-        <CategoryBar categories={categories} />
         <DishList dishes={dishes} />
       </Suspense>
     </section>
