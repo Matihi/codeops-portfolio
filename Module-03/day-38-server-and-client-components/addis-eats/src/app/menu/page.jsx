@@ -2,6 +2,7 @@ export const revalidate = 3600;
 import getDishes from "@/services/dishes";
 import DishList from "./DishList";
 import CategoryBar from "./CategoryBar";
+import FilterShell from "./FilterShell";
 import { Suspense } from "react";
 
 const Menu = async () => {
@@ -20,10 +21,12 @@ const Menu = async () => {
   return (
     <section>
       <h1>Menu</h1>
-      <CategoryBar categories={categories} />
-      <Suspense fallback={<p>Loading Dishes...</p>}>
-        <DishList dishes={dishes} />
-      </Suspense>
+      <FilterShell>
+        <CategoryBar categories={categories} />
+        <Suspense fallback={<p>Loading Dishes...</p>}>
+          <DishList dishes={dishes} />
+        </Suspense>
+      </FilterShell>
     </section>
   );
 };
