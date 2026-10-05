@@ -32,7 +32,11 @@ const CategoryBar = ({ categories }) => {
     );
   });
 
-  return <div className="category-bar flex space-x-1">{categoryButtons}</div>;
+  return (
+    <div className="category-bar flex flex-col space-y-1">
+      {categoryButtons}
+    </div>
+  );
 };
 
 export default CategoryBar;
