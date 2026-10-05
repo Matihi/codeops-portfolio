@@ -1,5 +1,5 @@
 const loading = () => {
-  return <div>Loading Dishes...</div>;
+  return <div>Loading Menu page...</div>;
 };
 
 export default loading;
