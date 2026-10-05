@@ -1,4 +1,5 @@
 import CategoryBar from "./CategoryBar";
+import { Suspense } from "react";
 const SideBar = () => {
   const categories = [
     { id: 0, category: "All Dishes" },
@@ -11,7 +12,9 @@ const SideBar = () => {
 
   return (
     <aside className="border-r-2 border-black flex flex-col justify-center p-1 pt-3 ">
-      <CategoryBar categories={categories} />
+      <Suspense fallback={<p>Loading...</p>}>
+        <CategoryBar categories={categories} />
+      </Suspense>
     </aside>
   );
 };
