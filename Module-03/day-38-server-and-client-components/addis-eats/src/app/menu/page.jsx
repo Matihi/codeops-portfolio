@@ -1,4 +1,3 @@
-export const revalidate = 3600;
 import DishList from "./DishList";
 import CategoryBar from "./CategoryBar";
 import FilterShell from "./FilterShell";
