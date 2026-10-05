@@ -6,7 +6,7 @@ const Menu = async ({ searchParams }) => {
   const { category } = await searchParams;
 
   return (
-    <section>
+    <section className="p-1">
       <h1>Menu</h1>
       <FilterShell>
         <Suspense fallback={<p>Loading Dishes...</p>}>
