@@ -10,13 +10,7 @@ const SideBar = () => {
   ];
 
   return (
-    <aside className="border-r-2 border-black flex flex-col justify-center ">
-      <ul className="mt-2">
-        <li>All</li>
-        <li>Main</li>
-        <li>Vegetarian</li>
-        <li>Drinks</li>
-      </ul>
+    <aside className="border-r-2 border-black flex flex-col justify-center p-1 pt-3 ">
       <CategoryBar categories={categories} />
     </aside>
   );
