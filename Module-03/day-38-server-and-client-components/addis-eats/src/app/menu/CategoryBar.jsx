@@ -5,6 +5,12 @@ const CategoryBar = ({ categories }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+
+  const pathPattern = /^\/menu\/?$/;
+  if (!pathPattern.test(pathname)) {
+    return null;
+  }
+
   const activeCategory = searchParams.get("category");
   const handleClick = (category) => {
     const params = new URLSearchParams(searchParams);
