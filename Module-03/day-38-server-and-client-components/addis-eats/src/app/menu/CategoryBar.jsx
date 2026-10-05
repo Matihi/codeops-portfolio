@@ -4,7 +4,7 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 const CategoryBar = ({ categories }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const { replace } = useRouter();
+  const { push } = useRouter();
 
   const pathPattern = /^\/menu\/?$/;
   if (!pathPattern.test(pathname)) {
@@ -22,7 +22,7 @@ const CategoryBar = ({ categories }) => {
 
     console.log(params.toString());
 
-    replace(`${pathname}?${params.toString()}`);
+    push(`${pathname}?${params.toString()}`);
   };
   const categoryButtons = categories.map((category) => {
     const isActive = activeCategory === category.category;
