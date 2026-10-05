@@ -1,22 +1,11 @@
 export const revalidate = 3600;
-import getDishes from "@/services/dishes";
 import DishList from "./DishList";
 import CategoryBar from "./CategoryBar";
 import FilterShell from "./FilterShell";
 import { Suspense } from "react";
 
 const Menu = async ({ searchParams }) => {
-  const url = "https://addis-eats-backend.onrender.com/menu/";
-  const dishes = await getDishes(url);
   const { category } = await searchParams;
-
-  const shown =
-    !category || category === "All Dishes"
-      ? dishes
-      : dishes.filter((dish) => dish.category === category);
-
-  console.log(category);
-
   const categories = [
     { id: 0, category: "All Dishes" },
     { id: 1, category: "Traditional Stews & Wat" },
@@ -32,7 +21,7 @@ const Menu = async ({ searchParams }) => {
       <FilterShell>
         <CategoryBar categories={categories} />
         <Suspense fallback={<p>Loading Dishes...</p>}>
-          <DishList dishes={shown} />
+          <DishList category={category} />
         </Suspense>
       </FilterShell>
     </section>

@@ -1,9 +1,20 @@
 import Dish from "./Dish";
+import getDishes from "@/services/dishes";
 
-const DishList = ({ dishes }) => {
+const DishList = async ({ category }) => {
+  const url = "https://addis-eats-backend.onrender.com/menu/";
+  const dishes = await getDishes(url);
+
+  const shown =
+    !category || category === "All Dishes"
+      ? dishes
+      : dishes.filter((dish) => dish.category === category);
+
+  console.log(category);
+
   return (
     <div className="grid grid-cols-4 gap-2.5">
-      {dishes.map((dish) => (
+      {shown.map((dish) => (
         <Dish
           key={dish.id}
           id={dish.id}
