@@ -3,11 +3,14 @@ export const GET = async () => {
   try {
     const res = await fetch(url);
     if (!res.ok) {
-      throw new Error(`External API error: ${res.status}`);
+      return Response.json(
+        { error: "Failed to fetch from external api" },
+        { status: 503 },
+      );
     }
     const { data } = await res.json();
     return Response.json(data, { status: 200 });
   } catch (error) {
-    return Response.json({ error: error.message }, { status: 500 });
+    return Response.json({ error: "Internal server error" }, { status: 500 });
   }
 };
