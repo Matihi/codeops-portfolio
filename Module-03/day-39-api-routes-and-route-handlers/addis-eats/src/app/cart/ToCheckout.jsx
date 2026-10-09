@@ -1,19 +1,19 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-const BackToHome = () => {
+const ToCheckout = () => {
   const router = useRouter();
 
   return (
     <div>
       <button
         className="bg-red-300 p-1 rounded cursor-pointer"
-        onClick={() => router.push("/")}
+        onClick={() => router.push("/checkout")}
       >
-        Go to Home
+        Checkout
       </button>
     </div>
   );
 };
 
-export default BackToHome;
+export default ToCheckout;

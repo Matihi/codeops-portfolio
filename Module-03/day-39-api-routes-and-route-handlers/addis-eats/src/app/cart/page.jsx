@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
-import BackToHome from "./BackToHome";
+import ToCheckout from "./ToCheckout";
 
 const Cart = () => {
   return (
     <div>
       Cart
-      <BackToHome />
+      <ToCheckout />
     </div>
   );
 };
