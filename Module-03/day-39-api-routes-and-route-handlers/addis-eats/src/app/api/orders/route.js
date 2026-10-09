@@ -13,8 +13,16 @@ export const POST = async (request) => {
     }
     return Response.json({ success: true }, { status: 201 });
   } catch (error) {
-    console.log(error);
+    const isJsonError = error instanceof SyntaxError;
+    console.error("caught error:", error);
 
-    return Response.json({ error: "Invalid json provided" }, { status: 400 });
+    return Response.json(
+      {
+        error: isJsonError
+          ? "Invalid json provided"
+          : "An unexpected server error occured",
+      },
+      { status: isJsonError ? 400 : 500 },
+    );
   }
 };
