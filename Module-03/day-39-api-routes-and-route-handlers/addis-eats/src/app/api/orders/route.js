@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { orderSchema } from "@/lib/schema";
+import { createOrder } from "@/lib/db";
 export const POST = async (request) => {
   try {
     const body = await request.json();
@@ -11,7 +12,8 @@ export const POST = async (request) => {
         { status: 422 },
       );
     }
-    return Response.json({ success: true }, { status: 201 });
+    const order = await createOrder(result.data);
+    return Response.json(order, { status: 201 });
   } catch (error) {
     const isJsonError = error instanceof SyntaxError;
     console.error("caught error:", error);
