@@ -61,9 +61,12 @@ const CheckoutForm = () => {
       <form
         className="flex flex-col gap-1 p-3 border w-fit"
         onSubmit={handleSubmit(handlePay)}
+        aria-describedby={serverErrors?.length > 0 ? "form-error" : undefined}
       >
         {serverErrors?.length > 0 && (
-          <p className={errorMessageStyle}>{serverErrors}</p>
+          <p id="form-error" role="alert" className={errorMessageStyle}>
+            {serverErrors}
+          </p>
         )}
         <div className={divStyle}>
           <label htmlFor="name">Name:</label>
@@ -73,12 +76,22 @@ const CheckoutForm = () => {
             id="name"
             {...register("name")}
             placeholder="Your Name"
+            aria-invalid={!!errors.name || serverErrors?.name?.length > 0}
+            aria-describedby={
+              !!errors.name || serverErrors?.name?.length > 0
+                ? "name-error"
+                : undefined
+            }
           />
-          {errors.name && (
-            <p className={errorMessageStyle}>{errors.name.message}</p>
+          {!!errors.name && (
+            <p id="name-error" className={errorMessageStyle}>
+              {errors.name.message}
+            </p>
           )}
           {serverErrors?.name?.length > 0 && (
-            <p className={errorMessageStyle}>{serverErrors.name[0]}</p>
+            <p id="name-error" className={errorMessageStyle}>
+              {serverErrors.name[0]}
+            </p>
           )}
         </div>
 
@@ -90,12 +103,22 @@ const CheckoutForm = () => {
             id="phone"
             {...register("phone")}
             placeholder="0911223344"
+            aria-invalid={!!errors.phone || serverErrors?.phone?.length > 0}
+            aria-describedby={
+              !!errors.phone || serverErrors?.phone?.length > 0
+                ? "phone-error"
+                : undefined
+            }
           />
-          {errors.phone && (
-            <p className={errorMessageStyle}>{errors.phone.message}</p>
+          {!!errors.phone && (
+            <p id="phone-error" className={errorMessageStyle}>
+              {errors.phone.message}
+            </p>
           )}
           {serverErrors?.phone?.length > 0 && (
-            <p className={errorMessageStyle}>{serverErrors.phone[0]}</p>
+            <p id="phone-error" className={errorMessageStyle}>
+              {serverErrors.phone[0]}
+            </p>
           )}
         </div>
         <button
