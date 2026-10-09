@@ -1,9 +1,11 @@
-import { cookies } from "next/headers";
+import CheckoutForm from "./CheckoutForm";
 
-const Checkout = async () => {
-  const cookieStore = await cookies();
-  const item = cookieStore.get("item");
-  return <div>Checkout</div>;
+const Checkout = () => {
+  return (
+    <div>
+      <CheckoutForm />
+    </div>
+  );
 };
 
 export default Checkout;
