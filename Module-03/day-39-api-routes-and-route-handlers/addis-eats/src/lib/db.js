@@ -8,7 +8,8 @@ const mockDishes = [
   {
     id: "dish_1",
     name: "Doro Wat",
-    description: "Traditional spicy chicken stew served with injera and boiled egg.",
+    description:
+      "Traditional spicy chicken stew served with injera and boiled egg.",
     price: 350,
     currency: "ETB",
     category: "Main",
@@ -44,7 +45,7 @@ const mockDishes = [
 ];
 
 // In-memory orders store
-const mockOrders = [];
+export const mockOrders = [];
 
 // Mock authenticated user session
 const mockSessionUser = {
