@@ -2,19 +2,29 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { orderSchema } from "@/lib/schema";
-import { useState } from "react";
 import placeOrder from "@/actions/checkout-actions";
+import { useActionState } from "react";
+import { startTransition } from "react";
+import { useEffect } from "react";
 
 const divStyle = "flex flex-col";
 const inputStyle = "border w-fit p-0.5";
 const errorMessageStyle = "text-red-500 text-xs";
 
+const initialState = {
+  fieldErrors: {},
+  error: null,
+  order: null,
+};
+
 const CheckoutForm = () => {
-  const [serverErrors, setServerErrors] = useState(undefined);
+  const [state, formAction, pending] = useActionState(placeOrder, initialState);
   const {
     register,
     handleSubmit,
     formState: { errors },
+
+    reset,
   } = useForm({
     resolver: zodResolver(orderSchema),
     mode: "onTouched",
@@ -24,24 +34,21 @@ const CheckoutForm = () => {
     },
   });
 
-  const handlePay = async (data) => {
-    try {
-      const formData = new FormData();
-      Object.entries(data).forEach(([name, value]) =>
-        formData.append(name, value),
-      );
-      const result = await placeOrder(formData);
-      if (result.fieldErrors) {
-        setServerErrors(result.fieldErrors);
-      } else if (result.error) {
-        setServerErrors(result.error);
-      } else {
-        console.log("success ", result);
-        setServerErrors(undefined);
-      }
-    } catch (error) {
-      console.log("error: ", error);
+  useEffect(() => {
+    if (
+      !pending &&
+      state?.order &&
+      Object.keys(state?.fieldErrors ?? {}).length === 0 &&
+      state?.error === null
+    ) {
+      reset();
     }
+  }, [pending, state]);
+
+  console.log("state: ", state);
+
+  const handlePay = async (data) => {
+    startTransition(() => formAction(data));
   };
 
   return (
@@ -50,11 +57,11 @@ const CheckoutForm = () => {
       <form
         className="flex flex-col gap-1 p-3 border w-fit"
         onSubmit={handleSubmit(handlePay)}
-        aria-describedby={serverErrors?.length > 0 ? "form-error" : undefined}
+        aria-describedby={state?.error?.length > 0 ? "form-error" : undefined}
       >
-        {serverErrors?.length > 0 && (
+        {state?.error?.length > 0 && (
           <p id="form-error" role="alert" className={errorMessageStyle}>
-            {serverErrors}
+            {state.error}
           </p>
         )}
         <div className={divStyle}>
@@ -65,9 +72,9 @@ const CheckoutForm = () => {
             id="name"
             {...register("name")}
             placeholder="Your Name"
-            aria-invalid={!!errors.name || serverErrors?.name?.length > 0}
+            aria-invalid={!!errors.name || state?.fieldErrors?.name?.length > 0}
             aria-describedby={
-              !!errors.name || serverErrors?.name?.length > 0
+              !!errors.name || state?.fieldErrors?.name?.length > 0
                 ? "name-error"
                 : undefined
             }
@@ -77,9 +84,9 @@ const CheckoutForm = () => {
               {errors.name.message}
             </p>
           )}
-          {serverErrors?.name?.length > 0 && (
+          {state?.fieldErrors?.name?.length > 0 && (
             <p id="name-error" className={errorMessageStyle}>
-              {serverErrors.name[0]}
+              {state.fieldErrors.name[0]}
             </p>
           )}
         </div>
@@ -92,9 +99,11 @@ const CheckoutForm = () => {
             id="phone"
             {...register("phone")}
             placeholder="0911223344"
-            aria-invalid={!!errors.phone || serverErrors?.phone?.length > 0}
+            aria-invalid={
+              !!errors.phone || state?.fieldErrors?.phone?.length > 0
+            }
             aria-describedby={
-              !!errors.phone || serverErrors?.phone?.length > 0
+              !!errors.phone || state?.fieldErrors?.phone?.length > 0
                 ? "phone-error"
                 : undefined
             }
@@ -104,17 +113,18 @@ const CheckoutForm = () => {
               {errors.phone.message}
             </p>
           )}
-          {serverErrors?.phone?.length > 0 && (
+          {state?.fieldErrors?.phone?.length > 0 && (
             <p id="phone-error" className={errorMessageStyle}>
-              {serverErrors.phone[0]}
+              {state.fieldErrors.phone[0]}
             </p>
           )}
         </div>
         <button
-          className="self-start py-0.5 bg-red-500 px-1.5 rounded-sm"
+          className={`self-start py-0.5 ${pending ? "bg-gray-500" : "bg-red-500"}  px-1.5 rounded-sm`}
           type="submit"
+          disabled={pending}
         >
-          Pay
+          {pending ? "Submitting..." : "Pay"}
         </button>
       </form>
     </div>

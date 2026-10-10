@@ -3,28 +3,33 @@ import { orderSchema } from "@/lib/schema";
 import { z } from "zod";
 import { createOrder } from "@/lib/db";
 
-const placeOrder = async (formData) => {
+const placeOrder = async (prevState, data) => {
   try {
-    console.log("@checkout-actions.js formData:", formData);
+    console.log("@checkout-actions.js formData:", data);
 
-    const validatedFields = orderSchema.safeParse({
-      name: formData.get("name"),
-      phone: formData.get("phone"),
-    });
+    const validatedFields = orderSchema.safeParse(data);
 
     if (!validatedFields.success) {
       const flat = z.flattenError(validatedFields.error).fieldErrors;
       return {
         fieldErrors: flat,
+        error: null,
+        order: null,
       };
     }
     const order = await createOrder(validatedFields.data);
-    return order;
+    return {
+      fieldErrors: {},
+      error: null,
+      order: order,
+    };
   } catch (error) {
     console.error("caught error:", error);
 
     return {
+      fieldErrors: {},
       error: "An unexpected server error occured",
+      order: null,
     };
   }
 };
