@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { orderSchema } from "@/lib/schema";
 import { useState } from "react";
+import placeOrder from "@/actions/checkout-actions";
 
 const divStyle = "flex flex-col";
 const inputStyle = "border w-fit p-0.5";
@@ -24,27 +25,15 @@ const CheckoutForm = () => {
   });
 
   const handlePay = async (data) => {
-    const dataString = JSON.stringify(data);
-    console.log(dataString);
-
-    console.log("data:", data);
-    const testDataString = JSON.stringify({ name: "a", phone: "c" });
-    console.log(testDataString);
-
     try {
-      const res = await fetch("http://localhost:3000/api/orders", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: dataString,
-      });
-
-      const result = await res.json();
-      if (res.status === 422) {
-        const { fieldErrors } = result;
-        setServerErrors(fieldErrors);
-      } else if (!res.ok) {
-        console.log("server error: ", result);
-        console.log("status: ", res.status);
+      const formData = new FormData();
+      Object.entries(data).forEach(([name, value]) =>
+        formData.append(name, value),
+      );
+      const result = await placeOrder(formData);
+      if (result.fieldErrors) {
+        setServerErrors(result.fieldErrors);
+      } else if (result.error) {
         setServerErrors(result.error);
       } else {
         console.log("success ", result);
