@@ -2,6 +2,7 @@
 import { orderSchema } from "@/lib/schema";
 import { z } from "zod";
 import { createOrder } from "@/lib/db";
+import { revalidatePath } from "next/cache";
 
 const placeOrder = async (prevState, data) => {
   try {
@@ -18,6 +19,7 @@ const placeOrder = async (prevState, data) => {
       };
     }
     const order = await createOrder(validatedFields.data);
+    revalidatePath("/orders");
     return {
       fieldErrors: {},
       error: null,
