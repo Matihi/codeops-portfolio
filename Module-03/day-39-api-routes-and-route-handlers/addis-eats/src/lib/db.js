@@ -45,7 +45,7 @@ const mockDishes = [
 ];
 
 // In-memory orders store
-export const mockOrders = [];
+export let mockOrders = [];
 
 // Mock authenticated user session
 const mockSessionUser = {
@@ -111,6 +111,9 @@ export async function markCancelled(id) {
 
   order.status = "CANCELLED";
   order.updatedAt = new Date().toISOString();
+  mockOrders = mockOrders.map((order) => {
+    return order.id === id ? { ...order, status: "CANCELLED" } : order;
+  });
   return order;
 }
 
