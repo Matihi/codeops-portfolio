@@ -11,6 +11,7 @@ function Header() {
         <CartBadge />
       </Link>
       <Link href="/checkout">Checkout</Link>
+      <Link href="/orders">Orders</Link>
       <Link href="/login">Login</Link>
       <Link href="/register">Register</Link>
     </header>
