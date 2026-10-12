@@ -23,8 +23,8 @@ const CheckoutForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-
-    reset,
+    setValues,
+    clearErrors,
   } = useForm({
     resolver: zodResolver(orderSchema),
     mode: "onTouched",
@@ -41,7 +41,11 @@ const CheckoutForm = () => {
       Object.keys(state?.fieldErrors ?? {}).length === 0 &&
       state?.error === null
     ) {
-      reset();
+      setValues(
+        { name: "", phone: "" },
+        { shouldValidate: false, shouldDirty: false, shouldTouch: false },
+      );
+      clearErrors();
     }
   }, [pending, state]);
 
