@@ -100,7 +100,7 @@ export async function createOrder(data) {
  * Retrieve a specific order by ID
  */
 export async function getOrder(id) {
-  const order = mockOrders.find((o) => o.id === id);
+  const order = mockOrders.find((o) => o.id === id && o.status !== "CANCELLED");
   return order || null;
 }
 
