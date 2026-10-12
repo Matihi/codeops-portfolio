@@ -8,7 +8,7 @@ const orderPage = async ({ params }) => {
   if (!order) {
     notFound();
   }
-  return <OrderStatus id={id} />;
+  return <OrderStatus id={id} initial={order} />;
 };
 
 export default orderPage;

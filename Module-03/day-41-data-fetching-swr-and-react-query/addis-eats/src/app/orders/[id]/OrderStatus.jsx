@@ -2,11 +2,12 @@
 import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
 
-const OrderStatus = ({ id }) => {
+const OrderStatus = ({ id, initial }) => {
   const { data, error, isLoading } = useSWR(`/api/orders/${id}`, fetcher, {
+    fallbackData: initial,
     refreshInterval: 5000,
   });
-  if (isLoading) {
+  if (isLoading && !data) {
     return <p>Loading...</p>;
   }
   if (error) {
