@@ -5,7 +5,7 @@ export const GET = async (request, { params }) => {
     const { id } = await params;
     const order = await getOrder(id);
 
-    return Response.json({ order }, { status: 200 });
+    return Response.json(order, { status: 200 });
   } catch (error) {
     console.log("error: ", error);
     return Response.json(
