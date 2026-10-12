@@ -47,7 +47,7 @@ const CheckoutForm = () => {
       );
       clearErrors();
     }
-  }, [pending, state]);
+  }, [pending, state, setValues, clearErrors]);
 
   console.log("state: ", state);
 
