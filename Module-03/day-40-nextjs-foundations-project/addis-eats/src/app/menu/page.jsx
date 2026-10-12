@@ -3,6 +3,7 @@ import FilterShell from "./FilterShell";
 import { Suspense } from "react";
 
 const Menu = async ({ searchParams }) => {
+  const url = "https://addis-eats-backend.onrender.com/menu/";
   const { category } = await searchParams;
 
   return (
@@ -10,7 +11,7 @@ const Menu = async ({ searchParams }) => {
       <h1>Menu</h1>
       <FilterShell>
         <Suspense fallback={<p>Loading Dishes...</p>}>
-          <DishList category={category} />
+          <DishList url={url} category={category} />
         </Suspense>
       </FilterShell>
     </section>

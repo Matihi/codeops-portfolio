@@ -1,8 +1,7 @@
 import Dish from "./Dish";
 import getDishes from "@/services/dishes";
 
-const DishList = async ({ category }) => {
-  const url = "https://addis-eats-backend.onrender.com/menu/";
+const DishList = async ({ url, category }) => {
   const dishes = await getDishes(url);
 
   const shown =
