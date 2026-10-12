@@ -1,4 +1,4 @@
-import DishList from "./DishList";
+import DishList from "@/components/dishes/DishList";
 import FilterShell from "./FilterShell";
 import { Suspense } from "react";
 
