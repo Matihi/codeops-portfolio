@@ -1,5 +1,6 @@
 import { mockOrders } from "@/lib/db";
 import CancelOrderButton from "./CancelOrderButton";
+import Link from "next/link";
 const Orders = () => {
   const activeOrders = mockOrders.filter(
     (order) => order.status !== "CANCELLED",
@@ -10,13 +11,13 @@ const Orders = () => {
 
   const orderElements = activeOrders.map((order) => (
     <li className="bg-gray-300 w-fit" key={order.id}>
-      <div>
+      <Link href={`/orders/${order.id}`}>
         <p>{`Id: ${order.id}`}</p>
         <p>{`Customer Name: ${order.name}`}</p>
         <p>{`Customer Phone: ${order.phone}`}</p>
         <p>{`Order Quantity: ${order.quantity}`}</p>
         <p>{`Date: ${order.createdAt}`}</p>
-      </div>
+      </Link>
       <CancelOrderButton id={order.id} />
     </li>
   ));
