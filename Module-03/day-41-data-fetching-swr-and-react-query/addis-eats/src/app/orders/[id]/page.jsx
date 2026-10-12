@@ -1,5 +1,6 @@
 import { getOrder } from "@/lib/db";
 import { notFound } from "next/navigation";
+import OrderStatus from "./OrderStatus";
 
 const orderPage = async ({ params }) => {
   const { id } = await params;
@@ -7,7 +8,7 @@ const orderPage = async ({ params }) => {
   if (!order) {
     notFound();
   }
-  return <p>{`Order id: ${order.id}`}</p>;
+  return <OrderStatus id={id} />;
 };
 
 export default orderPage;
