@@ -1,6 +1,4 @@
-import DishList from "@/components/dishes/DishList";
-import FilterShell from "./FilterShell";
-import { Suspense } from "react";
+import MenuClient from "./MenuClient";
 
 const Menu = async ({ searchParams }) => {
   const url = "https://addis-eats-backend.onrender.com/menu/";
@@ -9,11 +7,7 @@ const Menu = async ({ searchParams }) => {
   return (
     <section className="p-1">
       <h1>Menu</h1>
-      <FilterShell>
-        <Suspense fallback={<p>Loading Dishes...</p>}>
-          <DishList url={url} category={category} />
-        </Suspense>
-      </FilterShell>
+      <MenuClient />
     </section>
   );
 };
