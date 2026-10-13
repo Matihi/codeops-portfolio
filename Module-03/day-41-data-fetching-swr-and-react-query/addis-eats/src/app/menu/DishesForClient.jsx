@@ -3,9 +3,11 @@ import Dish from "@/components/dishes/Dish";
 import { useState } from "react";
 import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
+import { useDebounce } from "use-debounce";
 
 const DishesForClient = ({ category, initial }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [debounced] = useDebounce(searchTerm, 300);
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
@@ -15,9 +17,9 @@ const DishesForClient = ({ category, initial }) => {
 
   const key =
     `/api/dishes?category=${encodeURIComponent(defaultCat)}` +
-    `&q=${encodeURIComponent(searchTerm)}`;
+    `&q=${encodeURIComponent(debounced)}`;
 
-  const { data, error, isLoading } = useSWR(key, fetcher, {
+  const { data, error, isLoading } = useSWR(debounced ? key : null, fetcher, {
     fallbackData: initial,
   });
 
