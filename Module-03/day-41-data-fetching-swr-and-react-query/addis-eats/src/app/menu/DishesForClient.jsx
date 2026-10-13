@@ -11,8 +11,10 @@ const DishesForClient = ({ category, initial }) => {
     setSearchTerm(e.target.value);
   };
 
+  const defaultCat = category ? category : "All Dishes";
+
   const key =
-    `/api/dishes?category=${encodeURIComponent(category)}` +
+    `/api/dishes?category=${encodeURIComponent(defaultCat)}` +
     `&q=${encodeURIComponent(searchTerm)}`;
 
   const { data, error, isLoading } = useSWR(key, fetcher, {
