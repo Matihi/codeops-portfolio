@@ -2,7 +2,7 @@
 import Dish from "@/components/dishes/Dish";
 import { useState } from "react";
 
-const DishesForClient = ({ initial }) => {
+const DishesForClient = ({ category, initial }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = (e) => {

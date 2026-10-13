@@ -15,7 +15,7 @@ const Menu = async ({ searchParams }) => {
   return (
     <section className="p-1">
       <h1>Menu</h1>
-      <DishesForClient initial={shown} />
+      <DishesForClient category={category} initial={shown} />
     </section>
   );
 };
