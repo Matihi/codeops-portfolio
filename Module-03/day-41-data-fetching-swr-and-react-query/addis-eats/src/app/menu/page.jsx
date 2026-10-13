@@ -1,4 +1,4 @@
-import MenuClient from "./MenuClient";
+import DishesForClient from "./DishesForClient";
 import getDishes from "@/services/dishes";
 
 const Menu = async ({ searchParams }) => {
@@ -15,7 +15,7 @@ const Menu = async ({ searchParams }) => {
   return (
     <section className="p-1">
       <h1>Menu</h1>
-      <MenuClient shown={shown} />
+      <DishesForClient initial={shown} />
     </section>
   );
 };
