@@ -1,6 +1,8 @@
 "use client";
 import Dish from "@/components/dishes/Dish";
 import { useState } from "react";
+import useSWR from "swr";
+import fetcher from "@/lib/fetcher";
 
 const DishesForClient = ({ category, initial }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -9,7 +11,15 @@ const DishesForClient = ({ category, initial }) => {
     setSearchTerm(e.target.value);
   };
 
-  console.log(searchTerm);
+  const key =
+    `/api/dishes?category=${encodeURIComponent(category)}` +
+    `&q=${encodeURIComponent(searchTerm)}`;
+
+  const { data, error, isLoading } = useSWR(key, fetcher, {
+    fallbackData: initial,
+  });
+
+  const noDishes = data.length === 0;
 
   return (
     <div className="p-1">
@@ -22,18 +32,26 @@ const DishesForClient = ({ category, initial }) => {
           onChange={handleChange}
         />
       </search>
-      <div className="grid grid-cols-4 gap-2.5">
-        {initial.map((dish) => (
-          <Dish
-            key={dish.id}
-            id={dish.id}
-            slug={dish.slug}
-            nameEn={dish.nameEn}
-            nameAm={dish.nameAm}
-            price={dish.priceETB}
-          />
-        ))}
-      </div>
+      {isLoading ? (
+        <p>Loading dishes...</p>
+      ) : error ? (
+        <p>Could not load dishes.</p>
+      ) : noDishes ? (
+        <p>{`Sorry, dishes in this category are not available`}</p>
+      ) : (
+        <div className="grid grid-cols-4 gap-2.5">
+          {data.map((dish) => (
+            <Dish
+              key={dish.id}
+              id={dish.id}
+              slug={dish.slug}
+              nameEn={dish.nameEn}
+              nameAm={dish.nameAm}
+              price={dish.priceETB}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
