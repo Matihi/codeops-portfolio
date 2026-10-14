@@ -3,6 +3,9 @@ export const GET = async (request) => {
 
   const category = searchParams.get("category") ?? "All Dishes";
   const term = searchParams.get("q") ?? "";
+  const page = Number(searchParams.get("page")) ?? 0;
+
+  console.log("page: ", page);
 
   const url = "https://addis-eats-backend.onrender.com/menu/";
   try {
@@ -27,7 +30,13 @@ export const GET = async (request) => {
       return matchesCategory && matchesSearch;
     });
 
-    return Response.json(filteredDishes, { status: 200 });
+    const itemsPerPage = 2;
+    const startIndex = page * itemsPerPage;
+    const endIndex = (page + 1) * itemsPerPage;
+
+    const pagedDishes = filteredDishes.slice(startIndex, endIndex);
+
+    return Response.json(pagedDishes, { status: 200 });
   } catch (error) {
     return Response.json({ error: "Internal server error" }, { status: 500 });
   }

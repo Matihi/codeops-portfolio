@@ -8,6 +8,7 @@ import { useDebounce } from "use-debounce";
 const DishesForClient = ({ category, initial }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [debounced] = useDebounce(searchTerm, 300);
+  const [pageIndex, setPageIndex] = useState(0);
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
@@ -17,13 +18,32 @@ const DishesForClient = ({ category, initial }) => {
 
   const key =
     `/api/dishes?category=${encodeURIComponent(defaultCat)}` +
-    `&q=${encodeURIComponent(debounced)}`;
+    `&q=${encodeURIComponent(debounced)}` +
+    `&page=${encodeURIComponent(pageIndex)}`;
+
+  const handlePrev = () => {
+    setPageIndex((prev) => {
+      return prev < 1 ? 0 : prev - 1;
+    });
+  };
+
+  const handleNext = () => {
+    setPageIndex((prev) => prev + 1);
+  };
+
+  console.log("pageIndex: ", pageIndex);
 
   const { data, error, isLoading } = useSWR(debounced ? key : null, fetcher, {
     fallbackData: initial,
   });
 
   const noDishes = data.length === 0;
+
+  const prevPageNumber = pageIndex;
+  const nextPageNumber = pageIndex + 2;
+
+  const pageButtonStyle =
+    "flex justify-center items-center py-1 px-2 bg-amber-500 disabled:bg-gray-300 rounded-md active:bg-amber-600 h-fit";
 
   return (
     <div className="p-1">
@@ -56,6 +76,17 @@ const DishesForClient = ({ category, initial }) => {
           ))}
         </div>
       )}
+      <div className="flex justify-evenly p-4">
+        <button
+          className={pageButtonStyle}
+          onClick={handlePrev}
+          disabled={prevPageNumber < 1}
+        >{`${prevPageNumber < 1 ? "" : prevPageNumber} < Prev `}</button>
+        <button
+          className={pageButtonStyle}
+          onClick={handleNext}
+        >{`Next > ${nextPageNumber}`}</button>
+      </div>
     </div>
   );
 };
