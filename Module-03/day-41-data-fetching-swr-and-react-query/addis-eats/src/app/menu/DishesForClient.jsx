@@ -7,7 +7,7 @@ import { useDebounce } from "use-debounce";
 
 const DishesForClient = ({ category, initial }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [debounced] = useDebounce(searchTerm, 300);
+  const [debounced] = useDebounce(searchTerm.trim(), 300);
   const [pageIndex, setPageIndex] = useState(0);
 
   const handleChange = (e) => {
