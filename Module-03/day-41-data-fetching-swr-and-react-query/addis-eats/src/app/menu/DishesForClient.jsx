@@ -69,7 +69,7 @@ const DishesForClient = ({ category, initial }) => {
       ) : error ? (
         <p>Could not load dishes.</p>
       ) : noDishes ? (
-        <p>{`Sorry, dishes in this category are not available`}</p>
+        <p>{`Sorry, dishes are not available.`}</p>
       ) : (
         <div className="grid grid-cols-4 gap-2.5">
           {data.map((dish) => (
@@ -93,6 +93,7 @@ const DishesForClient = ({ category, initial }) => {
         <button
           className={pageButtonStyle}
           onClick={handleNext}
+          disabled={noDishes}
         >{`Next > ${nextPageNumber}`}</button>
       </div>
     </div>
