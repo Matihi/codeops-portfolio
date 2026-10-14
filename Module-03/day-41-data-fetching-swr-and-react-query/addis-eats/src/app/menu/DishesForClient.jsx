@@ -33,9 +33,13 @@ const DishesForClient = ({ category, initial }) => {
 
   console.log("pageIndex: ", pageIndex);
 
-  const { data, error, isLoading } = useSWR(debounced ? key : null, fetcher, {
-    fallbackData: initial,
-  });
+  const { data, error, isLoading } = useSWR(
+    debounced || defaultCat ? key : null,
+    fetcher,
+    {
+      fallbackData: initial,
+    },
+  );
 
   const noDishes = data.length === 0;
 
