@@ -1,6 +1,6 @@
 "use client";
 import Dish from "@/components/dishes/Dish";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
 import { useDebounce } from "use-debounce";
@@ -9,6 +9,10 @@ const DishesForClient = ({ category, initial }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [debounced] = useDebounce(searchTerm.trim(), 300);
   const [pageIndex, setPageIndex] = useState(0);
+
+  useEffect(() => {
+    setPageIndex(0);
+  }, [category, debounced]);
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
