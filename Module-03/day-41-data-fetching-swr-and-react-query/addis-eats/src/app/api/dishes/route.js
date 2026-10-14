@@ -30,7 +30,7 @@ export const GET = async (request) => {
       return matchesCategory && matchesSearch;
     });
 
-    const itemsPerPage = 2;
+    const itemsPerPage = 4;
     const startIndex = page * itemsPerPage;
     const endIndex = (page + 1) * itemsPerPage;
 
