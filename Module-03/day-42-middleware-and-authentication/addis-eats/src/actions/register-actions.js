@@ -9,7 +9,7 @@ const registerUser = async (data) => {
     console.log("@register-actions data: ", data);
     const validatedFields = registrationFormSchema.safeParse(data);
 
-    if (!validatedFields) {
+    if (!validatedFields.success) {
       const flat = z.flattenError(validatedFields.error).fieldErrors;
       return { success: false, fieldErrors: flat, error: null };
     }
