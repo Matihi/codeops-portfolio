@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registrationFormSchema } from "@/lib/schema";
 import styles from "./RegistrationForm.module.css";
 
-const Register = () => {
+const RegistrationForm = () => {
   const {
     register,
     handleSubmit,
@@ -82,4 +82,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegistrationForm;
