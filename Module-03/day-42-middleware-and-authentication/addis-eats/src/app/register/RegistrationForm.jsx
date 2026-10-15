@@ -10,8 +10,8 @@ const RegistrationForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
     setError,
+    resetField,
   } = useForm({
     resolver: zodResolver(registrationFormSchema),
     mode: "onTouched",
@@ -39,7 +39,9 @@ const RegistrationForm = () => {
       }
     } else {
       console.log("result.success: ", result.success);
-      reset();
+      resetField("name");
+      resetField("phone");
+      resetField("password");
     }
   };
 
