@@ -1,4 +1,5 @@
 import { users } from "./db";
+import bcrypt from "bcryptjs";
 
 export const checkDuplicate = (phone) => {
   const duplicate = users.find((user) => user.phone === phone);
@@ -10,4 +11,22 @@ export const normalizePhone = (phone) => {
     return phone.replace("0", "+251");
   }
   return phone;
+};
+
+export const createAccount = async (data) => {
+  const { password } = data;
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  const id = crypto.randomUUID();
+
+  const userAccount = {
+    id,
+    ...data,
+    password: hashedPassword,
+    createdAt: new Date().toISOString(),
+  };
+
+  users.push(userAccount);
+
+  return id;
 };
