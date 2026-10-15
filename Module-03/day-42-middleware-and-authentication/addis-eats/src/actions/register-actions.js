@@ -2,13 +2,7 @@
 import { registrationFormSchema } from "@/lib/schema";
 import { z } from "zod";
 import { checkDuplicate } from "@/lib/auth";
-
-const normalizePhone = (phone) => {
-  if (phone.startsWith("0")) {
-    return phone.replace("0", "+251");
-  }
-  return phone;
-};
+import { normalizePhone } from "@/lib/auth";
 
 const registerUser = async (data) => {
   try {
