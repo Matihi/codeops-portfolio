@@ -43,6 +43,7 @@ const RegistrationForm = () => {
               id="name"
               {...register("name")}
               placeholder="Your Name"
+              className={errors.name && styles.invalid}
             />
             {errors.name && (
               <p className={styles.errorMessage}>{errors.name.message}</p>
@@ -56,6 +57,7 @@ const RegistrationForm = () => {
               id="phone"
               {...register("phone")}
               placeholder="0911223344"
+              className={errors.phone && styles.invalid}
             />
             {errors.phone && (
               <p className={styles.errorMessage}>{errors.phone.message}</p>
@@ -69,6 +71,7 @@ const RegistrationForm = () => {
               id="password"
               {...register("password")}
               placeholder="Password"
+              className={errors.password && styles.invalid}
             />
             {errors.password && (
               <p className={styles.errorMessage}>{errors.password.message}</p>

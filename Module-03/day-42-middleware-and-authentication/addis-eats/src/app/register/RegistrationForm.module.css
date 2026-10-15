@@ -57,6 +57,14 @@
   background-color: white;
 }
 
+.form > div > .invalid {
+  border: 1px solid red;
+}
+
+.invalid:focus {
+  outline: 1px solid red;
+}
+
 .form > button {
   align-self: flex-start;
   padding: 0.5rem;
