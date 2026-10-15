@@ -49,7 +49,7 @@ const RegistrationForm = () => {
             />
             {!!errors.name && (
               <p id="name-error" className={styles.errorMessage}>
-                {errors.name.message}
+                {errors.name?.message}
               </p>
             )}
           </div>
@@ -67,7 +67,7 @@ const RegistrationForm = () => {
             />
             {!!errors.phone && (
               <p id="phone-error" className={styles.errorMessage}>
-                {errors.phone.message}
+                {errors.phone?.message}
               </p>
             )}
           </div>
@@ -87,7 +87,7 @@ const RegistrationForm = () => {
             />
             {!!errors.password && (
               <p id="password-error" className={styles.errorMessage}>
-                {errors.password.message}
+                {errors.password?.message}
               </p>
             )}
           </div>
