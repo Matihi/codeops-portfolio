@@ -44,9 +44,13 @@ const RegistrationForm = () => {
               {...register("name")}
               placeholder="Your Name"
               className={errors.name && styles.invalid}
+              aria-invalid={!!errors.name}
+              aria-describedby={!!errors.name ? "name-error" : undefined}
             />
-            {errors.name && (
-              <p className={styles.errorMessage}>{errors.name.message}</p>
+            {!!errors.name && (
+              <p id="name-error" className={styles.errorMessage}>
+                {errors.name.message}
+              </p>
             )}
           </div>
 
@@ -58,9 +62,13 @@ const RegistrationForm = () => {
               {...register("phone")}
               placeholder="0911223344"
               className={errors.phone && styles.invalid}
+              aria-invalid={!!errors.phone}
+              aria-describedby={!!errors.phone ? "phone-error" : undefined}
             />
-            {errors.phone && (
-              <p className={styles.errorMessage}>{errors.phone.message}</p>
+            {!!errors.phone && (
+              <p id="phone-error" className={styles.errorMessage}>
+                {errors.phone.message}
+              </p>
             )}
           </div>
 
@@ -72,9 +80,15 @@ const RegistrationForm = () => {
               {...register("password")}
               placeholder="Password"
               className={errors.password && styles.invalid}
+              aria-invalid={!!errors.password}
+              aria-describedby={
+                !!errors.password ? "password-error" : undefined
+              }
             />
-            {errors.password && (
-              <p className={styles.errorMessage}>{errors.password.message}</p>
+            {!!errors.password && (
+              <p id="password-error" className={styles.errorMessage}>
+                {errors.password.message}
+              </p>
             )}
           </div>
 
