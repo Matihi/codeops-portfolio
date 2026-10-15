@@ -1,5 +1,8 @@
 import { z } from "zod";
 const phonePattern = /^(?:\+251|0)9\d{8}$/;
+const passwordPattern =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9\s])[^\s]+$/;
+
 export const orderSchema = z.object({
   name: z
     .string()
@@ -28,4 +31,30 @@ export const orderSchema = z.object({
     .string()
     .max(200, { message: "Notes cannot exceed 200 characters" })
     .optional(),
+});
+
+export const registrationFormSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .min(1, { message: "Name is required" })
+    .min(3, { message: "Name should contain more than two characters" }),
+
+  phone: z
+    .string()
+    .trim()
+    .min(1, { message: "Phone is required" })
+    .regex(phonePattern, {
+      message: "Phone number should be a valid TeleBirr phone number",
+    }),
+
+  password: z
+    .string()
+    .trim()
+    .min(1, { message: "Password is required" })
+    .min(8, { message: "Password should contain at least eight characters." })
+    .regex(passwordPattern, {
+      message:
+        "Password should contain at least one lower case, one upper case, one digit and one special character",
+    }),
 });
