@@ -38,7 +38,7 @@ const registerUser = async (data) => {
     return {
       success: false,
       fieldErrors: {},
-      error: "An unexpected server error occured",
+      error: "An unexpected server error occurred",
     };
   }
 };
