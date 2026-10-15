@@ -38,7 +38,7 @@ export const registrationFormSchema = z.object({
     .string()
     .trim()
     .min(1, { message: "Name is required" })
-    .min(3, { message: "Name should contain more than two characters" }),
+    .min(2, { message: "Name must be at least 2 characters" }),
 
   phone: z
     .string()
