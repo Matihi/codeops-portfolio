@@ -1,8 +1,7 @@
 "use server";
 import { registrationFormSchema } from "@/lib/schema";
 import { z } from "zod";
-import { checkDuplicate } from "@/lib/auth";
-import { normalizePhone } from "@/lib/auth";
+import { checkDuplicate, normalizePhone, createAccount } from "@/lib/auth";
 
 const registerUser = async (data) => {
   try {
@@ -27,6 +26,10 @@ const registerUser = async (data) => {
         error: null,
       };
     }
+
+    const userData = { ...data, phone: normalizedPhoneNumber };
+    const userId = await createAccount(userData);
+    console.log("user id: ", userId);
 
     return {
       success: true,
