@@ -51,6 +51,12 @@ if (!global.mockOrders) {
 // In-memory orders store
 export const mockOrders = global.mockOrders;
 
+if (!global.users) {
+  global.users = [];
+}
+
+export const users = global.users;
+
 // Mock authenticated user session
 const mockSessionUser = {
   id: "user_addis_101",
