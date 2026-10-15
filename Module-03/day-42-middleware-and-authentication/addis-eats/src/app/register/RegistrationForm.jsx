@@ -52,7 +52,15 @@ const RegistrationForm = () => {
           method="post"
           noValidate
           onSubmit={handleSubmit(handleRegistration)}
+          aria-describedby={
+            errors.root?.serverError?.type === 500 ? "form-error" : undefined
+          }
         >
+          {errors.root?.serverError?.type === 500 && (
+            <p id="form-error" role="alert" className={styles.errorMessage}>
+              {errors.root?.serverError?.message}
+            </p>
+          )}
           <div className={styles.nameWrapper}>
             <label htmlFor="name">{`Name(ስም)`}</label>
             <input
