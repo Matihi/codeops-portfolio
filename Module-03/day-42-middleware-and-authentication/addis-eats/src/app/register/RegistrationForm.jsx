@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registrationFormSchema } from "@/lib/schema";
+import registerUser from "@/actions/register-actions";
 import styles from "./RegistrationForm.module.css";
 
 const RegistrationForm = () => {
@@ -10,6 +11,7 @@ const RegistrationForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    setError,
   } = useForm({
     resolver: zodResolver(registrationFormSchema),
     mode: "onTouched",
@@ -20,10 +22,25 @@ const RegistrationForm = () => {
     },
   });
 
-  const handleRegistration = (data) => {
-    console.log("Submit successfull");
-    console.log(data);
-    reset();
+  const handleRegistration = async (data) => {
+    const result = await registerUser(data);
+
+    if (!result.success) {
+      if (!!result.error) {
+        setError("root.serverError", { type: 500, message: result.error });
+      }
+      if (Object.keys(result.fieldErrors).length !== 0) {
+        Object.entries(result.fieldErrors).forEach(([key, value]) =>
+          setError(key, {
+            type: "server-validation",
+            message: value[0],
+          }),
+        );
+      }
+    } else {
+      console.log("result.success: ", result.success);
+      reset();
+    }
   };
 
   return (
