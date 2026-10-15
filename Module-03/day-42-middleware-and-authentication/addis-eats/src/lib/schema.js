@@ -58,3 +58,8 @@ export const registrationFormSchema = z.object({
         "Password should contain at least one lower case, one upper case, one digit and one special character",
     }),
 });
+
+export const loginFormSchema = z.object({
+  phone: z.string().trim().min(1, { message: "Phone is required" }),
+  password: z.string().trim().min(1, { message: "Password is required" }),
+});
