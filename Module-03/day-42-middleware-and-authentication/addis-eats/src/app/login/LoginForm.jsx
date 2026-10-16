@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormSchema } from "@/lib/schema";
-
+import loginUser from "@/actions/login-actions";
 import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
@@ -21,11 +21,25 @@ const LoginForm = () => {
     },
   });
 
-  const handleLogin = (data) => {
-    console.log("Login successfull");
-    console.log("data: ", data);
-    resetField("phone");
-    resetField("password");
+  const handleLogin = async (data) => {
+    const result = await loginUser(data);
+    if (!result.success) {
+      if (!!result.error) {
+        setError("root.serverError", {
+          type: 500,
+          message: result.error,
+        });
+      }
+      if (Object.keys(result.fieldErrors).length !== 0) {
+        Object.entries(result.fieldErrors).forEach(([key, value]) =>
+          setError(key, { type: "server-validation", message: value[0] }),
+        );
+      }
+    } else {
+      console.log("result.success: ", result.success);
+      resetField("phone");
+      resetField("password");
+    }
   };
 
   return (
