@@ -30,3 +30,16 @@ export const createAccount = async (data) => {
 
   return id;
 };
+
+export const verifyCredentials = async (phone, password) => {
+  const user = users.find((user) => user.phone === phone);
+  if (!user) {
+    return null;
+  }
+  const { id, password: hashedPassword } = user;
+  const isMatch = await bcrypt.compare(password, hashedPassword);
+  if (!isMatch) {
+    return null;
+  }
+  return id;
+};
