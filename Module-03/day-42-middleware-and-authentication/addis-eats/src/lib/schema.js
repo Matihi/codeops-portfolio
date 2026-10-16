@@ -60,6 +60,12 @@ export const registrationFormSchema = z.object({
 });
 
 export const loginFormSchema = z.object({
-  phone: z.string().trim().min(1, { message: "Phone is required" }),
+  phone: z
+    .string()
+    .trim()
+    .min(1, { message: "Phone is required" })
+    .regex(phonePattern, {
+      message: "Phone number should be a valid TeleBirr phone number",
+    }),
   password: z.string().trim().min(1, { message: "Password is required" }),
 });
