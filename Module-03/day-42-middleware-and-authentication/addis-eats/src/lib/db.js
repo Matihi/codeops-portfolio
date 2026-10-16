@@ -57,6 +57,12 @@ if (!global.users) {
 
 export const users = global.users;
 
+if (!global.sessionArray) {
+  global.sessionArray = [];
+}
+
+export const sessionArray = global.sessionArray;
+
 // Mock authenticated user session
 const mockSessionUser = {
   id: "user_addis_101",
