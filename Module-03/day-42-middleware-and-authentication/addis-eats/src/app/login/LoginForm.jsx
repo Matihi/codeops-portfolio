@@ -54,7 +54,7 @@ const LoginForm = () => {
               id="phone"
               {...register("phone")}
               placeholder="0911223344"
-              className={!!errors.phone && styles.invalid}
+              className={!!errors.phone ? styles.invalid : undefined}
               aria-invalid={!!errors.phone}
               aria-describedby={!!errors.phone ? "phone-error" : undefined}
             />
@@ -72,7 +72,7 @@ const LoginForm = () => {
               id="password"
               {...register("password")}
               placeholder="Password"
-              className={!!errors.password && styles.invalid}
+              className={!!errors.password ? styles.invalid : undefined}
               aria-invalid={!!errors.password}
               aria-describedby={
                 !!errors.password ? "password-error" : undefined
