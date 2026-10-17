@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CartBadge from "./CartBadge";
+import LogoutButton from "./LogoutButton";
 
 function Header() {
   return (
@@ -16,6 +17,7 @@ function Header() {
         <Link href="/login">Login</Link>
         <Link href="/register">Register</Link>
       </nav>
+      <LogoutButton />
     </header>
   );
 }
