@@ -3,17 +3,19 @@ import CartBadge from "./CartBadge";
 
 function Header() {
   return (
-    <header className="flex justify-center items-center  bg-red-200 gap-2">
-      <Link href="/">Home</Link>
-      <Link href="/menu">Menu</Link>
-      <Link className="flex space-x-0.5" href="/cart">
-        <span>Cart</span>
-        <CartBadge />
-      </Link>
-      <Link href="/checkout">Checkout</Link>
-      <Link href="/orders">Orders</Link>
-      <Link href="/login">Login</Link>
-      <Link href="/register">Register</Link>
+    <header className="flex justify-center p-2  bg-red-200 ">
+      <nav className="flex justify-center items-center gap-2">
+        <Link href="/">Home</Link>
+        <Link href="/menu">Menu</Link>
+        <Link className="flex space-x-0.5" href="/cart">
+          <span>Cart</span>
+          <CartBadge />
+        </Link>
+        <Link href="/checkout">Checkout</Link>
+        <Link href="/orders">Orders</Link>
+        <Link href="/login">Login</Link>
+        <Link href="/register">Register</Link>
+      </nav>
     </header>
   );
 }
