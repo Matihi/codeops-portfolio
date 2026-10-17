@@ -68,6 +68,14 @@ export const findSession = async (id) => {
   return session || null;
 };
 
+export const deleteSessionFromDb = async (id) => {
+  const filteredSessions = sessionArray.filter(
+    (session) => session.sessionId !== id,
+  );
+
+  sessionArray.splice(0, sessionArray.length, ...filteredSessions);
+};
+
 // Mock authenticated user session
 const mockSessionUser = {
   id: "user_addis_101",
