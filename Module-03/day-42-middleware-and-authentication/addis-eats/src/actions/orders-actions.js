@@ -1,7 +1,8 @@
 "use server";
 
-import { getSession, getOrder, markCancelled } from "@/lib/db";
+import { getOrder, markCancelled } from "@/lib/db";
 import { revalidatePath } from "next/cache";
+import { getSession } from "@/lib/session";
 
 const cancelOrder = async (id) => {
   try {
@@ -13,7 +14,7 @@ const cancelOrder = async (id) => {
     if (!order) {
       return { error: "Order not found" };
     }
-    if (order.userId !== userSession.id) {
+    if (order.userId !== userSession.userId) {
       return { error: "You cannot cancel this order." };
     }
     const canceledOrder = await markCancelled(id);
