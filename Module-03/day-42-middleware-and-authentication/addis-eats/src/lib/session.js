@@ -25,7 +25,7 @@ const createSession = async (id) => {
 
 export const getSession = async () => {
   const cookieStore = await cookies();
-  const sessionId = cookieStore.get("session").value;
+  const sessionId = cookieStore.get("session")?.value;
   if (!sessionId) {
     return null;
   }
