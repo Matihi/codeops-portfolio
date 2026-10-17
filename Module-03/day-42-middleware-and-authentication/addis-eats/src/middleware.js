@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 
 export const middleware = (request) => {
+  if (request.headers.has("next-action")) {
+    return NextResponse.next();
+  }
   const session = request.cookies.get("session");
 
   if (!session) {
