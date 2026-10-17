@@ -63,6 +63,11 @@ if (!global.sessionArray) {
 
 export const sessionArray = global.sessionArray;
 
+export const findSession = async (id) => {
+  const session = sessionArray.find((session) => session.sessionId === id);
+  return session || null;
+};
+
 // Mock authenticated user session
 const mockSessionUser = {
   id: "user_addis_101",
