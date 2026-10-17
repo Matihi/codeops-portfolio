@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { sessionArray } from "./db";
+import { sessionArray, findSession } from "./db";
 
 const createSession = async (id) => {
   const expiresAt = new Date(Date.now() + 60 * 1000);
@@ -21,6 +21,16 @@ const createSession = async (id) => {
     sameSite: "lax",
     path: "/",
   });
+};
+
+export const getSession = async () => {
+  const cookieStore = await cookies();
+  const sessionId = cookieStore.get("session").value;
+  if (!sessionId) {
+    return null;
+  }
+  const session = await findSession(sessionId);
+  return session;
 };
 
 export default createSession;
