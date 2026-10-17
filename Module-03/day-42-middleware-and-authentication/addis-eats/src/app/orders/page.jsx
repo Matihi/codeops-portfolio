@@ -1,7 +1,13 @@
 import { mockOrders } from "@/lib/db";
 import CancelOrderButton from "./CancelOrderButton";
 import Link from "next/link";
-const Orders = () => {
+import { getSession } from "@/lib/session";
+import { redirect } from "next/navigation";
+const Orders = async () => {
+  const user = await getSession();
+  if (!user) {
+    redirect("/login?next=/orders");
+  }
   const activeOrders = mockOrders.filter(
     (order) => order.status !== "CANCELLED",
   );
