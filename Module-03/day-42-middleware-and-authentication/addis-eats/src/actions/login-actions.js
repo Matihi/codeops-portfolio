@@ -3,7 +3,9 @@ import { normalizePhone, verifyCredentials } from "@/lib/auth";
 import { loginFormSchema } from "@/lib/schema";
 import { z } from "zod";
 import createSession from "@/lib/session";
-const loginUser = async (data) => {
+import { redirect } from "next/navigation";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
+const loginUser = async (data, redirectTo) => {
   try {
     const validatedFields = loginFormSchema.safeParse(data);
     if (!validatedFields.success) {
@@ -18,9 +20,15 @@ const loginUser = async (data) => {
       return { success: false, fieldErrors: {}, error: "Invalid credentials" };
     }
     await createSession(userId);
-
-    return { success: true, fieldErrors: {}, error: null };
+    const safeDistination =
+      redirectTo.startsWith("/") && !redirectTo.startsWith("//")
+        ? redirectTo
+        : "/";
+    redirect(safeDistination, "replace");
   } catch (error) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
     console.log("error in loginUser: ", error);
     return {
       success: false,

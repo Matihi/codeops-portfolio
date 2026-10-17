@@ -5,7 +5,7 @@ import { loginFormSchema } from "@/lib/schema";
 import loginUser from "@/actions/login-actions";
 import styles from "./LoginForm.module.css";
 
-const LoginForm = () => {
+const LoginForm = ({ redirectTo }) => {
   const {
     register,
     handleSubmit,
@@ -22,8 +22,8 @@ const LoginForm = () => {
   });
 
   const handleLogin = async (data) => {
-    const result = await loginUser(data);
-    if (!result.success) {
+    const result = await loginUser(data, redirectTo);
+    if (result?.success === false) {
       if (!!result.error) {
         setError("root.serverError", {
           type: 500,
@@ -35,8 +35,8 @@ const LoginForm = () => {
           setError(key, { type: "server-validation", message: value[0] }),
         );
       }
-    } else {
-      console.log("result.success: ", result.success);
+    } else if (result?.success === true) {
+      console.log("result.success: ", result?.success);
       resetField("phone");
       resetField("password");
     }
