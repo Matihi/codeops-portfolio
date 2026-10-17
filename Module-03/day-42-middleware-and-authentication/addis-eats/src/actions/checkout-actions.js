@@ -27,7 +27,7 @@ const placeOrder = async (prevState, data) => {
         order: null,
       };
     }
-    const order = await createOrder(validatedFields.data);
+    const order = await createOrder(validatedFields.data, user.userId);
     revalidatePath("/orders");
     return {
       fieldErrors: {},
