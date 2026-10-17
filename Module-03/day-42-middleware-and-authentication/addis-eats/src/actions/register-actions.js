@@ -2,6 +2,8 @@
 import { registrationFormSchema } from "@/lib/schema";
 import { z } from "zod";
 import { checkDuplicate, normalizePhone, createAccount } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 
 const registerUser = async (data) => {
   try {
@@ -31,12 +33,11 @@ const registerUser = async (data) => {
     const userId = await createAccount(userData);
     console.log("user id: ", userId);
 
-    return {
-      success: true,
-      fieldErrors: {},
-      error: null,
-    };
+    redirect("/", "replace");
   } catch (error) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
     console.log("error in register action: ", error);
     return {
       success: false,
