@@ -2,6 +2,13 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import Providers from "@/context/providers";
 import "./globals.css";
+import { Playfair_Display } from "next/font/google";
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair-display",
+  display: "swap",
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -10,7 +17,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={` h-full antialiased`}>
+    <html
+      lang="en"
+      className={` h-full antialiased ${playfairDisplay.variable} `}
+    >
       <body className="min-h-full  grid grid-rows-[auto_1fr_auto]">
         <Providers>
           <Header />

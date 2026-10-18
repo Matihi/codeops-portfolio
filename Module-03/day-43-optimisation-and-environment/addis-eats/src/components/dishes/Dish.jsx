@@ -17,7 +17,7 @@ const Dish = ({ id, slug, nameEn, nameAm, price, image }) => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </Link>
-      <p>{nameEn}</p>
+      <p className="font-playfair-display">{nameEn}</p>
       <p>{nameAm}</p>
       <p>ETB {price}</p>
       <CardButtons id={id} price={price} />
