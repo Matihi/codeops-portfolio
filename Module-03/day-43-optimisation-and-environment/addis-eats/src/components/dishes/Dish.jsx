@@ -10,6 +10,7 @@ const Dish = ({ id, slug, nameEn, nameAm, price, image }) => {
         className="flex flex-col p-0.5 border border-black"
       >
         <Image
+          className="h-auto"
           src={image}
           width={300}
           height={300}
