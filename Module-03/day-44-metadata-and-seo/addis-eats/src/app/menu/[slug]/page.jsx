@@ -21,6 +21,7 @@ export async function generateMetadata({ params }) {
   return {
     title: dish.nameEn,
     description: `${dish.nameEn} — ${dish.priceETB} ETB.`,
+    alternates: { canonical: `/menu/${dish.slug}` },
     openGraph: {
       title: dish.nameEn,
       description: `${dish.nameEn} — ${dish.priceETB} ETB.`,

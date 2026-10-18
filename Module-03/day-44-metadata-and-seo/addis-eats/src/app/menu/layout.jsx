@@ -3,6 +3,7 @@ import SideBar from "./SideBar";
 export const metadata = {
   title: "Menu",
   description: "View what we offer.",
+  alternates: { canonical: "/menu" },
 };
 
 const layout = ({ children }) => {
