@@ -38,7 +38,24 @@ const DishDetail = async ({ params }) => {
     notFound();
   }
 
-  return <div>DishDetail {slug}</div>;
+  const jsonLd = {
+    "@context": "http://schema.org",
+    "@type": "Dish",
+    name: dish.nameEn,
+    offers: { "@type": "Offer", price: dish.priceETB, priceCurrency: "ETB" },
+  };
+
+  return (
+    <section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <div>DishDetail {slug}</div>
+    </section>
+  );
 };
 
 export default DishDetail;
