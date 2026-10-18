@@ -21,6 +21,11 @@ export async function generateMetadata({ params }) {
   return {
     title: dish.nameEn,
     description: `${dish.nameEn} — ${dish.priceETB} ETB.`,
+    openGraph: {
+      title: dish.nameEn,
+      description: `${dish.nameEn} — ${dish.priceETB} ETB.`,
+      type: "website",
+    },
   };
 }
 
