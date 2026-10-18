@@ -80,6 +80,7 @@ const DishesForClient = ({ category, initial }) => {
               nameEn={dish.nameEn}
               nameAm={dish.nameAm}
               price={dish.priceETB}
+              image={`/images/${dish.slug}.png`}
             />
           ))}
         </div>

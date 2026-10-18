@@ -21,6 +21,7 @@ const DishList = async ({ url, category }) => {
           nameEn={dish.nameEn}
           nameAm={dish.nameAm}
           price={dish.priceETB}
+          image={`/images/${dish.slug}.png`}
         />
       ))}
     </div>
