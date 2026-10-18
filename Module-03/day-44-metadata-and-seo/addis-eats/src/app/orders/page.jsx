@@ -3,6 +3,12 @@ import CancelOrderButton from "./CancelOrderButton";
 import Link from "next/link";
 import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
+
+export const metadata = {
+  title: "Orders",
+  description: "View your orders.",
+};
+
 const Orders = async () => {
   const user = await getSession();
   if (!user) {

@@ -9,6 +9,21 @@ export async function generateStaticParams() {
   return dishes.map((dish) => ({ slug: dish.slug }));
 }
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const dishes = await getDishes(url);
+
+  const dish = dishes.find((dish) => dish.slug === slug);
+  if (!dish) {
+    return { title: "Dish not found" };
+  }
+
+  return {
+    title: dish.nameEn,
+    description: `${dish.nameEn} — ${dish.priceETB} ETB.`,
+  };
+}
+
 const DishDetail = async ({ params }) => {
   const { slug } = await params;
   const dishes = await getDishes(url);

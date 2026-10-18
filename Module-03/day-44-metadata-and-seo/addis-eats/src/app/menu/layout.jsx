@@ -1,4 +1,10 @@
 import SideBar from "./SideBar";
+
+export const metadata = {
+  title: "Menu",
+  description: "View what we offer.",
+};
+
 const layout = ({ children }) => {
   return (
     <div className="grid grid-cols-[1fr_3fr]">
