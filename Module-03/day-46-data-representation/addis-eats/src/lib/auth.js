@@ -43,3 +43,11 @@ export const verifyCredentials = async (phone, password) => {
   }
   return id;
 };
+
+export const getRole = async (id) => {
+  const user = users.find((user) => user.id === id);
+  if (!user) {
+    return null;
+  }
+  return user.role;
+};
