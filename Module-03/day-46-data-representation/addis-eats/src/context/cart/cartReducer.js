@@ -1,5 +1,9 @@
 export default function cartReducer(cart, action) {
   switch (action.type) {
+    case "cart_loaded": {
+      return action.cart;
+    }
+
     case "dish_added": {
       const newCart = cart.cartItems.find((dish) => dish.id === action.dish.id);
       if (!newCart) {
@@ -8,7 +12,8 @@ export default function cartReducer(cart, action) {
           cartItems: [...cart.cartItems, { ...action.dish, quantity: 1 }],
         };
       }
-      break;
+
+      return cart;
     }
 
     case "quantity_incremented": {
