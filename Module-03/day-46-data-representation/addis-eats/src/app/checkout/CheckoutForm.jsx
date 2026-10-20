@@ -19,7 +19,9 @@ const initialState = {
 };
 
 const CheckoutForm = () => {
-  const { totalPrice, dispatch } = useCart();
+  const { cart, totalPrice, dispatch } = useCart();
+
+  const numberOfItems = cart.cartItems.length;
 
   const [state, formAction, pending] = useActionState(placeOrder, initialState);
   const {
@@ -56,7 +58,12 @@ const CheckoutForm = () => {
   console.log("state: ", state);
 
   const handlePay = async (data) => {
-    const dataWithTotalPrice = { ...data, totalPrice: totalPrice };
+    const dataWithTotalPrice = {
+      ...data,
+      totalPrice: totalPrice,
+      quantity: numberOfItems,
+    };
+
     startTransition(() => formAction(dataWithTotalPrice));
     dispatch({
       type: "cart_cleared",
@@ -76,6 +83,12 @@ const CheckoutForm = () => {
             {state.error}
           </p>
         )}
+        {state?.fieldErrors?.quantity?.length > 0 && (
+          <p id="quantity-error" className={errorMessageStyle}>
+            {state.fieldErrors.quantity[0]}
+          </p>
+        )}
+
         <div className={divStyle}>
           <label htmlFor="name">Name:</label>
           <input
