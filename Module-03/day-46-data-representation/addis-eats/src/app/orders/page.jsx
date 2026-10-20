@@ -37,6 +37,7 @@ const Orders = async () => {
         <p>{`Id: ${order.id}`}</p>
         <p>{`Customer Name: ${order.name}`}</p>
         <p>{`Customer Phone: ${order.phone}`}</p>
+        <p>{`Delivery area: ${order.area}`}</p>
         <p>{`Order Quantity: ${order.quantity}`}</p>
         <p>{`Date: ${order.createdAt}`}</p>
       </Link>
