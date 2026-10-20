@@ -25,9 +25,7 @@ export const orderSchema = z
     quantity: z
       .number()
       .min(1, { message: "Quantity must be at least 1" })
-      .optional()
-      .default(1),
-
+      .optional(),
     notes: z
       .string()
       .max(200, { message: "Notes cannot exceed 200 characters" })
