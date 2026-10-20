@@ -31,6 +31,7 @@ const CheckoutForm = () => {
     defaultValues: {
       name: "",
       phone: "",
+      area: "select",
     },
   });
 
@@ -42,7 +43,7 @@ const CheckoutForm = () => {
       state?.error === null
     ) {
       setValues(
-        { name: "", phone: "" },
+        { name: "", phone: "", area: "" },
         { shouldValidate: false, shouldDirty: false, shouldTouch: false },
       );
       clearErrors();
@@ -120,6 +121,37 @@ const CheckoutForm = () => {
           {state?.fieldErrors?.phone?.length > 0 && (
             <p id="phone-error" className={errorMessageStyle}>
               {state.fieldErrors.phone[0]}
+            </p>
+          )}
+        </div>
+        <div className="">
+          <label htmlFor="area">Delivery area:</label>
+          <select
+            className="border"
+            id="area"
+            {...register("area")}
+            aria-invalid={!!errors.area || state?.fieldErrors?.area?.length > 0}
+            aria-describedby={
+              !!errors.area || state?.fieldErrors?.area?.length > 0
+                ? "area-error"
+                : undefined
+            }
+          >
+            <option value="select">Select</option>
+            <option value="bole">Bole</option>
+            <option value="megenagna">Megenagna</option>
+            <option value="piassa">Piassa</option>
+            <option value="kazanchis">Kazanchis</option>
+            <option value="legehar">Legehar</option>
+          </select>
+          {!!errors.area && (
+            <p id="area-error" className={errorMessageStyle}>
+              {errors.area.message}
+            </p>
+          )}
+          {state?.fieldErrors?.area?.length > 0 && (
+            <p id="area-error" className={errorMessageStyle}>
+              {state.fieldErrors.area[0]}
             </p>
           )}
         </div>
