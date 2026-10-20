@@ -6,6 +6,7 @@ import placeOrder from "@/actions/checkout-actions";
 import { useActionState } from "react";
 import { startTransition } from "react";
 import { useEffect } from "react";
+import useCart from "@/context/cart/useCart";
 
 const divStyle = "flex flex-col";
 const inputStyle = "border w-fit p-0.5";
@@ -18,6 +19,8 @@ const initialState = {
 };
 
 const CheckoutForm = () => {
+  const { totalPrice, dispatch } = useCart();
+
   const [state, formAction, pending] = useActionState(placeOrder, initialState);
   const {
     register,
@@ -53,7 +56,11 @@ const CheckoutForm = () => {
   console.log("state: ", state);
 
   const handlePay = async (data) => {
-    startTransition(() => formAction(data));
+    const dataWithTotalPrice = { ...data, totalPrice: totalPrice };
+    startTransition(() => formAction(dataWithTotalPrice));
+    dispatch({
+      type: "cart_cleared",
+    });
   };
 
   return (
