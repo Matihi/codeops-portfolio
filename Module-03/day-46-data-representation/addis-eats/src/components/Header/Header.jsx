@@ -12,12 +12,12 @@ async function Header() {
       <nav className="flex justify-center items-center gap-2">
         <Link href="/">Home</Link>
         <Link href="/menu">Menu</Link>
+        <Link className="flex space-x-0.5" href="/cart">
+          <span>Cart</span>
+          <CartBadge />
+        </Link>
         {role === "customer" && (
           <>
-            <Link className="flex space-x-0.5" href="/cart">
-              <span>Cart</span>
-              <CartBadge />
-            </Link>
             <Link href="/checkout">Checkout</Link>
             <Link href="/orders">Orders</Link>
           </>
