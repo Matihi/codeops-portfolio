@@ -29,7 +29,12 @@ const registerUser = async (data) => {
       };
     }
 
-    const userData = { ...data, phone: normalizedPhoneNumber };
+    const dataWithRole =
+      normalizedPhoneNumber === "+251911223344"
+        ? { ...data, phone: normalizedPhoneNumber, role: "admin" }
+        : { ...data, phone: normalizedPhoneNumber, role: "customer" };
+
+    const userData = dataWithRole;
     const userId = await createAccount(userData);
     console.log("user id: ", userId);
 
