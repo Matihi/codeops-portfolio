@@ -1,6 +1,7 @@
 import CheckoutForm from "./CheckoutForm";
 import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
+import { getRole } from "@/lib/auth";
 
 export const metadata = {
   title: "Checkout",
@@ -11,6 +12,15 @@ const Checkout = async () => {
   const user = await getSession();
   if (!user) {
     redirect("/login?next=/checkout");
+  }
+  const role = await getRole(user.userId);
+  console.log("role: ", role);
+
+  if (!role) {
+    return <p>User not found.</p>;
+  }
+  if (role !== "customer") {
+    return <p>403 Unauthorized</p>;
   }
   return (
     <div>

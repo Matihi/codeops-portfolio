@@ -3,6 +3,7 @@ import CancelOrderButton from "./CancelOrderButton";
 import Link from "next/link";
 import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
+import { getRole } from "@/lib/auth";
 
 export const metadata = {
   title: "Orders",
@@ -13,6 +14,15 @@ const Orders = async () => {
   const user = await getSession();
   if (!user) {
     redirect("/login?next=/orders");
+  }
+  const role = await getRole(user.userId);
+  console.log("role: ", role);
+
+  if (!role) {
+    return <p>User not found.</p>;
+  }
+  if (role !== "customer") {
+    return <p>403 Unauthorized</p>;
   }
   const activeOrders = mockOrders.filter(
     (order) => order.status !== "CANCELLED",
