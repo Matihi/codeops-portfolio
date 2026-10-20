@@ -4,6 +4,7 @@ import { z } from "zod";
 import { createOrder } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { getSession } from "@/lib/session";
+import { getRole } from "@/lib/auth";
 
 const placeOrder = async (prevState, data) => {
   try {
@@ -12,6 +13,23 @@ const placeOrder = async (prevState, data) => {
       return {
         fieldErrors: {},
         error: "Sign in to continue",
+        order: null,
+      };
+    }
+    const role = await getRole(user.userId);
+    console.log("role: ", role);
+
+    if (!role) {
+      return {
+        fieldErrors: {},
+        error: "User not found",
+        order: null,
+      };
+    }
+    if (role !== "customer") {
+      return {
+        fieldErrors: {},
+        error: "Not authorized",
         order: null,
       };
     }
