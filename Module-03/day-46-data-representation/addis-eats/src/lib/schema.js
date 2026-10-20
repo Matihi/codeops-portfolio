@@ -34,6 +34,7 @@ export const orderSchema = z
       .optional(),
 
     area: z.string().trim(),
+    totalPrice: z.number().default(0),
   })
   .refine(
     (data) => {
