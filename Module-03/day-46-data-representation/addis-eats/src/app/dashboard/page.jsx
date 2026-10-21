@@ -5,11 +5,14 @@ import { mockOrders } from "@/lib/db";
 import Report from "./Report";
 
 const Dashboard = async ({ searchParams }) => {
-  const { revenue_sort } = await searchParams;
+  const { revenue_sort, page } = await searchParams;
 
   console.log("sort: ", revenue_sort);
 
   const revSortOrder = revenue_sort ?? "desc";
+  const pageNumber = Number(page) || 1;
+  const currentPage = Math.max(pageNumber, 1);
+  console.log("pageNumber: ", currentPage);
   const user = await getSession();
 
   if (!user) {
@@ -38,7 +41,13 @@ const Dashboard = async ({ searchParams }) => {
       ? (a, b) => b[sortKey] - a[sortKey]
       : (a, b) => a[sortKey] - b[sortKey];
   };
-  byArea.sort(sortFunction(revSortOrder, "revenue"));
+
+  const itemsPerPage = 2;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = currentPage * itemsPerPage;
+  const shownByArea = byArea
+    .slice(startIndex, endIndex)
+    .sort(sortFunction(revSortOrder, "revenue"));
 
   const ordersPerDay = [
     {
@@ -76,7 +85,9 @@ const Dashboard = async ({ searchParams }) => {
       .reduce((acc, curr) => acc + (curr?.quantity ?? 0), 0),
   }));
 
-  return <Report data={byArea} ordersPerDay={ordersPerDay} />;
+  console.log("shownByArea: ", shownByArea);
+
+  return <Report data={shownByArea} ordersPerDay={ordersPerDay} />;
 };
 
 export default Dashboard;

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import {
   BarChart,
@@ -25,7 +26,14 @@ const Report = ({ data, ordersPerDay }) => {
   console.log("data in report: ", data);
 
   const revSortButton = searchParams.get("revenue_sort") ?? "desc";
-  console.log("activeButton", revSortButton);
+  const parsedPage = Number(searchParams.get("page")) || 1;
+  const currentPage = Math.max(parsedPage, 1);
+
+  const createPageURL = (pageNumber) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("page", pageNumber.toString());
+    return `${pathname}?${params.toString()}`;
+  };
 
   const handleRevAsc = () => {
     const params = new URLSearchParams(searchParams);
@@ -39,19 +47,25 @@ const Report = ({ data, ordersPerDay }) => {
     push(`${pathname}?${params.toString()}`);
   };
 
-  const theadElements = Object.keys(data[0]).map((key) => (
-    <th className="border-l p-2" scope="col" key={key}>
-      {key}
-      {key === "revenue" && (
-        <>
-          {revSortButton !== "asc" && <button onClick={handleRevAsc}>⌄</button>}
-          {revSortButton !== "desc" && (
-            <button onClick={handleRevDesc}>^</button>
+  const noData = data.length <= 0;
+
+  const theadElements = !noData
+    ? Object.keys(data[0]).map((key) => (
+        <th className="border-l p-2" scope="col" key={key}>
+          {key}
+          {key === "revenue" && (
+            <>
+              {revSortButton !== "asc" && (
+                <button onClick={handleRevAsc}>⌄</button>
+              )}
+              {revSortButton !== "desc" && (
+                <button onClick={handleRevDesc}>^</button>
+              )}
+            </>
           )}
-        </>
-      )}
-    </th>
-  ));
+        </th>
+      ))
+    : null;
 
   const theadElementsForOrdersPerDay = Object.keys(ordersPerDay[0]).map(
     (key) => (
@@ -61,12 +75,14 @@ const Report = ({ data, ordersPerDay }) => {
     ),
   );
 
-  const tbodyElements = data.map((element) => (
-    <tr className="border" key={element.area}>
-      <td className="border-r">{element.area}</td>
-      <td className="text-right">{element.revenue}</td>
-    </tr>
-  ));
+  const tbodyElements = !noData
+    ? data.map((element) => (
+        <tr className="border" key={element.area}>
+          <td className="border-r">{element.area}</td>
+          <td className="text-right">{element.revenue}</td>
+        </tr>
+      ))
+    : null;
 
   const tbodyElementsForOrdersPerDay = ordersPerDay.map((element) => (
     <tr className="border" key={element.day}>
@@ -75,7 +91,8 @@ const Report = ({ data, ordersPerDay }) => {
     </tr>
   ));
 
-  // console.log("abc: ", theadElements);
+  const pageLinkStyle =
+    " py-1 px-2 mx-2 bg-amber-500 disabled:bg-gray-300 rounded-md active:bg-amber-600 h-fit";
 
   return (
     <>
@@ -92,14 +109,26 @@ const Report = ({ data, ordersPerDay }) => {
         </ResponsiveContainer>
       </figure>
 
-      <table className="border m-4">
-        <caption>Revenue by neighbourhood</caption>
-        <thead>
-          <tr className="border">{theadElements}</tr>
-        </thead>
-        <tbody>{tbodyElements}</tbody>
-      </table>
+      {!noData ? (
+        <table className="border m-4">
+          <caption>Revenue by neighbourhood</caption>
+          <thead>
+            <tr className="border">{theadElements}</tr>
+          </thead>
+          <tbody>{tbodyElements}</tbody>
+        </table>
+      ) : (
+        <p>No data</p>
+      )}
 
+      <Link
+        className={pageLinkStyle}
+        href={currentPage === 1 ? "" : createPageURL(currentPage - 1)}
+      >{`< Prev`}</Link>
+      <Link
+        className={pageLinkStyle}
+        href={noData ? "" : createPageURL(currentPage + 1)}
+      >{`Next >`}</Link>
       <figure>
         <figcaption>
           Number of orders per day from monday(2026-10-19) to sunday(2026-10-25)
