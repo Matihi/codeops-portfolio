@@ -1,5 +1,5 @@
-const loading = () => {
+const Loading = () => {
   return <div>Loading Menu page...</div>;
 };
 
-export default loading;
+export default Loading;
