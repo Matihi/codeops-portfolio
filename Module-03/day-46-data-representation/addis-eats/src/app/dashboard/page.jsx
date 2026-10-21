@@ -4,15 +4,18 @@ import { getRole } from "@/lib/auth";
 import { mockOrders } from "@/lib/db";
 import Report from "./Report";
 
-const Dashboard = async () => {
+const Dashboard = async ({ searchParams }) => {
+  const { revenue_sort } = await searchParams;
+
+  console.log("sort: ", revenue_sort);
+
+  const revSortOrder = revenue_sort ?? "desc";
   const user = await getSession();
-  console.log("user: ", user);
 
   if (!user) {
     redirect("/login?next=/dashboard");
   }
   const role = await getRole(user.userId);
-  console.log("role: ", role);
 
   if (!role) {
     return <p>User not found.</p>;
@@ -29,6 +32,13 @@ const Dashboard = async () => {
         .reduce((sum, o) => sum + o.totalPrice, 0),
     }),
   );
+
+  const sortFunction = (order, sortKey) => {
+    return order === "desc"
+      ? (a, b) => b[sortKey] - a[sortKey]
+      : (a, b) => a[sortKey] - b[sortKey];
+  };
+  byArea.sort(sortFunction(revSortOrder, "revenue"));
 
   const ordersPerDay = [
     {
@@ -65,11 +75,6 @@ const Dashboard = async () => {
       .filter((order) => order.createdAt.startsWith(date))
       .reduce((acc, curr) => acc + (curr?.quantity ?? 0), 0),
   }));
-
-  console.log("ordersPerDay :", ordersPerDay);
-
-  console.log("mockOrders", mockOrders);
-  console.log("byArea: ", byArea);
 
   return <Report data={byArea} ordersPerDay={ordersPerDay} />;
 };

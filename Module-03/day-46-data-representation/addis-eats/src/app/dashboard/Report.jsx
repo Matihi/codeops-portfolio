@@ -1,4 +1,5 @@
 "use client";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import {
   BarChart,
   Bar,
@@ -18,11 +19,37 @@ const etb = (v) =>
   }).format(v);
 
 const Report = ({ data, ordersPerDay }) => {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { push } = useRouter();
   console.log("data in report: ", data);
+
+  const revSortButton = searchParams.get("revenue_sort") ?? "desc";
+  console.log("activeButton", revSortButton);
+
+  const handleRevAsc = () => {
+    const params = new URLSearchParams(searchParams);
+    params.set("revenue_sort", "asc");
+    push(`${pathname}?${params.toString()}`);
+  };
+
+  const handleRevDesc = () => {
+    const params = new URLSearchParams(searchParams);
+    params.set("revenue_sort", "desc");
+    push(`${pathname}?${params.toString()}`);
+  };
 
   const theadElements = Object.keys(data[0]).map((key) => (
     <th className="border-l p-2" scope="col" key={key}>
       {key}
+      {key === "revenue" && (
+        <>
+          {revSortButton !== "asc" && <button onClick={handleRevAsc}>⌄</button>}
+          {revSortButton !== "desc" && (
+            <button onClick={handleRevDesc}>^</button>
+          )}
+        </>
+      )}
     </th>
   ));
 
@@ -48,7 +75,7 @@ const Report = ({ data, ordersPerDay }) => {
     </tr>
   ));
 
-  console.log("abc: ", theadElements);
+  // console.log("abc: ", theadElements);
 
   return (
     <>
