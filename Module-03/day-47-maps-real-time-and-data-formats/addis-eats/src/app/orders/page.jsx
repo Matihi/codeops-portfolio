@@ -32,7 +32,7 @@ const Orders = async () => {
   console.log("activeOrders: ", activeOrders);
 
   const orderElements = activeOrders.map((order) => (
-    <li className="bg-gray-300 w-fit" key={order.id}>
+    <li className="bg-gray-300 flex flex-col w-fit h-fit p-1" key={order.id}>
       <Link href={`/orders/${order.id}`}>
         <p>{`Id: ${order.id}`}</p>
         <p>{`Customer Name: ${order.name}`}</p>
@@ -41,7 +41,15 @@ const Orders = async () => {
         <p>{`Order Quantity: ${order.quantity}`}</p>
         <p>{`Date: ${order.createdAt}`}</p>
       </Link>
-      <CancelOrderButton id={order.id} />
+      <div className="flex gap-6">
+        <CancelOrderButton id={order.id} />
+        <Link
+          className="bg-green-400 p-0.5 text-gray-900"
+          href={`/track/${order.id}`}
+        >
+          Track your order
+        </Link>
+      </div>
     </li>
   ));
   return (
