@@ -25,7 +25,7 @@ const Orders = async () => {
     return <p>403 Unauthorized</p>;
   }
   const activeOrders = mockOrders.filter(
-    (order) => order.status !== "CANCELLED",
+    (order) => order?.status !== "CANCELLED" && order?.userId === user.userId,
   );
   const numberOfActiveOrders = activeOrders.length;
   console.log("numberOfActiveOrders: ", numberOfActiveOrders);
