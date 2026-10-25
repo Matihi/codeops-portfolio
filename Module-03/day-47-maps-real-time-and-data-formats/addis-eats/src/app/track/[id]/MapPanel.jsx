@@ -7,7 +7,17 @@ const DeliveryMap = dynamic(() => import("./DeliveryMap"), {
 });
 
 const MapPanel = () => {
-  return <DeliveryMap />;
+  return (
+    <>
+      <DeliveryMap />
+      <section className="p-1">
+        <h2 className="text-xl">Delivery Details</h2>
+        <p>Courier name: Abebe</p>
+        <p>Delivery status: Delivering your food</p>
+        <p>Estimated time of arrival: 20 minutes</p>
+      </section>
+    </>
+  );
 };
 
 export default MapPanel;
