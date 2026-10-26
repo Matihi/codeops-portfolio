@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { getRole } from "@/lib/auth";
+import { when } from "@/lib/format";
 
 export const metadata = {
   title: "Orders",
@@ -39,7 +40,7 @@ const Orders = async () => {
         <p>{`Customer Phone: ${order.phone}`}</p>
         <p>{`Delivery area: ${order.area}`}</p>
         <p>{`Order Quantity: ${order.quantity}`}</p>
-        <p>{`Date: ${order.createdAt}`}</p>
+        <p>{`Date: ${when.format(new Date(order.createdAt))}`}</p>
       </Link>
       <div className="flex gap-6">
         <CancelOrderButton id={order.id} />
