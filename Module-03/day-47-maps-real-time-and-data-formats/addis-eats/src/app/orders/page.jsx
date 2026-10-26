@@ -5,6 +5,7 @@ import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { getRole } from "@/lib/auth";
 import { when, relative } from "@/lib/format";
+import CsvExportButton from "./CsvExportButton";
 
 export const metadata = {
   title: "Orders",
@@ -31,6 +32,14 @@ const Orders = async () => {
   const numberOfActiveOrders = activeOrders.length;
   console.log("numberOfActiveOrders: ", numberOfActiveOrders);
   console.log("activeOrders: ", activeOrders);
+
+  const forCsv = activeOrders.map((order) => {
+    const createdAtObj = {
+      createdAt: when.format(new Date(order.createdAt)),
+    };
+    const { userId, createdAt, ...filteredOrder } = order;
+    return { ...filteredOrder, ...createdAtObj };
+  });
 
   const orderElements = activeOrders.map((order) => (
     <li className="bg-gray-300 flex flex-col w-fit h-fit p-1" key={order.id}>
@@ -60,7 +69,10 @@ const Orders = async () => {
       {numberOfActiveOrders === 0 ? (
         <p>No Orders</p>
       ) : (
-        <ul className="flex flex-col gap-1">{orderElements}</ul>
+        <>
+          <ul className="flex flex-col gap-1">{orderElements}</ul>
+          <CsvExportButton toCsvArray={forCsv} />
+        </>
       )}
     </div>
   );
