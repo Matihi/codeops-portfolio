@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { getRole } from "@/lib/auth";
-import { when } from "@/lib/format";
+import { when, relative } from "@/lib/format";
 
 export const metadata = {
   title: "Orders",
@@ -41,6 +41,7 @@ const Orders = async () => {
         <p>{`Delivery area: ${order.area}`}</p>
         <p>{`Order Quantity: ${order.quantity}`}</p>
         <p>{`Date: ${when.format(new Date(order.createdAt))}`}</p>
+        <p>{`Time passed: ${relative.format(Math.round((new Date(order.createdAt) - Date.now()) / 3600000), "hour")}`}</p>
       </Link>
       <div className="flex gap-6">
         <CancelOrderButton id={order.id} />
