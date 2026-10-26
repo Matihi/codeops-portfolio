@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CardButtons from "./CardButtons";
 import Image from "next/image";
+import { etb } from "@/lib/format";
 
 const Dish = ({ id, slug, nameEn, nameAm, price, image }) => {
   return (
@@ -20,12 +21,7 @@ const Dish = ({ id, slug, nameEn, nameAm, price, image }) => {
       </Link>
       <p className="font-playfair-display">{nameEn}</p>
       <p>{nameAm}</p>
-      <p>
-        {new Intl.NumberFormat("en-ET", {
-          style: "currency",
-          currency: "ETB",
-        }).format(price)}
-      </p>
+      <p>{etb.format(price)}</p>
       <CardButtons id={id} price={price} />
     </div>
   );
