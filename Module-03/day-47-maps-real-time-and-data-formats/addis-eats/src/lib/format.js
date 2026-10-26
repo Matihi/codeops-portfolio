@@ -8,3 +8,5 @@ export const when = new Intl.DateTimeFormat("en-ET", {
   timeStyle: "short",
   timeZone: "Africa/Addis_Ababa",
 });
+
+export const relative = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
