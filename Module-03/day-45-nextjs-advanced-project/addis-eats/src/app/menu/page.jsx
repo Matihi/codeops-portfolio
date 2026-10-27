@@ -7,10 +7,11 @@ const Menu = async ({ searchParams }) => {
 
   const dishes = await getDishes(url);
 
+  //give DishesForClient same number of dishes as paginated result on the first render, otherwise it will render all dishes.
   const shown =
     !category || category === "All Dishes"
-      ? dishes
-      : dishes.filter((dish) => dish.category === category);
+      ? dishes.slice(0, 4)
+      : dishes.filter((dish) => dish.category === category).slice(0, 4);
 
   return (
     <section className="p-1">

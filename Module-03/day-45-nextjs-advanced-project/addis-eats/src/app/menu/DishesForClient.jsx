@@ -10,6 +10,9 @@ const DishesForClient = ({ category, initial }) => {
   const [debounced] = useDebounce(searchTerm.trim(), 300);
   const [pageIndex, setPageIndex] = useState(0);
 
+  //prevent unchanging initial dishes from being displayed on subsequent next page clicks
+  const isInitialState = pageIndex === 0 && searchTerm === "";
+
   useEffect(() => {
     setPageIndex(0);
   }, [category, debounced]);
@@ -40,7 +43,11 @@ const DishesForClient = ({ category, initial }) => {
   const { data, error, isLoading } = useSWR(
     debounced || defaultCat ? key : null,
     fetcher,
-    { fallbackData: initial, refreshInterval: 5000 },
+    {
+      fallbackData: isInitialState ? initial : undefined,
+      refreshInterval: 5000,
+      keepPreviousData: true,
+    },
   );
 
   const noDishes = data?.length === 0;
@@ -62,7 +69,7 @@ const DishesForClient = ({ category, initial }) => {
           onChange={handleChange}
         />
       </search>
-      {isLoading ? (
+      {isLoading && !data ? (
         <p>Loading dishes...</p>
       ) : error ? (
         <p>Could not load dishes.</p>
