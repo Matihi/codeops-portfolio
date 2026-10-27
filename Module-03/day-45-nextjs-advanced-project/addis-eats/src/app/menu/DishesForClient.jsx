@@ -43,7 +43,7 @@ const DishesForClient = ({ category, initial }) => {
     { fallbackData: initial, refreshInterval: 5000 },
   );
 
-  const noDishes = data.length === 0;
+  const noDishes = data?.length === 0;
 
   const prevPageNumber = pageIndex;
   const nextPageNumber = pageIndex + 2;
