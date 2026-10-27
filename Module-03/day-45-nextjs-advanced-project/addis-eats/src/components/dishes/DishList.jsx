@@ -1,19 +1,29 @@
+"use client";
+import useSWR from "swr";
 import Dish from "./Dish";
 import getDishes from "@/services/dishes";
 
-const DishList = async ({ url, category }) => {
-  const dishes = await getDishes(url);
+const DishList = ({ url, category }) => {
+  const fetcher = async function (url) {
+    const dishes = await getDishes(url);
+    return dishes;
+  };
 
-  const shown =
-    !category || category === "All Dishes"
-      ? dishes
-      : dishes.filter((dish) => dish.category === category);
+  const { data, isLoading, error } = useSWR(url, fetcher, {
+    revalidateOnFocus: true,
+  });
 
-  console.log(category);
+  if (isLoading) {
+    console.log("Loading");
+    return <p>Loading</p>;
+  }
+  if (error) {
+    return <p>Error</p>;
+  }
 
   return (
     <div className="grid grid-cols-4 gap-2.5">
-      {shown.map((dish) => (
+      {data?.map((dish) => (
         <Dish
           key={dish.id}
           id={dish.id}
