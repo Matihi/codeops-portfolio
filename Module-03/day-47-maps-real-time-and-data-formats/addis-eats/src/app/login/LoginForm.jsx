@@ -4,8 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormSchema } from "@/lib/schema";
 import loginUser from "@/actions/login-actions";
 import styles from "./LoginForm.module.css";
+import { useState } from "react";
 
 const LoginForm = ({ redirectTo }) => {
+  const [isPending, setIsPending] = useState(false);
   const {
     register,
     handleSubmit,
@@ -22,6 +24,7 @@ const LoginForm = ({ redirectTo }) => {
   });
 
   const handleLogin = async (data) => {
+    setIsPending(true);
     const result = await loginUser(data, redirectTo);
     if (result?.success === false) {
       if (!!result.error) {
@@ -40,6 +43,7 @@ const LoginForm = ({ redirectTo }) => {
       resetField("phone");
       resetField("password");
     }
+    setIsPending(false);
   };
 
   return (
@@ -99,7 +103,13 @@ const LoginForm = ({ redirectTo }) => {
             )}
           </div>
 
-          <button type="submit">Log in</button>
+          <button
+            disabled={isPending}
+            className={isPending ? styles.disabledLogin : undefined}
+            type="submit"
+          >
+            {isPending ? "Submitting..." : "Log in"}
+          </button>
         </form>
       </div>
     </section>

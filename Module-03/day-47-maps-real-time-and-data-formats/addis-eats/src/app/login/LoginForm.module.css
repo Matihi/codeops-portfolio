@@ -75,6 +75,10 @@
   border-radius: 0.5rem;
 }
 
+.form > .disabledLogin {
+  background-color: #422d2a;
+}
+
 @media (max-width: 48.75rem) {
   .loginCard {
     width: 80%;
