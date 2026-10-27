@@ -1,8 +1,9 @@
 import getDishes from "@/services/dishes";
 
-export default async function sitemap() {
-  const dishes = await getDishes();
+const url = "https://addis-eats-backend.onrender.com/menu/";
 
+export default async function sitemap() {
+  const dishes = await getDishes(url);
   return [
     { url: "http://localhost:3000/", priority: 1 },
     { url: "http://localhost:3000/menu", priority: 0.8 },
