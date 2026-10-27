@@ -74,6 +74,10 @@
   border-radius: 0.5rem;
 }
 
+.form > .disabledRegister {
+  background-color: #4a332f;
+}
+
 @media (max-width: 48rem) {
   .formWrapper h1 {
     font-size: 1rem;

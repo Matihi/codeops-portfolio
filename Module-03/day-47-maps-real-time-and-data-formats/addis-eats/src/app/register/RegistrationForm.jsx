@@ -4,8 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registrationFormSchema } from "@/lib/schema";
 import registerUser from "@/actions/register-actions";
 import styles from "./RegistrationForm.module.css";
+import { useState } from "react";
 
 const RegistrationForm = () => {
+  const [isPending, setIsPending] = useState(false);
   const {
     register,
     handleSubmit,
@@ -23,6 +25,7 @@ const RegistrationForm = () => {
   });
 
   const handleRegistration = async (data) => {
+    setIsPending(true);
     const result = await registerUser(data);
 
     if (!result.success) {
@@ -43,6 +46,7 @@ const RegistrationForm = () => {
       resetField("phone");
       resetField("password");
     }
+    setIsPending(false);
   };
 
   return (
@@ -119,7 +123,13 @@ const RegistrationForm = () => {
             )}
           </div>
 
-          <button type="submit">Create Account</button>
+          <button
+            disabled={isPending}
+            className={isPending ? styles.disabledRegister : undefined}
+            type="submit"
+          >
+            {isPending ? "Submitting" : "Create Account"}
+          </button>
         </form>
       </div>
     </section>
