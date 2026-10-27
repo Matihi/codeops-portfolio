@@ -40,9 +40,7 @@ const DishesForClient = ({ category, initial }) => {
   const { data, error, isLoading } = useSWR(
     debounced || defaultCat ? key : null,
     fetcher,
-    {
-      fallbackData: initial,
-    },
+    { fallbackData: initial, refreshInterval: 5000 },
   );
 
   const noDishes = data.length === 0;
