@@ -20,8 +20,6 @@ const CategoryBar = ({ categories }) => {
       params.delete("category");
     }
 
-    console.log(params.toString());
-
     push(`${pathname}?${params.toString()}`);
   };
   const categoryButtons = categories.map((category) => {

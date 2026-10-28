@@ -4,7 +4,6 @@ import useCart from "@/context/cart/useCart";
 const CardButtons = ({ id, price }) => {
   const { cart, dispatch } = useCart();
   const dishForCart = { id: id, price: price, quantity: 0 };
-  console.log(dishForCart);
 
   const cartDish = cart.cartItems.find((dish) => dish.id === id);
 

@@ -55,8 +55,6 @@ const CheckoutForm = () => {
     }
   }, [pending, state, setValues, clearErrors]);
 
-  console.log("state: ", state);
-
   const handlePay = async (data) => {
     const dataWithTotalPrice = {
       ...data,

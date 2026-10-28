@@ -14,7 +14,6 @@ const Checkout = async () => {
     redirect("/login?next=/checkout");
   }
   const role = await getRole(user.userId);
-  console.log("role: ", role);
 
   if (!role) {
     return <p>User not found.</p>;

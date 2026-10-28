@@ -23,7 +23,6 @@ const Report = ({ data, ordersPerDay }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { push } = useRouter();
-  console.log("data in report: ", data);
 
   const revSortButton = searchParams.get("revenue_sort") ?? "desc";
   const parsedPage = Number(searchParams.get("page")) || 1;

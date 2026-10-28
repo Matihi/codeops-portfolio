@@ -17,7 +17,6 @@ const placeOrder = async (prevState, data) => {
       };
     }
     const role = await getRole(user.userId);
-    console.log("role: ", role);
 
     if (!role) {
       return {
@@ -33,7 +32,6 @@ const placeOrder = async (prevState, data) => {
         order: null,
       };
     }
-    console.log("@checkout-actions.js formData:", data);
 
     const validatedFields = orderSchema.safeParse(data);
 

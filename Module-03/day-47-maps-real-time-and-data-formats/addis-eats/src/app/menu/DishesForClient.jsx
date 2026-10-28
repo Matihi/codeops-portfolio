@@ -35,8 +35,6 @@ const DishesForClient = ({ category, initial }) => {
     setPageIndex((prev) => prev + 1);
   };
 
-  console.log("pageIndex: ", pageIndex);
-
   const { data, error, isLoading } = useSWR(
     debounced || defaultCat ? key : null,
     fetcher,

@@ -7,12 +7,10 @@ import Report from "./Report";
 const Dashboard = async ({ searchParams }) => {
   const { revenue_sort, page } = await searchParams;
 
-  console.log("sort: ", revenue_sort);
-
   const revSortOrder = revenue_sort ?? "desc";
   const pageNumber = Number(page) || 1;
   const currentPage = Math.max(pageNumber, 1);
-  console.log("pageNumber: ", currentPage);
+
   const user = await getSession();
 
   if (!user) {
@@ -84,8 +82,6 @@ const Dashboard = async ({ searchParams }) => {
       .filter((order) => order.createdAt.startsWith(date))
       .reduce((acc, curr) => acc + (curr?.quantity ?? 0), 0),
   }));
-
-  console.log("shownByArea: ", shownByArea);
 
   return <Report data={shownByArea} ordersPerDay={ordersPerDay} />;
 };

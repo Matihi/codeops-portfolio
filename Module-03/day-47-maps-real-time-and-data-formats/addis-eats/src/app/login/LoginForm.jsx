@@ -39,7 +39,6 @@ const LoginForm = ({ redirectTo }) => {
         );
       }
     } else if (result?.success === true) {
-      console.log("result.success: ", result?.success);
       resetField("phone");
       resetField("password");
     }

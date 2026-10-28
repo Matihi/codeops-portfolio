@@ -5,8 +5,6 @@ export const GET = async (request) => {
   const term = searchParams.get("q") ?? "";
   const page = Number(searchParams.get("page")) ?? 0;
 
-  console.log("page: ", page);
-
   const url = "https://addis-eats-backend.onrender.com/menu/";
   try {
     const res = await fetch(url);

@@ -41,7 +41,6 @@ const RegistrationForm = () => {
         );
       }
     } else {
-      console.log("result.success: ", result.success);
       resetField("name");
       resetField("phone");
       resetField("password");

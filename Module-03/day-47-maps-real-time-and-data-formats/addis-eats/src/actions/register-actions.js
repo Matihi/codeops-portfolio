@@ -7,7 +7,6 @@ import { isRedirectError } from "next/dist/client/components/redirect-error";
 
 const registerUser = async (data) => {
   try {
-    console.log("@register-actions data: ", data);
     const validatedFields = registrationFormSchema.safeParse(data);
 
     if (!validatedFields.success) {
@@ -36,7 +35,6 @@ const registerUser = async (data) => {
 
     const userData = dataWithRole;
     const userId = await createAccount(userData);
-    console.log("user id: ", userId);
 
     redirect("/", "replace");
   } catch (error) {

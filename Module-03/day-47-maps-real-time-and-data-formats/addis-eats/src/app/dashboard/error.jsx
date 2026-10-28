@@ -1,8 +1,6 @@
 "use client";
 
 const Error = ({ error, reset }) => {
-  console.log(error);
-
   return (
     <div className="h-full flex flex-col justify-center items-center ">
       <p>Something went wrong fetching data!</p>

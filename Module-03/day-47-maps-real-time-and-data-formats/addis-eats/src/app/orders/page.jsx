@@ -18,7 +18,6 @@ const Orders = async () => {
     redirect("/login?next=/orders");
   }
   const role = await getRole(user.userId);
-  console.log("role: ", role);
 
   if (!role) {
     return <p>User not found.</p>;
@@ -30,8 +29,6 @@ const Orders = async () => {
     (order) => order?.status !== "CANCELLED" && order?.userId === user.userId,
   );
   const numberOfActiveOrders = activeOrders.length;
-  console.log("numberOfActiveOrders: ", numberOfActiveOrders);
-  console.log("activeOrders: ", activeOrders);
 
   const forCsv = activeOrders.map((order) => {
     const createdAtObj = {
