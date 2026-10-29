@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import getDishes from "@/services/dishes";
+import Image from "next/image";
+import CardButtons from "@/components/dishes/CardButtons";
 
 const url = "https://addis-eats-backend.onrender.com/menu/";
 
@@ -47,14 +49,33 @@ const DishDetail = async ({ params }) => {
   };
 
   return (
-    <section>
+    <section className="p-3">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
         }}
       />
-      <div>DishDetail {slug}</div>
+      <div className=" relative h-80 w-80 overflow-hidden rounded-xl ">
+        <Image
+          className="object-cover "
+          src={`/images/${slug}.png`}
+          alt={slug}
+          fill={true}
+          priority={true}
+          sizes="50vw"
+        />
+      </div>
+      <div className="w-[65%] sm:w-[30%]  lg:w-[20%]">
+        <CardButtons
+          id={dish.id}
+          price={dish.priceETB}
+          nameEn={dish.nameEn}
+          nameAm={dish.nameAm}
+          description={dish.description}
+          image={`/images/${slug}.png`}
+        />
+      </div>
     </section>
   );
 };
