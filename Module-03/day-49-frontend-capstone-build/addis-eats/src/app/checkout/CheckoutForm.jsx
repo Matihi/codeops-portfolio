@@ -47,6 +47,9 @@ const CheckoutForm = () => {
       Object.keys(state?.fieldErrors ?? {}).length === 0 &&
       state?.error === null
     ) {
+      dispatch({
+        type: "cart_cleared",
+      });
       setValues(
         { name: "", phone: "", area: "" },
         { shouldValidate: false, shouldDirty: false, shouldTouch: false },
@@ -63,9 +66,6 @@ const CheckoutForm = () => {
     };
 
     startTransition(() => formAction(dataWithTotalPrice));
-    dispatch({
-      type: "cart_cleared",
-    });
   };
 
   return (
