@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
 import { useDebounce } from "use-debounce";
+import CategoryBar from "./CategoryBar";
 
-const DishesForClient = ({ category, initial }) => {
+const DishesForClient = ({ category, initial, categories }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [debounced] = useDebounce(searchTerm.trim(), 300);
   const [pageIndex, setPageIndex] = useState(0);
@@ -62,6 +63,7 @@ const DishesForClient = ({ category, initial }) => {
           onChange={handleChange}
         />
       </search>
+      <CategoryBar categories={categories} />
       {isLoading ? (
         <p>Loading dishes...</p>
       ) : error ? (
