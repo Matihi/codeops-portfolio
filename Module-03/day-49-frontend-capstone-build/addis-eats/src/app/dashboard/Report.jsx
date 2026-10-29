@@ -69,7 +69,7 @@ const Report = ({ data, ordersPerDay, startDate, endDate }) => {
   const theadElementsForOrdersPerDay = Object.keys(ordersPerDay[0]).map(
     (key) => (
       <th className="border-l p-2" scope="col" key={key}>
-        {key}
+        {key === "numberOfOrders" ? "Orders per day" : key}
       </th>
     ),
   );
@@ -137,7 +137,11 @@ const Report = ({ data, ordersPerDay, startDate, endDate }) => {
             <XAxis dataKey="day" />
             <YAxis />
             <Tooltip />
-            <Line dataKey="numberOfOrders" fill="#1B4D8E" />
+            <Line
+              dataKey="numberOfOrders"
+              name="orders per day"
+              fill="#1B4D8E"
+            />
           </LineChart>
         </ResponsiveContainer>
       </figure>
