@@ -1,9 +1,17 @@
 "use client";
 import useCart from "@/context/cart/useCart";
 
-const CardButtons = ({ id, price }) => {
+const CardButtons = ({ id, price, nameEn, nameAm, description, image }) => {
   const { cart, dispatch } = useCart();
-  const dishForCart = { id: id, price: price, quantity: 0 };
+  const dishForCart = {
+    id: id,
+    nameEn: nameEn,
+    nameAm: nameAm,
+    price: price,
+    description: description,
+    image: image,
+    quantity: 0,
+  };
 
   const cartDish = cart.cartItems.find((dish) => dish.id === id);
 

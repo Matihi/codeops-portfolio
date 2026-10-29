@@ -20,6 +20,13 @@ const DishList = async ({ url, category }) => {
           nameAm={dish.nameAm}
           price={dish.priceETB}
           image={`/images/${dish.slug}.png`}
+          description={dish.description}
+          spiceLevel={dish.spiceLevel
+            .replace(/^choice:\s*/i, "")
+            .replace(/\s*\(\d(?:-\d)?\/3\)\s*$/, "")
+            .trim()}
+          isFasting={dish.isFasting}
+          isSpecial={dish.isSpecial}
         />
       ))}
     </div>

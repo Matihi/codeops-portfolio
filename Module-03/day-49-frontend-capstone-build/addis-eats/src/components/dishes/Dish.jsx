@@ -3,7 +3,18 @@ import CardButtons from "./CardButtons";
 import Image from "next/image";
 import { etb } from "@/lib/format";
 
-const Dish = ({ id, slug, nameEn, nameAm, price, image }) => {
+const Dish = ({
+  id,
+  slug,
+  nameEn,
+  nameAm,
+  price,
+  image,
+  description,
+  spiceLevel,
+  isFasting,
+  isSpecial,
+}) => {
   return (
     <div className="flex flex-col border-2 border-black p-1 h-fit">
       <Link
@@ -23,7 +34,14 @@ const Dish = ({ id, slug, nameEn, nameAm, price, image }) => {
       <p className="font-playfair-display">{nameEn}</p>
       <p>{nameAm}</p>
       <p>{etb.format(price)}</p>
-      <CardButtons id={id} price={price} />
+      <CardButtons
+        id={id}
+        price={price}
+        nameEn={nameEn}
+        nameAm={nameAm}
+        description={description}
+        image={image}
+      />
     </div>
   );
 };
