@@ -4,7 +4,7 @@ import { z } from "zod";
 import { createOrder } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { getSession } from "@/lib/session";
-import { getRole } from "@/lib/auth";
+import { getRole, getUserInfo } from "@/lib/auth";
 
 const placeOrder = async (prevState, data) => {
   try {
@@ -29,6 +29,14 @@ const placeOrder = async (prevState, data) => {
       return {
         fieldErrors: {},
         error: "Not authorized",
+        order: null,
+      };
+    }
+    const userInfo = await getUserInfo(user.userId);
+    if (userInfo?.name !== data.name || userInfo?.phone !== data.phone) {
+      return {
+        fieldErrors: {},
+        error: "Name or phone number doesn't match",
         order: null,
       };
     }
