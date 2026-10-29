@@ -30,7 +30,7 @@ const Dashboard = async ({ searchParams }) => {
     (area) => ({
       area,
       revenue: mockOrders
-        .filter((order) => order.area === area)
+        .filter((order) => order.area === area && order.status !== "CANCELLED")
         .reduce((sum, o) => sum + o.totalPrice, 0),
     }),
   );
@@ -59,8 +59,10 @@ const Dashboard = async ({ searchParams }) => {
 
   const ordersPerDay = daysWithDate.map(({ date, day }) => ({
     day,
-    numberOfOrders: mockOrders.filter((order) =>
-      order.createdAt.startsWith(date.slice(0, 10)),
+    numberOfOrders: mockOrders.filter(
+      (order) =>
+        order.createdAt.startsWith(date.slice(0, 10)) &&
+        order.status !== "CANCELLED",
     ).length,
   }));
 
