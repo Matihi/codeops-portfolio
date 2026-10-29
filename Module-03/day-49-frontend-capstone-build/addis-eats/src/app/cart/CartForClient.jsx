@@ -2,6 +2,7 @@
 import React from "react";
 import ToCheckout from "./ToCheckout";
 import useCart from "@/context/cart/useCart";
+import { etb } from "@/lib/format";
 
 const CartForClient = () => {
   const { cart, totalItems, dispatch, totalPrice } = useCart();
@@ -82,6 +83,7 @@ const CartForClient = () => {
             Clear cart
           </button>
           <ul className="flex flex-col gap-1">{cartElements}</ul>
+          <p>{`Total Price ${etb.format(totalPrice)}`}</p>
           <ToCheckout />
         </div>
       )}
