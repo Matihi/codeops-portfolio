@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getRole } from "@/lib/auth";
 import { mockOrders } from "@/lib/db";
 import Report from "./Report";
+import { dateCount } from "@/services/date";
 
 const Dashboard = async ({ searchParams }) => {
   const { revenue_sort, page } = await searchParams;
@@ -47,40 +48,17 @@ const Dashboard = async ({ searchParams }) => {
     .slice(startIndex, endIndex)
     .sort(sortFunction(revSortOrder, "revenue"));
 
-  const ordersPerDay = [
-    {
-      date: "2026-10-19",
-      day: "Mon",
-    },
-    {
-      date: "2026-10-20",
-      day: "Tue",
-    },
-    {
-      date: "2026-10-21",
-      day: "Wed",
-    },
-    {
-      date: "2026-10-22",
-      day: "Thu",
-    },
-    {
-      date: "2026-10-23",
-      day: "Fri",
-    },
-    {
-      date: "2026-10-24",
-      day: "Sat",
-    },
-    {
-      date: "2026-10-25",
-      day: "Sun",
-    },
-  ].map(({ date, day }) => ({
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const daysWithDate = days.map((day, i) => ({
+    date: `${dateCount(i)}`,
     day,
-    numberOfOrders: mockOrders
-      .filter((order) => order.createdAt.startsWith(date))
-      .reduce((acc, curr) => acc + (curr?.quantity ?? 0), 0),
+  }));
+
+  const ordersPerDay = daysWithDate.map(({ date, day }) => ({
+    day,
+    numberOfOrders: mockOrders.filter((order) =>
+      order.createdAt.startsWith(date.slice(0, 10)),
+    ).length,
   }));
 
   return <Report data={shownByArea} ordersPerDay={ordersPerDay} />;
