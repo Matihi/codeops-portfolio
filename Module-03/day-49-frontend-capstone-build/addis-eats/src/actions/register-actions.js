@@ -36,7 +36,7 @@ const registerUser = async (data) => {
     const userData = dataWithRole;
     const userId = await createAccount(userData);
 
-    redirect("/", "replace");
+    redirect("/login", "replace");
   } catch (error) {
     if (isRedirectError(error)) {
       throw error;
