@@ -10,7 +10,7 @@ const DishList = async ({ url, category }) => {
       : dishes.filter((dish) => dish.category === category);
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 my-1">
       {shown.map((dish) => (
         <Dish
           key={dish.id}
