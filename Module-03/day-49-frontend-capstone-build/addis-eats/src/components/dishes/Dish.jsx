@@ -27,7 +27,7 @@ const Dish = ({
           fill={true}
           priority={true}
           alt={nameEn}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 500px) 30vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
       </Link>
       <div className="flex flex-col">
