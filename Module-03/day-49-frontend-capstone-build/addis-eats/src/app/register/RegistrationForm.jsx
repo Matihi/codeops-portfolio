@@ -28,7 +28,7 @@ const RegistrationForm = () => {
     setIsPending(true);
     const result = await registerUser(data);
 
-    if (!result.success) {
+    if (result?.success === false) {
       if (!!result.error) {
         setError("root.serverError", { type: 500, message: result.error });
       }
@@ -40,7 +40,7 @@ const RegistrationForm = () => {
           }),
         );
       }
-    } else {
+    } else if (result?.success === true) {
       resetField("name");
       resetField("phone");
       resetField("password");
