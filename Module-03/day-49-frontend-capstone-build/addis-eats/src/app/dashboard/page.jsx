@@ -54,6 +54,9 @@ const Dashboard = async ({ searchParams }) => {
     day,
   }));
 
+  const startDate = daysWithDate[0]?.date.slice(0, 10);
+  const endDate = daysWithDate[6]?.date.slice(0, 10);
+
   const ordersPerDay = daysWithDate.map(({ date, day }) => ({
     day,
     numberOfOrders: mockOrders.filter((order) =>
@@ -61,7 +64,14 @@ const Dashboard = async ({ searchParams }) => {
     ).length,
   }));
 
-  return <Report data={shownByArea} ordersPerDay={ordersPerDay} />;
+  return (
+    <Report
+      data={shownByArea}
+      ordersPerDay={ordersPerDay}
+      startDate={startDate}
+      endDate={endDate}
+    />
+  );
 };
 
 export default Dashboard;
