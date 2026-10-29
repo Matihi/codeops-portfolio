@@ -26,7 +26,7 @@ const CategoryBar = ({ categories }) => {
     const isActive = activeCategory === category.category;
     return (
       <button
-        className={`${isActive ? `bg-[#7a1401] text-white` : `bg-[#fceae4] `} rounded-sm p-1 text-xs hover:bg-[#7a1401] hover:text-white
+        className={`${isActive ? `bg-[#7a1401] text-white` : `bg-[#fceae4] `} rounded-sm p-1 text-xs md:text-sm hover:bg-[#7a1401] hover:text-white shrink-0 my-1
     `}
         key={category.id}
         onClick={() => handleClick(category.category)}
@@ -36,7 +36,11 @@ const CategoryBar = ({ categories }) => {
     );
   });
 
-  return <div className="category-bar flex space-x-1">{categoryButtons}</div>;
+  return (
+    <div className="category-bar flex space-x-3 overflow-x-auto">
+      {categoryButtons}
+    </div>
+  );
 };
 
 export default CategoryBar;
