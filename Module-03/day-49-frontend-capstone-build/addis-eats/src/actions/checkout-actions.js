@@ -4,7 +4,7 @@ import { z } from "zod";
 import { createOrder } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { getSession } from "@/lib/session";
-import { getRole, getUserInfo } from "@/lib/auth";
+import { getRole, getUserInfo, normalizePhone } from "@/lib/auth";
 
 const placeOrder = async (prevState, data) => {
   try {
@@ -33,7 +33,10 @@ const placeOrder = async (prevState, data) => {
       };
     }
     const userInfo = await getUserInfo(user.userId);
-    if (userInfo?.name !== data.name || userInfo?.phone !== data.phone) {
+    if (
+      userInfo?.name !== data.name ||
+      normalizePhone(userInfo?.phone) !== normalizePhone(data.phone)
+    ) {
       return {
         fieldErrors: {},
         error: "Name or phone number doesn't match",
