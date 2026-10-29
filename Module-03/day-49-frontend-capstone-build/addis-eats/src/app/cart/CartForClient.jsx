@@ -70,7 +70,7 @@ const CartForClient = () => {
     </li>
   ));
   return (
-    <div>
+    <div className="p-3">
       <h1>Your Cart</h1>
       {totalItems <= 0 ? (
         <p>Your cart is empty</p>
