@@ -19,7 +19,7 @@ const etb = (v) =>
     maximumFractionDigits: 0,
   }).format(v);
 
-const Report = ({ data, ordersPerDay }) => {
+const Report = ({ data, ordersPerDay, startDate, endDate }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { push } = useRouter();
@@ -130,7 +130,7 @@ const Report = ({ data, ordersPerDay }) => {
       >{`Next >`}</Link>
       <figure>
         <figcaption>
-          Number of orders per day from monday(2026-10-19) to sunday(2026-10-25)
+          {`Number of orders per day from ${ordersPerDay[0]?.day} ${startDate} to ${ordersPerDay[6]?.day} ${endDate}`}
         </figcaption>
         <ResponsiveContainer width="95%" height={300}>
           <LineChart data={ordersPerDay}>
@@ -144,7 +144,7 @@ const Report = ({ data, ordersPerDay }) => {
 
       <table className="border m-4">
         <caption>
-          Number of orders per day from monday(2026-10-19) to sunday(2026-10-25)
+          {`Number of orders per day from ${ordersPerDay[0]?.day} ${startDate} to ${ordersPerDay[6]?.day} ${endDate}`}
         </caption>
         <thead>
           <tr>{theadElementsForOrdersPerDay}</tr>
