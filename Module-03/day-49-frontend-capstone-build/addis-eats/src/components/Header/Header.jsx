@@ -33,13 +33,13 @@ async function Header() {
           </>
         )}
       </nav>
-      {user && <LogoutButton />}
       {userInfo?.name && (
         <div>
           <p>Selam,</p>
           <p>{`${userInfo.name}`}</p>
         </div>
       )}
+      {user && <LogoutButton />}
     </header>
   );
 }
