@@ -71,7 +71,7 @@ const DishesForClient = ({ category, initial, categories }) => {
       ) : noDishes ? (
         <p>{`Sorry, dishes are not available.`}</p>
       ) : (
-        <div className="grid grid-cols-4 gap-2.5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
           {data.map((dish) => (
             <Dish
               key={dish.id}
