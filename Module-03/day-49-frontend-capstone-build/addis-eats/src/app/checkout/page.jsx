@@ -2,6 +2,7 @@ import CheckoutForm from "./CheckoutForm";
 import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { getRole } from "@/lib/auth";
+import CheckoutCart from "./CheckoutCart";
 
 export const metadata = {
   title: "Checkout",
@@ -24,6 +25,7 @@ const Checkout = async () => {
   return (
     <div>
       <CheckoutForm />
+      <CheckoutCart />
     </div>
   );
 };
