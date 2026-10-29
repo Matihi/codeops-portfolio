@@ -51,3 +51,11 @@ export const getRole = async (id) => {
   }
   return user.role;
 };
+
+export const getUserInfo = async (id) => {
+  const user = users.find((user) => user.id === id);
+  if (!user) {
+    return null;
+  }
+  return { name: user.name, phone: user.phone };
+};
