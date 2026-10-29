@@ -2,11 +2,13 @@ import Link from "next/link";
 import CartBadge from "./CartBadge";
 import LogoutButton from "./LogoutButton";
 import { getSession } from "@/lib/session";
-import { getRole } from "@/lib/auth";
+import { getRole, getUserInfo } from "@/lib/auth";
 
 async function Header() {
   const user = await getSession();
   const role = await getRole(user?.userId);
+  const userInfo = await getUserInfo(user?.userId);
+
   return (
     <header className="flex justify-center p-2 gap-1  bg-red-200 ">
       <nav className="flex justify-center items-center gap-2">
@@ -32,6 +34,12 @@ async function Header() {
         )}
       </nav>
       {user && <LogoutButton />}
+      {userInfo?.name && (
+        <div>
+          <p>Selam,</p>
+          <p>{`${userInfo.name}`}</p>
+        </div>
+      )}
     </header>
   );
 }
