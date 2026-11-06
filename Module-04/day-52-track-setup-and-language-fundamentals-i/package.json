@@ -1,0 +1,18 @@
+{
+  "name": "day-52-track-setup-and-language-fundamentals-i",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/order.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/order.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}
