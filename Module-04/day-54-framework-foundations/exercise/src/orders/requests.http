@@ -1,0 +1,22 @@
+@baseUrl = http://localhost:3000/api
+
+###
+GET {{baseUrl}}
+
+###
+
+GET {{baseUrl}}/orders
+
+###
+GET {{baseUrl}}/orders/3
+
+###
+POST {{baseUrl}}/orders
+Content-Type: application/json
+
+{
+    "customerName": "Almaz",
+    "area": "Kazanchis",
+    "status": "PENDING",
+    "totalSantim": 11000
+}
