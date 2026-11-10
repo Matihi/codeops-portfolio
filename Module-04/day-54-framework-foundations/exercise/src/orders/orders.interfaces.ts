@@ -11,7 +11,7 @@ export interface Order {
 }
 
 export interface OrderRepository {
-  findAll(): Promise<Order[]>;
+  findAll(area?: string): Promise<Order[]>;
   findById(id: number): Promise<Order | undefined>;
   create(data: CreateOrderDto): Promise<Order>;
 }

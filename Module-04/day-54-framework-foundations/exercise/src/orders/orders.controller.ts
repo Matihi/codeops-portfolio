@@ -7,6 +7,7 @@ import {
   ParseIntPipe,
   HttpCode,
   NotFoundException,
+  Query,
 } from '@nestjs/common';
 import { OrdersService } from './orders.service.js';
 import { Order } from './orders.interfaces.js';
@@ -18,8 +19,8 @@ export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
   @Get()
-  async findAll(): Promise<Order[]> {
-    return this.ordersService.findAll();
+  async findAll(@Query('area') area?: string): Promise<Order[]> {
+    return this.ordersService.findAll(area);
   }
 
   @Get(':id')

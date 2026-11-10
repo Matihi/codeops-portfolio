@@ -10,8 +10,8 @@ export class OrdersService {
     @Inject(ORDER_REPOSITORY) private readonly repo: OrderRepository,
   ) {}
 
-  async findAll(): Promise<Order[]> {
-    return this.repo.findAll();
+  async findAll(area?: string): Promise<Order[]> {
+    return this.repo.findAll(area);
   }
 
   async findById(id: number): Promise<Order> {

@@ -9,8 +9,14 @@ export class InMemoryOrderRepository implements OrderRepository {
     SEED.map((order) => [order.id, order]),
   );
 
-  async findAll(): Promise<Order[]> {
-    return [...this.orders.values()];
+  async findAll(area?: string): Promise<Order[]> {
+    const foundOrders = [...this.orders.values()];
+    if (!area) {
+      return foundOrders;
+    }
+    return foundOrders.filter(
+      (order) => order.area.toLowerCase() === area.toLowerCase(),
+    );
   }
 
   async findById(id: number): Promise<Order | undefined> {
