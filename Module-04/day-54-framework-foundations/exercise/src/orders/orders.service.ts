@@ -1,4 +1,28 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
+import { ORDER_REPOSITORY } from './orders.tokens.js';
+import { OrderNotFoundError } from './orders.errors.js';
+import type { OrderRepository, Order } from './orders.interfaces.js';
+import { CreateOrderDto } from './dto/create-order.dto.js';
 
 @Injectable()
-export class OrdersService {}
+export class OrdersService {
+  constructor(
+    @Inject(ORDER_REPOSITORY) private readonly repo: OrderRepository,
+  ) {}
+
+  async findAll(): Promise<Order[]> {
+    return this.repo.findAll();
+  }
+
+  async findById(id: number): Promise<Order> {
+    const order = await this.repo.findById(id);
+    if (!order) {
+      throw new OrderNotFoundError(id);
+    }
+    return order;
+  }
+
+  async create(orderDto: CreateOrderDto): Promise<Order> {
+    return this.repo.create(orderDto);
+  }
+}
