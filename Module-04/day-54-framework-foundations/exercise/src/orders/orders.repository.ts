@@ -1,46 +1,33 @@
 import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto.js';
 import { Order, OrderRepository } from './orders.interfaces.js';
+import { SEED } from './orders.seed.js';
 
 @Injectable()
 export class InMemoryOrderRepository implements OrderRepository {
-  private nextId = 3;
-
-  private readonly orders: Order[] = [
-    {
-      id: 1,
-      customerName: 'Abebe',
-      area: 'Bole',
-      status: 'PENDING',
-      totalSantim: 10_000,
-    },
-    {
-      id: 2,
-      customerName: 'Kebede',
-      area: 'Megenagna',
-      status: 'PENDING',
-      totalSantim: 15_000,
-    },
-  ];
+  private readonly orders: Map<number, Order> = new Map<number, Order>(
+    SEED.map((order) => [order.id, order]),
+  );
 
   async findAll(): Promise<Order[]> {
-    return [...this.orders];
+    return [...this.orders.values()];
   }
 
   async findById(id: number): Promise<Order | undefined> {
-    return this.orders.find((order) => order.id === id);
+    return this.orders.get(id);
   }
 
   async create(data: CreateOrderDto): Promise<Order> {
+    const idNum = Math.max(0, ...this.orders.keys()) + 1;
     const order: Order = {
-      id: this.nextId++,
+      id: idNum,
       customerName: data.customerName,
       area: data.area,
       status: 'PENDING',
       phone: data.phone,
       totalSantim: data.totalSantim,
     };
-    this.orders.push(order);
+    this.orders.set(idNum, order);
     return order;
   }
 }
