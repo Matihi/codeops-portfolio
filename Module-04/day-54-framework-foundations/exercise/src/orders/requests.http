@@ -20,3 +20,6 @@ Content-Type: application/json
     "status": "PENDING",
     "totalSantim": 11000
 }
+
+###
+GET {{baseUrl}}/orders?area=Megenagna
