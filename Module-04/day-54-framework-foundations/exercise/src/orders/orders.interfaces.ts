@@ -6,6 +6,7 @@ export interface Order {
   customerName: string;
   area: Area;
   status: OrderStatus;
+  restaurantId: number;
   phone?: string;
   totalSantim: number;
 }

@@ -30,6 +30,7 @@ export class InMemoryOrderRepository implements OrderRepository {
       customerName: data.customerName,
       area: data.area,
       status: 'PENDING',
+      restaurantId: data.restaurantId,
       phone: data.phone,
       totalSantim: data.totalSantim,
     };

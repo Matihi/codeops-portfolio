@@ -21,6 +21,9 @@ export class CreateOrderDto {
   status!: 'PENDING';
 
   @IsInt()
+  restaurantId!: number;
+
+  @IsInt()
   @Min(1)
   totalSantim!: number;
 

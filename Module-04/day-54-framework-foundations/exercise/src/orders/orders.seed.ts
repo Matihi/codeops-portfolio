@@ -5,6 +5,7 @@ export const SEED: Order[] = [
     customerName: 'Abebe',
     area: 'Bole',
     status: 'PENDING',
+    restaurantId: 1,
     totalSantim: 10_000,
   },
   {
@@ -12,6 +13,7 @@ export const SEED: Order[] = [
     customerName: 'Kebede',
     area: 'Megenagna',
     status: 'PENDING',
+    restaurantId: 3,
     totalSantim: 15_000,
   },
 ];
