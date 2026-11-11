@@ -6,12 +6,16 @@ import {
   Min,
   IsOptional,
   Matches,
+  MinLength,
+  MaxLength,
 } from 'class-validator';
 import { AREAS } from '../orders.types.js';
 import type { Area } from '../orders.types.js';
 
 export class CreateOrderDto {
   @IsString()
+  @MinLength(2)
+  @MaxLength(80)
   customerName!: string;
 
   @IsIn(AREAS)
