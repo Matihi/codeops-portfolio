@@ -18,6 +18,7 @@ Content-Type: application/json
     "customerName": "Almaz",
     "area": "Kazanchis",
     "status": "PENDING",
+    "restaurantId": 1,
     "totalSantim": 11000
 }
 
