@@ -14,7 +14,7 @@ export class EventsService {
   }
 
   async findbyId(id: string): Promise<Event> {
-    const event = await this.findbyId(id);
+    const event = await this.repository.findById(id);
     if (!event) {
       throw new EventNotFoundError(id);
     }
