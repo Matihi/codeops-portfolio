@@ -11,5 +11,6 @@ export interface Event {
 export interface EventRepository {
   findAll(): Promise<Event[]>;
   findById(id: string): Promise<Event | undefined>;
+  findUpcoming(): Promise<Event[]>;
   save(event: Event): Promise<Event>;
 }
