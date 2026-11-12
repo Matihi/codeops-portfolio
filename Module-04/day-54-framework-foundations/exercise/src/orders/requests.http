@@ -24,3 +24,11 @@ Content-Type: application/json
 
 ###
 GET {{baseUrl}}/orders?area=Megenagna
+
+###
+PATCH {{baseUrl}}/orders/2
+Content-Type: application/json
+
+{
+    "status": "CANCELLED"
+}
