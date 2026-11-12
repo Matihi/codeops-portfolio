@@ -1,7 +1,15 @@
-import { Controller, Get, NotFoundException, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { EventsService } from './events.service.js';
 import type { Event } from './events.interfaces.js';
 import { EventNotFoundError } from './events.errors.js';
+import { CreateEventDto } from './dto/create-event.dto.js';
 
 @Controller('events')
 export class EventsController {
@@ -27,5 +35,10 @@ export class EventsController {
       }
       throw error;
     }
+  }
+
+  @Post()
+  async create(@Body() dto: CreateEventDto): Promise<Event> {
+    return this.eventsService.create(dto);
   }
 }
