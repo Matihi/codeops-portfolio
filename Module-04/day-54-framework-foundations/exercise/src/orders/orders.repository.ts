@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto.js';
 import { Order, OrderRepository } from './orders.interfaces.js';
 import { SEED } from './orders.seed.js';
+import { OrderStatus } from './orders.types.js';
 
 @Injectable()
 export class InMemoryOrderRepository implements OrderRepository {
@@ -36,5 +37,17 @@ export class InMemoryOrderRepository implements OrderRepository {
     };
     this.orders.set(idNum, order);
     return order;
+  }
+
+  async updateStatus(
+    id: number,
+    status: OrderStatus,
+  ): Promise<OrderStatus | undefined> {
+    const order = this.orders.get(id);
+    if (!order) {
+      return order;
+    }
+    order.status = status;
+    return status;
   }
 }
