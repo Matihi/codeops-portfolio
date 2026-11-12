@@ -20,4 +20,8 @@ export class EventsService {
     }
     return event;
   }
+
+  async findUpcoming(): Promise<Event[]> {
+    return this.repository.findUpcoming();
+  }
 }
