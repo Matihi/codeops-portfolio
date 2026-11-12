@@ -1,0 +1,35 @@
+@baseUrl = http://localhost:3000/api
+###
+GET {{baseUrl}}
+
+###
+GET {{baseUrl}}/events
+
+###
+GET {{baseUrl}}/events/evt-107
+
+###
+POST {{baseUrl}}/events HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Photography Workshop",
+    "description": "Learn basic photography techniques and creative composition.",
+    "location": "Arts Building, Studio 2",
+    "eventDate": "2026-12-08T11:00:00.000Z",
+    "category": "arts",
+    "isPublished": false
+}
+
+###
+POST {{baseUrl}}/events HTTP/1.1
+Content-Type: application/json
+
+{
+   "description":
+      "Practical advice on CV writing, interviews, and career planning.",
+    "location": "Engineering Block, Room 5",
+    "eventDate": "2026-12-19T09:00:00.000Z",
+    "category": "education",
+    "isPublished": true
+  }
