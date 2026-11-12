@@ -12,6 +12,11 @@ export class EventsController {
     return this.eventsService.findAll();
   }
 
+  @Get('upcoming')
+  async findUpcoming(): Promise<Event[]> {
+    return this.eventsService.findUpcoming();
+  }
+
   @Get(':id')
   async findById(@Param('id') id: string): Promise<Event> {
     try {
