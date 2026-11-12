@@ -8,11 +8,13 @@ import {
   HttpCode,
   NotFoundException,
   Query,
+  Patch,
 } from '@nestjs/common';
 import { OrdersService } from './orders.service.js';
 import { Order } from './orders.interfaces.js';
 import { CreateOrderDto } from './dto/create-order.dto.js';
 import { OrderNotFoundError } from './orders.errors.js';
+import { UpdateOrderStatusDto } from './dto/update-order-status.dto.js';
 
 @Controller('orders')
 export class OrdersController {
@@ -39,5 +41,20 @@ export class OrdersController {
   @HttpCode(201)
   async create(@Body() order: CreateOrderDto): Promise<Order> {
     return this.ordersService.create(order);
+  }
+
+  @Patch(':id')
+  @HttpCode(204)
+  async updateStatus(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateOrderStatusDto: UpdateOrderStatusDto,
+  ) {
+    try {
+      await this.ordersService.updateStatus(id, updateOrderStatusDto);
+    } catch (error) {
+      if (error instanceof OrderNotFoundError) {
+        throw new NotFoundException(error.message);
+      }
+    }
   }
 }
