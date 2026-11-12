@@ -13,7 +13,7 @@ export class EventsService {
     return this.repository.findAll();
   }
 
-  async findbyId(id: string): Promise<Event | undefined> {
+  async findbyId(id: string): Promise<Event> {
     const event = await this.findbyId(id);
     if (!event) {
       throw new EventNotFoundError(id);
