@@ -15,6 +15,12 @@ export class InMemoryEventsRepository implements EventRepository {
     return this.events.get(id);
   }
 
+  async findUpcoming(): Promise<Event[]> {
+    const now = new Date().getTime();
+    const events = [...this.events.values()];
+    return events.filter((event) => new Date(event.eventDate).getTime() >= now);
+  }
+
   async save(event: Event): Promise<Event> {
     this.events.set(event.id, event);
     return event;
