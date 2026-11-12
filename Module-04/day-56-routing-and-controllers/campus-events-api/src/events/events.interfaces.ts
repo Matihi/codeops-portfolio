@@ -7,3 +7,9 @@ export interface Event {
   category: string;
   isPublished: boolean;
 }
+
+export interface EventRepository {
+  findAll(): Promise<Event[]>;
+  findById(id: string): Promise<Event | undefined>;
+  save(event: Event): Promise<Event>;
+}
