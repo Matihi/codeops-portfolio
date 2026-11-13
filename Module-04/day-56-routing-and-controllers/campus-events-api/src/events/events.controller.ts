@@ -12,10 +12,15 @@ import type { Event, Page } from './events.interfaces.js';
 import { EventNotFoundError } from './events.errors.js';
 import { CreateEventDto } from './dto/create-event.dto.js';
 import { FindEventsQueryDto } from './dto/find-events-query.dto.js';
+import { SessionsService } from '../sessions/sessions.service.js';
+import { Session } from '../sessions/sessions.interfaces.js';
 
 @Controller('events')
 export class EventsController {
-  constructor(private readonly eventsService: EventsService) {}
+  constructor(
+    private readonly eventsService: EventsService,
+    private readonly sessionsService: SessionsService,
+  ) {}
 
   @Get()
   async findAll(@Query() query: FindEventsQueryDto): Promise<Page<Event>> {
@@ -37,6 +42,19 @@ export class EventsController {
       }
       throw error;
     }
+  }
+
+  @Get(':id/sessions')
+  async findSessions(@Param('id') id: string): Promise<Session[]> {
+    try {
+      await this.eventsService.findById(id);
+    } catch (error) {
+      if (error instanceof EventNotFoundError) {
+        throw new NotFoundException(error.message);
+      }
+      throw error;
+    }
+    return this.sessionsService.findAllByEventId(id);
   }
 
   @Post()
