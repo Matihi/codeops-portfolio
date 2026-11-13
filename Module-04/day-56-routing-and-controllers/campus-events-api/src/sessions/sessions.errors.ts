@@ -4,3 +4,15 @@ export class SessionNotFoundError extends Error {
     this.name = 'SessionNotFoundError';
   }
 }
+
+export class SessionForEventNotFoundError extends Error {
+  constructor(
+    readonly sessionId: string,
+    readonly eventId: string,
+  ) {
+    super(
+      `Session with id ${sessionId} was not found in event with id ${eventId}`,
+    );
+    this.name = this.constructor.name;
+  }
+}
