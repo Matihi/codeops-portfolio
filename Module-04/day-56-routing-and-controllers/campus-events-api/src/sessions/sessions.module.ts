@@ -13,5 +13,6 @@ import { InMemorySessionsRepository } from './sessions.repository.js';
       useClass: InMemorySessionsRepository,
     },
   ],
+  exports: [SessionsService],
 })
 export class SessionsModule {}
