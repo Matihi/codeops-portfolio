@@ -14,6 +14,7 @@ import { CreateEventDto } from './dto/create-event.dto.js';
 import { FindEventsQueryDto } from './dto/find-events-query.dto.js';
 import { SessionsService } from '../sessions/sessions.service.js';
 import { Session } from '../sessions/sessions.interfaces.js';
+import { SessionForEventNotFoundError } from '../sessions/sessions.errors.js';
 
 @Controller('events')
 export class EventsController {
@@ -55,6 +56,25 @@ export class EventsController {
       throw error;
     }
     return this.sessionsService.findAllByEventId(id);
+  }
+
+  @Get(':eventId/sessions/:sessionId')
+  async findSessionForEvent(
+    @Param('eventId') eventId: string,
+    @Param('sessionId') sessionId: string,
+  ): Promise<Session> {
+    try {
+      await this.eventsService.findById(eventId);
+      return await this.sessionsService.findOneByEventId(sessionId, eventId);
+    } catch (error) {
+      if (error instanceof EventNotFoundError) {
+        throw new NotFoundException(error.message);
+      }
+      if (error instanceof SessionForEventNotFoundError) {
+        throw new NotFoundException(error.message);
+      }
+      throw error;
+    }
   }
 
   @Post()
