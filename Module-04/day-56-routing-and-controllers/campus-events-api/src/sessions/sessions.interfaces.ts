@@ -9,5 +9,6 @@ export interface Session {
 
 export interface SessionRepository {
   findAll(): Promise<Session[]>;
+  findAllByEventId(id: string): Promise<Session[]>;
   findById(id: string): Promise<Session | undefined>;
 }
