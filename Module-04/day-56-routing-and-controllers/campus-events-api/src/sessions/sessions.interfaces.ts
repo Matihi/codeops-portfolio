@@ -4,7 +4,7 @@ export interface Session {
   title: string;
   startsAt: Date;
   endsAt: Date;
-  room: number;
+  room: string;
 }
 
 export interface SessionRepository {
