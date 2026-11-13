@@ -1,7 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { SESSION_REPOSITORY } from './sessions.token.js';
 import type { Session, SessionRepository } from './sessions.interfaces.js';
-import { SessionNotFoundError } from './sessions.errors.js';
+import {
+  SessionForEventNotFoundError,
+  SessionNotFoundError,
+} from './sessions.errors.js';
 
 @Injectable()
 export class SessionsService {
@@ -21,6 +24,14 @@ export class SessionsService {
     const session = await this.repository.findById(id);
     if (!session) {
       throw new SessionNotFoundError(id);
+    }
+    return session;
+  }
+
+  async findOneByEventId(sessionId: string, eventId: string): Promise<Session> {
+    const session = await this.repository.findOneByEventId(sessionId, eventId);
+    if (!session) {
+      throw new SessionForEventNotFoundError(sessionId, eventId);
     }
     return session;
   }
