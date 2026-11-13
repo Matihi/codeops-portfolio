@@ -13,6 +13,10 @@ export class SessionsService {
     return this.repository.findAll();
   }
 
+  async findAllByEventId(id: string): Promise<Session[]> {
+    return this.repository.findAllByEventId(id);
+  }
+
   async findById(id: string): Promise<Session> {
     const session = await this.repository.findById(id);
     if (!session) {
