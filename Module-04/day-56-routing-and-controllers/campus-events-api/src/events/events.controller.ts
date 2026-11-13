@@ -5,19 +5,21 @@ import {
   NotFoundException,
   Param,
   Post,
+  Query,
 } from '@nestjs/common';
 import { EventsService } from './events.service.js';
-import type { Event } from './events.interfaces.js';
+import type { Event, Page } from './events.interfaces.js';
 import { EventNotFoundError } from './events.errors.js';
 import { CreateEventDto } from './dto/create-event.dto.js';
+import { FindEventsQueryDto } from './dto/find-events-query.dto.js';
 
 @Controller('events')
 export class EventsController {
   constructor(private readonly eventsService: EventsService) {}
 
   @Get()
-  async findAll(): Promise<Event[]> {
-    return this.eventsService.findAll();
+  async findAll(@Query() query: FindEventsQueryDto): Promise<Page<Event>> {
+    return this.eventsService.findAll(query);
   }
 
   @Get('upcoming')
