@@ -6,3 +6,8 @@ export interface Session {
   endsAt: Date;
   room: number;
 }
+
+export interface SessionRepository {
+  findAll(): Promise<Session[]>;
+  findById(id: string): Promise<Session | undefined>;
+}
