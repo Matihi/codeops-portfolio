@@ -12,6 +12,12 @@ export class InMemorySessionsRepository implements SessionRepository {
     return [...this.sessions.values()];
   }
 
+  async findAllByEventId(id: string): Promise<Session[]> {
+    return [...this.sessions.values()].filter(
+      (session) => session.eventId === id,
+    );
+  }
+
   async findById(id: string): Promise<Session | undefined> {
     return this.sessions.get(id);
   }
