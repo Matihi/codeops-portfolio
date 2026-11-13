@@ -1,4 +1,6 @@
-export const SESSIONS_SEED = [
+import { Session } from './sessions.interfaces.js';
+
+export const SESSIONS_SEED: Session[] = [
   {
     id: 'ses-101',
     eventId: 'evt-101',
