@@ -21,4 +21,13 @@ export class InMemorySessionsRepository implements SessionRepository {
   async findById(id: string): Promise<Session | undefined> {
     return this.sessions.get(id);
   }
+
+  async findOneByEventId(
+    sessionId: string,
+    eventId: string,
+  ): Promise<Session | undefined> {
+    return [...this.sessions.values()].find(
+      (session) => session.id === sessionId && session.eventId === eventId,
+    );
+  }
 }
