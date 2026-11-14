@@ -1,5 +1,5 @@
 export interface Session {
-  id: string;
+  readonly id: string;
   eventId: string;
   title: string;
   startsAt: Date;
