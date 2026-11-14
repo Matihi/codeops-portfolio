@@ -1,5 +1,5 @@
 export interface Event {
-  id: string;
+  readonly id: string;
   title: string;
   description: string;
   location: string;
