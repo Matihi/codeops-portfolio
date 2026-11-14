@@ -6,7 +6,28 @@ GET {{baseUrl}}
 GET {{baseUrl}}/events
 
 ###
-GET {{baseUrl}}/events/evt-107
+GET  {{baseUrl}}/events?category=technology
+
+###
+GET {{baseUrl}}/events?isPublished=true
+
+###
+GET {{baseUrl}}/events?sortBy=eventDate&order=asc&page=2&limit=2
+
+###
+GET {{baseUrl}}/events/upcoming
+
+###
+GET {{baseUrl}}/events/evt-101
+
+###
+GET {{baseUrl}}/events/evt-109
+
+###
+GET {{baseUrl}}/events/evt-101/sessions
+
+###
+GET {{baseUrl}}/events/evt-101/sessions/ses-102
 
 ###
 POST {{baseUrl}}/events HTTP/1.1
