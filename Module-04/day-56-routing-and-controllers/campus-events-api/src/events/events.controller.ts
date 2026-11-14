@@ -9,13 +9,14 @@ import {
   Query,
 } from '@nestjs/common';
 import { EventsService } from './events.service.js';
-import type { Event, Page } from './events.interfaces.js';
+import type { Event } from './events.interfaces.js';
 import { EventNotFoundError } from './events.errors.js';
 import { CreateEventDto } from './dto/create-event.dto.js';
 import { FindEventsQueryDto } from './dto/find-events-query.dto.js';
 import { SessionsService } from '../sessions/sessions.service.js';
 import { Session } from '../sessions/sessions.interfaces.js';
 import { SessionForEventNotFoundError } from '../sessions/sessions.errors.js';
+import type { Page } from '../common/common.interfaces.js';
 
 @Controller('events')
 export class EventsController {

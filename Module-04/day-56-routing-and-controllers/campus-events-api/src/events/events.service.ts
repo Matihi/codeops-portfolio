@@ -1,9 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { EVENT_REPOSITORY } from './events.token.js';
-import type { Event, EventRepository, Page } from './events.interfaces.js';
+import type { Event, EventRepository } from './events.interfaces.js';
 import { EventNotFoundError } from './events.errors.js';
 import { CreateEventDto } from './dto/create-event.dto.js';
 import { FindEventsQueryDto } from './dto/find-events-query.dto.js';
+import type { Page } from '../common/common.interfaces.js';
 
 @Injectable()
 export class EventsService {
