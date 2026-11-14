@@ -61,8 +61,16 @@ export class EventsService {
     return event;
   }
 
-  async findUpcoming(): Promise<Event[]> {
-    return this.repository.findUpcoming();
+  async findUpcoming(): Promise<Page<Event>> {
+    const rows = await this.repository.findUpcoming();
+    const total = rows.length;
+    return {
+      items: rows,
+      total,
+      page: 1,
+      limit: total,
+      totalPages: 1,
+    };
   }
 
   async create(dto: CreateEventDto): Promise<Event> {

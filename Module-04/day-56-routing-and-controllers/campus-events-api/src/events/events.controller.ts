@@ -32,7 +32,7 @@ export class EventsController {
   }
 
   @Get('upcoming')
-  async findUpcoming(): Promise<Event[]> {
+  async findUpcoming(): Promise<Page<Event>> {
     return this.eventsService.findUpcoming();
   }
 
