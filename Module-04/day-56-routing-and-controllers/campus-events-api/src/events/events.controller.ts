@@ -18,8 +18,8 @@ import { Session } from '../sessions/sessions.interfaces.js';
 import { SessionForEventNotFoundError } from '../sessions/sessions.errors.js';
 import type { Page } from '../common/common.interfaces.js';
 
-@Controller('events')
-export class EventsController {
+@Controller({ path: 'events', version: '1' })
+export class EventsV1Controller {
   constructor(
     private readonly eventsService: EventsService,
     private readonly sessionsService: SessionsService,
