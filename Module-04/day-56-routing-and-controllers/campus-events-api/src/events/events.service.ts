@@ -21,7 +21,6 @@ export class EventsService {
       rows = rows.filter((row) => row.location === query.location);
     }
     if (query.isPublished !== undefined) {
-      console.log(query.isPublished);
       rows = rows.filter((row) => row.isPublished === query.isPublished);
     }
 
