@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Header,
   NotFoundException,
   Param,
   Post,
@@ -24,6 +25,7 @@ export class EventsController {
   ) {}
 
   @Get()
+  @Header('Cache-Control', 'public, max-age=60')
   async findAll(@Query() query: FindEventsQueryDto): Promise<Page<Event>> {
     return this.eventsService.findAll(query);
   }
@@ -34,6 +36,7 @@ export class EventsController {
   }
 
   @Get(':id')
+  @Header('Cache-Control', 'public, max-age=60')
   async findById(@Param('id') id: string): Promise<Event> {
     try {
       return await this.eventsService.findById(id);
@@ -46,6 +49,7 @@ export class EventsController {
   }
 
   @Get(':id/sessions')
+  @Header('Cache-Control', 'public, max-age=60')
   async findSessions(@Param('id') id: string): Promise<Session[]> {
     try {
       await this.eventsService.findById(id);
@@ -59,6 +63,7 @@ export class EventsController {
   }
 
   @Get(':eventId/sessions/:sessionId')
+  @Header('Cache-Control', 'public, max-age=60')
   async findSessionForEvent(
     @Param('eventId') eventId: string,
     @Param('sessionId') sessionId: string,
@@ -78,6 +83,7 @@ export class EventsController {
   }
 
   @Post()
+  @Header('Cache-Control', 'no-store')
   async create(@Body() dto: CreateEventDto): Promise<Event> {
     return this.eventsService.create(dto);
   }
