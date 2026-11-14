@@ -5,6 +5,7 @@ import {
   SessionForEventNotFoundError,
   SessionNotFoundError,
 } from './sessions.errors.js';
+import type { Page } from '../common/common.interfaces.js';
 
 @Injectable()
 export class SessionsService {
@@ -16,8 +17,16 @@ export class SessionsService {
     return this.repository.findAll();
   }
 
-  async findAllByEventId(id: string): Promise<Session[]> {
-    return this.repository.findAllByEventId(id);
+  async findAllByEventId(id: string): Promise<Page<Session>> {
+    const rows = await this.repository.findAllByEventId(id);
+    const total = rows.length;
+    return {
+      items: rows,
+      total,
+      page: 1,
+      limit: total,
+      totalPages: 1,
+    };
   }
 
   async findById(id: string): Promise<Session> {

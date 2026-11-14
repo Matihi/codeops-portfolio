@@ -51,7 +51,7 @@ export class EventsController {
 
   @Get(':id/sessions')
   @Header('Cache-Control', 'public, max-age=60')
-  async findSessions(@Param('id') id: string): Promise<Session[]> {
+  async findSessions(@Param('id') id: string): Promise<Page<Session>> {
     try {
       await this.eventsService.findById(id);
     } catch (error) {
