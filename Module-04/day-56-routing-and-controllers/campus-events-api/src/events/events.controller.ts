@@ -7,6 +7,7 @@ import {
   Param,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { EventsService } from './events.service.js';
 import type { Event } from './events.interfaces.js';
@@ -17,8 +18,10 @@ import { SessionsService } from '../sessions/sessions.service.js';
 import { Session } from '../sessions/sessions.interfaces.js';
 import { SessionForEventNotFoundError } from '../sessions/sessions.errors.js';
 import type { Page } from '../common/common.interfaces.js';
+import { ApiKeyGuard } from '../common/guards/api-key.guard.js';
 
 @Controller({ path: 'events', version: '1' })
+@UseGuards(ApiKeyGuard)
 export class EventsV1Controller {
   constructor(
     private readonly eventsService: EventsService,
