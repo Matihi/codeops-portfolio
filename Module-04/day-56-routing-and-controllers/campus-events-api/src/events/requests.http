@@ -27,7 +27,12 @@ GET {{baseUrl}}/events/evt-109
 GET {{baseUrl}}/events/evt-101/sessions
 
 ###
+GET {{baseUrl}}/events/evt-101/sessions
+x-api-key: abc124
+
+###
 GET {{baseUrl}}/events/evt-101/sessions/ses-102
+x-api-key: abc123
 
 ###
 POST {{baseUrl}}/events HTTP/1.1
