@@ -19,9 +19,11 @@ import { Session } from '../sessions/sessions.interfaces.js';
 import { SessionForEventNotFoundError } from '../sessions/sessions.errors.js';
 import type { Page } from '../common/common.interfaces.js';
 import { ApiKeyGuard } from '../common/guards/api-key.guard.js';
+import { RolesGuard } from '../common/guards/roles.guard.js';
+import { Roles } from '../common/decorators/roles.decorators.js';
 
 @Controller({ path: 'events', version: '1' })
-@UseGuards(ApiKeyGuard)
+@UseGuards(ApiKeyGuard, RolesGuard)
 export class EventsV1Controller {
   constructor(
     private readonly eventsService: EventsService,
@@ -87,6 +89,7 @@ export class EventsV1Controller {
   }
 
   @Post()
+  @Roles('admin')
   @Header('Cache-Control', 'no-store')
   async create(@Body() dto: CreateEventDto): Promise<Event> {
     return this.eventsService.create(dto);
