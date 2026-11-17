@@ -22,7 +22,7 @@ async function bootstrap() {
     defaultVersion: '1',
   });
 
-  const port = Number(process.env.PORT) || 3000;
+  const port = Number(process.env.PORT) || 3001;
   await app.listen(port);
   console.log(`API is running at http://localhost:${port}/api/v1`);
 }
