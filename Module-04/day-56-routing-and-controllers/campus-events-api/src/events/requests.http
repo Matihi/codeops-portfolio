@@ -4,7 +4,7 @@ GET {{baseUrl}}
 
 ###
 GET {{baseUrl}}/events
-
+x-api-key: {{$dotenv CORRECT_TEST_KEY}}
 ###
 GET  {{baseUrl}}/events?category=technology
 
@@ -28,15 +28,16 @@ GET {{baseUrl}}/events/evt-101/sessions
 
 ###
 GET {{baseUrl}}/events/evt-101/sessions
-x-api-key: abc124
+x-api-key: {{$dotenv WRONG_TEST_KEY}}
 
 ###
 GET {{baseUrl}}/events/evt-101/sessions/ses-102
-x-api-key: abc123
+x-api-key: {{$dotenv CORRECT_TEST_KEY}}
 
 ###
 POST {{baseUrl}}/events HTTP/1.1
 Content-Type: application/json
+x-api-key: {{$dotenv ADMIN_TEST_KEY}}
 
 {
     "title": "Photography Workshop",
@@ -50,6 +51,7 @@ Content-Type: application/json
 ###
 POST {{baseUrl}}/events HTTP/1.1
 Content-Type: application/json
+x-api-key: {{$dotenv ADMIN_TEST_KEY}}
 
 {
    "description":
