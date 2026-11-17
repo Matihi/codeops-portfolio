@@ -1,0 +1,24 @@
+.eventCard {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  background-color: rgb(174, 209, 239);
+  height: 11rem;
+  padding: 0.5rem;
+  gap: 0.4rem;
+  border-radius: 0.5rem;
+}
+
+@media (width >= 48rem) {
+  .eventCard {
+    font-size: 0.9rem;
+    height: 12rem;
+  }
+}
+
+@media (width >= 64rem) {
+  .eventCard {
+    font-size: 0.98rem;
+    height: 13rem;
+  }
+}
