@@ -9,7 +9,7 @@ const EventCard = ({ event }: EventCardProp) => {
   return (
     <article className="bg-sky-200 h-60 flex flex-col text-sm p-2 gap-1 rounded-md sm:text-[0.9rem]">
       <p>{event.title}</p>
-      <p>{event.description}</p>
+      <p className="w-full truncate">{event.description}</p>
       <p>{`${when.format(new Date(event.eventDate))}`}</p>
       <p>{`Location: ${event.location}`}</p>
       <p>{capitalizeFirstLetter(event.category)}</p>
