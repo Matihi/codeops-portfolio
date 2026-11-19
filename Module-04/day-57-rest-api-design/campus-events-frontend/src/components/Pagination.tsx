@@ -9,10 +9,6 @@ const Pagination = ({
   page: number;
   totalPages: number;
 }) => {
-  //       "total": 6,
-  //   "page": 1,
-  //   "limit": 5,
-  //   "totalPages": 2
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = page || 1;
