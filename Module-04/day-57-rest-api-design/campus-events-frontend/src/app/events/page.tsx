@@ -5,7 +5,11 @@ import EventSkeleton from "@/components/EventSkeleton";
 
 const EVENTS_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL!}/events`;
 
-const EventsPage = () => {
+const EventsPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) => {
   return (
     <section className="p-2 h-full flex flex-col">
       <h1 className="text-3xl text-zinc-700 py-2">
@@ -17,7 +21,7 @@ const EventsPage = () => {
       </p>
       <Suspense fallback={<EventSkeleton />}>
         <CustomErrorBoundary title="Fetch Error">
-          <EventsWrapper url={EVENTS_URL} />
+          <EventsWrapper url={EVENTS_URL} searchParams={searchParams} />
         </CustomErrorBoundary>
       </Suspense>
     </section>
