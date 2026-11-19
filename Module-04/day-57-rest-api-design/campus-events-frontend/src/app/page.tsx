@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import CustomErrorBoundary from "./custom-error-boundary";
 import UpcomingWrapper from "./UpcomingWrapper";
 import EventSkeleton from "@/components/EventSkeleton";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -14,6 +15,12 @@ export default function Home() {
           <UpcomingWrapper />
         </CustomErrorBoundary>
       </Suspense>
+      <Link
+        className="p-2 pr-10 my-2 block w-fit bg-[#115a67] rounded-md text-white active:bg-[#45838e]"
+        href="/events"
+      >
+        See All Events
+      </Link>
     </section>
   );
 }
