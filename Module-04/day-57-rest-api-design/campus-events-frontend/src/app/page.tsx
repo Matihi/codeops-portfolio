@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import CustomErrorBoundary from "./custom-error-boundary";
 import UpcomingWrapper from "./UpcomingWrapper";
+import EventSkeleton from "@/components/EventSkeleton";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       <p>Discover What's Happening on Campus</p>
       <p>Find workshops, technology events and activities.</p>
       <h1>Upcoming Events</h1>
-      <Suspense fallback={<p>Loading upcoming events...</p>}>
+      <Suspense fallback={<EventSkeleton />}>
         <CustomErrorBoundary title="Fetch Error">
           <UpcomingWrapper />
         </CustomErrorBoundary>
