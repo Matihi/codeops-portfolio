@@ -30,10 +30,12 @@ const Pagination = ({
     <div className="self-center flex gap-10">
       <Link
         href={currentPage === 1 ? "" : createPageURL(currentPage - 1)}
+        scroll={false}
         className={` ${isPageOne ? "bg-gray-400" : "bg-[#327595]"}   p-1  rounded-sm text-white `}
       >{`< Prev`}</Link>
       <Link
         href={currentPage >= totalPages ? "" : createPageURL(currentPage + 1)}
+        scroll={false}
         className={`${isLastPage ? "bg-gray-400" : "bg-[#327595]"} p-1 rounded-sm text-white`}
       >{`Next >`}</Link>
     </div>
