@@ -7,7 +7,7 @@ interface EventCardProp {
 
 const EventCard = ({ event }: EventCardProp) => {
   return (
-    <article className="bg-sky-200 h-44 flex flex-col text-sm p-2 gap-1 rounded-md sm:text-[0.9rem] sm:h-48  [@media(min-width:64rem)]:h-52">
+    <article className="bg-sky-200 h-60 flex flex-col text-sm p-2 gap-1 rounded-md sm:text-[0.9rem]">
       <p>{event.title}</p>
       <p>{event.description}</p>
       <p>{`${when.format(new Date(event.eventDate))}`}</p>
