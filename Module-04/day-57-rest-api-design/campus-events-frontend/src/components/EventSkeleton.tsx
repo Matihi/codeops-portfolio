@@ -6,8 +6,8 @@ const EventSkeleton = () => {
       key={element}
       className="bg-sky-200 h-60 flex flex-col p-2 pt-3 gap-3 rounded-md animate-pulse"
     >
+      <p className="bg-zinc-500 p-0.5 h-11 rounded-md"></p>
       <p className={style}></p>
-      <p className="bg-zinc-500 p-0.5 h-10 rounded-md"></p>
       <p className={style}></p>
       <p className={style}></p>
       <p className={style}></p>
