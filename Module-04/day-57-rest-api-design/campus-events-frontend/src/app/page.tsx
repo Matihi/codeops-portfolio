@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <section className="p-2 bg-zinc-100">
+    <section className="p-2 bg-zinc-100 h-full">
       <p>Discover What's Happening on Campus</p>
       <p>Find workshops, technology events and activities.</p>
       <h1 className="text-3xl mt-4 mb-2">Upcoming Events</h1>
