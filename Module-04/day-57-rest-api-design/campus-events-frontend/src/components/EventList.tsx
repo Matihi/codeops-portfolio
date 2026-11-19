@@ -8,9 +8,7 @@ interface EventListProps {
 const EventList = async ({ events }: EventListProps) => {
   if (events.length === 0) {
     return (
-      <p className="flex justify-center items-center p-3">
-        No upcoming events found
-      </p>
+      <p className="flex justify-center items-center p-3">No events found</p>
     );
   }
   const eventElements = events.map((event) => (
