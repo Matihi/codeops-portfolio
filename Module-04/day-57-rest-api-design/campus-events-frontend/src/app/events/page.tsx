@@ -7,7 +7,7 @@ const EVENTS_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL!}/events`;
 
 const EventsPage = () => {
   return (
-    <section className="p-2 h-full">
+    <section className="p-2 h-full flex flex-col">
       <h1 className="text-3xl text-zinc-700 py-2">
         What&rsquo;s Happening on Campus?
       </h1>
