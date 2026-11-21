@@ -62,7 +62,11 @@ const EventFilters = ({
   const handleSort = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const params = new URLSearchParams(searchParams);
     if (e.target.value) {
-      params.set("sortBy", e.target.value);
+      if (e.target.value === "default") {
+        params.delete("sortBy");
+      } else {
+        params.set("sortBy", e.target.value);
+      }
       params.set("page", "1");
     } else {
       params.delete("sortBy");
@@ -152,6 +156,7 @@ const EventFilters = ({
         className="bg-[#128a93] rounded-md w-fit"
         onChange={(e) => handleSort(e)}
       >
+        <option value="default">Default</option>
         <option value="eventDate">Event Date</option>
         <option value="title">Title</option>
       </select>
