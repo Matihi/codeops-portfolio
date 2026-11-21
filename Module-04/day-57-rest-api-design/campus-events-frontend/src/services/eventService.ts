@@ -1,5 +1,12 @@
 import type { Event, Session, Page } from "@/types/event";
 
+export class CustomFetchError extends Error {
+  constructor(readonly message: string) {
+    super(message);
+    this.name = this.constructor.name;
+  }
+}
+
 const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
 
 export const getEvents = async (url: string): Promise<Page<Event>> => {
@@ -10,7 +17,7 @@ export const getEvents = async (url: string): Promise<Page<Event>> => {
     },
   });
   if (!res.ok) {
-    throw new Error("Failed to fetch events");
+    throw new CustomFetchError("Failed to fetch events");
   }
   return res.json();
 };
@@ -23,7 +30,7 @@ export const getUpcomingEvents = async (): Promise<Page<Event>> => {
     },
   });
   if (!res.ok) {
-    throw new Error("Failed to fetch upcoming events");
+    throw new CustomFetchError("Failed to fetch upcoming events");
   }
   return res.json();
 };
@@ -36,7 +43,7 @@ export const getEventById = async (id: string): Promise<Event> => {
     },
   });
   if (!res.ok) {
-    throw new Error("Failed to fetch event");
+    throw new CustomFetchError("Failed to fetch event");
   }
   return res.json();
 };
@@ -49,7 +56,7 @@ export const getEventSessions = async (id: string): Promise<Page<Session>> => {
     },
   });
   if (!res.ok) {
-    throw new Error("Failed to fetch sessions");
+    throw new CustomFetchError("Failed to fetch sessions");
   }
   return res.json();
 };
@@ -68,7 +75,7 @@ export const getSessionForEvent = async (
     },
   );
   if (!res.ok) {
-    throw new Error("Failed to fetch session");
+    throw new CustomFetchError("Failed to fetch session");
   }
   return res.json();
 };
