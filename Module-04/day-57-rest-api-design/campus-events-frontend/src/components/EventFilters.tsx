@@ -70,6 +70,23 @@ const EventFilters = ({
     push(`${pathname}?${params.toString()}`);
   };
 
+  const handleOrderSelection = (
+    e: React.ChangeEvent<HTMLSelectElement>,
+  ): void => {
+    const params = new URLSearchParams(searchParams);
+    if (e.target.value) {
+      if (e.target.value === "default") {
+        params.delete("order");
+      } else {
+        params.set("order", e.target.value);
+      }
+      params.set("page", "1");
+    } else {
+      params.delete("order");
+    }
+    push(`${pathname}?${params.toString()}`);
+  };
+
   newCategories.unshift("all");
   const newLocations = [...new Set(locations)];
   newLocations.unshift("all");
@@ -137,6 +154,18 @@ const EventFilters = ({
       >
         <option value="eventDate">Event Date</option>
         <option value="title">Title</option>
+      </select>
+
+      <label htmlFor="order">Sort order:</label>
+      <select
+        name="order"
+        id="order"
+        className="bg-[#128a93] rounded-md w-fit"
+        onChange={(e) => handleOrderSelection(e)}
+      >
+        <option value="default">Default</option>
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
       </select>
     </div>
   );

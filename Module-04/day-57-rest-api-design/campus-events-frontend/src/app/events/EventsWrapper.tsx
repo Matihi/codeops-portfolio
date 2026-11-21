@@ -13,11 +13,13 @@ interface EventsWrapperProps {
     location?: string;
     publication?: string;
     sortBy?: string;
+    order?: string;
   }>;
 }
 
 const EventsWrapper = async ({ url, searchParams }: EventsWrapperProps) => {
-  const { page, category, location, publication, sortBy } = await searchParams;
+  const { page, category, location, publication, sortBy, order } =
+    await searchParams;
   const params = new URLSearchParams();
   if (page) {
     params.set("page", `${Number(page) || 1}`);
@@ -61,6 +63,12 @@ const EventsWrapper = async ({ url, searchParams }: EventsWrapperProps) => {
     params.set("sortBy", sortBy);
   } else {
     params.delete("sortBy");
+  }
+
+  if (order) {
+    params.set("order", order);
+  } else {
+    params.delete("order");
   }
 
   const allEvents = await getEvents(`${url}?${params.toString()}`);
