@@ -98,7 +98,7 @@ export const createEvent = async (event: Omit<Event, "id">): Promise<Event> => {
   });
   if (!res.ok) {
     console.log(res.body);
-    throw new Error("Failed to create event");
+    throw new CreateEventError("Failed to create event");
   }
   return res.json();
 };
