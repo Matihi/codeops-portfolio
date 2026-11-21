@@ -5,7 +5,7 @@ const ErrorFallback = (
   props: { title: string },
   { error, retry }: ErrorInfo,
 ) => {
-  const message = error instanceof Error ? error.message : String(error);
+  const message = "Something went wrong!";
   return (
     <div>
       <h2>{props.title}</h2>
