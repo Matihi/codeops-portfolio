@@ -10,7 +10,12 @@ const ErrorFallback = (
     <div>
       <h2>{props.title}</h2>
       <p>{message}</p>
-      <button onClick={() => retry()}>Try again</button>
+      <button
+        className="bg-gray-400 text-white p-1 rounded-sm hover:bg-gray-500 "
+        onClick={() => retry()}
+      >
+        Try again
+      </button>
     </div>
   );
 };
