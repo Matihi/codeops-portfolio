@@ -7,6 +7,13 @@ export class CustomFetchError extends Error {
   }
 }
 
+export class CreateEventError extends Error {
+  constructor(readonly message: string) {
+    super(message);
+    this.name = this.constructor.name;
+  }
+}
+
 const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
 
 export const getEvents = async (url: string): Promise<Page<Event>> => {
