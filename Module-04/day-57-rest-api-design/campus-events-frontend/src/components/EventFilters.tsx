@@ -59,6 +59,17 @@ const EventFilters = ({
     push(`${pathname}?${params.toString()}`);
   };
 
+  const handleSort = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    const params = new URLSearchParams(searchParams);
+    if (e.target.value) {
+      params.set("sortBy", e.target.value);
+      params.set("page", "1");
+    } else {
+      params.delete("sortBy");
+    }
+    push(`${pathname}?${params.toString()}`);
+  };
+
   newCategories.unshift("all");
   const newLocations = [...new Set(locations)];
   newLocations.unshift("all");
@@ -115,6 +126,17 @@ const EventFilters = ({
         onChange={(e) => handlePublicationStatusSelection(e)}
       >
         {publicationStatusOptions}
+      </select>
+
+      <label htmlFor="sort">Sort by:</label>
+      <select
+        name="sort"
+        id="sort"
+        className="bg-[#128a93] rounded-md w-fit"
+        onChange={(e) => handleSort(e)}
+      >
+        <option value="eventDate">Event Date</option>
+        <option value="title">Title</option>
       </select>
     </div>
   );
