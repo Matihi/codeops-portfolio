@@ -42,7 +42,7 @@ export const getUpcomingEvents = async (): Promise<Page<Event>> => {
   return res.json();
 };
 
-export const getEventById = async (id: string): Promise<Event> => {
+export const getEventById = async (id: string): Promise<Event | null> => {
   const res = await fetch(`${API_URL}/events/${id}`, {
     cache: "no-store",
     headers: {
@@ -50,6 +50,9 @@ export const getEventById = async (id: string): Promise<Event> => {
     },
   });
   if (!res.ok) {
+    if (res.status === 404) {
+      return null;
+    }
     throw new CustomFetchError("Failed to fetch event");
   }
   return res.json();
