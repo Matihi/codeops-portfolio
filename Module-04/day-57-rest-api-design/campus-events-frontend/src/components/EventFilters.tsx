@@ -19,74 +19,21 @@ const EventFilters = ({
   const { push } = useRouter();
   const newCategories = [...new Set(categories)];
 
-  const handleCategorySelection = (
+  const handleSelection = (
     e: React.ChangeEvent<HTMLSelectElement>,
+    query: string,
   ): void => {
     const params = new URLSearchParams(searchParams);
-    if (e.target.value) {
-      params.set("category", e.target.value);
-      params.set("page", "1");
-    } else {
-      params.delete("category");
-    }
-
-    push(`${pathname}?${params.toString()}`);
-  };
-
-  const handleLocationSelection = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-  ): void => {
-    const params = new URLSearchParams(searchParams);
-    if (e.target.value) {
-      params.set("location", e.target.value);
-      params.set("page", "1");
-    } else {
-      params.delete("location");
-    }
-    push(`${pathname}?${params.toString()}`);
-  };
-
-  const handlePublicationStatusSelection = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-  ): void => {
-    const params = new URLSearchParams(searchParams);
-    if (e.target.value) {
-      params.set("publication", e.target.value);
-      params.set("page", "1");
-    } else {
-      params.delete("publication");
-    }
-    push(`${pathname}?${params.toString()}`);
-  };
-
-  const handleSort = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    const params = new URLSearchParams(searchParams);
-    if (e.target.value) {
-      if (e.target.value === "default") {
-        params.delete("sortBy");
+    const value = e.target.value;
+    if (value) {
+      if (value === "default") {
+        params.delete(query);
       } else {
-        params.set("sortBy", e.target.value);
+        params.set(query, value);
       }
       params.set("page", "1");
     } else {
-      params.delete("sortBy");
-    }
-    push(`${pathname}?${params.toString()}`);
-  };
-
-  const handleOrderSelection = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-  ): void => {
-    const params = new URLSearchParams(searchParams);
-    if (e.target.value) {
-      if (e.target.value === "default") {
-        params.delete("order");
-      } else {
-        params.set("order", e.target.value);
-      }
-      params.set("page", "1");
-    } else {
-      params.delete("order");
+      params.delete(query);
     }
     push(`${pathname}?${params.toString()}`);
   };
@@ -124,7 +71,7 @@ const EventFilters = ({
         name="categories"
         id="categories"
         className="bg-[#128a93] rounded-md w-fit"
-        onChange={(e) => handleCategorySelection(e)}
+        onChange={(e) => handleSelection(e, "category")}
       >
         {categoryOptions}
       </select>
@@ -133,7 +80,7 @@ const EventFilters = ({
         name="locations"
         id="locations"
         className="bg-[#128a93] rounded-md w-fit"
-        onChange={(e) => handleLocationSelection(e)}
+        onChange={(e) => handleSelection(e, "location")}
       >
         {locationOptions}
       </select>
@@ -144,7 +91,7 @@ const EventFilters = ({
         name="publication-statuses"
         id="publication-statuses"
         className="bg-[#128a93] rounded-md w-fit"
-        onChange={(e) => handlePublicationStatusSelection(e)}
+        onChange={(e) => handleSelection(e, "publication")}
       >
         {publicationStatusOptions}
       </select>
@@ -154,7 +101,7 @@ const EventFilters = ({
         name="sort"
         id="sort"
         className="bg-[#128a93] rounded-md w-fit"
-        onChange={(e) => handleSort(e)}
+        onChange={(e) => handleSelection(e, "sortBy")}
       >
         <option value="default">Default</option>
         <option value="eventDate">Event Date</option>
@@ -166,7 +113,7 @@ const EventFilters = ({
         name="order"
         id="order"
         className="bg-[#128a93] rounded-md w-fit"
-        onChange={(e) => handleOrderSelection(e)}
+        onChange={(e) => handleSelection(e, "order")}
       >
         <option value="default">Default</option>
         <option value="asc">Ascending</option>
