@@ -1,8 +1,13 @@
 import { getEventById, getEventSessions } from "@/services/eventService";
 import { capitalizeFirstLetter, when } from "@/services/format";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
-const page = async ({ params }: { params: Promise<{ id: string }> }) => {
+const page = async ({
+  params,
+}: {
+  params: Promise<{ id: string; sesId: string }>;
+}) => {
   const { id } = await params;
   const event = await getEventById(id);
   if (event === null) {
@@ -12,8 +17,17 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const sessionData = await getEventSessions(id);
   const noSessions = sessionData.items.length === 0;
   const sessionElements = sessionData.items.map((item) => (
-    <article key={item?.id} className="bg-sky-100 rounded-sm text-sm p-2">
+    <article
+      key={item?.id}
+      className="bg-sky-100 rounded-sm text-sm p-2 flex flex-col gap-2"
+    >
       <p>{item?.title}</p>
+      <Link
+        href={`/events/${id}/${item?.id}`}
+        className="self-center bg-sky-500 p-1 rounded text-[#ddded6] active:bg-sky-400"
+      >
+        View Details
+      </Link>
     </article>
   ));
   return (
