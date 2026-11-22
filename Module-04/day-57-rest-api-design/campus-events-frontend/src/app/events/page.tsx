@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import EventsWrapper from "./EventsWrapper";
 import CustomErrorBoundary from "@/app/custom-error-boundary";
-import EventSkeleton from "@/components/EventSkeleton";
+import WrapperSkeleton from "@/components/WrapperSkeleton";
 
 const EVENTS_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL!}/events`;
 
@@ -19,7 +19,7 @@ const EventsPage = async ({
         Our all-access pass to student club meetups, guest speakers, sports, and
         weekend festivals.
       </p>
-      <Suspense fallback={<EventSkeleton />}>
+      <Suspense fallback={<WrapperSkeleton />}>
         <CustomErrorBoundary title="Fetch Error">
           <EventsWrapper url={EVENTS_URL} searchParams={searchParams} />
         </CustomErrorBoundary>
