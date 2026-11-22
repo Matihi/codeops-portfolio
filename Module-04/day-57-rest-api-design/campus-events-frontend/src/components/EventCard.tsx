@@ -8,7 +8,7 @@ interface EventCardProp {
 
 const EventCard = ({ event }: EventCardProp) => {
   return (
-    <article className="bg-sky-200 h-60 flex flex-col text-sm p-2 gap-1 rounded-md sm:text-[0.9rem]">
+    <article className="bg-sky-200 h-64 flex flex-col text-sm p-2 gap-1 rounded-md sm:text-[0.9rem]">
       <p className="p-1 text-[17px] rounded-sm bg-[#128a93] flex">
         {event.title}
       </p>
@@ -17,6 +17,7 @@ const EventCard = ({ event }: EventCardProp) => {
       <p>{`Location: ${event.location}`}</p>
       <p>{capitalizeFirstLetter(event.category)}</p>
       {event.isPublished ? <p>Published</p> : <p>Not published yet</p>}
+      <span className="flex-auto invisible"></span>
       <Link
         href={`/events/${event.id}`}
         className="self-center bg-sky-500 p-1 rounded text-[#ddded6] active:bg-sky-400"
