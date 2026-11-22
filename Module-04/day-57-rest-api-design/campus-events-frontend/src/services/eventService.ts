@@ -1,13 +1,14 @@
+"use server";
 import type { Event, Session, Page } from "@/types/event";
 
-export class CustomFetchError extends Error {
+class CustomFetchError extends Error {
   constructor(readonly message: string) {
     super(message);
     this.name = this.constructor.name;
   }
 }
 
-export class CreateEventError extends Error {
+class CreateEventError extends Error {
   constructor(readonly message: string) {
     super(message);
     this.name = this.constructor.name;
@@ -93,7 +94,10 @@ export const getSessionForEvent = async (
   return res.json();
 };
 
-export const createEvent = async (event: Omit<Event, "id">): Promise<Event> => {
+export const createEvent = async (
+  event: Omit<Event, "id">,
+): Promise<{ event: Event | undefined; error: string | undefined }> => {
+  console.log("api_key: ", process.env.API_ADMIN_TOKEN);
   const res = await fetch(`${API_URL}/events`, {
     method: "POST",
     headers: {
@@ -103,8 +107,12 @@ export const createEvent = async (event: Omit<Event, "id">): Promise<Event> => {
     body: JSON.stringify(event),
   });
   if (!res.ok) {
+    console.log(res.headers);
     console.log(res.body);
+    if (res.status === 400) {
+      return { event: undefined, error: "Validation error" };
+    }
     throw new CreateEventError("Failed to create event");
   }
-  return res.json();
+  return { event: await res.json(), error: undefined };
 };
