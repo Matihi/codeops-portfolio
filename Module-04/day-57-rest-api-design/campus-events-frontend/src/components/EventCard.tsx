@@ -1,5 +1,6 @@
 import { capitalizeFirstLetter, when } from "@/services/format";
 import { Event } from "@/types/event";
+import Link from "next/link";
 
 interface EventCardProp {
   event: Event;
@@ -16,6 +17,12 @@ const EventCard = ({ event }: EventCardProp) => {
       <p>{`Location: ${event.location}`}</p>
       <p>{capitalizeFirstLetter(event.category)}</p>
       {event.isPublished ? <p>Published</p> : <p>Not published yet</p>}
+      <Link
+        href={`/events/${event.id}`}
+        className="self-center bg-sky-500 p-1 rounded text-[#ddded6] active:bg-sky-400"
+      >
+        View Details
+      </Link>
     </article>
   );
 };
