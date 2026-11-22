@@ -74,7 +74,7 @@ export const getEventSessions = async (id: string): Promise<Page<Session>> => {
 export const getSessionForEvent = async (
   eventId: string,
   sessionId: string,
-): Promise<Session> => {
+): Promise<Session | null> => {
   const res = await fetch(
     `${API_URL}/events/${eventId}/sessions/${sessionId}`,
     {
@@ -85,6 +85,9 @@ export const getSessionForEvent = async (
     },
   );
   if (!res.ok) {
+    if (res.status === 404) {
+      return null;
+    }
     throw new CustomFetchError("Failed to fetch session");
   }
   return res.json();
