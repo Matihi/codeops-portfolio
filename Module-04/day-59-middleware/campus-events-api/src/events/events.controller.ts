@@ -21,9 +21,12 @@ import type { Page } from '../common/common.interfaces.js';
 import { ApiKeyGuard } from '../common/guards/api-key.guard.js';
 import { RolesGuard } from '../common/guards/roles.guard.js';
 import { Roles } from '../common/decorators/roles.decorators.js';
+import { UseInterceptors } from '@nestjs/common';
+import { TimingInterceptor } from '../common/interceptors/timing.interceptor.js';
 
 @Controller({ path: 'events', version: '1' })
 @UseGuards(ApiKeyGuard, RolesGuard)
+@UseInterceptors(TimingInterceptor)
 export class EventsV1Controller {
   constructor(
     private readonly eventsService: EventsService,
