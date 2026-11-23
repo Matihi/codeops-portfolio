@@ -1,0 +1,31 @@
+import { Suspense } from "react";
+import EventsWrapper from "./EventsWrapper";
+import CustomErrorBoundary from "@/app/custom-error-boundary";
+import WrapperSkeleton from "@/components/WrapperSkeleton";
+
+const EVENTS_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL!}/events`;
+
+const EventsPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) => {
+  return (
+    <section className="p-2 h-full flex flex-col">
+      <h1 className="text-3xl text-zinc-700 py-2">
+        What&rsquo;s Happening on Campus?
+      </h1>
+      <p className="text-sm">
+        Our all-access pass to student club meetups, guest speakers, sports, and
+        weekend festivals.
+      </p>
+      <Suspense fallback={<WrapperSkeleton />}>
+        <CustomErrorBoundary title="Fetch Error">
+          <EventsWrapper url={EVENTS_URL} searchParams={searchParams} />
+        </CustomErrorBoundary>
+      </Suspense>
+    </section>
+  );
+};
+
+export default EventsPage;

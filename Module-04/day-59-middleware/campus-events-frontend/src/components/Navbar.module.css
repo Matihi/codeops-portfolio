@@ -1,0 +1,13 @@
+.navHeader {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8rem;
+  padding: 1rem;
+  background-color: #a1d4f0;
+}
+
+.navHeader > nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+}
