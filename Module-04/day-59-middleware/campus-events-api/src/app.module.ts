@@ -5,6 +5,7 @@ import { EventsModule } from './events/events.module.js';
 import { SessionsModule } from './sessions/sessions.module.js';
 import { RequestIdMiddleware } from './common/middleware/request-id.middleware.js';
 import { ConfigModule } from '@nestjs/config';
+import { LoggerMiddleware } from './common/middleware/logger.middleware.js';
 
 @Module({
   imports: [EventsModule, SessionsModule, ConfigModule.forRoot()],
@@ -13,6 +14,6 @@ import { ConfigModule } from '@nestjs/config';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(RequestIdMiddleware).forRoutes('{*path}');
+    consumer.apply(RequestIdMiddleware, LoggerMiddleware).forRoutes('{*path}');
   }
 }
