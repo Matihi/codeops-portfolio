@@ -1,10 +1,48 @@
 @baseUrl = http://localhost:{{$dotenv PORT}}/api/v1
 
-###Register a new customer
+### Register a new customer
 POST {{baseUrl}}/auth/register
 Content-Type: application/json
 
 {
     "email": "almaz@example.et",
     "password": "Password123!"
+}
+
+### Try the same email again - expect 409
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+    "email": "almaz@example.et",
+    "password": "Password123!"
+}
+
+### Invalid email - expect 400
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+    "email": "not-an-email",
+    "password": "Password123!"
+}
+
+### Short password - expect 400
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+    "email": "new@example.et",
+    "password": "123"   
+}
+
+### Extra role field - expect 400
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+    "email": "new2@example.et",
+    "password": "Password123!",
+    "roles": ["admin"]
+
 }
