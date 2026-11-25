@@ -7,9 +7,16 @@ import { RequestIdMiddleware } from './common/middleware/request-id.middleware.j
 import { ConfigModule } from '@nestjs/config';
 import { LoggerMiddleware } from './common/middleware/logger.middleware.js';
 import { UsersModule } from './users/users.module.js';
+import { AuthModule } from './auth/auth.module.js';
 
 @Module({
-  imports: [EventsModule, SessionsModule, ConfigModule.forRoot(), UsersModule],
+  imports: [
+    EventsModule,
+    SessionsModule,
+    ConfigModule.forRoot(),
+    UsersModule,
+    AuthModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
