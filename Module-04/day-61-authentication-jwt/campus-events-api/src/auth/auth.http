@@ -96,3 +96,7 @@ Content-Type: application/json
 {
     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTc5NTYxNTA5MSwiZXhwIjoxNzk2MjE5ODkxfQ.z1RTRU-2S5egvu7AIkeSJsAmmtTkVfaQ8xTzgUMyXY8"
 }
+
+### Logout
+POST {{baseUrl}}/auth/logout
+Authorization: Bearer {{accessToken}}
