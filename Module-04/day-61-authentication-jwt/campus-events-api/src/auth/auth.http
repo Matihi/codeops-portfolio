@@ -76,7 +76,7 @@ Content-Type: application/json
 
 ###
 
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiYWxtYXpAZXhhbXBsZS5ldCIsInJvbGVzIjpbImN1c3RvbWVyIl0sImlhdCI6MTc5NTYxMzYwOSwiZXhwIjoxNzk1NjE0NTA5fQ.ntcvOwDEzZF6g041STWgpLQN698oyoNyRMYqbs5mNZc
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiYWxtYXpAZXhhbXBsZS5ldCIsInJvbGVzIjpbImN1c3RvbWVyIl0sImlhdCI6MTc5NTYxNTA1NywiZXhwIjoxNzk1NjE1OTU3fQ.ycneLTuPXJnNv_KRz-eKxRz1JtIYiqJoOLX9_WVMvc8
 
 ### No token - expect 401
 GET {{baseUrl}}/auth/me
@@ -88,3 +88,11 @@ Authorization: Bearer {{accessToken}}
 ### Tampered token - expect 401
 GET {{baseUrl}}/auth/me 
 Authorization: Bearer {{accessToken}}x
+
+### Refresh using the refresh token returned by login
+POST {{baseUrl}}/auth/refresh
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTc5NTYxNTA5MSwiZXhwIjoxNzk2MjE5ODkxfQ.z1RTRU-2S5egvu7AIkeSJsAmmtTkVfaQ8xTzgUMyXY8"
+}
