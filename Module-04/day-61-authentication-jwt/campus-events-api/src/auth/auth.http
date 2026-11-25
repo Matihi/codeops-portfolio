@@ -74,7 +74,9 @@ Content-Type: application/json
     "password": "Password123!"
 }
 
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiYWxtYXpAZXhhbXBsZS5ldCIsInJvbGVzIjpbImN1c3RvbWVyIl0sImlhdCI6MTc5NTYxMjkxNSwiZXhwIjoxNzk1NjEzODE1fQ.JQopk8iNKUqJI3-gU-6TJPu-ybwKzpT7qZaaO5zghL4
+###
+
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiYWxtYXpAZXhhbXBsZS5ldCIsInJvbGVzIjpbImN1c3RvbWVyIl0sImlhdCI6MTc5NTYxMzYwOSwiZXhwIjoxNzk1NjE0NTA5fQ.ntcvOwDEzZF6g041STWgpLQN698oyoNyRMYqbs5mNZc
 
 ### No token - expect 401
 GET {{baseUrl}}/auth/me
