@@ -6,9 +6,10 @@ import { SessionsModule } from './sessions/sessions.module.js';
 import { RequestIdMiddleware } from './common/middleware/request-id.middleware.js';
 import { ConfigModule } from '@nestjs/config';
 import { LoggerMiddleware } from './common/middleware/logger.middleware.js';
+import { UsersModule } from './users/users.module.js';
 
 @Module({
-  imports: [EventsModule, SessionsModule, ConfigModule.forRoot()],
+  imports: [EventsModule, SessionsModule, ConfigModule.forRoot(), UsersModule],
   controllers: [AppController],
   providers: [AppService],
 })
