@@ -73,3 +73,16 @@ Content-Type: application/json
     "email": "nobody@example.et",
     "password": "Password123!"
 }
+
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiYWxtYXpAZXhhbXBsZS5ldCIsInJvbGVzIjpbImN1c3RvbWVyIl0sImlhdCI6MTc5NTYxMjkxNSwiZXhwIjoxNzk1NjEzODE1fQ.JQopk8iNKUqJI3-gU-6TJPu-ybwKzpT7qZaaO5zghL4
+
+### No token - expect 401
+GET {{baseUrl}}/auth/me
+
+### Valid token - expect 200 and the user object
+GET {{baseUrl}}/auth/me 
+Authorization: Bearer {{accessToken}}
+
+### Tampered token - expect 401
+GET {{baseUrl}}/auth/me 
+Authorization: Bearer {{accessToken}}x
