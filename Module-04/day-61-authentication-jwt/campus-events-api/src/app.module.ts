@@ -13,7 +13,9 @@ import { AuthModule } from './auth/auth.module.js';
   imports: [
     EventsModule,
     SessionsModule,
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     UsersModule,
     AuthModule,
   ],
