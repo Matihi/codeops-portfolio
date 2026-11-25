@@ -46,3 +46,30 @@ Content-Type: application/json
     "roles": ["admin"]
 
 }
+
+### Login with the registered user
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "almaz@example.et",
+    "password": "Password123!"
+}
+
+### Wrong password - expect same 401 message
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "almaz@example.et",
+    "password": "WrongPassword123!"
+}
+
+### Unknown email - expect same 401 message
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "nobody@example.et",
+    "password": "Password123!"
+}
