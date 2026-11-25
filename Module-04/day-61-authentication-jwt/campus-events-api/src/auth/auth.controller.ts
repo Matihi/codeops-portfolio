@@ -1,8 +1,7 @@
-import { Controller, Body, Post, UseGuards, Get, Req } from '@nestjs/common';
+import { Controller, Body, Post, Get, Req } from '@nestjs/common';
 import { AuthService } from './auth.service.js';
 import { RegisterDto } from './dto/register.dto.js';
 import { LoginDto } from './dto/login.dto.js';
-import { JwtAuthGuard } from '../common/guards/jwt-auth.guard.js';
 import { RefreshDto } from './dto/refresh.dto.js';
 
 @Controller('auth')
@@ -19,7 +18,6 @@ export class AuthController {
     return this.authService.login(dto);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('me')
   getMe(
     @Req()
@@ -39,7 +37,6 @@ export class AuthController {
     return this.authService.refresh(dto.refreshToken);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Post('logout')
   logout(
     @Req()
