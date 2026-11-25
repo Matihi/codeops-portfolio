@@ -77,4 +77,37 @@ export class AuthService {
 
     return { accessToken, refreshToken };
   }
+
+  async refresh(presentedToken: string) {
+    try {
+      const payload = await this.jwt.verifyAsync<{ sub: number }>(
+        presentedToken,
+        {
+          secret: this.config.getOrThrow<string>('JWT_REFRESH_SECRET'),
+          algorithms: ['HS256'],
+        },
+      );
+
+      const user = await this.users.findById(payload.sub);
+
+      if (!user || !user.refreshHash) {
+        throw new UnauthorizedException('Invalid refresh token');
+      }
+
+      const matches = await argon2.verify(user.refreshHash, presentedToken);
+
+      if (!matches) {
+        throw new UnauthorizedException('Invalid refresh token');
+      }
+
+      return this.issueTokens(user);
+    } catch (error) {
+      throw new UnauthorizedException('Invalid refresh token');
+    }
+  }
+
+  async logout(userId: number) {
+    await this.users.setRefreshHash(userId, null);
+    return { message: 'Logged out' };
+  }
 }
